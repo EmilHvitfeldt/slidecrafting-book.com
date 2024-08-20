@@ -1,0 +1,49 @@
+/*-- scss:mixins --*/
+
+@mixin btn-inverse {
+  transition-delay: 0s;
+  transition-duration: 0.15s;
+  transition-property: color;
+  transition-timing-function: ease-in;
+
+  &:hover {
+    background-color: $link-color;
+    color: rgb(250, 249, 240);
+  }
+}
+
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Commissioner&family=Fraunces:wght@100&family=Inconsolata:wght@400&display=swap');
+
+/*-- scss:rules --*/
+
+div.quarto-about-jolla .about-link,
+.btn-links,
+.project-buttons>p>a {
+  border-style: solid;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 16px;
+  font-family: Commissioner;
+  text-transform: uppercase;
+  text-decoration-line: none;
+  display: inline-block;
+
+  @include btn-inverse;
+
+  i {
+    margin-right: 8px;
+  }
+}
+
+.slide-deck {
+  width: 100%;
+  aspect-ratio: 1.5;
+
+  border-style: solid;
+  border-width: 1px;
+}

@@ -91,5 +91,8 @@
   },
   "elements/plot-background-examples.qmd": {
     "plot-background-examples.html": "3e4a68ac"
+  },
+  "layout/tip-5.qmd": {
+    "tip-5.html": "085e5a27"
   }
 }
