@@ -1,0 +1,16 @@
+---
+format:
+  revealjs:
+    theme:
+      [default, tip-1.scss]
+---
+
+## Highlight incremental slides
+
+::: {.incremental .highlight-last}
+- bad idea right?
+- love is embarrassing
+- ballad of a homeschooled girl
+- get him back!
+- making the bed
+:::

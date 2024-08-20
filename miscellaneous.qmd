@@ -1,0 +1,27 @@
+---
+title: miscellaneous
+---
+
+## Hiding slides
+
+changing the [slide visibility](https://quarto.org/docs/presentations/revealjs/advanced.html#slide-visibility) is as simple as setting `visibility="hidden"` attribute to the header of a slide
+
+```markdown
+## Slide Title {visibility="hidden"}
+```
+
+I find this useful when I have to give the same presentation multiple times, and I have a disclaimer or other seasonally important slides. Instead of removing and reinserting the information each time, I just changed the attribute. 
+
+<iframe class="slide-deck" src="examples/miscellaneous/tip-3.html">
+
+</iframe>
+
+<a href="examples/miscellaneous/tip-3.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+## Avoid duplication using Includes
+
+This last tip doesn't come with an example, as it doesn't get useful before you start working with multiple files. We are talking about the [includes](https://quarto.org/docs/authoring/includes.html) short code.
+
+Using the following short code; `{{< include _content.qmd >}}` includes the content of `_content.qmd` into the document in a "copy-paste" manner before the rendering of the document.
+
+This has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.

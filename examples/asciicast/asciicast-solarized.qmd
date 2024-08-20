@@ -1,0 +1,19 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+```{r}
+asciicast::init_knitr_engine()
+```
+
+## solarized-light
+
+```{r}
+options(asciicast_theme = "solarized-light")
+```
+
+```{asciicast}
+library(tidymodels)
+```

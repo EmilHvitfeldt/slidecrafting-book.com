@@ -1,0 +1,37 @@
+project:
+  type: book
+  resources:
+    - /examples
+
+book:
+  title: "Slidecrafting with Quarto"
+  author: "Emil Hvitfeldt"
+  date: "8/18/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - part: "Theming"
+      chapters:
+        - 10-minute.qmd
+        - colors.qmd
+        - fonts.qmd
+        - theme.qmd
+        - styling.qmd
+        - scss.qmd
+    - part: "Content"
+      chapters:
+        - elements.qmd
+        - layout.qmd
+        - manual-code.qmd
+        - asciicast.qmd
+    - part: "Interactivity"
+      chapters:
+        - fragments.qmd
+    - miscellaneous.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo

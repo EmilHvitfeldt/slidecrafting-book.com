@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+@font-face {
+    font-family: 'FiraCode';
+    src: url('../../../../../FiraCode-Regular.woff2') format('woff2'),
+         url('../../../../../FiraCode-Regular.woff') format('woff');
+}
+
+$font-family-monospace: 'FiraCode';
+
+$theme-sand: #F1EAE5;
+$theme-white: #FFFFFF;
+
+$body-bg: $theme-sand;
+
+/*-- scss:rules --*/
+
+.reveal pre code {
+  background-color: #232525;
+  color: #A9B7C6;
+}
+
+.reveal div.sourceCode pre code {
+  padding: 25px;
+}
+
+.reveal div.sourceCode {
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px !important;
+  box-shadow: 0 20px 47px rgb(0 0 0 / 55%);
+  width: fit-content;
+  margin: auto !important;
+}
+
+code span.er {
+  color: #ebcb8b;
+  text-decoration: none;
+}

@@ -1,0 +1,19 @@
+{
+  "hash": "4b35dea055c3a5e0c926128fdbdeafac",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nformat:\n  revealjs: \n    theme: [default, carbon-copy.scss]\nhighlight-style: \"nord\"\n---\n\n\n\n## Fancy Carbon-Copy\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-line-numbers=\"false\"}\nlibrary(tidyverse)\n\ndiamonds |>\n  count(color, cut, sort = TRUE)\n# A tibble: 35 × 3\n   color cut           n\n   <ord> <ord>     <int>\n 1 G     Ideal      4884\n 2 E     Ideal      3903\n 3 F     Ideal      3826\n 4 H     Ideal      3115\n 5 G     Premium    2924\n 6 D     Ideal      2834\n 7 E     Very Good  2400\n 8 H     Premium    2360\n 9 E     Premium    2337\n10 F     Premium    2331\n# … with 25 more rows\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,79 @@
+---
+format:
+  revealjs:
+    self-contained: true
+echo: fenced
+code-line-numbers: false
+auto-stretch: false
+---
+
+## Base R - before {background-color="#DEE0F3"}
+
+```{r}
+plot(mpg ~ disp, data = mtcars, col = factor(am), pch = 16, bty = "n")
+```
+
+## Base R - after {background-color="#DEE0F3"}
+
+```{r, dev = "png", dev.args=list(bg="transparent")}
+plot(mpg ~ disp, data = mtcars, col = factor(am), pch = 16, bty = "n")
+```
+
+## ggplot2 - before {background-color="#DEE0F3"}
+
+```{r}
+library(ggplot2)
+mtcars |>
+  ggplot(aes(disp, mpg, color = factor(am))) +
+  geom_point() +
+  theme_minimal() 
+```
+
+## ggplot2 - after {background-color="#DEE0F3"}
+
+```{r, dev = "png", dev.args=list(bg="transparent")}
+library(ggplot2)
+mtcars |>
+  ggplot(aes(disp, mpg, color = factor(am))) +
+  geom_point() +
+  theme_minimal()
+```
+
+## matplotlib - before {background-color="#DEE0F3"}
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.random.rand(32);y = np.random.rand(32); colors = np.random.rand(32)
+plt.scatter(x, y, c=colors)
+plt.show()
+```
+
+## matplotlib - after {background-color="#DEE0F3"}
+
+```{python}
+import matplotlib.pyplot as plt
+x = np.random.rand(32);y = np.random.rand(32); colors = np.random.rand(32)
+fig = plt.figure()
+plt.axes().set_facecolor("#FFFFFF00")
+plt.scatter(x, y, c=colors)
+fig.patch.set_facecolor("#FFFFFF00")
+plt.show()
+```
+
+## seaborn - before {background-color="#DEE0F3"}
+
+```{python}
+import seaborn as sns
+tips = sns.load_dataset("tips")
+sns.scatterplot(data=tips, x="total_bill", y="tip", hue="time")
+```
+
+## seaborn - after {background-color="#DEE0F3"}
+
+```{python}
+import seaborn as sns
+tips = sns.load_dataset("tips")
+sns.set_style(rc={'axes.facecolor':'#FFFFFF00', 'figure.facecolor':'#FFFFFF00'})
+sns.scatterplot(data=tips, x="total_bill", y="tip", hue="time")
+```

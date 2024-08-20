@@ -1,0 +1,13 @@
+---
+format: revealjs
+---
+
+## Default asciicast usage
+
+```{r}
+asciicast::init_knitr_engine()
+```
+
+```{asciicast}
+library(tidymodels)
+```

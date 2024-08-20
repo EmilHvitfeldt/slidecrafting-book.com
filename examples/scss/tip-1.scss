@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+$colors: (
+  "red": #FFADAD, 
+"orange": #FFD6A5, 
+  "yellow": #FDFFB6, 
+  "blue": #aad2e7, 
+  "purple":#b4addd
+);
+
+/*-- scss:rules --*/
+
+@each $name1, $col1 in $colors {
+  @each $name2, $col2 in $colors {
+    span.hl-#{$name1}-#{$name2}, .hl-#{$name1}-#{$name2} > h2 {
+      background-image: linear-gradient(90deg, $col1, $col2);
+      background-size: 100% 42%;
+      background-repeat: no-repeat;
+      background-position: 0 85%;
+      width: fit-content;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+## Standard Columns
+
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+Right column
+:::
+
+::::
+
+
+## Justified Columns
+
+:::: {.columns}
+
+::: {.column width="50%"}
+I have this thing where I get older, but just never wiser
+
+Midnights become my afternoons
+
+When my depression works the graveyard shift, all of the people
+
+I've ghosted stand there in the room
+:::
+
+::: {.column width="30%" style="text-align: right;"}
+I walked through the door with you, the air was cold
+
+But somethin' 'bout it felt like home somehow
+
+And I left my scarf there at your sister's house
+
+And you've still got it in your drawer, even now
+:::
+
+::::
+
+## Many Columns
+
+:::: {.columns}
+
+::: {.column width="25%"}
+1st column
+:::
+
+::: {.column width="25%"}
+2nd column
+:::
+
+::: {.column width="25%"}
+3rd column
+:::
+
+::: {.column width="25%"}
+4th column
+:::
+
+::::
+
+## One sided-column
+
+:::: {.columns}
+
+::: {.column width="30%"}
+:::
+
+::: {.column width="70%"}
+Only right side
+:::
+
+::::

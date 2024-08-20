@@ -1,0 +1,9 @@
+---
+format: revealjs
+---
+
+## Make love not war
+
+[python is great]{.absolute bottom="45%" left="20%"}
+
+[and so is R]{.absolute bottom="0%" right="0%"}

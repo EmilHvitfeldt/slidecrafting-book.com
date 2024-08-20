@@ -1,0 +1,95 @@
+{
+  "tip-1.qmd": {
+    "tip-1.html": "c53737d7"
+  },
+  "tip-2.qmd": {
+    "tip-2.html": "653e530d"
+  },
+  "01-chapter/tip-1.qmd": {
+    "tip-1.html": "c963693d"
+  },
+  "fragments/tip-1.qmd": {
+    "tip-1.html": "402636f1"
+  },
+  "tip-4.qmd": {
+    "tip-4.html": "895a1629"
+  },
+  "tip-5.qmd": {
+    "tip-5.html": "60c9e150"
+  },
+  "tip-6.qmd": {
+    "tip-6.html": "9410e460"
+  },
+  "tip-3.qmd": {
+    "tip-3.html": "914897d6"
+  },
+  "styling/tip-2.qmd": {
+    "tip-2.html": "ce9b358d"
+  },
+  "miscellaneous/tip-3.qmd": {
+    "tip-3.html": "a39d7673"
+  },
+  "elements/tip-5.qmd": {
+    "tip-5.html": "ed802890"
+  },
+  "elements/tip-6.qmd": {
+    "tip-6.html": "d9686efd"
+  },
+  "manual-code/tip-4.qmd": {
+    "tip-4.html": "71f36ce1"
+  },
+  "asciicast/asciicast-theme.qmd": {
+    "asciicast-theme.html": "8edadf15"
+  },
+  "asciicast/asciicast-echos.qmd": {
+    "asciicast-echos.html": "ddee50d2"
+  },
+  "asciicast/no-asciicast.qmd": {
+    "no-asciicast.html": "e85dd4fc"
+  },
+  "asciicast/asciicast-default.qmd": {
+    "asciicast-default.html": "fcced57c"
+  },
+  "asciicast/asciicast-same_process.qmd": {
+    "asciicast-same_process.html": "d33ee735"
+  },
+  "asciicast/asciicast-solarized.qmd": {
+    "asciicast-solarized.html": "e9c87ac5"
+  },
+  "styling/theme-example.qmd": {
+    "theme-example.html": "5bf8438b"
+  },
+  "styling/carbon-copy.qmd": {
+    "carbon-copy.html": "47cbf5be"
+  },
+  "scss/tip-2.qmd": {
+    "tip-2.html": "38a4373a"
+  },
+  "scss/tip-1.qmd": {
+    "tip-1.html": "57a17f00"
+  },
+  "layout/image-basics.qmd": {
+    "image-basics.html": "ef30effa"
+  },
+  "layout/image-background.qmd": {
+    "image-background.html": "b2d0064d"
+  },
+  "layout/image-absolute.qmd": {
+    "image-absolute.html": "baa89f1a"
+  },
+  "layout/r-fit-text.qmd": {
+    "r-fit-text.html": "83aa8cb2"
+  },
+  "layout/overlay-textbox.qmd": {
+    "overlay-textbox.html": "6d8d93bc"
+  },
+  "layout/left-right.qmd": {
+    "left-right.html": "04828821"
+  },
+  "elements/plot-sizing-examples.qmd": {
+    "plot-sizing-examples.html": "8c135803"
+  },
+  "elements/plot-background-examples.qmd": {
+    "plot-background-examples.html": "3e4a68ac"
+  }
+}

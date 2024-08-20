@@ -1,0 +1,159 @@
+---
+title: asciicast
+---
+
+This chapter celebrates the [asciicast](https://github.com/r-lib/asciicast) R package to showcase rich output.
+
+## Without asciicast
+
+When R code produces messages with colors or styling, they are typically lost when we write slides
+
+<iframe class="slide-deck" src="examples/asciicast/no-asciicast.html">
+
+</iframe>
+
+<a href="examples/asciicast/no-asciicast.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+## Default asciicast
+
+This is where the amazing [asciicast](https://github.com/r-lib/asciicast) R package comes into play. {asciicast} takes an R script and turns it into an [asciinema](https://asciinema.org/) cast. We will use the very convenient [init_knitr_engine()](https://asciicast.r-lib.org/reference/init_knitr_engine.html) function to make this as easy as possible.
+
+We can add the {asciicast} {knitr} engine by placing the following chunk at the beginning of our document.
+
+```{{r}}
+asciicast::init_knitr_engine()
+```
+
+And then we toggle asciicast output by replacing 
+
+```{{r}}
+library(tidymodels)
+```
+
+with
+
+```{{asciicast}}
+library(tidymodels)
+```
+
+With this change, we get the following output, nicely styled with colors and everything.
+
+<iframe class="slide-deck" src="examples/asciicast/asciicast-default.html">
+
+</iframe>
+
+<a href="examples/asciicast/asciicast-default.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+::: {.callout-note}
+The output of asciicast will by default fill the screen horizontally, but for some reason when setting `format: revealjs: self-contained: true` it doesn't. All examples use this option for a better blogging experience. You just have to trust me that it looks better without the option.
+:::
+
+## Using startup to seed, load some packages
+
+The full list of arguments to `asciicast_init_knitr_engine()` is as follows
+
+```{r}
+formals(asciicast::init_knitr_engine)
+```
+
+I will talk about the 3 I use, which are `same_process`, `echo`, and `echo_input`. The two go together. `same_process` which defaults to `TRUE`, does what it says. It determines whether all the asciicast chunks should be in the same process or not. If you want to show things that only happen once a session, you might want to turn this off which is done this way
+
+```{{r}}
+asciicast::init_knitr_engine(
+  same_process = FALSE
+)
+```
+
+and gives the following results
+
+<iframe class="slide-deck" src="examples/asciicast/asciicast-same_process.html">
+
+</iframe>
+
+<a href="examples/asciicast/asciicast-same_process.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+You will notice that the code that is being run is included in the asciicast output. This is happening because the default arguments `echo = FALSE` and `echo_input = TRUE`. By swapping these options we get the code as normal quarto code, with the output as asciicast
+
+```{{r}}
+asciicast::init_knitr_engine(
+  echo = TRUE,
+  echo_input = FALSE
+)
+```
+
+<iframe class="slide-deck" src="examples/asciicast/asciicast-echos.html">
+
+</iframe>
+
+<a href="examples/asciicast/asciicast-echos.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+It wouldn't make much sense to set both of these to `TRUE` as you would have duplication, but there are certainly cases where you want both of these to be `FALSE` as you just want the output.
+
+## Using theme argument
+
+The output is styled a certain way, and we can change it. At the time of writing, the following 10 premade themes are available.
+
+- asciinema
+- tango
+- solarized-dark
+- solarized-light
+- seti
+- monokai
+- github-light
+- github-dark
+- pkgdown
+- readme
+
+We can toggle any of these by setting the option `asciicast_theme`. The below example showcases the `"solarized-light"` theme.
+
+```{{r}}
+options(asciicast_theme = "solarized-light")
+```
+
+<iframe class="slide-deck" src="examples/asciicast/asciicast-solarized.html">
+
+</iframe>
+
+<a href="examples/asciicast/asciicast-solarized.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+If none of these is what you need, you can use a completely custom theme. I suggest that you modify one of the [existing theme](https://github.com/r-lib/asciicast/blob/4e6302182264a0fe7c58c427c9878b9135dac4fd/R/svg.R#L190)
+
+For this example, the `github-light` theme was modified by changing the `background` to pure white to match the background of the slide, thus having it blend into the slide.
+
+```{{r}}
+options(
+  asciicast_theme = list(
+    black         = c(grDevices::col2rgb("#073642")),
+    red           = c(grDevices::col2rgb("#dc322f")),
+    green         = c(grDevices::col2rgb("#859900")),
+    yellow        = c(grDevices::col2rgb("#b58900")),
+    blue          = c(grDevices::col2rgb("#268bd2")),
+    magenta       = c(grDevices::col2rgb("#d33682")),
+    cyan          = c(grDevices::col2rgb("#2aa198")),
+    white         = c(grDevices::col2rgb("#eee8d5")),
+    light_black   = c(grDevices::col2rgb("#002b36")),
+    light_red     = c(grDevices::col2rgb("#cb4b16")),
+    light_green   = c(grDevices::col2rgb("#586e75")),
+    light_yellow  = c(grDevices::col2rgb("#657c83")),
+    light_blue    = c(grDevices::col2rgb("#839496")),
+    light_magenta = c(grDevices::col2rgb("#6c71c4")),
+    light_cyan    = c(grDevices::col2rgb("#93a1a1")),
+    light_white   = c(grDevices::col2rgb("#fdf6e3")),
+    background    = c(grDevices::col2rgb("#ffffff")),
+    cursor        = c(grDevices::col2rgb("#657b83")),
+    bold          = c(grDevices::col2rgb("#657b83")),
+    text          = c(grDevices::col2rgb("#657b83"))
+  )
+)
+```
+
+<iframe class="slide-deck" src="examples/asciicast/asciicast-theme.html">
+
+</iframe>
+
+<a href="examples/asciicast/asciicast-theme.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+
+## Roundup
+
+I just recently learned about {asciicast} and I love it. If you know of any other cool tools or packages, please reach out and share them with me!
+

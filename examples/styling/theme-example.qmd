@@ -1,0 +1,9 @@
+---
+format:
+  revealjs: 
+    theme: [default, custom.scss]
+---
+
+## Quarto
+
+[Quarto]{.blue} enables you to weave together [content]{.yellow} and [executable code]{.yellow} into a **finished presentation**. To learn more about [Quarto]{.blue} presentations see <https://quarto.org/docs/presentations/>.

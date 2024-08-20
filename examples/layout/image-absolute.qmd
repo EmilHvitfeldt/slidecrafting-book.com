@@ -1,0 +1,25 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+## absolute positioning
+
+::: columns
+::: {.column width="50%"}
+`{.absolute top=0 right=0 height="100%"}`
+:::
+:::
+
+![](../../media/noelle-rebekah.jpg){.absolute top=0 right=0 height="100%"}
+
+## No restrictions
+
+::: columns
+::: {.column width="50%"}
+`{.absolute top="-10%" right="-10%" height="120%" style="max-height: unset;"}`
+:::
+:::
+
+![](../../media/noelle-rebekah.jpg){.absolute top="-10%" right="-10%" height="120%" style="max-height: unset;"}

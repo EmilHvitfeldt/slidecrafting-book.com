@@ -1,0 +1,23 @@
+---
+format:
+  revealjs:
+    self-contained: true
+    theme:
+      [default, tip-2.scss]
+---
+
+## .sb-yellow-red {.sb-yellow-red}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis tempor pharetra. Integer egestas porta tempus. Cras sit amet eros eget justo pharetra mattis. Cras sed lobortis tortor. Pellentesque ac arcu at metus auctor suscipit et vitae massa. Proin ullamcorper eros vel est facilisis, et varius quam porttitor. Aenean rhoncus tortor nunc, in tempor ex aliquet in. Mauris varius tincidunt metus, ac sollicitudin justo efficitur eu. Pellentesque at viverra metus. Pellentesque malesuada sem tempor quam facilisis ultricies.
+
+## .sb-red-blue {.sb-red-blue}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis tempor pharetra. Integer egestas porta tempus. Cras sit amet eros eget justo pharetra mattis. Cras sed lobortis tortor. Pellentesque ac arcu at metus auctor suscipit et vitae massa. Proin ullamcorper eros vel est facilisis, et varius quam porttitor. Aenean rhoncus tortor nunc, in tempor ex aliquet in. Mauris varius tincidunt metus, ac sollicitudin justo efficitur eu. Pellentesque at viverra metus. Pellentesque malesuada sem tempor quam facilisis ultricies.
+
+## .sb-blue-orange {.sb-blue-orange}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis tempor pharetra. Integer egestas porta tempus. Cras sit amet eros eget justo pharetra mattis. Cras sed lobortis tortor. Pellentesque ac arcu at metus auctor suscipit et vitae massa. Proin ullamcorper eros vel est facilisis, et varius quam porttitor. Aenean rhoncus tortor nunc, in tempor ex aliquet in. Mauris varius tincidunt metus, ac sollicitudin justo efficitur eu. Pellentesque at viverra metus. Pellentesque malesuada sem tempor quam facilisis ultricies.
+
+## .sb-orange-yellow {.sb-orange-yellow}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis tempor pharetra. Integer egestas porta tempus. Cras sit amet eros eget justo pharetra mattis. Cras sed lobortis tortor. Pellentesque ac arcu at metus auctor suscipit et vitae massa. Proin ullamcorper eros vel est facilisis, et varius quam porttitor. Aenean rhoncus tortor nunc, in tempor ex aliquet in. Mauris varius tincidunt metus, ac sollicitudin justo efficitur eu. Pellentesque at viverra metus. Pellentesque malesuada sem tempor quam facilisis ultricies.

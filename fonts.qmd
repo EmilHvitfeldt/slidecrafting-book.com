@@ -1,0 +1,61 @@
+---
+title: "Fonts"
+---
+
+## Finding Fonts
+
+We find fonts the same way we find color; using our favorites of lots of googling. I always gravitate towards [fonts.google.com](https://fonts.google.com/). Generally, it is nice to use these online fonts because they are free and you don't have to embed/ship them if you want to share your slides with others.
+
+![](media/fonts-google.png)
+
+Once we are in here to can search around, looking for a font you like. For these slides, I'm going with [Manrope](https://fonts.google.com/specimen/Manrope) for the text, and [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) for the headers. You must find a legible font, with a couple of styles and bold/italics support. This is going to make your life a lot easier once you get going.
+
+To use "select" these fonts for use, you click on these links for each font type combination.
+
+![](media/font-find-1.png)
+
+Then you click this button to have a sidebar menu pop up.
+
+![](media/font-find-2.png)
+
+This menu lets you select and deselect the fonts you have selected. When you are done, you can go to the "Use on the web" section, and click `@import`.
+
+![](media/font-find-3.png)
+
+And you want to copy the code inside the `<style>` tags. We are now ready to apply these fonts to our slides!
+
+## Applying Fonts
+
+Start by adding the `@import` calls we found in the previous section. This should again go into the `scss:defaults` section of the `.scss` file. to modify the font we have 2 sass variables. First, we have `$font-family-sans-serif` to modify the general text, and `$presentation-heading-font` to modify the headers. Applying these changes gives us the following `.scss` file
+
+````scss
+/*-- scss:defaults --*/
+$theme-darkblue: #01364C;
+$theme-blue: #99D9DD;
+$theme-white: #F7F8F9;
+$theme-yellow: #F4BA02;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+$body-bg: $theme-darkblue;
+$body-color: $theme-white;
+$link-color: $theme-blue;
+$presentation-heading-color: lighten($theme-blue, 15%);
+
+$font-family-sans-serif: 'Manrope', sans-serif;
+$presentation-heading-font: 'IBM Plex Serif', serif;
+
+/*-- scss:rules --*/
+
+````
+
+Which when renders results in the following slides.
+
+![](media/theme-example-fonts.png)
+
+Notice how the fonts we used allows us to bold the words "finished presentation".
+
+Another thing you sometimes need to change depending on the font is the sizing of the text. The sass variable `$presentation-font-size-root` controls this, and defaults to `40px`. Changing this one variable will affect everything on your slides.
+
+You can also change the code font, this should ideally be a monospaced font. This is done using the `$font-family-monospace` sass variable.

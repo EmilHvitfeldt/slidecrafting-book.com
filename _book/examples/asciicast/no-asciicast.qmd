@@ -1,0 +1,11 @@
+---
+format: revealjs
+---
+
+## No asciicast usage
+
+```{r}
+#| echo: true
+#| message: true
+library(tidymodels)
+```

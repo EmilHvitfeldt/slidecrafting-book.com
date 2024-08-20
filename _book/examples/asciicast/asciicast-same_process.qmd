@@ -1,0 +1,25 @@
+---
+format: revealjs
+---
+
+## Using `same_process = FALSE` #1
+
+You can click this and advance the slide by clicking "right"
+
+```{r}
+asciicast::init_knitr_engine(
+  same_process = FALSE
+)
+```
+
+```{asciicast}
+library(tidymodels)
+```
+
+## Using `same_process = FALSE` #2
+
+You can click this and advance the slide by clicking "left"
+
+```{asciicast}
+library(tidymodels)
+```

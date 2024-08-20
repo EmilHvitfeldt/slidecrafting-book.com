@@ -1,0 +1,32 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+## {background-image="../../media/tim-marshall.jpg"}
+
+## {background-image="../../media/tim-marshall.jpg"}
+
+::: {.absolute left="55%" top="55%" style="font-size:1.8em;"}
+Be Brave
+
+Take Risks
+:::
+
+## {background-image="../../media/tim-marshall.jpg"}
+
+::: {.absolute left="55%" top="55%" style="font-size:1.8em; padding: 0.5em 1em; background-color: rgba(255, 255, 255, .5);"}
+Be Brave
+
+Take Risks
+:::
+
+## {background-image="../../media/tim-marshall.jpg"}
+
+::: {.absolute left="55%" top="55%" style="font-size:1.8em; padding: 0.5em 1em; background-color: rgba(255, 255, 255, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;"}
+Be Brave
+
+Take Risks
+:::
+

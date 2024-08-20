@@ -1,0 +1,45 @@
+---
+title: "Fragments"
+---
+
+## Highlight incremental slides
+
+The use of [incremental lists](https://quarto.org/docs/presentations/revealjs/#incremental-lists) is a great way to add a little something to a set of slides. It also avoids a wall of text, allowing the presenter to show one bullet at a time. All in all, this is helpful as it can be used to focus the viewers' attention. 
+
+As a reminder, we create an incremental list using the following syntax:
+
+```markdown
+::: {.incremental}
+- thing 1
+- thing 2
+:::
+```
+
+We can add another class to this div and use it to style it more. 
+
+```markdown
+::: {.incremental .highlight-last}
+- thing 1
+- thing 2
+:::
+```
+
+then we use this to style our list. Below `.current-fragment` refers to the last shown item in the list. Setting the `color: grey` isn't necessary, but it is a way to downplay the "not-current" items
+
+```scss
+.highlight-last  {
+  color: grey;
+  .current-fragment {
+    color: #5500ff;
+  }
+}
+```
+
+These together yield these slides:
+
+<iframe class="slide-deck" src="../examples/fragments/tip-1.html">
+
+</iframe>
+
+<a href="../examples/fragments/tip-1.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+<a href="../examples/fragments/tip-1.scss" target="_blank" class="listing-video btn-links">{{< fa brands sass >}}scss<a>

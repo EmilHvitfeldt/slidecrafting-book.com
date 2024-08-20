@@ -1,0 +1,32 @@
+---
+format:
+  revealjs: 
+    theme: [default, carbon-copy.scss]
+highlight-style: "nord"
+---
+
+## Fancy Carbon-Copy
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: false
+library(tidyverse)
+
+diamonds |>
+  count(color, cut, sort = TRUE)
+# A tibble: 35 × 3
+   color cut           n
+   <ord> <ord>     <int>
+ 1 G     Ideal      4884
+ 2 E     Ideal      3903
+ 3 F     Ideal      3826
+ 4 H     Ideal      3115
+ 5 G     Premium    2924
+ 6 D     Ideal      2834
+ 7 E     Very Good  2400
+ 8 H     Premium    2360
+ 9 E     Premium    2337
+10 F     Premium    2331
+# … with 25 more rows
+```

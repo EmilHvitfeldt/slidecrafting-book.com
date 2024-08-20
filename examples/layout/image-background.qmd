@@ -1,0 +1,11 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+## Slide Title {background-image="../../media/galen-crout.jpg"}
+
+## {background-image="../../media/galen-crout.jpg"}
+
+[always explore]{.absolute left="50%" top="20%" style="rotate: -10deg;"}

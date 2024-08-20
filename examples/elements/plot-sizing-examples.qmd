@@ -1,0 +1,362 @@
+---
+format:
+  revealjs:
+    self-contained: true
+echo: false
+draft: true
+editor:
+  render-on-save: true
+---
+
+## auto-stretch
+
+```{r}
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## no auto-stretch {.nostretch}
+
+```{r}
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## auto-stretch
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis leo a lacus viverra dictum. Nulla faucibus tortor a arcu tempus tempor. Aliquam tempus viverra blandit. Donec vitae accumsan tellus, rhoncus condimentum urna. Nunc vitae ultricies orci, et dictum sapien. Mauris iaculis blandit accumsan. Proin lobortis, nisi eget sollicitudin mattis, risus nisl laoreet augue, ut varius erat orci ut ante.
+
+```{r}
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## no auto-stretch {.nostretch}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lobortis leo a lacus viverra dictum. Nulla faucibus tortor a arcu tempus tempor. Aliquam tempus viverra blandit. Donec vitae accumsan tellus, rhoncus condimentum urna. Nunc vitae ultricies orci, et dictum sapien. Mauris iaculis blandit accumsan. Proin lobortis, nisi eget sollicitudin mattis, risus nisl laoreet augue, ut varius erat orci ut ante.
+
+```{r}
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch - `out-width: 6in` & `out-height: 3in`
+:::
+
+```{r}
+#| out-width: 6in
+#| out-height: 3in
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch - `out-width: 12in` & `out-height: 6in`
+:::
+
+```{r}
+#| out-width: 12in
+#| out-height: 6in
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 12` & `fig-height: 8`
+:::
+
+```{r}
+#| fig-width: 12
+#| fig-height: 8
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 9` & `fig-height: 5`
+:::
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 6` & `fig-height: 3.5`
+:::
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3.5
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+:::: r-fit-text
+auto-stretch `fig-width: 3` & `fig-height: 1.6`
+:::
+
+```{r}
+#| fig-width: 3
+#| fig-height: 1.6
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 5` & `fig-height: 5`
+:::
+
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 6` & `fig-asp: 0.618`
+:::
+
+```{r}
+#| fig-width: 6
+#| fig-asp: 0.618
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 4` & `fig-asp: 0.618`
+:::
+
+```{r}
+#| fig-width: 4
+#| fig-asp: 0.618
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+:::: r-fit-text
+auto-stretch `fig-width: 4` & `fig-asp: 0.618` & `fig-align: left`
+:::
+
+```{r}
+#| fig-width: 4
+#| fig-asp: 0.618
+#| fig-align: left
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 4` & `fig-asp: 0.618` & `fig-align: center`
+:::
+
+
+```{r}
+#| fig-width: 4
+#| fig-asp: 0.618
+#| fig-align: center
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 4` & `fig-asp: 0.618` & `fig-align: right`
+:::
+
+```{r}
+#| fig-width: 4
+#| fig-asp: 0.618
+#| fig-align: right
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 3` & `fig-height: 1.6` & `fig-dpi: 50`
+:::
+
+```{r}
+#| fig-width: 3
+#| fig-height: 1.6
+#| fig-dpi: 50
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 3` & `fig-height: 1.6` & `fig-dpi: 300`
+:::
+
+```{r}
+#| fig-width: 3
+#| fig-height: 1.6
+#| fig-dpi: 300
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+## 
+
+:::: r-fit-text
+auto-stretch `fig-width: 4` & `fig-asp: 1.236`
+:::
+
+:::: {.columns}
+:::: {.column}
+```{r}
+#| fig-width: 4
+#| fig-asp: 1.236
+library(ggplot2)
+
+ggplot(diamonds, aes(carat, price, color = clarity)) +
+  geom_point() +
+  labs(
+    title = "Diamonds cost a lot of money"
+  ) +
+  guides(color = "none")
+```
+
+:::
+:::: {.column}
+:::
+:::

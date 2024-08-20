@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+
+$colors: (
+  "yellow": #F2E600, 
+  "red": #FF5A87, 
+  "blue": #1F24FA, 
+  "orange": #FF824A
+);
+
+/*-- scss:rules --*/
+
+@each $name1, $col1 in $colors {
+  @each $name2, $col2 in $colors {
+    .sb-#{$name1}-#{$name2} {
+      &:is(.slide-background) {
+        background-image: linear-gradient(90deg, #ffffff 90%, #ffffff00 10%),
+                          linear-gradient(in oklab 180deg, $col1, $col2);
+      }
+      h2, h3, h4, h5, p, pre {
+        margin-right: 100px;
+      }
+    }
+  }
+}

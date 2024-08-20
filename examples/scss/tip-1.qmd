@@ -1,0 +1,31 @@
+---
+format:
+  revealjs:
+    self-contained: true
+    theme:
+      [default, tip-1.scss]
+---
+
+## .hl-yellow-blue {.hl-yellow-blue}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Vivamus arcu ipsum, elementum et gravida vel, elementum nec ligula.]{.hl-yellow-blue} Proin aliquet elementum dolor nec ultricies. Fusce pretium, risus at sollicitudin fermentum, diam quam commodo erat, nec malesuada nibh nisl eu tortor. [Sed quis turpis a risus varius ullamcorper vitae vel neque.]{.hl-yellow-blue} Maecenas iaculis eros mauris, sed efficitur quam dictum sed. Vestibulum eu arcu laoreet, tristique lectus sit amet, euismod libero. [Sed auctor nulla lacinia, ultrices velit eu, molestie justo.]{.hl-yellow-blue} Aliquam libero nulla, pellentesque nec condimentum nec, suscipit nec massa. Integer nec tincidunt dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos [himenaeos]{.hl-yellow-blue}.
+
+## .hl-purple-blue {.hl-purple-blue}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Vivamus arcu ipsum, elementum et gravida vel, elementum nec ligula.]{.hl-purple-blue} Proin aliquet elementum dolor nec ultricies. Fusce pretium, risus at sollicitudin fermentum, diam quam commodo erat, nec malesuada nibh nisl eu tortor. [Sed quis turpis a risus varius ullamcorper vitae vel neque.]{.hl-purple-blue} Maecenas iaculis eros mauris, sed efficitur quam dictum sed. Vestibulum eu arcu laoreet, tristique lectus sit amet, euismod libero. [Sed auctor nulla lacinia, ultrices velit eu, molestie justo.]{.hl-purple-blue} Aliquam libero nulla, pellentesque nec condimentum nec, suscipit nec massa. Integer nec tincidunt dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos [himenaeos]{.hl-purple-blue}.
+
+## .hl-orange-red {.hl-orange-red}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Vivamus arcu ipsum, elementum et gravida vel, elementum nec ligula.]{.hl-orange-red} Proin aliquet elementum dolor nec ultricies. Fusce pretium, risus at sollicitudin fermentum, diam quam commodo erat, nec malesuada nibh nisl eu tortor. [Sed quis turpis a risus varius ullamcorper vitae vel neque.]{.hl-orange-red} Maecenas iaculis eros mauris, sed efficitur quam dictum sed. Vestibulum eu arcu laoreet, tristique lectus sit amet, euismod libero. [Sed auctor nulla lacinia, ultrices velit eu, molestie justo.]{.hl-orange-red} Aliquam libero nulla, pellentesque nec condimentum nec, suscipit nec massa. Integer nec tincidunt dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos [himenaeos]{.hl-orange-red}.
+
+## .hl-yellow-red {.hl-yellow-red}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Vivamus arcu ipsum, elementum et gravida vel, elementum nec ligula.]{.hl-yellow-red} Proin aliquet elementum dolor nec ultricies. Fusce pretium, risus at sollicitudin fermentum, diam quam commodo erat, nec malesuada nibh nisl eu tortor. [Sed quis turpis a risus varius ullamcorper vitae vel neque.]{.hl-yellow-red} Maecenas iaculis eros mauris, sed efficitur quam dictum sed. Vestibulum eu arcu laoreet, tristique lectus sit amet, euismod libero. [Sed auctor nulla lacinia, ultrices velit eu, molestie justo.]{.hl-yellow-red} Aliquam libero nulla, pellentesque nec condimentum nec, suscipit nec massa. Integer nec tincidunt dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos [himenaeos]{.hl-yellow-red}.
+
+## .hl-blue-red {.hl-blue-red}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Vivamus arcu ipsum, elementum et gravida vel, elementum nec ligula.]{.hl-blue-red} Proin aliquet elementum dolor nec ultricies. Fusce pretium, risus at sollicitudin fermentum, diam quam commodo erat, nec malesuada nibh nisl eu tortor. [Sed quis turpis a risus varius ullamcorper vitae vel neque.]{.hl-blue-red} Maecenas iaculis eros mauris, sed efficitur quam dictum sed. Vestibulum eu arcu laoreet, tristique lectus sit amet, euismod libero. [Sed auctor nulla lacinia, ultrices velit eu, molestie justo.]{.hl-blue-red} Aliquam libero nulla, pellentesque nec condimentum nec, suscipit nec massa. Integer nec tincidunt dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos [himenaeos]{.hl-blue-red}.
+
+## .hl-orange-blue {.hl-orange-blue}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Vivamus arcu ipsum, elementum et gravida vel, elementum nec ligula.]{.hl-orange-blue} Proin aliquet elementum dolor nec ultricies. Fusce pretium, risus at sollicitudin fermentum, diam quam commodo erat, nec malesuada nibh nisl eu tortor. [Sed quis turpis a risus varius ullamcorper vitae vel neque.]{.hl-orange-blue} Maecenas iaculis eros mauris, sed efficitur quam dictum sed. Vestibulum eu arcu laoreet, tristique lectus sit amet, euismod libero. [Sed auctor nulla lacinia, ultrices velit eu, molestie justo.]{.hl-orange-blue} Aliquam libero nulla, pellentesque nec condimentum nec, suscipit nec massa. Integer nec tincidunt dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos [himenaeos]{.hl-orange-blue}.

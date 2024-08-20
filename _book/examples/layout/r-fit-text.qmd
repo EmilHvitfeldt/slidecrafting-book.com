@@ -1,0 +1,35 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+##
+
+::: r-fit-text
+This fits perfectly!
+:::
+
+## {.center}
+
+::: r-fit-text
+This fits perfectly!
+:::
+
+##
+
+::: r-fit-text
+This fits perfectly!
+
+On two lines
+:::
+
+##
+
+::: r-fit-text
+This fits perfectly!
+:::
+
+::: r-fit-text
+On two lines
+:::

@@ -1,0 +1,18 @@
+---
+format:
+  revealjs:
+    self-contained: true
+---
+
+## using `echo` and `echo_input`
+
+```{r}
+asciicast::init_knitr_engine(
+  echo = TRUE,
+  echo_input = FALSE
+)
+```
+
+```{asciicast}
+library(tidymodels)
+```
