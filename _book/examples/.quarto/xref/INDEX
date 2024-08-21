@@ -94,5 +94,11 @@
   },
   "layout/tip-5.qmd": {
     "tip-5.html": "085e5a27"
+  },
+  "fragments/fragment-highlighter.qmd": {
+    "fragment-highlighter.html": "8bca4d4b"
+  },
+  "fragments/fragment-rgb.qmd": {
+    "fragment-rgb.html": "2cf374e6"
   }
 }

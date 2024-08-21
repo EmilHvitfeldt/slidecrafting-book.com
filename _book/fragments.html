@@ -293,6 +293,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#highlight-incremental-slides" id="toc-highlight-incremental-slides" class="nav-link active" data-scroll-target="#highlight-incremental-slides"><span class="header-section-number">12.1</span> Highlight incremental slides</a></li>
+  <li><a href="#changing-fragments-with-css" id="toc-changing-fragments-with-css" class="nav-link" data-scroll-target="#changing-fragments-with-css"><span class="header-section-number">12.2</span> Changing fragments with CSS</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">12.3</span> Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">12.4</span> Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">12.5</span> Example 3</a></li>
   </ul>
 </nav>
     </div>
@@ -342,11 +346,204 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <iframe class="slide-deck" src="../examples/fragments/tip-1.html">
 </iframe>
 <p><a href="../examples/fragments/tip-1.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="../examples/fragments/tip-1.scss" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a><a></a></p><a>
-
-
 </a></section><a>
+</a><section id="changing-fragments-with-css" class="level2" data-number="12.2"><a>
+<h2 data-number="12.2" class="anchored" data-anchor-id="changing-fragments-with-css"><span class="header-section-number">12.2</span> Changing fragments with CSS</h2>
+<p>At the most fundamental level, a fragment can be split into 3 stages</p>
+<ul>
+<li>before</li>
+<li>current</li>
+<li>after</li>
+</ul>
+<p>determining which stage is handled completely by revealjs using the <code>fragment-index</code> attribute. The way we can make things happen is to apply a different style to each of the 3 stages.</p>
+<p>the maximal fragment signature is as follows, with <code>fragment-name</code> being the name of the fragment in question. For them to work properly you have to list them in the following order. Which corresponds to <code>before</code>, <code>after</code>, and <code>current</code>.</p>
+</a><div class="sourceCode" id="cb4"><a></a><pre class="sourceCode css code-with-copy"><a><code class="sourceCode css"><span id="cb4-1"></span></code></a><code class="sourceCode css"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.fragment-name</span> {
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.fragment-name.visible</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.fragment-name.current-fragment</span> {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The reason why this ordering is important is because <code>.visible</code> and <code>.current-fragment</code> are triggered at the same time. And because I simplified the order a little too much. There isn’t <code>before</code>, <code>current</code>, and <code>after</code>. Instead, we have <code>always</code>, <code>current</code>, and <code>not-before-current</code>. In essence, they do the same, as long as you order them in this order to make sure they cascade properly.</p>
+</div>
+</div>
+<p>Before we try to implement a fragment by ourselves, we need to note one thing real quick. Each of these stages is styled a <a href="https://github.com/quarto-dev/quarto-cli/blob/39dc173c4869ebaf4d6bb087a972acb87533b64e/src/resources/formats/revealjs/reveal/css/reveal.scss#L51-L65">specific way by default</a>. In practice, what this means is that the <code>before</code> style has the following attributes set to make the text invisible:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>opacity<span class="in">:</span> 0;</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>visibility<span class="in">:</span> hidden;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want the text to be visible before the fragment triggers, simply set these two attributes to <code>unset</code>.</p>
+<p>Another note I would like to add is that while you are able to modify anything in a fragment, as it is just triggering CSS, you should be careful about position and size. While you might be able to make it work, it is likely to cause a lot of shifting and jittering as elements resize.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Looking at the <a href="https://github.com/quarto-dev/quarto-cli/blob/39dc173c4869ebaf4d6bb087a972acb87533b64e/src/resources/formats/revealjs/reveal/css/reveal.scss#L67-L207">source code</a> for the default fragments gives us a good idea for how different styles of fragments work.</p>
+</div>
+</div>
+</section>
+<section id="example-1" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="example-1"><span class="header-section-number">12.3</span> Example 1</h2>
+<p>This first example illustrates how the different phases work in a fragment. We have thus created an <code>rgb</code> fragment that assigns a different color to each of the 3 phases. We <code>unset</code> both <code>opacity</code> and <code>visibility</code> to have the text appear beforehand. This leaves us with the following fragment:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.rgb</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">visibility</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.rgb.visible</span> {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.rgb.current-fragment</span> {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">green</span><span class="op">;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Advancing and de-advancing(?) the slides showcase how the different classes are applied for fragments.</p>
+<iframe class="slide-deck" src="examples/fragments/fragment-rgb.html">
+</iframe>
+<p><a href="examples/fragments/fragment-rgb.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/fragments/rgb.scss" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a><a></a></p><a>
+<p>Worth noting that this single fragment could be rewritten as the following using SCSS nesting.</p>
+</a><div class="sourceCode" id="cb7"><a></a><pre class="sourceCode scss code-with-copy"><a><code class="sourceCode scss"><span id="cb7-1"></span></code></a><code class="sourceCode scss"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.rgb</span> {
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">visibility</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">red</span><span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.visible</span> {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.current-fragment</span> {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">green</span><span class="op">;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-2" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="example-2"><span class="header-section-number">12.4</span> Example 2</h2>
+<p>One custom fragment I use from time to time is the background highlighted style. And it is very simple, instead of changing the color of the text, it changes the background color. I find that it is a much stronger indication than changing the text itself.</p>
+<p>This fragment gives us two things. I leave the text visible beforehand. Then it turns the background orange, and after it lightens the background color a little bit.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-orange</span>: <span class="cn">#FFB81A</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.hl-orange</span> {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">visibility</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.visible</span> {</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$theme-orange</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.current-fragment</span> {</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="fu">darken(</span><span class="va">$theme-orange</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This once is nice and flexible because it is easy to extend.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-orange</span>: <span class="cn">#FFB81A</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-yellow</span>: <span class="cn">#FFD571</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-brown</span>: <span class="cn">#E2AE86</span><span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-pink</span>: <span class="cn">#FED7E1</span><span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment</span> {</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-orange</span><span class="op">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-yellow</span><span class="op">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-pink</span><span class="op">,</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-brown</span> {</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">visibility</span>: <span class="bu">inherit</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-brown.visible</span> {</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$theme-brown</span><span class="op">;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-brown.current-fragment</span> {</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="fu">darken(</span><span class="va">$theme-brown</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-orange.visible</span> {</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$theme-orange</span><span class="op">;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-orange.current-fragment</span> {</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="fu">darken(</span><span class="va">$theme-orange</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-yellow.visible</span> {</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$theme-yellow</span><span class="op">;</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-yellow.current-fragment</span> {</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="fu">darken(</span><span class="va">$theme-yellow</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-pink.visible</span> {</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$theme-pink</span><span class="op">;</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.hl-pink.current-fragment</span> {</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="fu">darken(</span><span class="va">$theme-pink</span><span class="op">,</span> <span class="dv">10</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And we are willing to tap into some scss we can condense it down quite a lot using <a href="./scss.html#using-each-to-automatically-create-classes">SCSS loops</a>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">$colors</span>: (</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"orange"</span>: <span class="cn">#FFB81A</span><span class="op">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"yellow"</span>: <span class="cn">#FFD571</span><span class="op">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"brown"</span>: <span class="cn">#E2AE86</span><span class="op">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"pink"</span>: <span class="cn">#FED7E1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="im">@each</span> <span class="va">$name</span>, <span class="va">$color</span> in <span class="va">$colors</span> {</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.hl-</span><span class="op">#{</span><span class="va">$name</span><span class="op">}</span> {</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">opacity</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">visibility</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span><span class="fu">.visible</span> {</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="kw">background-color</span>: <span class="fu">lighten(</span><span class="va">$color</span><span class="op">,</span> <span class="dv">5</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">&amp;</span><span class="fu">.current-fragment</span> {</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      <span class="kw">background-color</span>: <span class="va">$color</span><span class="op">;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="examples/fragments/fragment-highlighter.html">
+</iframe>
+<p><a href="examples/fragments/fragment-highlighter.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/fragments/highlighter.scss" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a><a></a></p><a>
+</a></section><a>
+</a><section id="example-3" class="level2" data-number="12.5"><a>
+<h2 data-number="12.5" class="anchored" data-anchor-id="example-3"><span class="header-section-number">12.5</span> Example 3</h2>
+<p>The last example included a bit of flair by having the current fragment element be a slightly different color and then changing it after. We can simplify it a bit by not specifying the <code>.current-fragment</code> class.</p>
+</a><div class="sourceCode" id="cb11"><a></a><pre class="sourceCode scss code-with-copy"><a><code class="sourceCode scss"><span id="cb11-1"></span></code></a><code class="sourceCode scss"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-orange</span>: <span class="cn">#FFB81A</span><span class="op">;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slides</span> section <span class="fu">.fragment.hl-orange</span> {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">opacity</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">visibility</span>: <span class="bu">unset</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">&amp;</span><span class="fu">.visible</span> {</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="va">$theme-orange</span><span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This fragment works more or less the same way as before but doesn’t change color once it is applied. It will be a more appropriate fragment many times.</p>
+<p>This leads us to our final piece of knowledge in this blog post. We don’t have to fully specify a fragment. We just have to declare how we want it to behave differently, and then the default “stay hidden, then appear” fragment.</p>
 
-</a></main><a> <!-- /main -->
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -767,9 +964,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</a><nav class="page-navigation"><a>
-  </a><div class="nav-page nav-page-previous"><a>
-      </a><a href="./asciicast.html" class="pagination-link" aria-label="asciicast">
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./asciicast.html" class="pagination-link" aria-label="asciicast">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">asciicast</span></span>
       </a>          
   </div>

@@ -1,0 +1,27 @@
+---
+format:
+  revealjs:
+    self-contained: true
+    theme:
+      [default, rgb.scss]
+---
+
+:::: {.fragment .rgb}
+Hello world
+:::
+
+:::: {.fragment .rgb}
+Hello world
+:::
+
+:::: {.fragment .rgb}
+Hello world
+:::
+
+:::: {.fragment .rgb}
+Hello world
+:::
+
+:::: {.fragment .rgb}
+Hello world
+:::

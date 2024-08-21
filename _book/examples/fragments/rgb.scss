@@ -1,0 +1,40 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal .slides section .fragment.rgb {
+  opacity: unset;
+  visibility: unset;
+  color: red;
+}
+
+.reveal .slides section .fragment.rgb.visible {
+  color: blue;
+}
+
+.reveal .slides section .fragment.rgb.current-fragment {
+  color: green;
+}
+
+.reveal .slides section .fragment.rgb {
+  opacity: unset;
+  visibility: unset;
+  color: red;
+
+  &.visible {
+    color: blue;
+  }
+
+  &.current-fragment {
+    color: green;
+  }
+}
+
+
+.reveal .slides section .fragment.rgb.visible {
+  color: blue;
+}
+
+.reveal .slides section .fragment.rgb.current-fragment {
+  color: green;
+}
