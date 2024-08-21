@@ -27,6 +27,9 @@ book:
     - part: "Interactivity"
       chapters:
         - fragments.qmd
+    - part: "Extensions"
+      chapters:
+        - letterbox.qmd
     - miscellaneous.qmd
     - references.qmd
 

@@ -528,31 +528,31 @@
   {
     "objectID": "miscellaneous.html",
     "href": "miscellaneous.html",
-    "title": "13  miscellaneous",
+    "title": "14  miscellaneous",
     "section": "",
-    "text": "13.1 Hiding slides\nchanging the slide visibility is as simple as setting visibility=\"hidden\" attribute to the header of a slide\nI find this useful when I have to give the same presentation multiple times, and I have a disclaimer or other seasonally important slides. Instead of removing and reinserting the information each time, I just changed the attribute.\nqmd",
+    "text": "14.1 Hiding slides\nchanging the slide visibility is as simple as setting visibility=\"hidden\" attribute to the header of a slide\nI find this useful when I have to give the same presentation multiple times, and I have a disclaimer or other seasonally important slides. Instead of removing and reinserting the information each time, I just changed the attribute.\nqmd",
     "crumbs": [
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>miscellaneous</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>miscellaneous</span>"
     ]
   },
   {
     "objectID": "miscellaneous.html#hiding-slides",
     "href": "miscellaneous.html#hiding-slides",
-    "title": "13  miscellaneous",
+    "title": "14  miscellaneous",
     "section": "",
     "text": "## Slide Title {visibility=\"hidden\"}",
     "crumbs": [
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>miscellaneous</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>miscellaneous</span>"
     ]
   },
   {
     "objectID": "miscellaneous.html#avoid-duplication-using-includes",
     "href": "miscellaneous.html#avoid-duplication-using-includes",
-    "title": "13  miscellaneous",
-    "section": "13.2 Avoid duplication using Includes",
-    "text": "13.2 Avoid duplication using Includes\nThis last tip doesn’t come with an example, as it doesn’t get useful before you start working with multiple files. We are talking about the includes short code.\nUsing the following short code; {{&lt; include _content.qmd &gt;}} includes the content of _content.qmd into the document in a “copy-paste” manner before the rendering of the document.\nThis has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.",
+    "title": "14  miscellaneous",
+    "section": "14.2 Avoid duplication using Includes",
+    "text": "14.2 Avoid duplication using Includes\nThis last tip doesn’t come with an example, as it doesn’t get useful before you start working with multiple files. We are talking about the includes short code.\nUsing the following short code; {{&lt; include _content.qmd &gt;}} includes the content of _content.qmd into the document in a “copy-paste” manner before the rendering of the document.\nThis has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.",
     "crumbs": [
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>miscellaneous</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>miscellaneous</span>"
     ]
   },
   {
