@@ -100,5 +100,17 @@
   },
   "fragments/fragment-rgb.qmd": {
     "fragment-rgb.html": "2cf374e6"
+  },
+  "fragments/fragment-advance.qmd": {
+    "fragment-advance.html": "b8a6fd4b"
+  },
+  "fragments/fragment-color.qmd": {
+    "fragment-color.html": "22a0df32"
+  },
+  "fragments/fragment-scroll.qmd": {
+    "fragment-scroll.html": "8c6afea0"
+  },
+  "fragments/fragment-tabset.qmd": {
+    "fragment-tabset.html": "54ecc910"
   }
 }

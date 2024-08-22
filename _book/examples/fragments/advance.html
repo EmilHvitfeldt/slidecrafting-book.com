@@ -1,0 +1,23 @@
+<script type="text/javascript">
+Reveal.on('fragmentshown', event => {
+  if (event.fragment.classList.contains("advance-slide")) {
+    Reveal
+      .getCurrentSlide()
+       .querySelector("iframe")
+      .contentWindow
+      .Reveal
+      .right()
+    }
+});
+Reveal.on('fragmenthidden', event => {
+  if (event.fragment.classList.contains("advance-slide")) {
+    Reveal
+      .getCurrentSlide()
+      .querySelector("iframe")
+      .contentWindow
+      .Reveal
+      .left()
+    }
+});
+</script>
+  

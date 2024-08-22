@@ -1,0 +1,25 @@
+---
+format:
+  revealjs:
+    include-after-body: 
+      - "tabset.html"
+---
+
+## Switching Tabsets
+
+Press → and ← to toggle tabsets
+
+:::: {.panel-tabset}
+
+### Tab A
+
+Content for `Tab A`
+
+### Tab B
+
+Content for `Tab B`
+
+:::
+
+:::: {.fragment .tabswitch}
+:::

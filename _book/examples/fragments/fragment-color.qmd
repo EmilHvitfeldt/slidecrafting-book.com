@@ -1,0 +1,13 @@
+---
+format:
+  revealjs:
+    include-after-body: 
+      - "color.html"
+---
+
+## Color Changing Title Text
+
+:::: {.fragment .color data-color="orange"}
+:::
+
+Press → and ← to change colors

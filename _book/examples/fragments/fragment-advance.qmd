@@ -1,0 +1,15 @@
+---
+format:
+  revealjs:
+    include-after-body: 
+      - "advance.html"
+---
+
+## Switching Tabsets
+
+Press → and ← to advance slides
+
+<iframe class="slide-deck" src="fragment-scroll.html" style="width:100%; height: 500px;" ></iframe>
+
+:::: {.fragment .advance-slide}
+:::

@@ -297,6 +297,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">12.3</span> Example 1</a></li>
   <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">12.4</span> Example 2</a></li>
   <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">12.5</span> Example 3</a></li>
+  <li><a href="#fragments-201" id="toc-fragments-201" class="nav-link" data-scroll-target="#fragments-201"><span class="header-section-number">12.6</span> Fragments 201</a></li>
+  <li><a href="#color-changing" id="toc-color-changing" class="nav-link" data-scroll-target="#color-changing"><span class="header-section-number">12.7</span> Color changing</a></li>
+  <li><a href="#scroll-output" id="toc-scroll-output" class="nav-link" data-scroll-target="#scroll-output"><span class="header-section-number">12.8</span> Scroll output</a></li>
+  <li><a href="#tabset-advance" id="toc-tabset-advance" class="nav-link" data-scroll-target="#tabset-advance"><span class="header-section-number">12.9</span> Tabset advance</a></li>
+  <li><a href="#advance-embedded-slides" id="toc-advance-embedded-slides" class="nav-link" data-scroll-target="#advance-embedded-slides"><span class="header-section-number">12.10</span> advance embedded slides</a></li>
   </ul>
 </nav>
     </div>
@@ -539,11 +544,330 @@ Tip
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This fragment works more or less the same way as before but doesn’t change color once it is applied. It will be a more appropriate fragment many times.</p>
 <p>This leads us to our final piece of knowledge in this blog post. We don’t have to fully specify a fragment. We just have to declare how we want it to behave differently, and then the default “stay hidden, then appear” fragment.</p>
-
-
 </section>
+<section id="fragments-201" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="fragments-201"><span class="header-section-number">12.6</span> Fragments 201</h2>
+<p>When a fragment is either shown or hidden <code>reveal.js</code> (the engine that powers our slides) will dispatch an event. This event can be picked up using JavaScript.</p>
+<p>You will need a little bit of Javascript knowledge, but I found that you don’t need a lot of knowledge to produce useful things for slides. Once your slides are rendered in your browser, you can toggle the developer tools, where you can find a javascript console. This is where I do the work needed.</p>
+<p><img src="media/developer-tools-fragments.png" class="img-fluid"></p>
+<p>We can capture the event using the following snippets of code</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// event.fragment = the fragment DOM element</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmenthidden'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// event.fragment = the fragment DOM element</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>Reveal</code> is the javascript object that powers the whole presentation. To have fun things happening when we use fragments, we need to write some code inside these curly brackets. The first chunk of code runs whenever a fragment appears, and the second runs whenever a fragment disappears. In in this environment, we have access to the <code>event</code> which is the DOM element of fragment div itself as created in our slides. We can take advantage of that in different ways as you will see.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Event</span> {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"isTrusted"</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fragment"</span><span class="op">:</span> <span class="st">"Node"</span><span class="op">,</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"fragments"</span><span class="op">:</span> [<span class="st">"Node"</span>]<span class="op">,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"type"</span><span class="op">:</span> <span class="st">"fragmentshown"</span><span class="op">,</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"target"</span><span class="op">:</span> <span class="st">"Node"</span><span class="op">,</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"currentTarget"</span><span class="op">:</span> <span class="st">"Node"</span><span class="op">,</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"eventPhase"</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"bubbles"</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cancelable"</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"defaultPrevented"</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"composed"</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"timeStamp"</span><span class="op">:</span> <span class="fl">2259.5</span><span class="op">,</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"srcElement"</span><span class="op">:</span> <span class="st">"Node"</span><span class="op">,</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"returnValue"</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"cancelBubble"</span><span class="op">:</span> <span class="kw">false</span><span class="op">,</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NONE"</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CAPTURING_PHASE"</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AT_TARGET"</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"BUBBLING_PHASE"</span><span class="op">:</span> <span class="dv">3</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Last note, you can have multiple of these <code>Reveal.on()</code> statements, as they will trigger one after another. So depending on how you want to organize, both styles are valid.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">// one statement</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fragment_style_1</span>(<span class="bu">event</span>)<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fragment_style_2</span>(<span class="bu">event</span>)<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fragment_style_3</span>(<span class="bu">event</span>)<span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">// multiple statements</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fragment_style_1</span>(<span class="bu">event</span>)<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fragment_style_2</span>(<span class="bu">event</span>)<span class="op">;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fragment_style_3</span>(<span class="bu">event</span>)<span class="op">;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Lastly, the way I set up my revealjs slides to do javascript is by setting the <code>include-after-body</code> attribute in the yaml file,</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-after-body</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"_color.html"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and having it point to a file that looks like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">"text/javascript"</span><span class="dt">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>then inside we put my javascript code, which for this blog post will be some <code>Reveal.on()</code> calls.</p>
+</section>
+<section id="color-changing" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="color-changing"><span class="header-section-number">12.7</span> Color changing</h2>
+<p>This first example is going to be an illustrative example of what we can do and how to do it. And it will thus not be very useful.</p>
+<p>The first lesson I want to show is that you are not limited to modifying the content inside the fragment. This means that we can actually have empty fragments that modify some other element. So in our document, we could have a slide that looks like this:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Color Changing Title Text</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>::: {.fragment .color}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I want to change the color of the header when the fragment triggers. To do that we need two things.</p>
+<ol type="1">
+<li>The color to change it into</li>
+<li>Access to the header element</li>
+</ol>
+<p>The first part is easy, I found a “random javascript” script online. We start by assigning that to a variable.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>random_color <span class="op">=</span> <span class="st">'#'</span><span class="op">+</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">*</span><span class="bn">0xFFFFFF</span><span class="op">&lt;&lt;</span><span class="dv">0</span>)<span class="op">.</span><span class="fu">toString</span>(<span class="dv">16</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, we need to find the header. Remember the <code>Reveal</code> object I mentioned earlier? It has a very handy <code>.getCurrentSlide()</code> method. When run we get the current slide we are on, which is exactly what we need.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>section id<span class="op">=</span>​<span class="st">"color-changing-title-text"</span> <span class="kw">class</span><span class="op">=</span>​<span class="st">"slide level2 present"</span> style<span class="op">=</span>​<span class="st">"display:​ block;​"</span> data<span class="op">-</span>fragment<span class="op">=</span>​<span class="st">"-1"</span><span class="op">&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>​  <span class="op">&lt;</span>h2<span class="op">&gt;</span>​Color Changing Title Text​<span class="op">&lt;/</span>h2<span class="op">&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  ​<span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span>​<span class="st">"fragment color"</span> data<span class="op">-</span>fragment<span class="op">-</span>index<span class="op">=</span>​<span class="st">"0"</span><span class="op">&gt;</span>​<span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>​  <span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span>​<span class="st">"quarto-auto-generated-content"</span><span class="op">&gt;</span>​<span class="op">&lt;/</span>div<span class="op">&gt;</span>​</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>section<span class="op">&gt;</span>​</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>From this, we can get to the title using <code>.querySelector()</code></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We don’t need <code>.querySelectorAll()</code> because by definition there will only be one <code>h2</code> on a quarto slide using default options.</p>
+</div>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Reveal</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"h2"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>h2<span class="op">&gt;</span>Color Changing Title <span class="bu">Text</span><span class="op">&lt;/</span>h2<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can then change the color by selecting the <code>style</code> element of the div and updating the <code>color</code> variable.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Reveal</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"h2"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="at">style</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="at">color</span> <span class="op">=</span> random_color<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And that is technically all we need. Put that code inside the <code>Reveal.on()</code> statements, and the color of the header will change each time the fragment is triggered.</p>
+<p>One thing worth remembering is that this javascript code will run everything a fragment is run. So to limit it, we can make sure it only runs when we want it to. This is why I gave the fragment a <code>.color</code> class. We can use the following <code>if</code> statement to make sure our code only runs when we want it to.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"color"</span>)) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We could stop here. But I want to show a little more with this example. For right the color changes randomly, but we could allow for a little bit of information transfer. HTML has this concept called <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset">datasets</a>. Each div can have a data set of information. We should use this to give our fragments more flexibility.</p>
+<p>Luckily it is quite effortless to specify data set values in quarto. Below is the same fragment div as before, but with a data set value named <code>color</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>:::: {.fragment .color data-color="orange"}</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can now on the javascript side pull out this value with ease.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">dataset</span><span class="op">.</span><span class="at">color</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We are not doing any input checking, so this code will fail silently if you don’t have a color specified in the div.</p>
+</div>
+</div>
+<p>And set it the same as before.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Reveal</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"h2"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="at">style</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="at">color</span> <span class="op">=</span> color<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will give us the final fragment code as follows</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"color"</span>)) {</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a> random_color <span class="op">=</span> <span class="st">'#'</span><span class="op">+</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">*</span><span class="bn">0xFFFFFF</span><span class="op">&lt;&lt;</span><span class="dv">0</span>)<span class="op">.</span><span class="fu">toString</span>(<span class="dv">16</span>)<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"h2"</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">style</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">color</span> <span class="op">=</span> random_color<span class="op">;</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmenthidden'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"color"</span>)) {</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a> color <span class="op">=</span> <span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">dataset</span><span class="op">.</span><span class="at">color</span><span class="op">;</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"h2"</span>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">style</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">color</span> <span class="op">=</span> color<span class="op">;</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="examples/fragments/fragment-color.html">
+</iframe>
+<p><a href="examples/fragments/fragment-color.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/fragments/color.html" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-js" aria-label="js"></i>js</a><a></a></p><a>
+</a></section><a>
+</a><section id="scroll-output" class="level2" data-number="12.8"><a>
+<h2 data-number="12.8" class="anchored" data-anchor-id="scroll-output"><span class="header-section-number">12.8</span> Scroll output</h2>
+<p>Sometimes you run into a situation where you want to interact with an element on a slide. This can happen when you need to scroll or toggle something. While that would be fine to do by hand, it can be hard to do casually, and impossible to do if you are using a clicker.</p>
+<p>Scrolling text in a window is one thing that isn’t that hard to do with JavaScript.</p>
+<p>We will follow the same steps as before.</p>
+<ol type="1">
+<li>Find the element we want to show</li>
+<li>Figure out how to scroll it</li>
+</ol>
+<p>The element can again be found using <code>.getCurrentSlide()</code> and <code>querySelector()</code> after a little digging.</p>
+</a><div class="sourceCode" id="cb27"><a></a><pre class="sourceCode js code-with-copy"><a><code class="sourceCode javascript"><span id="cb27-1"></span></code></a><code class="sourceCode javascript"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Reveal
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".cell-output code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, we need to figure out how to scroll it. This can be done using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo">.scrollTo()</a> method. This function should be passed on to how much we want to scroll and how. As far as I know, this can only be set using pixel values so we have to try a couple of times to get it right. <code>1000</code> appears enough for this example to get us all the way to the bottom. Setting <code>behavior</code> to smooth for a little flair.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">top</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">behavior</span><span class="op">:</span> <span class="st">"smooth"</span><span class="op">,</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means that the fragment is finished with</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"scroll"</span>)) {</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".cell-output code"</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">scrollTo</span>({</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> <span class="dt">top</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a> <span class="dt">behavior</span><span class="op">:</span> <span class="st">"smooth"</span><span class="op">,</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But wait! What if you have to go back? this is where <code>fragmenthidden</code> is needed, we simply take the preview code and say we want to go back to the top by setting <code>top</code> to <code>0</code>.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmenthidden'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"scroll"</span>)) {</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".cell-output code"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">scrollTo</span>({</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a> <span class="dt">top</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a> <span class="dt">behavior</span><span class="op">:</span> <span class="st">"smooth"</span><span class="op">,</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some changes to our slides are really hard to reverse. They would thus make for bad fragments. You could implement them halfway without the <code>fragmenthidden</code> and you would just need to be really confident that you never have to go backwards in your slides.</p>
+</div>
+</div>
+<iframe class="slide-deck" src="examples/fragments/fragment-scroll.html">
+</iframe>
+<p><a href="examples/fragments/fragment-scroll.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/fragments/scroll.html" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-js" aria-label="js"></i>js</a><a></a></p><a>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We didn’t do it here, but you could use dataset values to help determine which elements should be scrolled and how much to scroll them by instead of hardcoding it all as we do here.</p>
+</div>
+</div>
+</a></section><a>
+</a><section id="tabset-advance" class="level2" data-number="12.9"><a>
+<h2 data-number="12.9" class="anchored" data-anchor-id="tabset-advance"><span class="header-section-number">12.9</span> Tabset advance</h2>
+</a><p><a>Quarto also has </a><a href="https://quarto.org/docs/presentations/revealjs/index.html#tabsets">tabset</a> support for slides, which is again a very nice feature. It runs into the same clicker interaction we noted earlier. It requires a mouse to correctly toggle in the middle of a presentation.</p>
+<p>We can deal with this as well. As always we need to find the elements and how to toggle them.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The astute reader will notice that the following will only work on a tabset with 2 tabs. Making this fragment work for multiple tabs is left as an exercise for the reader.</p>
+</div>
+</div>
+<p>We are again using <code>.getCurrentSlide()</code> and <code>querySelector()</code>, and with some trial and error, determine that the following two <a href="https://www.w3schools.com/cssref/css_selectors.php">CSS selectors</a> captures the two tabs.</p>
+<ul>
+<li><code>.panel-tabset ul li:first-of-type a</code></li>
+<li><code>.panel-tabset ul li:last-of-type a</code></li>
+</ul>
+<p>And we are lucky because these elements have a working <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click"><code>.click()</code></a> method that we can use.</p>
+<p>This means that the full fragment looks like this:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"tabswitch"</span>)) {</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".panel-tabset ul li:last-of-type a"</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">click</span>()</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmenthidden'</span><span class="op">,</span> (<span class="bu">event</span>) <span class="kw">=&gt;</span> {</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"tabswitch"</span>)) {</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".panel-tabset ul li:first-of-type a"</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">click</span>()</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="examples/fragments/fragment-tabset.html">
+</iframe>
+<p><a href="examples/fragments/fragment-tabset.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/fragments/tabset.html" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-js" aria-label="js"></i>js</a><a></a></p><a>
+</a></section><a>
+</a><section id="advance-embedded-slides" class="level2" data-number="12.10"><a>
+<h2 data-number="12.10" class="anchored" data-anchor-id="advance-embedded-slides"><span class="header-section-number">12.10</span> advance embedded slides</h2>
+<p>The last example I’ll show for now is one you have seen me use already. I like to put quarto slides inside quarto slides. However, it becomes messy to advance the embedded slides, because they take focus of the mouse. I have used a fragment to advance these.</p>
+<p>We start by embedding a set of slides in our set of slides. We do thing with <code>&lt;iframe class="slide-deck" src="fragment-scroll.html" style="width:100%; height: 500px;" &gt;&lt;/iframe&gt;</code>.</p>
+</a><p><a>The <code>Reveal</code> object has a </a><a href="https://revealjs.com/api/">fairly extensive API</a> you can use. So we just need to fetch the right <code>Reveal</code> object so we can use the <code>.left()</code> and <code>.right()</code> methods to advance the slides. It took me a while to find the right code, but <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow"><code>.contentWindow</code></a> was the missing piece. The following returns the embedded <code>Reveal</code> object.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Reveal</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"iframe"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="at">contentWindow</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="at">Reveal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Which then gives us the following as our fragment</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmentshown'</span><span class="op">,</span> <span class="bu">event</span> <span class="kw">=&gt;</span> {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"advance-slide"</span>)) {</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>       <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"iframe"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">contentWindow</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">Reveal</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">right</span>()</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>Reveal<span class="op">.</span><span class="fu">on</span>(<span class="st">'fragmenthidden'</span><span class="op">,</span> <span class="bu">event</span> <span class="kw">=&gt;</span> {</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">fragment</span><span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">contains</span>(<span class="st">"advance-slide"</span>)) {</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a> Reveal</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">getCurrentSlide</span>()</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"iframe"</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">contentWindow</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="at">Reveal</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">left</span>()</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="https://emilhvitfeldt.github.io/quarto-revealjs-fragment-advance-example/">
+</iframe>
+<p><a href="examples/fragments/fragment-advance.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/fragments/advance.html" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-js" aria-label="js"></i>js</a><a></a></p><a>
 
-</main> <!-- /main -->
+
+</a></section><a>
+
+</a></main><a> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -964,9 +1288,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./asciicast.html" class="pagination-link" aria-label="asciicast">
+</a><nav class="page-navigation"><a>
+  </a><div class="nav-page nav-page-previous"><a>
+      </a><a href="./asciicast.html" class="pagination-link" aria-label="asciicast">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">asciicast</span></span>
       </a>          
   </div>

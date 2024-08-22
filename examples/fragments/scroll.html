@@ -1,0 +1,25 @@
+<script type="text/javascript">
+Reveal.on('fragmentshown', (event) => {
+  if (event.fragment.classList.contains("scroll")) {
+    Reveal
+    .getCurrentSlide()
+    .querySelector(".cell-output code")
+    .scrollTo({
+      top: 1000,
+      behavior: "smooth",
+    })
+  }
+});
+
+Reveal.on('fragmenthidden', (event) => {
+  if (event.fragment.classList.contains("scroll")) {
+    Reveal
+    .getCurrentSlide()
+    .querySelector(".cell-output code")
+    .scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+});
+</script>

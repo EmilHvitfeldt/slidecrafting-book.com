@@ -1,0 +1,19 @@
+<script type="text/javascript">
+Reveal.on('fragmentshown', (event) => {
+  if (event.fragment.classList.contains("tabswitch")) {
+    Reveal
+      .getCurrentSlide()
+      .querySelector(".panel-tabset ul li:last-of-type a")
+      .click()
+  }
+});
+
+Reveal.on('fragmenthidden', (event) => {
+  if (event.fragment.classList.contains("tabswitch")) {
+    Reveal
+      .getCurrentSlide()
+      .querySelector(".panel-tabset ul li:first-of-type a")
+      .click()
+  }
+});
+</script>
