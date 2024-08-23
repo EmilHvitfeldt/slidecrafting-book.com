@@ -2,7 +2,6 @@
 title: "Colors"
 ---
 
-
 ## Finding Colors
 
 When finding your colors you will mainly look for 3 different types of colors:
@@ -70,7 +69,7 @@ As long as I can keep the searching under 10 minutes the whole theme creation do
 
 Let us try all of that in practice. I found this nice [blue and yellow](https://www.pinterest.com/pin/281123201723784541/) color palette on Pinterest.
 
-![](example-theme.jpeg)
+![](media/example-theme.jpeg)
 
 using a color picking tool, I love [ColorSlurp](https://colorslurp.com/) I can extract the colors to be
 
