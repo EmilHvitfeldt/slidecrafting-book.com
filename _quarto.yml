@@ -39,5 +39,3 @@ format:
     theme:
       - cosmo
       - styles.scss
-  pdf:
-    documentclass: scrreprt
