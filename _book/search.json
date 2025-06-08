@@ -287,67 +287,67 @@
   {
     "objectID": "scss.html",
     "href": "scss.html",
-    "title": "6  SCSS",
+    "title": "6  CSS/SCSS",
     "section": "",
     "text": "6.1 Using Maps to store theme colors\nBefore I would have specified a color palette theme as\nBut using a map it turns into the following\nInstead of having multiple values representing our colors we now just have one $colors. By themselves, maps aren’t valid CSS and don’t do anything once the SASS compiles. The next sections will show how we can use these maps more efficiently than my previous approach.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>SCSS</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-maps-to-store-theme-colors",
     "href": "scss.html#using-maps-to-store-theme-colors",
-    "title": "6  SCSS",
+    "title": "6  CSS/SCSS",
     "section": "",
     "text": "$theme-red: #FA5F5C;\n$theme-blue: #394D85;\n$theme-darkblue: #13234B;\n$theme-yellow: #FFF7C7;\n$theme-white: #FEFEFE;\n\n$colors: (\n  \"red\": #FA5F5C,\n  \"blue\": #394D85,\n  \"darkblue\": #13234B,\n  \"yellow\": #FFF7C7,\n  \"white\": #FEFEFE\n);\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between (key: value) and (\"key\": value) in SASS. For consistency, I also use quoted strings as the keys in a map.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>SCSS</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-functions-to-pull-out-theme-colors",
     "href": "scss.html#using-functions-to-pull-out-theme-colors",
-    "title": "6  SCSS",
+    "title": "6  CSS/SCSS",
     "section": "6.2 Using Functions to pull out theme colors",
     "text": "6.2 Using Functions to pull out theme colors\nWe where using these colors to change a lot of things, including the major Sass Variables revealjs sass variables. Before we used a map, it would look something like this:\n$body-bg: $theme-yellow;\n$link-color: $theme-blue;\n$code-color: $theme-blue;\n$body-color: $theme-darkblue;\nbut we can’t do that directly with a map. There are built-in functions to extract values from a map, namely the function map-get(). Using that we can rewrite the above as\n$body-bg: map-get($colors, \"yellow\");\n$link-color: map-get($colors, \"blue\");\n$code-color: map-get($colors, \"blue\");\n$body-color: map-get($colors, \"darkblue\");\nAnd while that is all good, I find it a little nicer to have a helper function to do this.\nFunctions in SASS are written as below. You can use as many arguments as you want.\n@function name($arg1, $arg2) {\n  @return $arg1 + $arg2;\n}\nThe helper function I wrote is a light wrapper around map-get() to avoid having to write $colors.\n@function theme-color($color) {\n  @return map-get($colors, $color);\n}\nAnd we now have the final rewrite.\n$body-bg: theme-color(\"yellow\");\n$link-color: theme-color(\"blue\");\n$code-color: theme-color(\"blue\");\n$body-color: theme-color(\"darkblue\");\n\n\n\n\n\n\nNote\n\n\n\nNote that we are using theme-color(\"yellow\") instead of theme-color(yellow) because we used quoted strings in the map. Using unquoted strings all around gave me false positives in my IDE as it interpreted yellow inside theme-color() as #FFFF00 instead of my theme value.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>SCSS</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-each-to-automatically-create-classes",
     "href": "scss.html#using-each-to-automatically-create-classes",
-    "title": "6  SCSS",
+    "title": "6  CSS/SCSS",
     "section": "6.3 Using @each to automatically create classes",
     "text": "6.3 Using @each to automatically create classes\nTo add a splash of color, or as used in highlighting, I would create a lot of CSS classes like so:\n.text-red {\n  color: $theme-red;\n}\n.text-yellow {\n  color: $theme-yellow;\n}\n.text-blue {\n  color: $theme-blue;\n}\n\n.bg-red {\n  background-color: $theme-red;\n}\n.bg-yellow {\n  background-color: $theme-yellow;\n}\n.bg-blue {\n  background-color: $theme-blue;\n}\nWhich is all fine and dandy until you also want a class for underlining. It becomes a lot of copy-pasting and changing a couple of names. And that is not to mention the trouble you run into when you decide to add a new color into the mix halfway through your slides.\nThis is when I discovered interpolation and the moment I realized maps were worth it. Interpolation is done by using #{} in some code, meaning that if $favorite-color: \"blue\" then .text-#{$favorite-color} {} turns into .text-blue {}. SASS provides the action @each to loop over all the key and value pairs of our map. So we can rewrite the creation of the above classes as this:\n@each $name, $color in $colors {\n  .text-#{$name} {\n    color: $color;\n  }\n\n  .bg-#{$name} {\n    background-color: $color;\n  }\n}\nAnd this is the beauty of maps. If I want to add a new color to my slides, I just have to add it to the $colors map. If I want to add a new set of classes, I just have to write it once inside the @each statement.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>SCSS</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-mixin-to-avoid-repeating-code",
     "href": "scss.html#using-mixin-to-avoid-repeating-code",
-    "title": "6  SCSS",
+    "title": "6  CSS/SCSS",
     "section": "6.4 Using @mixin to avoid repeating code",
     "text": "6.4 Using @mixin to avoid repeating code\nWith the following code\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n}\n.theme-slide2 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide2.svg');\n    @include background-full;\n  }\n}\n.theme-slide3 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide3.svg');\n    @include background-full;\n  }\n}\nCopy-pasting this around when you have 10-15 images is such a pain. But as you properly have noticed, interpolation would be a perfect solution to this problem, and you would be correct! We use a @mixin to create to create a way to create many classes:\n@mixin theme-slide($number) {\n  .theme-slide#{$number} {\n    &:is(.slide-background) {\n      background-image: url('../../../../../assets/slide#{$number}.svg');\n      @include background-full;\n    }\n  }\n}\n\n@include theme-slide(1);\n@include theme-slide(2);\n@include theme-slide(3);\nIt becomes quite a bit tighter! But we can do better because SASS also has @for loops.\n@mixin theme-slide($number) {\n  .theme-slide#{$number} {\n    &:is(.slide-background) {\n      background-image: url('../../../../../assets/slide#{$number}.svg');\n      @include background-full;\n    }\n  }\n}\n\n@for $i from 1 through 3 {\n  @include theme-slide($i);\n}\nyou can now add more background images with ease as long as you are careful when naming them.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>SCSS</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-nested-loops-to-create-classes",
     "href": "scss.html#using-nested-loops-to-create-classes",
-    "title": "6  SCSS",
+    "title": "6  CSS/SCSS",
     "section": "6.5 Using nested loops to create classes",
     "text": "6.5 Using nested loops to create classes\nIn our first example, I want a fun gradient shadow/highlight effect for text. We can get that effect using something like following\nbackground-image: linear-gradient(90deg, yellow, blue);\nbackground-size: 100% 42%;\nbackground-repeat: no-repeat;\nbackground-position: 0 85%;\nwidth: fit-content;\nI want it to work on both inline text and as a way to handle the header, the selectors for that would be span.my-class and .my-class &gt; h2 respectively.\nspan.my-class, .my-class &gt; h2 {\n  background-image: linear-gradient(90deg, yellow, blue);\n  background-size: 100% 42%;\n  background-repeat: no-repeat;\n  background-position: 0 85%;\n  width: fit-content;\n}\nAnd them we fill in the rest, using the @each command twice nestedly over a map of colors.\n/*-- scss:defaults --*/\n\n$colors: (\n  \"red\": #FFADAD, \n\"orange\": #FFD6A5, \n  \"yellow\": #FDFFB6, \n  \"blue\": #aad2e7, \n  \"purple\":#b4addd\n);\n\n/*-- scss:rules --*/\n\n@each $name1, $col1 in $colors {\n  @each $name2, $col2 in $colors {\n    span.hl-#{$name1}-#{$name2}, .hl-#{$name1}-#{$name2} &gt; h2 {\n      background-image: linear-gradient(90deg, $col1, $col2);\n      background-size: 100% 42%;\n      background-repeat: no-repeat;\n      background-position: 0 85%;\n      width: fit-content;\n    }\n  }\n}\nI know we are creating some non-interesting classes such as .hl-yellow-yellow but for what we are doing, the tradeoff between avoiding them and how little it impacts us to have them. I think it is a worthwhile tradeoff.\n\n\n\n\n\n\nImportant\n\n\n\nThe slides in this post are interactive, advance them to see the other classes.\n\n\n\n\nqmd scss\n\n\n\n\n\n\nNote\n\n\n\nYou don’t need these compound classes for everything. For example, the class .hl-green-bold isn’t going to be useful as you could just as easily create .hl-green and .bold separately. This trick works best when two elements are used together in a tightly coupled way, such as in gradients.\n\n\nFor our second example, we are continuing with the gradients, but instead trying to apply them to the background. My goal was to add a gradient line to the right side of the slide.\nI was able to create that effect, by layering 2 gradients on top of each other. The first gradient contained the two colors I was interested in, and the names of the class. The second layer, which I placed on top, goes from white to transparent. I set up the transition between those two colors to be super sharp, resulting in the effect you see below\n\n\nqmd scss\nsince we are doing something interesting, we could also have used a separate $colors map just for this effect to not interfere with what else we are doing.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>SCSS</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
