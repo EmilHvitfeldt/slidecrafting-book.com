@@ -1,7 +1,7 @@
 # Preface {.unnumbered}
 
-Hello! This book is about what I like to call **slidecrafting**; The art of putting together slides that are functional and aesthetically pleasing. I will be using [quarto presentations](https://quarto.org/) throughout the whole book. Some of the advice will transcend quarto presentations and apply to all kinds of slide technologies, but the book is written with quarto in mind.
+Hello! This book is about what I like to call **slidecrafting**; The art of putting together slides that are functional and aesthetically pleasing. I will be using [quarto presentations](https://quarto.org/) throughout the whole book. Some of the advice will transcend quarto presentations and apply to all kinds of slide technologies, but the book is written with quarto in mind. There will thus inherently be some overlap with quarto documentation. It is suggested to read all the [quarto revealjs](https://quarto.org/docs/presentations/revealjs/index.html) documentation alongside this book for optimal learning.
 
-I think of slidecrafting as an art because of the inexact nature of many of the decisions you will be making. After all many slide decks can be distilled down into a series of still images, each of which should be carefully crafted.
+I think of slidecrafting as an art because of the inexact nature of many of the decisions you will be making after all many slide decks can be distilled down into a series of still images, each of which should be carefully crafted.
 
 This book will not be able to teach you everything you need, but it will cover the parts of the process that stay constant from deck to deck, so you can focus on the content and develop your brand/style.

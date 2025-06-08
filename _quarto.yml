@@ -9,7 +9,6 @@ book:
   date: "8/18/2024"
   chapters:
     - index.qmd
-    - intro.qmd
     - part: "Theming"
       chapters:
         - 10-minute.qmd
