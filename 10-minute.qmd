@@ -1,6 +1,31 @@
 ---
-title: "10 minute theme"
+title: "10 Minute Theme"
 ---
 
 This chapter will show you how to set up a fully functional theme in about 10 minutes. The remaining chapters of this section go into much more detail, showcasing tips and tricks along the way.
->
+
+## What we need
+
+- fonts
+- colors
+- sizes
+
+adding these things alone goes a long way
+
+- logo
+
+because it is highly requited
+
+- banner/header
+
+if there is time
+
+## Fonts
+
+## Colors
+
+## Sizes
+
+## Logo
+
+## Banners
