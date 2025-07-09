@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -40,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-24ffe0aa67fb201e7b5ab3e412d05c63.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-fcadb57dd210ad51ec984e8637de960d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -251,11 +285,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#what-we-need" id="toc-what-we-need" class="nav-link active" data-scroll-target="#what-we-need"><span class="header-section-number">1.1</span> What we need</a></li>
-  <li><a href="#fonts" id="toc-fonts" class="nav-link" data-scroll-target="#fonts"><span class="header-section-number">1.2</span> Fonts</a></li>
-  <li><a href="#colors" id="toc-colors" class="nav-link" data-scroll-target="#colors"><span class="header-section-number">1.3</span> Colors</a></li>
-  <li><a href="#sizes" id="toc-sizes" class="nav-link" data-scroll-target="#sizes"><span class="header-section-number">1.4</span> Sizes</a></li>
-  <li><a href="#logo" id="toc-logo" class="nav-link" data-scroll-target="#logo"><span class="header-section-number">1.5</span> Logo</a></li>
-  <li><a href="#banners" id="toc-banners" class="nav-link" data-scroll-target="#banners"><span class="header-section-number">1.6</span> Banners</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">1.2</span> Setup</a></li>
+  <li><a href="#fonts" id="toc-fonts" class="nav-link" data-scroll-target="#fonts"><span class="header-section-number">1.3</span> Fonts</a></li>
+  <li><a href="#colors" id="toc-colors" class="nav-link" data-scroll-target="#colors"><span class="header-section-number">1.4</span> Colors</a></li>
+  <li><a href="#sizes" id="toc-sizes" class="nav-link" data-scroll-target="#sizes"><span class="header-section-number">1.5</span> Sizes</a></li>
   </ul>
 </nav>
     </div>
@@ -281,7 +314,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This chapter will show you how to set up a fully functional theme in about 10 minutes. The remaining chapters of this section go into much more detail, showcasing tips and tricks along the way.</p>
+<p>This chapter will guide you through setting up a fully functional theme in approximately 10 minutes. The remaining chapters of this section delve into greater detail, showcasing tips and tricks along the way.</p>
+<p>These slides will be used as the basis to show off each step of the way. First, here they are with no additional styling.</p>
+<iframe class="slide-deck" src="examples/10-minutes/10min-0.html">
+</iframe>
 <section id="what-we-need" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="what-we-need"><span class="header-section-number">1.1</span> What we need</h2>
 <ul>
@@ -289,30 +325,101 @@ ul.task-list li input[type="checkbox"] {
 <li>colors</li>
 <li>sizes</li>
 </ul>
-<p>adding these things alone goes a long way</p>
+<p>Adding these things alone goes a long way. Each of the following subsections has a corresponding chapter associated with it.</p>
+</section>
+<section id="setup" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">1.2</span> Setup</h2>
+<p>Before we get started, we need to set up the right files. For the best ease of use and flexibility, we are going to add an <code>SCSS</code> file to <a href="https://quarto.org/docs/presentations/revealjs/themes.html#customizing-themes">customize our theme</a>.</p>
+<p>Do this by setting the <code>theme</code> field in the YAML and specifying the name of the style sheet you will be using.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">default</span><span class="kw">,</span><span class="at"> styles.scss</span><span class="kw">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can combine an optional <a href="https://quarto.org/docs/presentations/revealjs/themes.html#using-themes">built-in theme</a> with one or more style sheets. This can be useful if one of the themes contains most of what you want. Setting <code>theme: [solarized, styles.scss]</code> lets you take the parts of <code>solarized</code> you like and overwrite the parts you don’t. Likewise, you don’t even need to specify a theme and could instead just set a style sheet with <code>theme: styles.scss</code>.</p>
+</div>
+</div>
+<p>The insides of the style sheet should look like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>scss:defaults</code> section is where we specify <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables">sass variables</a>, which we will see in a bit.</p>
+<p>The <code>scss:rules</code> section is where we write CSS or SCSS code to specify what we want to change.</p>
+<p>The sass variables are able to handle most of the general changes we are going to make. And what can’t be changed with the sass variables will be done using CSS.</p>
+</section>
+<section id="fonts" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="fonts"><span class="header-section-number">1.3</span> Fonts</h2>
+<p>We are going to control the fonts of the slides using 3 different sass variables.</p>
 <ul>
-<li>logo</li>
+<li><code>presentation-heading-font</code></li>
+<li><code>font-family-sans-serif</code></li>
+<li><code>font-family-monospace</code></li>
 </ul>
-<p>because it is highly requited</p>
+<p>The <code>presentation-heading-font</code> variable handles the headings of each page, <code>font-family-sans-serif</code> handles the body of the text, and <code>font-family-monospace</code> handles the monospaced text will be inline code and code blocks.</p>
+<p>If you don’t set <code>presentation-heading-font</code>, it will use <code>font-family-sans-serif</code> for headings as well.</p>
+<p>The easiest place to find non-local fonts is by using <a href="https://fonts.google.com/">Google Fonts</a>. Select the fonts you want to use, click “Get embed code”, find the <code>@import</code> code, and include it at the beginning of the <code>scss:defaults</code> section.</p>
+<p>The below example uses <a href="https://fonts.google.com/specimen/Josefin+Sans">Josefin Sans</a>, <a href="https://fonts.google.com/specimen/Lato">Lato</a>, and <a href="https://fonts.google.com/specimen/Space+Mono">Space Mono</a>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&amp;family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Below that, we can set the sass variables.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-font</span>: <span class="st">"Josefin Sans"</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-sans-serif</span>: <span class="st">"Lato"</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-monospace</span>: <span class="st">"Space Mono"</span><span class="op">,</span> <span class="dv">monospace</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="examples/10-minutes/10min-1.html">
+</iframe>
+<p>See the fonts chapter for further considerations and options.</p>
+</section>
+<section id="colors" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="colors"><span class="header-section-number">1.4</span> Colors</h2>
+<p>With regards to colors we have a number of things we can change. There are 5 main sass variables you should consider setting.</p>
 <ul>
-<li>banner/header</li>
+<li><code>body-bg</code></li>
+<li><code>body-color</code></li>
+<li><code>presentation-heading-color</code></li>
+<li><code>link-color</code></li>
+<li><code>code-color</code></li>
 </ul>
-<p>if there is time</p>
+<p>The <code>body-bg</code> changes the background color of the slides, the <code>body-color</code> changes the text color, <code>presentation-heading-color</code> changes the heading text color, <code>link-color</code> changes the colors of the links, which also affects the hamburger menu and progress bar colors, and <code>code-color</code> modifies the inline code text color.</p>
+<p>These are all set in the <code>scss:defaults</code> section as well. We will try to create a dark theme right now.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">$body-bg</span>: <span class="cn">#1C1C2B</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">$body-color</span>: <span class="cn">#bac2de</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-color</span>: <span class="cn">#cba6f7</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">$link-color</span>: <span class="cn">#fab387</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">$code-color</span>: <span class="cn">#89b4fa</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="examples/10-minutes/10min-2.html">
+</iframe>
+<p>See the color chapter for further considerations and options.</p>
 </section>
-<section id="fonts" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="fonts"><span class="header-section-number">1.2</span> Fonts</h2>
-</section>
-<section id="colors" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="colors"><span class="header-section-number">1.3</span> Colors</h2>
-</section>
-<section id="sizes" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="sizes"><span class="header-section-number">1.4</span> Sizes</h2>
-</section>
-<section id="logo" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="logo"><span class="header-section-number">1.5</span> Logo</h2>
-</section>
-<section id="banners" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="banners"><span class="header-section-number">1.6</span> Banners</h2>
+<section id="sizes" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sizes"><span class="header-section-number">1.5</span> Sizes</h2>
+<p>There are 5 main sass variables for changing the sizes of things in our slides, I end up mostly using 2 or 3 of them.</p>
+<ul>
+<li><code>presentation-font-size-root</code></li>
+<li><code>presentation-h1-font-size</code></li>
+<li><code>presentation-h2-font-size</code></li>
+<li><code>presentation-h3-font-size</code></li>
+<li><code>presentation-h4-font-size</code></li>
+</ul>
+<p>The <code>presentation-font-size-root</code> variable changes basically everything, most sizes are calculated based on this value, so if you increase it, Then everything else will increase with it.</p>
+<p>The remaining sass variables change the size of the different headers used in slides. I mostly use <code>h1</code> and <code>h2</code> headers and will thus mostly only set those, but the principle is the same for all of them.</p>
+<p>I find that most people end up using too small text, I’m thus increasing my font sizes quite a bit.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-font-size-root</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-h1-font-size</span>: <span class="dv">80</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-h2-font-size</span>: <span class="dv">60</span><span class="dt">px</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One thing that isn’t currently covered by sass variables is the text size of code chunks. We can modify this using CSS in the <code>scss:rules</code> section. Adding the following code will set the code block font size to be 90% of the size of the body text.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> pre<span class="op">,</span> <span class="fu">.reveal</span> pre<span class="fu">.sourceCode</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">0.9</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<iframe class="slide-deck" src="examples/10-minutes/10min-3.html">
+</iframe>
+<p>See the sizes chapter for further considerations and options.</p>
 
 
 </section>

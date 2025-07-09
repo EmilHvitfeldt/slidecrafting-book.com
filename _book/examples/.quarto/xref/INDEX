@@ -112,5 +112,23 @@
   },
   "fragments/fragment-tabset.qmd": {
     "fragment-tabset.html": "54ecc910"
+  },
+  "all-themes/index.qmd": {
+    "index.html": "4de7cf73"
+  },
+  "10-minutes/tip-1.qmd": {
+    "tip-1.html": "acebec7c"
+  },
+  "10-minutes/10min-1.qmd": {
+    "10min-1.html": "07c69a0a"
+  },
+  "10-minutes/10min-0.qmd": {
+    "10min-0.html": "3470a69d"
+  },
+  "10-minutes/10min-2.qmd": {
+    "10min-2.html": "fa4bf66f"
+  },
+  "10-minutes/10min-3.qmd": {
+    "10min-3.html": "3d926e46"
   }
 }

@@ -1,0 +1,123 @@
+---
+format:
+  revealjs:
+    self-contained: true
+    theme:
+      [default, styles.scss]
+---
+
+https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/revealjs/themes/beige.scss
+https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/formats/revealjs/reveal/dist/theme/fonts
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+
+## Quarto {.beige}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+beige
+:::
+
+## Bullets {.beige}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+beige
+:::
+
+## Code {.beige}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+beige
+:::
+
+## Quarto {.blood}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+blood
+:::
+
+## Bullets {.blood}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+blood
+:::
+
+## Code {.blood}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+blood
+:::
+
+## Quarto {.dark}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+dark
+:::
+
+## Bullets {.dark}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+dark
+:::
+
+## Code {.dark}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+dark
+:::
