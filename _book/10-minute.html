@@ -353,7 +353,7 @@ Tip
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>scss:defaults</code> section is where we specify <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables">sass variables</a>, which we will see in a bit.</p>
 <p>The <code>scss:rules</code> section is where we write CSS or SCSS code to specify what we want to change.</p>
-<p>The sass variables are able to handle most of the general changes we are going to make. And what can’t be changed with the sass variables will be done using CSS.</p>
+<p>The sass variables are able to handle most of the general changes we are going to make. And what can’t be changed with the sass variables will be done using CSS. This chapter only uses <code>scss:defaults</code>.</p>
 </section>
 <section id="fonts" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="fonts"><span class="header-section-number">1.3</span> Fonts</h2>
@@ -406,17 +406,16 @@ Tip
 <li><code>presentation-h2-font-size</code></li>
 <li><code>presentation-h3-font-size</code></li>
 <li><code>presentation-h4-font-size</code></li>
+<li><code>code-block-font-size</code></li>
 </ul>
 <p>The <code>presentation-font-size-root</code> variable changes basically everything, most sizes are calculated based on this value, so if you increase it, Then everything else will increase with it.</p>
+<p>The <code>code-block-font-size</code> changes the sizing of the code block and the code output.</p>
 <p>The remaining sass variables change the size of the different headers used in slides. I mostly use <code>h1</code> and <code>h2</code> headers and will thus mostly only set those, but the principle is the same for all of them.</p>
 <p>I find that most people end up using too small text, I’m thus increasing my font sizes quite a bit.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-font-size-root</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-h1-font-size</span>: <span class="dv">80</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-h2-font-size</span>: <span class="dv">60</span><span class="dt">px</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>One thing that isn’t currently covered by sass variables is the text size of code chunks. We can modify this using CSS in the <code>scss:rules</code> section. Adding the following code will set the code block font size to be 90% of the size of the body text.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> pre<span class="op">,</span> <span class="fu">.reveal</span> pre<span class="fu">.sourceCode</span> {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-size</span>: <span class="dv">0.9</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-h2-font-size</span>: <span class="dv">60</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="va">$code-block-font-size</span>: <span class="dv">0.9</span><span class="dt">em</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <iframe class="slide-deck" src="examples/10-minutes/10min-3.html">
 </iframe>
 <p>See the sizes chapter for further considerations and options.</p>

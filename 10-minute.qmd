@@ -52,6 +52,7 @@ The `scss:rules` section is where we write CSS or SCSS code to specify what we w
 
 The sass variables are able to handle most of the general changes we are going to make.
 And what can't be changed with the sass variables will be done using CSS.
+This chapter only uses `scss:defaults`.
 
 ## Fonts
 
@@ -132,10 +133,13 @@ I end up mostly using 2 or 3 of them.
 - `presentation-h2-font-size`
 - `presentation-h3-font-size`
 - `presentation-h4-font-size`
+- `code-block-font-size`
 
 The `presentation-font-size-root` variable changes basically everything, 
 most sizes are calculated based on this value, so if you increase it,
 Then everything else will increase with it. 
+
+The `code-block-font-size` changes the sizing of the code block and the code output.
 
 The remaining sass variables change the size of the different headers used in slides.
 I mostly use `h1` and `h2` headers and will thus mostly only set those,
@@ -148,16 +152,7 @@ I'm thus increasing my font sizes quite a bit.
 $presentation-font-size-root: 40px;
 $presentation-h1-font-size: 80px;
 $presentation-h2-font-size: 60px;
-```
-
-One thing that isn't currently covered by sass variables is the text size of code chunks. 
-We can modify this using CSS in the `scss:rules` section.
-Adding the following code will set the code block font size to be 90% of the size of the body text.
-
-```scss
-.reveal pre, .reveal pre.sourceCode {
-  font-size: 0.9em;
-}
+$code-block-font-size: 0.9em;
 ```
 
 <iframe class="slide-deck" src="examples/10-minutes/10min-3.html">

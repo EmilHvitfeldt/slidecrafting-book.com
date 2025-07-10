@@ -15,9 +15,6 @@ $code-color: #89b4fa;
 $presentation-font-size-root: 50px;
 $presentation-h1-font-size: 100px;
 $presentation-h2-font-size: 75px;
+$code-block-font-size: 0.9em;
 
 /*-- scss:rules --*/
-
-.reveal pre, .reveal pre.sourceCode {
-  font-size: 0.9em;
-}
