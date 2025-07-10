@@ -24,6 +24,8 @@ This is also a perfect place to start looking for inspiration. using these theme
 
 Another personal favorite place of mine to go color theme hunting is on [pinterest](https://www.pinterest.com/). I do a google search for "Pinterest color palettes" and go wild. 
 
+TODO: don't have gif here
+
 :::: {.content-visible when-format="html"}
 ![](media/pinterest.gif)
 :::

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Fonts – Slidecrafting with Quarto</title>
+<title>4&nbsp; Sizes – Slidecrafting with Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./colors.html" rel="next">
-<link href="./10-minute.html" rel="prev">
+<link href="./theme.html" rel="next">
+<link href="./colors.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-minute.html">Theming</a></li><li class="breadcrumb-item"><a href="./fonts.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fonts</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-minute.html">Theming</a></li><li class="breadcrumb-item"><a href="./sizes.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sizes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fonts.html" class="sidebar-item-text sidebar-link active">
+  <a href="./fonts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fonts</span></span></a>
   </div>
 </li>
@@ -175,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sizes.html" class="sidebar-item-text sidebar-link">
+  <a href="./sizes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sizes</span></span></a>
   </div>
 </li>
@@ -285,22 +251,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#finding-fonts" id="toc-finding-fonts" class="nav-link active" data-scroll-target="#finding-fonts"><span class="header-section-number">2.1</span> Finding Fonts</a></li>
-  <li><a href="#applying-fonts" id="toc-applying-fonts" class="nav-link" data-scroll-target="#applying-fonts"><span class="header-section-number">2.2</span> Applying Fonts</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-minute.html">Theming</a></li><li class="breadcrumb-item"><a href="./fonts.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fonts</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-minute.html">Theming</a></li><li class="breadcrumb-item"><a href="./sizes.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sizes</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Fonts</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sizes</span></h1>
 </div>
 
 
@@ -317,57 +276,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="finding-fonts" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="finding-fonts"><span class="header-section-number">2.1</span> Finding Fonts</h2>
-<p>We find fonts the same way we find color; using our favorites of lots of googling. I always gravitate towards <a href="https://fonts.google.com/">fonts.google.com</a>. Generally, it is nice to use these online fonts because they are free and you don’t have to embed/ship them if you want to share your slides with others.</p>
-<p><img src="media/fonts-google.png" class="img-fluid"></p>
-<p>Once we are in here to can search around, looking for a font you like. For these slides, I’m going with <a href="https://fonts.google.com/specimen/Manrope">Manrope</a> for the text, and <a href="https://fonts.google.com/specimen/IBM+Plex+Serif">IBM Plex Serif</a> for the headers. You must find a legible font, with a couple of styles and bold/italics support. This is going to make your life a lot easier once you get going.</p>
-<p>To use “select” these fonts for use, you click on these links for each font type combination.</p>
-<p><img src="media/font-find-1.png" class="img-fluid"></p>
-<p>Then you click this button to have a sidebar menu pop up.</p>
-<p><img src="media/font-find-2.png" class="img-fluid"></p>
-<p>This menu lets you select and deselect the fonts you have selected. When you are done, you can go to the “Use on the web” section, and click <code>@import</code>.</p>
-<p><img src="media/font-find-3.png" class="img-fluid"></p>
-<p>And you want to copy the code inside the <code>&lt;style&gt;</code> tags. We are now ready to apply these fonts to our slides!</p>
-</section>
-<section id="applying-fonts" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="applying-fonts"><span class="header-section-number">2.2</span> Applying Fonts</h2>
-<p>Start by adding the <code>@import</code> calls we found in the previous section. This should again go into the <code>scss:defaults</code> section of the <code>.scss</code> file. to modify the font we have 2 sass variables. First, we have <code>$font-family-sans-serif</code> to modify the general text, and <code>$presentation-heading-font</code> to modify the headers. Applying these changes gives us the following <code>.scss</code> file</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-darkblue</span>: <span class="cn">#01364C</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-blue</span>: <span class="cn">#99D9DD</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-white</span>: <span class="cn">#F7F8F9</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-yellow</span>: <span class="cn">#F4BA02</span><span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="va">$body-bg</span>: <span class="va">$theme-darkblue</span><span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="va">$body-color</span>: <span class="va">$theme-white</span><span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">$link-color</span>: <span class="va">$theme-blue</span><span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-color</span>: <span class="fu">lighten(</span><span class="va">$theme-blue</span><span class="op">,</span> <span class="dv">15</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-sans-serif</span>: <span class="st">'Manrope'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-font</span>: <span class="st">'IBM Plex Serif'</span><span class="op">,</span> <span class="dv">serif</span><span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Which when renders results in the following slides.</p>
-<p><img src="media/theme-example-fonts.png" class="img-fluid"></p>
-<p>Notice how the fonts we used allows us to bold the words “finished presentation”.</p>
-<p>Another thing you sometimes need to change depending on the font is the sizing of the text. The sass variable <code>$presentation-font-size-root</code> controls this, and defaults to <code>40px</code>. Changing this one variable will affect everything on your slides.</p>
-<p>You can also change the code font, this should ideally be a monospaced font. This is done using the <code>$font-family-monospace</code> sass variable.</p>
-<p>make sure we talk about ordering of font names</p>
-<p>make sure we talk about using a local font</p>
-<ul>
-<li>you can download,</li>
-<li>download speed</li>
-<li>offline usage</li>
-</ul>
-<p>talk about selecting the right weights you need</p>
-<p>talk about font pairing websites https://www.google.com/search?q=font+pairings&amp;client=firefox-b-1-d&amp;sca_esv=60b0148d47b8e4e6&amp;sxsrf=AE3TifOwW7wf5D2KR8IfZet2isXrNaU86g%3A1751754965092&amp;ei=1ahpaK62BbjekPIP1_2NmQw&amp;oq=font+par&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiCGZvbnQgcGFyKgIIADILEAAYgAQYkQIYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIHEAAYgAQYCkilJFDoEljHGnADeAGQAQCYAYMBoAGjBaoBAzcuMbgBA8gBAPgBAZgCC6AC1AXCAgoQABiwAxjWBBhHwgINEAAYgAQYsAMYQxiKBcICChAjGIAEGCcYigXCAgoQABiABBhDGIoFwgIOEAAYgAQYsQMYgwEYigXCAg0QABiABBixAxgUGIcCwgINEAAYgAQYsQMYQxiKBcICCBAAGIAEGLEDwgIKEAAYgAQYFBiHApgDAIgGAZAGCpIHBDEwLjGgB-s6sgcDNy4xuAfHBcIHBTAuMy44yAcj&amp;sclient=gws-wiz-serp</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -789,13 +699,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-minute.html" class="pagination-link" aria-label="10 Minute Theme">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">10 Minute Theme</span></span>
+      <a href="./colors.html" class="pagination-link" aria-label="Colors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Colors</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./colors.html" class="pagination-link" aria-label="Colors">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Colors</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./theme.html" class="pagination-link" aria-label="Theme">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Theme</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
