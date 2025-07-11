@@ -154,14 +154,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./styling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Styling</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./scss.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">CSS/SCSS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">CSS/SCSS</span></span></a>
   </div>
 </li>
       </ul>
@@ -178,25 +172,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./elements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Elements</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Elements</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./manual-code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Manual code</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Manual code</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./asciicast.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">asciicast</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">asciicast</span></span></a>
   </div>
 </li>
       </ul>
@@ -213,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fragments.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Fragments</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fragments</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./letterbox.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">letterbox</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">letterbox</span></span></a>
   </div>
 </li>
       </ul>
@@ -238,13 +232,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscellaneous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">miscellaneous</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -257,7 +245,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#theming" id="toc-theming" class="nav-link" data-scroll-target="#theming">Theming</a></li>
+  <li><a href="#content" id="toc-content" class="nav-link" data-scroll-target="#content">Content</a></li>
+  <li><a href="#interactivity" id="toc-interactivity" class="nav-link" data-scroll-target="#interactivity">Interactivity</a></li>
+  <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions">Extensions</a></li>
+  <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">miscellaneous</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -297,11 +292,32 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>Hello! This book is about what I like to call <strong>slidecrafting</strong>; The art of putting together slides that are functional and aesthetically pleasing. I will be using <a href="https://quarto.org/">quarto presentations</a> throughout the whole book. Some of the advice will transcend quarto presentations and apply to all kinds of slide technologies, but the book is written with quarto in mind. There will thus inherently be some overlap with quarto documentation. It is suggested to read all the <a href="https://quarto.org/docs/presentations/revealjs/index.html">quarto revealjs</a> documentation alongside this book for optimal learning.</p>
-<p>I think of slidecrafting as an art because of the inexact nature of many of the decisions you will be making after all many slide decks can be distilled down into a series of still images, each of which should be carefully crafted.</p>
+<p>Hello! This book is about what I like to call <strong>slidecrafting</strong>; The art of putting together slides that are functional and aesthetically pleasing. I will be using <a href="https://quarto.org/">quarto presentations</a> throughout the whole book. Some of the advice will transcend Quarto presentations and apply to all kinds of slide technologies, but the book is written with Quarto in mind. There will thus inherently be some overlap with quarto documentation. It is suggested to read all the <a href="https://quarto.org/docs/presentations/revealjs/index.html">quarto revealjs</a> documentation alongside this book for optimal learning.</p>
+<p>I think of slidecrafting as an art because of the inexact nature of many of the decisions you will be making; after all, many slide decks can be distilled down into a series of still images, each of which should be carefully crafted.</p>
 <p>This book will not be able to teach you everything you need, but it will cover the parts of the process that stay constant from deck to deck, so you can focus on the content and develop your brand/style.</p>
+<p>The book will be split into a number of semi-coherent sections, each with a number of chapters. This is not a perfect subdivision, but it serves its purpose quite well.</p>
+<section id="theming" class="level2">
+<h2 class="anchored" data-anchor-id="theming">Theming</h2>
+<p>The first section is the <strong>theming</strong> section, where we go over how to change the visual appearance of your slides. It starts with a quick chapter showing you how to set up a style in less than <a href="./10-minute.html">10 minutes</a>. Then we will go into more details on how to use <a href="./fonts.html">fonts</a>, <a href="./colors.html">colors</a>, and <a href="./sizes.html">sizes</a> to change the look and feel of your slides. The <a href="./theme.html">theme</a> chapter goes over the process of developing a slide-by-slide theme. Lastly, we have a chapter going over some <a href="./scss.html">SCSS tips and tricks</a>, which I find generally useful but doesn’t fit into any of the other chapters.</p>
+</section>
+<section id="content" class="level2">
+<h2 class="anchored" data-anchor-id="content">Content</h2>
+<p>The <strong>contents</strong> section includes a chapter on how to change what is on the slides, either for variety or different ways to highlight new things. The <a href="./elements.html">elements</a> chapter focuses on things that show up on the slides, such as images and figures. The <a href="./layout.html">layout</a> talks about different ways to move elements of the page around “geographically”. Sometimes you want to highlight very specific things in some code, and for that to work, you will likely need to <a href="./manual-code.html">style the code manually</a>. There are other times where you want to showcase code and its output, and that can be done using <a href="./asciicast.html">asciicast</a>.</p>
+</section>
+<section id="interactivity" class="level2">
+<h2 class="anchored" data-anchor-id="interactivity">Interactivity</h2>
+<p>This section looks at how we <a href="./fragments.html">fragments</a> to change things up even more, allowing for elements to change and more.</p>
+</section>
+<section id="extensions" class="level2">
+<h2 class="anchored" data-anchor-id="extensions">Extensions</h2>
+<p>This section will go over a handful of extensions that you can use to spruce up your slides.</p>
+</section>
+<section id="miscellaneous" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous">miscellaneous</h2>
+<p>Lastly, there is the <a href="./miscellaneous.html">miscellaneous</a> chapter, which will contain everything that doesn’t fit anywhere else.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

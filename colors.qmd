@@ -16,12 +16,6 @@ For a small color theme, you would want a light and dark color for the backgroun
 
 This is what you get with the default themes that are provided in Quarto, and you can see them here in this gif:
 
-:::: {.content-visible when-format="html"}
-![](media/themes.gif)
-:::
-
-This is also a perfect place to start looking for inspiration. using these themes with one or two modifications might get you all the way where you want to go. It is in general a good idea to look for inspiration in other people's work.
-
 Another personal favorite place of mine to go color theme hunting is on [pinterest](https://www.pinterest.com/). I do a google search for "Pinterest color palettes" and go wild. 
 
 TODO: don't have gif here

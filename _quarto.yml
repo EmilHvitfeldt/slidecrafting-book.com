@@ -16,7 +16,6 @@ book:
         - colors.qmd
         - sizes.qmd
         - theme.qmd
-        - styling.qmd
         - scss.qmd
     - part: "Content"
       chapters:
@@ -31,7 +30,6 @@ book:
       chapters:
         - letterbox.qmd
     - miscellaneous.qmd
-    - references.qmd
 
 bibliography: references.bib
 

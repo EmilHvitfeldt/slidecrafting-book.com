@@ -2,6 +2,14 @@
 title: "Theme"
 ---
 
+The built in themes are a great place to look for inspiration. 
+
+:::: {.content-visible when-format="html"}
+![](media/themes.gif)
+:::
+
+This is also a perfect place to start looking for inspiration. using these themes with one or two modifications might get you all the way where you want to go. It is in general a good idea to look for inspiration in other people's work.
+
 This way you can have black/white variants, white/red/blue, or any number of different styles. If you are familiar with [xaringan](https://slides.yihui.org/xaringan/) you have seen an `inverse` theme variant already.
 
 ## What is a variant?

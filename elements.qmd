@@ -243,3 +243,30 @@ even if you set the option globally, you will have to make slide-by-slide adjust
 The above was generated with this document.
 
 <a href="examples/elements/plot-sizing-examples.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}source document<a>
+
+
+## Style menu button
+
+The menu button you see in the lower left-hand side of the slide. Styling it can be done by setting the `$link-color` sass variable. If you want a different icon, or have it colored differently than `$link-color` you need to specify it directly as the color [is hardcoded into the svg](https://github.com/quarto-dev/quarto-cli/blob/13c916d041b2f83c20855fd24c7bd68d07720981/src/resources/formats/revealjs/quarto.scss#L505). The icon is specified as the background image of `.reveal .slide-menu-button .fa-bars::before`.
+
+```scss
+.reveal .slide-menu-button .fa-bars::before {
+background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(42, 118, 221)" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>') !important;
+}
+```
+
+Tthe color is specified by the `fill="rgb(42, 118, 221)"` part of the svg. But since this is an image, we can use whatever image we want.
+
+```scss
+.reveal .slide-menu-button .fa-bars::before {
+background-image: url('https://cdn-icons-png.flaticon.com/512/2163/2163350.png') !important;
+}
+```
+
+<iframe class="slide-deck" src="examples/styling/tip-2.html">
+
+</iframe>
+
+<a href="examples/styling/tip-2.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+<a href="examples/styling/tip-2.scss" target="_blank" class="listing-video btn-links">{{< fa brands sass >}}scss<a>
+

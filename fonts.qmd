@@ -72,3 +72,35 @@ talk about selecting the right weights you need
 
 talk about font pairing websites 
 https://www.google.com/search?q=font+pairings&client=firefox-b-1-d&sca_esv=60b0148d47b8e4e6&sxsrf=AE3TifOwW7wf5D2KR8IfZet2isXrNaU86g%3A1751754965092&ei=1ahpaK62BbjekPIP1_2NmQw&oq=font+par&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGZvbnQgcGFyKgIIADILEAAYgAQYkQIYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIHEAAYgAQYCkilJFDoEljHGnADeAGQAQCYAYMBoAGjBaoBAzcuMbgBA8gBAPgBAZgCC6AC1AXCAgoQABiwAxjWBBhHwgINEAAYgAQYsAMYQxiKBcICChAjGIAEGCcYigXCAgoQABiABBhDGIoFwgIOEAAYgAQYsQMYgwEYigXCAg0QABiABBixAxgUGIcCwgINEAAYgAQYsQMYQxiKBcICCBAAGIAEGLEDwgIKEAAYgAQYFBiHApgDAIgGAZAGCpIHBDEwLjGgB-s6sgcDNy4xuAfHBcIHBTAuMy44yAcj&sclient=gws-wiz-serp
+
+## Use fonts with ligatures
+
+I just added some new code to a slide
+
+![](media/no-ligatures.png)
+
+and this code uses some multi-character symbols like `!=` and `|>`. These and many like them are common all over the different programming languages, so much so that people have created special fonts with ligatures to make them prettier.
+
+One such font is [FiraCode](https://github.com/tonsky/FiraCode).
+
+![](media/firacode.png)
+
+And we can add these types of fonts to our slides as well! Start by downloading the font from the site, and copy over a `.woff` and `.woff2` file to your slide directory. I selected `FiraCode-Regular.woff` and `FiraCode-Regular.woff2`.
+
+In the `/*-- scss:defaults --*/` part of our `.scss` file, we are going to add the following code. This is done to register the font family from the files we have included and to have it selected for use for monospace fonts.
+
+````scss
+@font-face {
+    font-family: 'FiraCode';
+    src: url('../../../../../FiraCode-Regular.woff2') format('woff2'),
+         url('../../../../../FiraCode-Regular.woff') format('woff');
+}
+
+$font-family-monospace: 'FiraCode';
+````
+
+You might have noticed some ugliness with the `../../../../../`s. To my knowledge, this is the best way of using a local font-face from a file.
+
+With all of that, we now have beautiful ligatures
+
+![](media/with-ligatures.png)

@@ -2,6 +2,65 @@
 title: "CSS/SCSS"
 ---
 
+## Using CSS Classes
+
+The last tip for this blog post is the idea of using CSS classes, which is a quick and powerful way to add styling to your slides.
+
+Remember how we have 2 highlighting colors? We should have a way to apply these colors in our slides. For starters let us add a way to turn text these colors. Below are two CSS classes, named `.blue` and `.yellow`, that change the `color` and make the text bold with `font-weight: bold;`. Note that we need to put these classes into the `scss:rules` section.
+
+````scss
+/*-- scss:rules --*/
+
+.blue {
+  color: $theme-blue;
+  font-weight: bold;
+}
+
+.yellow {
+  color: $theme-yellow;
+  font-weight: bold;
+}
+````
+
+Now that we have our classes defined, you can either apply them using the visual editor in RStudio. Start by highlighting the text you want to apply the class to
+
+![](media/apply-class-1.png)
+
+Click "Format" and select "Span..." This will only apply the changes to the highlighted words, instead of the whole paragraph.
+
+![](media/apply-class-2.png)
+
+And then write in the class name in the "Classes" field. We see the word yellow by using the class ".yellow".
+
+![](media/apply-class-3.png)
+
+We can also apply these changes in the source editor by using the `[text]{.class}` syntax. I added (slightly excessive) highlighting to a couple of words. See below
+
+````markdown
+[Quarto]{.blue} enables you to weave together [content]{.yellow} and [executable code]{.yellow} into a **finished presentation**. To learn more about [Quarto]{.blue} presentations see <https://quarto.org/docs/presentations/>.
+````
+
+And we get the following slide
+
+![](media/theme-example-highlight.png)
+
+CSS classes were a game changer for my slide-making. It is a little bit more manual, but if you can write the CSS you can apply it to your slides which IMO is a super powerful tool.
+
+There are also changes where you just want to modify the CSS directly, these changes should also be applied in the `scss:rules` section. For example, in our example so far, we have used the blue color both to color the links, and as a highlighting color. This is very confusing, so let us make sure that all links are underlined. We can make this happen by adding.
+
+Note that CSS rules that target Reveal content generally need to use the `.reveal .slide` prefix to successfully override the theme’s default styles.
+
+````scss
+.reveal .slide a {
+  text-decoration: underline;
+}
+````
+
+And the changes have been applied.
+
+![](media/example-theme-links.png)
+
+
 
 ## Using `Maps` to store theme colors
 
