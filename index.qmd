@@ -14,7 +14,7 @@ This is not a perfect subdivision, but it serves its purpose quite well.
 
 The first section is the **theming** section, where we go over how to change the visual appearance of your slides.
 It starts with a quick chapter showing you how to set up a style in less than [10 minutes](10-minute.qmd).
-Then we will go into more details on how to use [fonts](fonts.qmd), [colors](colors.qmd), and [sizes](sizes.qmd) to change the look and feel of your slides.
+Then we will go into more details on how to use [colors](colors.qmd), [fonts](fonts.qmd), and [sizes](sizes.qmd) to change the look and feel of your slides.
 The [theme](theme.qmd) chapter goes over the process of developing a slide-by-slide theme.
 Lastly, we have a chapter going over some [SCSS tips and tricks](scss.qmd),
 which I find generally useful but doesn't fit into any of the other chapters.

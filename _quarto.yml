@@ -12,8 +12,8 @@ book:
     - part: "Theming"
       chapters:
         - 10-minute.qmd
-        - fonts.qmd
         - colors.qmd
+        - fonts.qmd
         - sizes.qmd
         - theme.qmd
         - scss.qmd
