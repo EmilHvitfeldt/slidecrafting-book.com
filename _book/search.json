@@ -170,17 +170,6 @@
     ]
   },
   {
-    "objectID": "colors.html#change-highlighting-theme",
-    "href": "colors.html#change-highlighting-theme",
-    "title": "2  Colors",
-    "section": "2.4 Change highlighting theme",
-    "text": "2.4 Change highlighting theme\nCan either be done with highlight-style as done in https://emilhvitfeldt.com/post/slidecraft-code-output/index.html#change-highlighting-theme\n\not: Other\nat: Attribute\nss: SpecialString\nan: Annotation\nfu: Function\nst: String\ncf: ControlFlow\nop: Operator\ner: Error\nbn: BaseN\nal: Alert\nva: Variable\npp: Preprocessor\nin: Information\nvs: VerbatimString\nwa: Warning\ndo: Documentation\nch: Char\ndt: DataType\nfl: Float\nco: Comment\ncv: CommentVar\ncn: Constant\nsc: SpecialChar\ndv: DecVal\nkw: Keyword\n\nor manually using css:\nTODO: add in comments denoting what is what\nlong way\ncode {\n  span.ot {\n    color: #003B4F;\n  }\n\n  span.at {\n    color: #657422;\n  }\n\n  span.ss {\n    color: #20794D;\n  }\n\n  span.an {\n    color: #5E5E5E;\n  }\n\n  span.fu {\n    color: #4758AB;\n  }\n\n  span.st {\n    color: #20794D;\n  }\n\n  span.cf {\n    color: #003B4F;\n  }\n\n  span.op {\n    color: #5E5E5E;\n  }\n\n  span.er {\n    color: #AD0000;\n  }\n\n  span.bn {\n    color: #AD0000;\n  }\n\n  span.al {\n    color: #AD0000;\n  }\n\n  span.va {\n    color: #111111;\n  }\n\n  span.bu {}\n\n  span.ex {}\n\n  span.pp {\n    color: #AD0000;\n  }\n\n  span.in {\n    color: #5E5E5E;\n  }\n\n  span.vs {\n    color: #20794D;\n  }\n\n  span.wa {\n    color: #5E5E5E;\n  }\n\n  span.do {\n    color: #5E5E5E;\n  }\n\n  span.im {\n    color: #00769E;\n  }\n\n  span.ch {\n    color: #20794D;\n  }\n\n  span.dt {\n    color: #AD0000;\n  }\n\n  span.fl {\n    color: #AD0000;\n  }\n\n  span.co {\n    color: #5E5E5E;\n  }\n\n  span.cv {\n    color: #5E5E5E;\n  }\n\n  span.cn {\n    color: #8f5902;\n  }\n\n  span.sc {\n    color: #5E5E5E;\n  }\n\n  span.dv {\n    color: #AD0000;\n  }\n\n  span.kw {\n    color: #003B4F;\n  }\n}\ncompact way:\ncode {\n  span.an,\n  span.op,\n  span.sc,\n  span.in,\n  span.wa,\n  span.do,\n  span.cv,\n  span.co {\n    color: #5E5E5E;\n  }\n\n  span.er,\n  span.bn,\n  span.al,\n  span.pp,\n  span.dt,\n  span.fl,\n  span.dv {\n    color: #AD0000;\n  }\n\n  span.ss,\n  span.st,\n  span.vs,\n  span.ch {\n    color: #20794D;\n  }\n\n  span.ot,\n  span.cf,\n  span.kw {\n    color: #003B4F;\n  }\n\n  span.at {\n    color: #657422;\n  }\n\n  span.fu {\n    color: #4758AB;\n  }\n\n  span.va {\n    color: #111111;\n  }\n\n  span.im {\n    color: #00769E;\n  }\n\n  span.cn {\n    color: #8f5902;\n  }\n\n  span.bu {}\n\n  span.ex {}\n}",
-    "crumbs": [
-      "Theming",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Colors</span>"
-    ]
-  },
-  {
     "objectID": "fonts.html",
     "href": "fonts.html",
     "title": "3  Fonts",
