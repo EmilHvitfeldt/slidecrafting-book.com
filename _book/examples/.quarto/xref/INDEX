@@ -130,5 +130,17 @@
   },
   "10-minutes/10min-3.qmd": {
     "10min-3.html": "3d926e46"
+  },
+  "styling/google-fonts.qmd": {
+    "google-fonts.html": "1a867b9c"
+  },
+  "fonts/google-fonts.qmd": {
+    "google-fonts.html": "b82098cc"
+  },
+  "fonts/before-fira.qmd": {
+    "before-fira.html": "29866bef"
+  },
+  "fonts/after-fira.qmd": {
+    "after-fira.html": "838f1281"
   }
 }

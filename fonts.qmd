@@ -4,44 +4,39 @@ title: "Fonts"
 
 ## Finding Fonts
 
-We find fonts the same way we find color; using our favorites of lots of googling. I always gravitate towards [fonts.google.com](https://fonts.google.com/). Generally, it is nice to use these online fonts because they are free and you don't have to embed/ship them if you want to share your slides with others.
+We find fonts the same way we find color, using our favorites from lots of googling. 
+I always gravitate towards [fonts.google.com](https://fonts.google.com/).
+Generally, it is nice to use these online fonts because they are free, and you don't have to embed/ship them if you want to share your slides with others.
 
-![](media/fonts-google.png)
+Once we are in here, we can search around, 
+looking for a font you like. 
+For these slides, 
+I'm going with [Manrope](https://fonts.google.com/specimen/Manrope) for the text, 
+and [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) for the headers.
+I find it useful to look at [font pairing](https://www.figma.com/google-fonts/) websites for inspiration.
 
-Once we are in here to can search around, looking for a font you like. For these slides, I'm going with [Manrope](https://fonts.google.com/specimen/Manrope) for the text, and [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) for the headers. You must find a legible font, with a couple of styles and bold/italics support. This is going to make your life a lot easier once you get going.
+The most important thing is that you find a legible font.
+Additionally, you want the main font that you use to come in different font weights and have italics if you are going to be using them in your slides.
 
-To use "select" these fonts for use, you click on these links for each font type combination.
-
-![](media/font-find-1.png)
-
-Then you click this button to have a sidebar menu pop up.
-
-![](media/font-find-2.png)
-
-This menu lets you select and deselect the fonts you have selected. When you are done, you can go to the "Use on the web" section, and click `@import`.
-
-![](media/font-find-3.png)
-
-And you want to copy the code inside the `<style>` tags. We are now ready to apply these fonts to our slides!
+Once you have selected the fonts you are happy with,
+go to the "Selected families" page.
+From there, you click "Get embed code", and there should be a button that lets you select `@import`.
+And you want to copy the code inside the `<style>` tags. 
+We are now ready to apply these fonts to our slides!
 
 ## Applying Fonts
 
-Start by adding the `@import` calls we found in the previous section. This should again go into the `scss:defaults` section of the `.scss` file. to modify the font we have 2 sass variables. First, we have `$font-family-sans-serif` to modify the general text, and `$presentation-heading-font` to modify the headers. Applying these changes gives us the following `.scss` file
+Start by adding the `@import` calls we found in the previous section. 
+This should again go into the `scss:defaults` section of the `.scss` file. 
+To modify the font, we have 2 Sass variables. 
+First, we have `$font-family-sans-serif` to modify the general text, 
+and `$presentation-heading-font` to modify the headers. 
+Applying these changes gives us the following `.scss` file.
 
 ````scss
 /*-- scss:defaults --*/
-$theme-darkblue: #01364C;
-$theme-blue: #99D9DD;
-$theme-white: #F7F8F9;
-$theme-yellow: #F4BA02;
-
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
-$body-bg: $theme-darkblue;
-$body-color: $theme-white;
-$link-color: $theme-blue;
-$presentation-heading-color: lighten($theme-blue, 15%);
 
 $font-family-sans-serif: 'Manrope', sans-serif;
 $presentation-heading-font: 'IBM Plex Serif', serif;
@@ -50,44 +45,61 @@ $presentation-heading-font: 'IBM Plex Serif', serif;
 
 ````
 
-Which when renders results in the following slides.
+Which, when rendered, results in the following slides.
 
-![](media/theme-example-fonts.png)
+<iframe class="slide-deck" src="examples/fonts/google-fonts.html">
 
-Notice how the fonts we used allows us to bold the words "finished presentation".
+</iframe>
 
-Another thing you sometimes need to change depending on the font is the sizing of the text. The sass variable `$presentation-font-size-root` controls this, and defaults to `40px`. Changing this one variable will affect everything on your slides.
+Notice how the fonts we used allow us to bold the words "finished presentation" and italicize "content and executable code".
+If you don't see those working, it is because you either didn't select those high font weights to allow for boldness,
+or italic versions to allow for italics.
 
-You can also change the code font, this should ideally be a monospaced font. This is done using the `$font-family-monospace` sass variable.
+You can also change the code font; 
+this should ideally be a monospaced font. 
+This is done using the `$font-family-monospace` sass variable.
 
-make sure we talk about ordering of font names
+You might have noticed that when we specify fonts there are multiple names listed.
+These names are comma-separated.
+This is related to fallback fonts.
+If any font specified isn't available for whatever reason,
+because of a misspecification or slow internet connection, then the next font in line will be selected.
+In the above example, if `Manrope` isn't avaialble, then the system `sans-serif` font will be selected.
+You can have as many fonts as you like in a specification.
 
-make sure we talk about using a local font
+## Embedding Fonts
 
-- you can download,
-- download speed
-- offline usage
+There are times when you don't want to use a web font like how we showed above.
+And there are many equally valid reasons.
 
-talk about selecting the right weights you need
+- You are dealing with choppy internet
+- You want to be able to use the slides with no internet
+- You want to use a font that isn't available as a web font
 
-talk about font pairing websites 
-https://www.google.com/search?q=font+pairings&client=firefox-b-1-d&sca_esv=60b0148d47b8e4e6&sxsrf=AE3TifOwW7wf5D2KR8IfZet2isXrNaU86g%3A1751754965092&ei=1ahpaK62BbjekPIP1_2NmQw&oq=font+par&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGZvbnQgcGFyKgIIADILEAAYgAQYkQIYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIHEAAYgAQYCkilJFDoEljHGnADeAGQAQCYAYMBoAGjBaoBAzcuMbgBA8gBAPgBAZgCC6AC1AXCAgoQABiwAxjWBBhHwgINEAAYgAQYsAMYQxiKBcICChAjGIAEGCcYigXCAgoQABiABBhDGIoFwgIOEAAYgAQYsQMYgwEYigXCAg0QABiABBixAxgUGIcCwgINEAAYgAQYsQMYQxiKBcICCBAAGIAEGLEDwgIKEAAYgAQYFBiHApgDAIgGAZAGCpIHBDEwLjGgB-s6sgcDNy4xuAfHBcIHBTAuMy44yAcj&sclient=gws-wiz-serp
+You might even have your own special font you wanna use.
+While it isn't that important in slides compared to websites,
+supplying the fonts instead of downloading them will reduce the load time for your slides.
 
-## Use fonts with ligatures
+I just added some new code to a slide.
 
-I just added some new code to a slide
+<iframe class="slide-deck" src="examples/fonts/before-fira.html">
 
-![](media/no-ligatures.png)
+</iframe>
 
-and this code uses some multi-character symbols like `!=` and `|>`. These and many like them are common all over the different programming languages, so much so that people have created special fonts with ligatures to make them prettier.
+And this code uses some multi-character symbols like `!=` and `|>`. 
+These and many like them are common to all the different programming languages, 
+so much so that people have created special fonts with ligatures to make them prettier.
 
 One such font is [FiraCode](https://github.com/tonsky/FiraCode).
 
-![](media/firacode.png)
+And we can add these types of fonts to our slides as well!
+Start by downloading the font from the site, 
+and copy over a `.woff` and `.woff2` file to your slide directory.
+I selected `FiraCode-Regular.woff` and `FiraCode-Regular.woff2`.
 
-And we can add these types of fonts to our slides as well! Start by downloading the font from the site, and copy over a `.woff` and `.woff2` file to your slide directory. I selected `FiraCode-Regular.woff` and `FiraCode-Regular.woff2`.
-
-In the `/*-- scss:defaults --*/` part of our `.scss` file, we are going to add the following code. This is done to register the font family from the files we have included and to have it selected for use for monospace fonts.
+In the `/*-- scss:defaults --*/` part of our `.scss` file, 
+we are going to add the following code.
+This is done to register the font family from the files we have included and to have it selected for use for monospace fonts.
 
 ````scss
 @font-face {
@@ -99,8 +111,14 @@ In the `/*-- scss:defaults --*/` part of our `.scss` file, we are going to add t
 $font-family-monospace: 'FiraCode';
 ````
 
-You might have noticed some ugliness with the `../../../../../`s. To my knowledge, this is the best way of using a local font-face from a file.
+You might have noticed some ugliness with the `../../../../../`s. 
+To my knowledge, this is the best way of using a local font-face from a file.
+You might want to add or remove `../` depending on your folder structure.
+I found that 5 sets were what was needed when the `.qmd` file and the `woff` files were located in the same folder.
+An [issue has been filed](https://github.com/quarto-dev/quarto-cli/issues/5712) regarding this problem.
 
-With all of that, we now have beautiful ligatures
+With all of that, we now have beautiful ligatures.
 
-![](media/with-ligatures.png)
+<iframe class="slide-deck" src="examples/fonts/after-fira.html">
+
+</iframe>

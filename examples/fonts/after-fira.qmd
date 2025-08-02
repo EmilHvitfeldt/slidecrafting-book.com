@@ -1,0 +1,23 @@
+---
+format:
+  revealjs:
+    theme:
+      [default, after-fira.scss]
+---
+
+## Quarto
+
+```r
+library(tidyverse)
+
+diamonds |>
+  filter(color == "E") |>
+  ggplot(aes(carat, price)) +
+  geom_point()
+
+diamonds |>
+  filter(color == "I") |>
+  ggplot(aes(carat, price)) +
+  geom_point()
+
+```

@@ -1,0 +1,13 @@
+/*-- scss:defaults --*/
+
+@font-face {
+    font-family: 'FiraCode';
+    src: url('../../../../FiraCode-Regular.woff2') format('woff2'),
+         url('../../../../FiraCode-Regular.woff') format('woff');
+}
+
+$font-family-monospace: 'FiraCode';
+
+$code-block-font-size: 0.85em;
+
+/*-- scss:rules --*/

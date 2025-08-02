@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#finding-fonts" id="toc-finding-fonts" class="nav-link active" data-scroll-target="#finding-fonts"><span class="header-section-number">3.1</span> Finding Fonts</a></li>
   <li><a href="#applying-fonts" id="toc-applying-fonts" class="nav-link" data-scroll-target="#applying-fonts"><span class="header-section-number">3.2</span> Applying Fonts</a></li>
-  <li><a href="#use-fonts-with-ligatures" id="toc-use-fonts-with-ligatures" class="nav-link" data-scroll-target="#use-fonts-with-ligatures"><span class="header-section-number">3.3</span> Use fonts with ligatures</a></li>
+  <li><a href="#embedding-fonts" id="toc-embedding-fonts" class="nav-link" data-scroll-target="#embedding-fonts"><span class="header-section-number">3.3</span> Embedding Fonts</a></li>
   </ul>
 </nav>
     </div>
@@ -308,60 +308,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="finding-fonts" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="finding-fonts"><span class="header-section-number">3.1</span> Finding Fonts</h2>
-<p>We find fonts the same way we find color; using our favorites of lots of googling. I always gravitate towards <a href="https://fonts.google.com/">fonts.google.com</a>. Generally, it is nice to use these online fonts because they are free and you don’t have to embed/ship them if you want to share your slides with others.</p>
-<p><img src="media/fonts-google.png" class="img-fluid"></p>
-<p>Once we are in here to can search around, looking for a font you like. For these slides, I’m going with <a href="https://fonts.google.com/specimen/Manrope">Manrope</a> for the text, and <a href="https://fonts.google.com/specimen/IBM+Plex+Serif">IBM Plex Serif</a> for the headers. You must find a legible font, with a couple of styles and bold/italics support. This is going to make your life a lot easier once you get going.</p>
-<p>To use “select” these fonts for use, you click on these links for each font type combination.</p>
-<p><img src="media/font-find-1.png" class="img-fluid"></p>
-<p>Then you click this button to have a sidebar menu pop up.</p>
-<p><img src="media/font-find-2.png" class="img-fluid"></p>
-<p>This menu lets you select and deselect the fonts you have selected. When you are done, you can go to the “Use on the web” section, and click <code>@import</code>.</p>
-<p><img src="media/font-find-3.png" class="img-fluid"></p>
-<p>And you want to copy the code inside the <code>&lt;style&gt;</code> tags. We are now ready to apply these fonts to our slides!</p>
+<p>We find fonts the same way we find color, using our favorites from lots of googling. I always gravitate towards <a href="https://fonts.google.com/">fonts.google.com</a>. Generally, it is nice to use these online fonts because they are free, and you don’t have to embed/ship them if you want to share your slides with others.</p>
+<p>Once we are in here, we can search around, looking for a font you like. For these slides, I’m going with <a href="https://fonts.google.com/specimen/Manrope">Manrope</a> for the text, and <a href="https://fonts.google.com/specimen/IBM+Plex+Serif">IBM Plex Serif</a> for the headers. I find it useful to look at <a href="https://www.figma.com/google-fonts/">font pairing</a> websites for inspiration.</p>
+<p>The most important thing is that you find a legible font. Additionally, you want the main font that you use to come in different font weights and have italics if you are going to be using them in your slides.</p>
+<p>Once you have selected the fonts you are happy with, go to the “Selected families” page. From there, you click “Get embed code”, and there should be a button that lets you select <code>@import</code>. And you want to copy the code inside the <code>&lt;style&gt;</code> tags. We are now ready to apply these fonts to our slides!</p>
 </section>
 <section id="applying-fonts" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="applying-fonts"><span class="header-section-number">3.2</span> Applying Fonts</h2>
-<p>Start by adding the <code>@import</code> calls we found in the previous section. This should again go into the <code>scss:defaults</code> section of the <code>.scss</code> file. to modify the font we have 2 sass variables. First, we have <code>$font-family-sans-serif</code> to modify the general text, and <code>$presentation-heading-font</code> to modify the headers. Applying these changes gives us the following <code>.scss</code> file</p>
+<p>Start by adding the <code>@import</code> calls we found in the previous section. This should again go into the <code>scss:defaults</code> section of the <code>.scss</code> file. To modify the font, we have 2 Sass variables. First, we have <code>$font-family-sans-serif</code> to modify the general text, and <code>$presentation-heading-font</code> to modify the headers. Applying these changes gives us the following <code>.scss</code> file.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-darkblue</span>: <span class="cn">#01364C</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-blue</span>: <span class="cn">#99D9DD</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-white</span>: <span class="cn">#F7F8F9</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-yellow</span>: <span class="cn">#F4BA02</span><span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="va">$body-bg</span>: <span class="va">$theme-darkblue</span><span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="va">$body-color</span>: <span class="va">$theme-white</span><span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">$link-color</span>: <span class="va">$theme-blue</span><span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-color</span>: <span class="fu">lighten(</span><span class="va">$theme-blue</span><span class="op">,</span> <span class="dv">15</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-sans-serif</span>: <span class="st">'Manrope'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-font</span>: <span class="st">'IBM Plex Serif'</span><span class="op">,</span> <span class="dv">serif</span><span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Which when renders results in the following slides.</p>
-<p><img src="media/theme-example-fonts.png" class="img-fluid"></p>
-<p>Notice how the fonts we used allows us to bold the words “finished presentation”.</p>
-<p>Another thing you sometimes need to change depending on the font is the sizing of the text. The sass variable <code>$presentation-font-size-root</code> controls this, and defaults to <code>40px</code>. Changing this one variable will affect everything on your slides.</p>
-<p>You can also change the code font, this should ideally be a monospaced font. This is done using the <code>$font-family-monospace</code> sass variable.</p>
-<p>make sure we talk about ordering of font names</p>
-<p>make sure we talk about using a local font</p>
-<ul>
-<li>you can download,</li>
-<li>download speed</li>
-<li>offline usage</li>
-</ul>
-<p>talk about selecting the right weights you need</p>
-<p>talk about font pairing websites https://www.google.com/search?q=font+pairings&amp;client=firefox-b-1-d&amp;sca_esv=60b0148d47b8e4e6&amp;sxsrf=AE3TifOwW7wf5D2KR8IfZet2isXrNaU86g%3A1751754965092&amp;ei=1ahpaK62BbjekPIP1_2NmQw&amp;oq=font+par&amp;gs_lp=Egxnd3Mtd2l6LXNlcnAiCGZvbnQgcGFyKgIIADILEAAYgAQYkQIYigUyCxAAGIAEGJECGIoFMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIHEAAYgAQYCkilJFDoEljHGnADeAGQAQCYAYMBoAGjBaoBAzcuMbgBA8gBAPgBAZgCC6AC1AXCAgoQABiwAxjWBBhHwgINEAAYgAQYsAMYQxiKBcICChAjGIAEGCcYigXCAgoQABiABBhDGIoFwgIOEAAYgAQYsQMYgwEYigXCAg0QABiABBixAxgUGIcCwgINEAAYgAQYsQMYQxiKBcICCBAAGIAEGLEDwgIKEAAYgAQYFBiHApgDAIgGAZAGCpIHBDEwLjGgB-s6sgcDNy4xuAfHBcIHBTAuMy44yAcj&amp;sclient=gws-wiz-serp</p>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-sans-serif</span>: <span class="st">'Manrope'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-font</span>: <span class="st">'IBM Plex Serif'</span><span class="op">,</span> <span class="dv">serif</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Which, when rendered, results in the following slides.</p>
+<iframe class="slide-deck" src="examples/fonts/google-fonts.html">
+</iframe>
+<p>Notice how the fonts we used allow us to bold the words “finished presentation” and italicize “content and executable code”. If you don’t see those working, it is because you either didn’t select those high font weights to allow for boldness, or italic versions to allow for italics.</p>
+<p>You can also change the code font; this should ideally be a monospaced font. This is done using the <code>$font-family-monospace</code> sass variable.</p>
+<p>You might have noticed that when we specify fonts there are multiple names listed. These names are comma-separated. This is related to fallback fonts. If any font specified isn’t available for whatever reason, because of a misspecification or slow internet connection, then the next font in line will be selected. In the above example, if <code>Manrope</code> isn’t avaialble, then the system <code>sans-serif</code> font will be selected. You can have as many fonts as you like in a specification.</p>
 </section>
-<section id="use-fonts-with-ligatures" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="use-fonts-with-ligatures"><span class="header-section-number">3.3</span> Use fonts with ligatures</h2>
-<p>I just added some new code to a slide</p>
-<p><img src="media/no-ligatures.png" class="img-fluid"></p>
-<p>and this code uses some multi-character symbols like <code>!=</code> and <code>|&gt;</code>. These and many like them are common all over the different programming languages, so much so that people have created special fonts with ligatures to make them prettier.</p>
+<section id="embedding-fonts" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="embedding-fonts"><span class="header-section-number">3.3</span> Embedding Fonts</h2>
+<p>There are times when you don’t want to use a web font like how we showed above. And there are many equally valid reasons.</p>
+<ul>
+<li>You are dealing with choppy internet</li>
+<li>You want to be able to use the slides with no internet</li>
+<li>You want to use a font that isn’t available as a web font</li>
+</ul>
+<p>You might even have your own special font you wanna use. While it isn’t that important in slides compared to websites, supplying the fonts instead of downloading them will reduce the load time for your slides.</p>
+<p>I just added some new code to a slide.</p>
+<iframe class="slide-deck" src="examples/fonts/before-fira.html">
+</iframe>
+<p>And this code uses some multi-character symbols like <code>!=</code> and <code>|&gt;</code>. These and many like them are common to all the different programming languages, so much so that people have created special fonts with ligatures to make them prettier.</p>
 <p>One such font is <a href="https://github.com/tonsky/FiraCode">FiraCode</a>.</p>
-<p><img src="media/firacode.png" class="img-fluid"></p>
 <p>And we can add these types of fonts to our slides as well! Start by downloading the font from the site, and copy over a <code>.woff</code> and <code>.woff2</code> file to your slide directory. I selected <code>FiraCode-Regular.woff</code> and <code>FiraCode-Regular.woff2</code>.</p>
 <p>In the <code>/*-- scss:defaults --*/</code> part of our <code>.scss</code> file, we are going to add the following code. This is done to register the font family from the files we have included and to have it selected for use for monospace fonts.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">@font-face</span> {</span>
@@ -371,9 +354,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-monospace</span>: <span class="st">'FiraCode'</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You might have noticed some ugliness with the <code>../../../../../</code>s. To my knowledge, this is the best way of using a local font-face from a file.</p>
-<p>With all of that, we now have beautiful ligatures</p>
-<p><img src="media/with-ligatures.png" class="img-fluid"></p>
+<p>You might have noticed some ugliness with the <code>../../../../../</code>s. To my knowledge, this is the best way of using a local font-face from a file. You might want to add or remove <code>../</code> depending on your folder structure. I found that 5 sets were what was needed when the <code>.qmd</code> file and the <code>woff</code> files were located in the same folder. An <a href="https://github.com/quarto-dev/quarto-cli/issues/5712">issue has been filed</a> regarding this problem.</p>
+<p>With all of that, we now have beautiful ligatures.</p>
+<iframe class="slide-deck" src="examples/fonts/after-fira.html">
+</iframe>
 
 
 </section>
