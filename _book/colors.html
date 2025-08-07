@@ -405,8 +405,8 @@ Note
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is more code, but now I can read at a glance what is happening. This gives us the following colors on our slides. All done with minimal effort. Using one of the highlight colors here to color the links, which also affects the hamburger menu and the progress bar at the bottom.</p>
-<p>TODO: add as slides</p>
-<p><img src="media/theme-example-color.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/colors/colors.html">
+</iframe>
 <p>There are <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables">several sass variables</a> that are used to control how our slides look. Notice how many of the values are defined as transformations of other values. So by setting <code>$body-bg</code>, <code>$body-color</code>, and <code>$link-color</code> we automatically gets things like <code>$text-muted</code>, <code>$selection-bg</code>, <code>$border-color</code> with values that works pretty well.</p>
 <p>Let us modify our theme just a bit more before moving on to fonts. We can use <a href="https://sass-lang.com/documentation/modules/color">sass color functions</a> to modify colors based on our theme.</p>
 <p>I want the headers to pop a little bit more, So I’m going to see if I can make them ever so slightly lighter blue. I see that the sass variable that controls the header color is <code>$presentation-heading-color</code> and that it defaults to <code>$body-color</code>. I use the <code>lighten()</code> function with <code>$theme-blue</code>, iterating a couple of times to find the perfect value.</p>
@@ -419,11 +419,11 @@ Note
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="va">$body-bg</span>: <span class="va">$theme-darkblue</span><span class="op">;</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="va">$body-color</span>: <span class="va">$theme-white</span><span class="op">;</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="va">$link-color</span>: <span class="va">$theme-blue</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-color</span>: <span class="fu">lighten(</span><span class="va">$theme-blue</span><span class="op">,</span> <span class="dv">15</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-color</span>: <span class="fu">lighten(</span><span class="va">$theme-yellow</span><span class="op">,</span> <span class="dv">35</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>TODO: add as slides</p>
-<p><img src="media/theme-example-color-header.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/colors/colors-headers.html">
+</iframe>
 
 
 </section>

@@ -142,5 +142,11 @@
   },
   "fonts/after-fira.qmd": {
     "after-fira.html": "838f1281"
+  },
+  "colors/colors.qmd": {
+    "colors.html": "eeac565e"
+  },
+  "colors/colors-headers.qmd": {
+    "colors-headers.html": "c2d33cc3"
   }
 }

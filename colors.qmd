@@ -178,9 +178,9 @@ All done with minimal effort.
 Using one of the highlight colors here to color the links, 
 which also affects the hamburger menu and the progress bar at the bottom.
 
-TODO: add as slides
+<iframe class="slide-deck" src="examples/colors/colors.html">
 
-![](media/theme-example-color.png)
+</iframe>
 
 There are [several sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) that are used to control how our slides look. 
 Notice how many of the values are defined as transformations of other values.
@@ -205,12 +205,12 @@ $theme-yellow: #F4BA02;
 $body-bg: $theme-darkblue;
 $body-color: $theme-white;
 $link-color: $theme-blue;
-$presentation-heading-color: lighten($theme-blue, 15%);
+$presentation-heading-color: lighten($theme-yellow, 35%);
 
 /*-- scss:rules --*/
 
 ````
 
-TODO: add as slides
+<iframe class="slide-deck" src="examples/colors/colors-headers.html">
 
-![](media/theme-example-color-header.png)
+</iframe>
