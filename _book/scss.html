@@ -326,13 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$theme-yellow</span><span class="op">;</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now that we have our classes defined, you can either apply them using the visual editor in RStudio. Start by highlighting the text you want to apply the class to</p>
-<p><img src="media/apply-class-1.png" class="img-fluid"></p>
-<p>Click “Format” and select “Span…” This will only apply the changes to the highlighted words, instead of the whole paragraph.</p>
-<p><img src="media/apply-class-2.png" class="img-fluid"></p>
-<p>And then write in the class name in the “Classes” field. We see the word yellow by using the class “.yellow”.</p>
-<p><img src="media/apply-class-3.png" class="img-fluid"></p>
-<p>We can also apply these changes in the source editor by using the <code>[text]{.class}</code> syntax. I added (slightly excessive) highlighting to a couple of words. See below</p>
+<p>Now that we have our classes defined, we can apply these changes in the source editor by using the <code>[text]{.class}</code> syntax. I added (slightly excessive) highlighting to a couple of words. See below</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto</span><span class="co">]</span>{.blue} enables you to weave together <span class="co">[</span><span class="ot">content</span><span class="co">]</span>{.yellow} and <span class="co">[</span><span class="ot">executable code</span><span class="co">]</span>{.yellow} into a **finished presentation**. To learn more about <span class="co">[</span><span class="ot">Quarto</span><span class="co">]</span>{.blue} presentations see <span class="ot">&lt;https://quarto.org/docs/presentations/&gt;</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And we get the following slide</p>
 <p><img src="media/theme-example-highlight.png" class="img-fluid"></p>
