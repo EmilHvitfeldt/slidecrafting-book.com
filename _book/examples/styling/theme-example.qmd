@@ -1,6 +1,6 @@
 ---
 format:
-  revealjs: 
+  revealjs:
     theme: [default, custom.scss]
 ---
 

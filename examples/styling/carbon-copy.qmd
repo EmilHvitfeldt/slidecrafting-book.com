@@ -1,6 +1,6 @@
 ---
 format:
-  revealjs: 
+  revealjs:
     theme: [default, carbon-copy.scss]
 highlight-style: "nord"
 ---

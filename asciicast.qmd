@@ -18,7 +18,7 @@ they are typically lost when we write slides
 ## Default asciicast
 
 This is where the amazing [asciicast](https://github.com/r-lib/asciicast) R package comes into play.
-{asciicast} takes an R script and turns it into an [asciinema](https://asciinema.org/) cast. 
+{asciicast} takes an R script and turns it into an [asciinema](https://asciinema.org/) cast.
 We will use the very convenient [init_knitr_engine()](https://asciicast.r-lib.org/reference/init_knitr_engine.html) function to make this as easy as possible.
 
 We can add the {asciicast} {knitr} engine by placing the following chunk at the beginning of our document.
@@ -27,7 +27,7 @@ We can add the {asciicast} {knitr} engine by placing the following chunk at the 
 asciicast::init_knitr_engine()
 ```
 
-And then we toggle asciicast output by replacing 
+And then we toggle asciicast output by replacing
 
 ```{{r}}
 library(tidymodels)
@@ -39,7 +39,7 @@ with
 library(tidymodels)
 ```
 
-With this change, we get the following output, 
+With this change, we get the following output,
 nicely styled with colors and everything.
 
 <iframe class="slide-deck" src="examples/asciicast/asciicast-default.html">
@@ -51,7 +51,7 @@ nicely styled with colors and everything.
 ::: {.callout-note}
 The output of asciicast will by default fill the screen horizontally,
 but for some reason when setting `format: revealjs: self-contained: true` it doesn't.
-All examples use this option for a better blogging experience. 
+All examples use this option for a better blogging experience.
 You just have to trust me that it looks better without the option.
 :::
 
@@ -63,11 +63,11 @@ The full list of arguments to `asciicast_init_knitr_engine()` is as follows
 formals(asciicast::init_knitr_engine)
 ```
 
-I will talk about the 3 I use, which are `same_process`, `echo`, and `echo_input`. 
-The two go together. 
-`same_process` which defaults to `TRUE`, does what it says. 
-It determines whether all the asciicast chunks should be in the same process or not. 
-If you want to show things that only happen once a session, 
+I will talk about the 3 I use, which are `same_process`, `echo`, and `echo_input`.
+The two go together.
+`same_process` which defaults to `TRUE`, does what it says.
+It determines whether all the asciicast chunks should be in the same process or not.
+If you want to show things that only happen once a session,
 you might want to turn this off which is done this way
 
 ```{{r}}
@@ -84,9 +84,9 @@ and gives the following results
 
 <a href="examples/asciicast/asciicast-same_process.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
 
-You will notice that the code that is being run is included in the asciicast output. 
-This is happening because the default arguments `echo = FALSE` and `echo_input = TRUE`. 
-By swapping these options we get the code as normal quarto code, 
+You will notice that the code that is being run is included in the asciicast output.
+This is happening because the default arguments `echo = FALSE` and `echo_input = TRUE`.
+By swapping these options we get the code as normal quarto code,
 with the output as asciicast
 
 ```{{r}}
@@ -102,14 +102,14 @@ asciicast::init_knitr_engine(
 
 <a href="examples/asciicast/asciicast-echos.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
 
-It wouldn't make much sense to set both of these to `TRUE` as you would have duplication, 
+It wouldn't make much sense to set both of these to `TRUE` as you would have duplication,
 but there are certainly cases where you want both of these to be `FALSE` as you just want the output.
 
 ## Using theme argument
 
-The output is styled a certain way, 
-and we can change it. 
-At the time of writing, 
+The output is styled a certain way,
+and we can change it.
+At the time of writing,
 the following 10 premade themes are available.
 
 - asciinema
@@ -123,7 +123,7 @@ the following 10 premade themes are available.
 - pkgdown
 - readme
 
-We can toggle any of these by setting the option `asciicast_theme`. 
+We can toggle any of these by setting the option `asciicast_theme`.
 The below example showcases the `"solarized-light"` theme.
 
 ```{{r}}
@@ -136,12 +136,12 @@ options(asciicast_theme = "solarized-light")
 
 <a href="examples/asciicast/asciicast-solarized.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
 
-If none of these is what you need, 
-you can use a completely custom theme. 
+If none of these is what you need,
+you can use a completely custom theme.
 I suggest that you modify one of the [existing theme](https://github.com/r-lib/asciicast/blob/4e6302182264a0fe7c58c427c9878b9135dac4fd/R/svg.R#L190)
 
-For this example, 
-the `github-light` theme was modified by changing the `background` to pure white to match the background of the slide, 
+For this example,
+the `github-light` theme was modified by changing the `background` to pure white to match the background of the slide,
 thus having it blend into the slide.
 
 ```{{r}}
@@ -179,6 +179,6 @@ options(
 
 ## Roundup
 
-I just recently learned about {asciicast} and I love it. 
-If you know of any other cool tools or packages, 
+I just recently learned about {asciicast} and I love it.
+If you know of any other cool tools or packages,
 please reach out and share them with me!

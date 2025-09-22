@@ -29,7 +29,7 @@ Do this by setting the `theme` field in the YAML and specifying the name of the 
 
 ```yaml
 format:
-  revealjs: 
+  revealjs:
     theme: [default, styles.scss]
 ```
 
@@ -135,9 +135,9 @@ I end up mostly using 2 or 3 of them.
 - `presentation-h4-font-size`
 - `code-block-font-size`
 
-The `presentation-font-size-root` variable changes basically everything, 
+The `presentation-font-size-root` variable changes basically everything,
 most sizes are calculated based on this value, so if you increase it,
-Then everything else will increase with it. 
+Then everything else will increase with it.
 
 The `code-block-font-size` changes the sizing of the code block and the code output.
 

@@ -317,9 +317,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Next, we add our code in a fenced div, with the mono class. you need to use <code>\</code> to add leading spaces, and each line ends with 2 spaces to denote newlines</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>::: mono</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>library(ggplot2)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mtcars |&gt;  </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>\ \ ggplot(aes(mpg, disp)) +  </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>\ \ geom_point() +  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mtcars |&gt; </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>\ \ ggplot(aes(mpg, disp)) + </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>\ \ geom_point() + </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>\ \ geom_smooth(method = "lm", formula = "y ~ x")</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Taking it to the next step, you can manually change the formatting of functions using css or css classes, <code>library([ggplot2]{style="color:purple;"})</code> would make <code>ggplot2</code> purple. This is also a great place to use <a href="https://emilhvitfeldt.com/post/slidecraft-colors-fonts/#using-css-classes">css classes</a>.</p>

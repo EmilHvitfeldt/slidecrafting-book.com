@@ -1,7 +1,7 @@
 ---
 format:
   revealjs:
-    include-after-body: 
+    include-after-body:
       - "advance.html"
 ---
 

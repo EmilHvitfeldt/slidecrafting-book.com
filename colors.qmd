@@ -13,23 +13,23 @@ When finding your colors you will mainly look for 4 different types of colors:
 
 This is a simplistic model and it will do us just fine. In general, I think having 3-6 colors is about the right amount of colors. This doesn't mean that you couldn't have 10 colors in your theme, but that you should be very deliberate in your choices.
 
-For a small color theme, you would want a light and dark color for the background and text color. 
+For a small color theme, you would want a light and dark color for the background and text color.
 Dark text on a light background, or light text on dark background.
 You could stop right here and use other visual elements for directing the viewers eyes such as italics, bolding of the text or using arrows.
 
 If you want to use colors to draw the viewers eyes you can use colors, as long as that color isn't too close to the background and text colors.
 Something that looks good with both your background and text color.
 This color is a good oppotunity to introduce your brand identity into your slides.
-you generally want 1 to 3 of these colors. 
-Having at least 1 is perfectly sufficient and you can use it to great effect to direct the colors. 
-3 colors are where I'm still comfortable that they don't get diluted. 
+you generally want 1 to 3 of these colors.
+Having at least 1 is perfectly sufficient and you can use it to great effect to direct the colors.
+3 colors are where I'm still comfortable that they don't get diluted.
 Using too many highlighting colors can confuse your viewers.
 Having a 3 color slide theme can lead to a very effective and clear set of slides.
 
 The important thing is that the background, highlight, and text colors are different enough from each others thats they legible.
 This is explored more in the contrasts sections.
 Theme colors on the other hand doesn't need to differentiable from the other colors,
-as they only purpose is to visual appeal to the slides. 
+as they only purpose is to visual appeal to the slides.
 Having multiple shades of pink is perfectly acceptable as theme colors as long as they aren't too cose the blackgrund, text, or theme colors.
 Likewise you could use rainbow colors to denote sections in the slides,
 starting with red followed by yellow and green to denote a "problem", "solution", "results" phase.
@@ -44,7 +44,7 @@ Some of you will have to follow the corporate mandated style guide,
 and will thus have little to no inout in the selections.
 If you are free to decide for yourself I would suggest that you look around other peoples slides and themes,
 to see what you like about them and what to take inspiration off.
-Another personal favorite place of mine to go color theme hunting is on [pinterest](https://www.pinterest.com/). 
+Another personal favorite place of mine to go color theme hunting is on [pinterest](https://www.pinterest.com/).
 I do a google search for "Pinterest color palettes" and go wild.
 
 :::: {.content-visible when-format="html"}
@@ -55,38 +55,38 @@ If you have any specific ideas in mind you can expand your search to include wor
 
 ## Contrasts
 
-The main thing you need to keep in mind, 
+The main thing you need to keep in mind,
 and the biggest difference from other types of colors you may have worked with,
-such as in data visualization, 
-is that you need to have **high contrast** between your colors. 
+such as in data visualization,
+is that you need to have **high contrast** between your colors.
 Namely your background, text, and highlight colors.
-This is by far the most important thing that separates a good theme from a bad theme. 
-The goal for your slides is for other people to see them, 
+This is by far the most important thing that separates a good theme from a bad theme.
+The goal for your slides is for other people to see them,
 if your contrast is low then people can't.
 
-There are many color contrast checking websites out there, 
-I like the [https://colourcontrast.cc/](https://colourcontrast.cc/) and [Color Contrast Checker by Coolors](https://coolors.co/contrast-checker/580b3a-f8f8f8). 
-If possible I try to have a contrast of at least 12, 
-but something like 10 will be okay from time to time. 
+There are many color contrast checking websites out there,
+I like the [https://colourcontrast.cc/](https://colourcontrast.cc/) and [Color Contrast Checker by Coolors](https://coolors.co/contrast-checker/580b3a-f8f8f8).
+If possible I try to have a contrast of at least 12,
+but something like 10 will be okay from time to time.
 Which is quite a high contrast without being impossible to hit.
 Many browsers now have contrasts checkers when you open developer mode.
 
 ![](media/contrast.webp)
 
-This contrast requirement means that both your background and text color will be quite dark and light, 
+This contrast requirement means that both your background and text color will be quite dark and light,
 as it is quite hard for most highly saturated colors to have high contrasts to anything else.
 
 ::: {.callout-warning}
-You should try to avoid pure black and pure white. 
+You should try to avoid pure black and pure white.
 These colors can be a bit much and can be unpleasant to look at for long periods of time.
 :::
 
-This contrast is related to font size, 
-the smaller and finer the text is, 
+This contrast is related to font size,
+the smaller and finer the text is,
 the more important it is that you have good contrast.
 
 The contrast of the highlight colors should be different enough from the background and text color that they stand out.
-If you are using multiple highlighting colors you should make sure that they are colorblind-friendly with each other. 
+If you are using multiple highlighting colors you should make sure that they are colorblind-friendly with each other.
 I like to use the `check_color_blindness()` function from the [prismatic](https://emilhvitfeldt.github.io/prismatic/) package.
 
 ![](media/index_files/figure-html/unnamed-chunk-1-1.png)
@@ -101,7 +101,7 @@ It can also be helpful to include a small text background or outline to help it 
 
 ## Applying Colors
 
-Let us try all of that in practice. 
+Let us try all of that in practice.
 I found this nice [blue and yellow](https://www.pinterest.com/pin/281123201723784541/) color palette on Pinterest.
 
 ![](media/example-theme.jpeg)
@@ -126,8 +126,8 @@ E1E8EB
 F4BA02
 ```
 
-I'm thinking I want to use dark blue as my background colors, 
-and the lightest color as my text color. 
+I'm thinking I want to use dark blue as my background colors,
+and the lightest color as my text color.
 Before I do any modification I get the following
 
 ![](media/theme-before.png)
@@ -136,8 +136,8 @@ And by playing the sliders a little bit I have a contrast and some colors I'm ha
 
 ![](media/theme-after.png)
 
-We now open up our `.scss` file and fill in a couple of values. 
-Many of the colorings are done by relations, 
+We now open up our `.scss` file and fill in a couple of values.
+Many of the colorings are done by relations,
 so we can get a lot done by setting `$body-bg`, `$body-color`, and `$link-color`.
 This needs to be done inside `scss:defaults`.
 
@@ -151,9 +151,9 @@ $link-color: #99D9DD;
 
 ````
 
-While the above configurations are perfectly fine, 
-I find that using [sass](https://quarto.org/docs/presentations/revealjs/themes.html#creating-themes) [variables](https://sass-lang.com/documentation/variables) to be clear, 
-and it helps us tremendously if we start making more changes. 
+While the above configurations are perfectly fine,
+I find that using [sass](https://quarto.org/docs/presentations/revealjs/themes.html#creating-themes) [variables](https://sass-lang.com/documentation/variables) to be clear,
+and it helps us tremendously if we start making more changes.
 So I create variables all with the prefix `theme-` and descriptive names so I know what is what.
 
 ````scss
@@ -171,28 +171,28 @@ $link-color: $theme-blue;
 
 ````
 
-This is more code, 
-but now I can read at a glance what is happening. 
-This gives us the following colors on our slides. 
-All done with minimal effort. 
-Using one of the highlight colors here to color the links, 
+This is more code,
+but now I can read at a glance what is happening.
+This gives us the following colors on our slides.
+All done with minimal effort.
+Using one of the highlight colors here to color the links,
 which also affects the hamburger menu and the progress bar at the bottom.
 
 <iframe class="slide-deck" src="examples/colors/colors.html">
 
 </iframe>
 
-There are [several sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) that are used to control how our slides look. 
+There are [several sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) that are used to control how our slides look.
 Notice how many of the values are defined as transformations of other values.
 So by setting `$body-bg`, `$body-color`, and `$link-color` we automatically gets things like `$text-muted`, `$selection-bg`, `$border-color` with values that works pretty well.
 
-Let us modify our theme just a bit more before moving on to fonts. 
+Let us modify our theme just a bit more before moving on to fonts.
 We can use [sass color functions](https://sass-lang.com/documentation/modules/color) to modify colors based on our theme.
 
-I want the headers to pop a little bit more, 
-So I'm going to see if I can make them ever so slightly lighter blue. 
-I see that the sass variable that controls the header color is `$presentation-heading-color` and that it defaults to `$body-color`. 
-I use the `lighten()` function with `$theme-blue`, 
+I want the headers to pop a little bit more,
+So I'm going to see if I can make them ever so slightly lighter blue.
+I see that the sass variable that controls the header color is `$presentation-heading-color` and that it defaults to `$body-color`.
+I use the `lighten()` function with `$theme-blue`,
 iterating a couple of times to find the perfect value.
 
 ````scss

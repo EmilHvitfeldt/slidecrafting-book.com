@@ -2,39 +2,39 @@
 title: "Theme"
 ---
 
-The built in themes are a great place to look for inspiration. 
+The built in themes are a great place to look for inspiration.
 
 TODO: add the all-theme
 
-This is also a perfect place to start looking for inspiration. 
-Using these themes with one or two modifications might get you all the way where you want to go. 
+This is also a perfect place to start looking for inspiration.
+Using these themes with one or two modifications might get you all the way where you want to go.
 It is in general a good idea to look for inspiration in other people's work.
 
 This chapter covers what I like to call **theme variants** and **slide themee**.
-The 
+The
 
 This way you can have black/white variants, white/red/blue,
-or any number of different styles. 
+or any number of different styles.
 If you are familiar with [xaringan](https://slides.yihui.org/xaringan/) you have seen an `inverse` theme variant already.
 
 ## What is a variant?
 
 When we are slidecrafting,
-and you start having many slides. 
-It can be helpful to bucket them into fewer types of slides. 
+and you start having many slides.
+It can be helpful to bucket them into fewer types of slides.
 This way you can reuse the same style many times with minimal copy-pasting.
 
-Using colors to create multiple variants of the same theme allows us to quickly add similar looking, 
-yet different styles. 
-The `inverse` theme variant of {xaringan} was a dark grey background slide, 
-that accompanied the white background themed default. 
-I and many other people found this `inverse` theme helpful for creating a break in slides. 
+Using colors to create multiple variants of the same theme allows us to quickly add similar looking,
+yet different styles.
+The `inverse` theme variant of {xaringan} was a dark grey background slide,
+that accompanied the white background themed default.
+I and many other people found this `inverse` theme helpful for creating a break in slides.
 Typically using it as a section break or a background on which to show a quote.
 
 You can also imagine having a couple of more similar theme variants
-that are used to denote theory/practice, idea/execution, pros/cons. 
-The opportunities are endless, 
-and we are not limited to only 2. 
+that are used to denote theory/practice, idea/execution, pros/cons.
+The opportunities are endless,
+and we are not limited to only 2.
 I have in the past used themes that slowly changes colors as the slides progressed through the topics.
 
 Variants are useful in a lot of different ways
@@ -60,9 +60,9 @@ In our `.qmd` document we can denote each slide as a class with the following sy
 ```
 
 this gives the slides the corresponding `css` class which we can create styles for.
-Notice how the first slide doesn't have a variant specified. 
-Depending on your usage, 
-it is easier to have a good base style, 
+Notice how the first slide doesn't have a variant specified.
+Depending on your usage,
+it is easier to have a good base style,
 and only use `{.class}` to specify when you want a different class.
 
 create a `.scss` file and add it to the themes in the yaml section
@@ -83,12 +83,12 @@ And in the `.scss` file, we add the boilerplate information.
 
 Under the `/*-- scss:rules --*/` section we can now specify all the css rules we want.
 And we do this by prefixing `.variant ` to each style.
-As an example, 
-if we want to change the color of the text we use `.variant-one {color: blue;}`, 
+As an example,
+if we want to change the color of the text we use `.variant-one {color: blue;}`,
 or the link color `.variant-one a {color: green;}`.
 
-You can quite quickly end up making many changes. 
-And this is where I find it helpful to use [scss nesting](https://sass-lang.com/documentation/style-rules#nesting). 
+You can quite quickly end up making many changes.
+And this is where I find it helpful to use [scss nesting](https://sass-lang.com/documentation/style-rules#nesting).
 Nesting allows us to rewrite
 
 ```css
@@ -129,9 +129,9 @@ as
 }
 ```
 
-I find it quite readable and I encourage you to follow the link and read more about it! 
-Using this syntax, 
-having multiple different variants is quite effortless, 
+I find it quite readable and I encourage you to follow the link and read more about it!
+Using this syntax,
+having multiple different variants is quite effortless,
 and many IDEs will help highlight and collapse this type of syntax.
 
 ```scss
@@ -166,7 +166,7 @@ and many IDEs will help highlight and collapse this type of syntax.
 }
 ```
 
-And that is all that is needed! 
+And that is all that is needed!
 I have taken the liberty to create two themes to show case how this is done in practice:
 
 https://github.com/EmilHvitfeldt/quarto-revealjs-inverse
@@ -188,8 +188,8 @@ If you have used conventional slide-making tools you have seen a dropdown menu b
 
 ![](media/google-slides.png)
 
-With these menus, 
-you can swiftly select the style of slide you intend to write and fill in the content. 
+With these menus,
+you can swiftly select the style of slide you intend to write and fill in the content.
 I find that for some presentations that I all I need.
 
 Below is one such theme I created
@@ -205,19 +205,19 @@ Below is one such theme I created
 </a>
 </div>
 
-Instead of carefully managing the style of all the elements of each slide. 
-They all have an overall slide theme that controls all the content on the slide. 
-This controls colors and sizes but can go further and control backgrounds and even the positioning of elements. 
+Instead of carefully managing the style of all the elements of each slide.
+They all have an overall slide theme that controls all the content on the slide.
+This controls colors and sizes but can go further and control backgrounds and even the positioning of elements.
 
-Take `.theme-section1` as an example. 
-Not only are the text and colors modified. 
-The text region is being modified such that the text isn't going to overlap with the globe on the right. 
-Setting this up beforehand is quite nice. 
-While the backgrounds might seem complicated, 
-they are all SVGs, 
+Take `.theme-section1` as an example.
+Not only are the text and colors modified.
+The text region is being modified such that the text isn't going to overlap with the globe on the right.
+Setting this up beforehand is quite nice.
+While the backgrounds might seem complicated,
+they are all SVGs,
 but you can use any other type of image or none at all.
 
-Once you have created the theme, 
+Once you have created the theme,
 your slides will look like this:
 
 ```md
@@ -240,13 +240,13 @@ Content
 Content
 ```
 
-Each slide will have minimal CSS, 
+Each slide will have minimal CSS,
 just one or two classes specified on the slide level.
 
 ## How to create your own
 
 
-What we will be doing is creating several `CSS` classes. 
+What we will be doing is creating several `CSS` classes.
 I find it easier to prefix all of them with `.theme-` but that is not a requirement.
 We will also be using the feature that [Sass lets us create nesting rules css](https://sass-lang.com/documentation/style-rules/#nesting).
 
@@ -267,8 +267,8 @@ if we are following my advice on [creating css color palettes](https://www.emilh
 }
 ```
 
-And we can specify anything want in here. 
-Note that anything inside `h3` applies to all `h3` headers in `.theme-slide1` slides. 
+And we can specify anything want in here.
+Note that anything inside `h3` applies to all `h3` headers in `.theme-slide1` slides.
 
 ```scss
 .theme-slide1 {
@@ -291,10 +291,10 @@ We could specify specific background colors
 }
 ```
 
-Or we could specify background images, 
-for reasons I don't want to get into, 
-this is the way to include an image nicely. 
-With `../../../../../assets/slide1.svg` being a valid path to the slides. 
+Or we could specify background images,
+for reasons I don't want to get into,
+this is the way to include an image nicely.
+With `../../../../../assets/slide1.svg` being a valid path to the slides.
 You may have to modify the number of `../` for this to work
 
 ```scss
@@ -312,10 +312,10 @@ You may have to modify the number of `../` for this to work
 }
 ```
 
-depending on your slides you might have repeated styles a lot. 
-Sass has a way to help us with [`@mixin` and `@include`](https://sass-lang.com/documentation/at-rules/mixin/). 
-You can create a `@mixin` with several styles, and then instead of copying around all the styles, 
-you can `@include` the mixin for the same effect. 
+depending on your slides you might have repeated styles a lot.
+Sass has a way to help us with [`@mixin` and `@include`](https://sass-lang.com/documentation/at-rules/mixin/).
+You can create a `@mixin` with several styles, and then instead of copying around all the styles,
+you can `@include` the mixin for the same effect.
 Using this we now have the following
 
 ```scss
@@ -337,8 +337,8 @@ Using this we now have the following
 }
 ```
 
-Lastly, if you are using images the way I'm using them, 
-you will need to change the text regions to avoid text overlapping with the background image, 
+Lastly, if you are using images the way I'm using them,
+you will need to change the text regions to avoid text overlapping with the background image,
 we can use the `margin-` rules for that
 
 ```scss
@@ -363,14 +363,14 @@ we can use the `margin-` rules for that
 }
 ```
 
-I hope you can see that with this style of slidecrafting, 
-the skies the limit. 
+I hope you can see that with this style of slidecrafting,
+the skies the limit.
 The style sheet for the above example can be [found here](https://github.com/EmilHvitfeldt/quarto-revealjs-earth/blob/main/_extensions/earth/earth.scss).
 
 ## More Examples
 
 Below is another theme,
-following very closely the construction of the previous 
+following very closely the construction of the previous
 
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-cinco-de-mayo/"></iframe>
 
@@ -386,7 +386,7 @@ following very closely the construction of the previous
 </a>
 </div>
 
-Another approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides 
+Another approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides
 
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://katie.quarto.pub/positconf2023/"></iframe>
 

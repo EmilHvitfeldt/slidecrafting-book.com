@@ -6,8 +6,8 @@ format: revealjs
 
 ::: mono
 library([ggplot2]{style="color:purple;"})
-mtcars |>  
-\ \ ggplot(aes(mpg, disp)) +  
-\ \ geom_point() +  
+mtcars |> 
+\ \ ggplot(aes(mpg, disp)) + 
+\ \ geom_point() + 
 \ \ geom_smooth([method = "lm"]{.fragment .highlight-red}, [formula = "y ~ x"]{.fragment .highlight-blue})
 :::

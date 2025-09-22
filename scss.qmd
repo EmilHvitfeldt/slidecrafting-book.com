@@ -29,8 +29,8 @@ Note that we need to put these classes into the `scss:rules` section.
 ````
 
 Now that we have our classes defined,
-we can apply these changes in the source editor by using the `[text]{.class}` syntax. 
-I added (slightly excessive) highlighting to a couple of words. 
+we can apply these changes in the source editor by using the `[text]{.class}` syntax.
+I added (slightly excessive) highlighting to a couple of words.
 See below
 
 ````markdown
@@ -49,9 +49,9 @@ There are also changes where you just want to modify the CSS directly,
 these changes should also be applied in the `scss:rules` section.
 For example, in our example so far,
 we have used the blue color both to color the links,
-and as a highlighting color. 
+and as a highlighting color.
 This is very confusing,
-so let us make sure that all links are underlined. 
+so let us make sure that all links are underlined.
 We can make this happen by adding.
 
 Note that CSS rules that target Reveal content generally need to use the `.reveal .slide` prefix to successfully override the theme’s default styles.
@@ -93,18 +93,18 @@ $colors: (
 ```
 
 ::: {.callout-note}
-There is a difference between `(key: value)` and `("key": value)` in SASS. 
+There is a difference between `(key: value)` and `("key": value)` in SASS.
 For consistency, I also use quoted strings as the keys in a map.
 :::
 
-Instead of having multiple values representing our colors we now just have one `$colors`. 
-By themselves, maps aren't valid CSS and don't do anything once the SASS compiles. 
+Instead of having multiple values representing our colors we now just have one `$colors`.
+By themselves, maps aren't valid CSS and don't do anything once the SASS compiles.
 The next sections will show how we can use these maps more efficiently than my previous approach.
 
 ## Using `Functions` to pull out theme colors
 
-We where using these colors to change a lot of things, 
-including the major [Sass Variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) revealjs sass variables. 
+We where using these colors to change a lot of things,
+including the major [Sass Variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) revealjs sass variables.
 Before we used a map, it would look something like this:
 
 ```scss
@@ -114,9 +114,9 @@ $code-color: $theme-blue;
 $body-color: $theme-darkblue;
 ```
 
-but we can't do that directly with a map. 
-There are built-in functions to extract values from a map, 
-namely the function [map-get()](https://sass-lang.com/documentation/values/maps/#look-up-a-value). 
+but we can't do that directly with a map.
+There are built-in functions to extract values from a map,
+namely the function [map-get()](https://sass-lang.com/documentation/values/maps/#look-up-a-value).
 Using that we can rewrite the above as
 
 ```scss
@@ -126,10 +126,10 @@ $code-color: map-get($colors, "blue");
 $body-color: map-get($colors, "darkblue");
 ```
 
-And while that is all good, 
+And while that is all good,
 I find it a little nicer to have a helper [function](https://sass-lang.com/documentation/at-rules/function/) to do this.
 
-Functions in SASS are written as below. 
+Functions in SASS are written as below.
 You can use as many arguments as you want.
 
 ```scss
@@ -156,14 +156,14 @@ $body-color: theme-color("darkblue");
 ```
 
 ::: {.callout-note}
-Note that we are using `theme-color("yellow")` instead of `theme-color(yellow)` because we used quoted strings in the map. 
+Note that we are using `theme-color("yellow")` instead of `theme-color(yellow)` because we used quoted strings in the map.
 Using unquoted strings all around gave me false positives in my IDE as it interpreted `yellow` inside `theme-color()` as `#FFFF00` instead of my theme value.
 :::
 
 ## Using `@each` to automatically create classes
 
-To add a splash of color, 
-or as used in highlighting, 
+To add a splash of color,
+or as used in highlighting,
 I would create a lot of CSS classes like so:
 
 ```scss
@@ -188,13 +188,13 @@ I would create a lot of CSS classes like so:
 }
 ```
 
-Which is all fine and dandy until you also want a class for underlining. 
-It becomes a lot of copy-pasting and changing a couple of names. 
+Which is all fine and dandy until you also want a class for underlining.
+It becomes a lot of copy-pasting and changing a couple of names.
 And that is not to mention the trouble you run into when you decide to add a new color into the mix halfway through your slides.
 
-This is when I discovered [interpolation](https://sass-lang.com/documentation/interpolation/) and the moment I realized maps were worth it. 
-Interpolation is done by using `#{}` in some code, meaning that if `$favorite-color: "blue"` then `.text-#{$favorite-color} {}` turns into `.text-blue {}`. 
-SASS provides the action [`@each`](https://sass-lang.com/documentation/at-rules/control/each/) to loop over all the key and value pairs of our map. 
+This is when I discovered [interpolation](https://sass-lang.com/documentation/interpolation/) and the moment I realized maps were worth it.
+Interpolation is done by using `#{}` in some code, meaning that if `$favorite-color: "blue"` then `.text-#{$favorite-color} {}` turns into `.text-blue {}`.
+SASS provides the action [`@each`](https://sass-lang.com/documentation/at-rules/control/each/) to loop over all the key and value pairs of our map.
 So we can rewrite the creation of the above classes as this:
 
 ```scss
@@ -209,10 +209,10 @@ So we can rewrite the creation of the above classes as this:
 }
 ```
 
-And this is the beauty of maps. 
-If I want to add a new color to my slides, 
-I just have to add it to the `$colors` map. 
-If I want to add a new set of classes, 
+And this is the beauty of maps.
+If I want to add a new color to my slides,
+I just have to add it to the `$colors` map.
+If I want to add a new set of classes,
 I just have to write it once inside the `@each` statement.
 
 ## Using `@mixin` to avoid repeating code
@@ -246,10 +246,10 @@ With the following code
 }
 ```
 
-Copy-pasting this around when you have 10-15 images is such a pain. 
-But as you properly have noticed, 
-interpolation would be a perfect solution to this problem, 
-and you would be correct! 
+Copy-pasting this around when you have 10-15 images is such a pain.
+But as you properly have noticed,
+interpolation would be a perfect solution to this problem,
+and you would be correct!
 We use a [`@mixin`](https://sass-lang.com/documentation/at-rules/mixin/) to create to create a way to create many classes:
 
 ```scss
@@ -267,7 +267,7 @@ We use a [`@mixin`](https://sass-lang.com/documentation/at-rules/mixin/) to crea
 @include theme-slide(3);
 ```
 
-It becomes quite a bit tighter! 
+It becomes quite a bit tighter!
 But we can do better because SASS also has [`@for`](https://sass-lang.com/documentation/at-rules/control/for/) loops.
 
 ```scss
@@ -289,8 +289,8 @@ you can now add more background images with ease as long as you are careful when
 
 ## Using nested loops to create classes
 
-In our first example, 
-I want a fun gradient shadow/highlight effect for text. 
+In our first example,
+I want a fun gradient shadow/highlight effect for text.
 We can get that effect using something like following
 
 ```css
@@ -301,7 +301,7 @@ background-position: 0 85%;
 width: fit-content;
 ```
 
-I want it to work on both inline text and as a way to handle the header, 
+I want it to work on both inline text and as a way to handle the header,
 the selectors for that would be `span.my-class` and `.my-class > h2` respectively.
 
 
@@ -315,17 +315,17 @@ span.my-class, .my-class > h2 {
 }
 ```
 
-And them we fill in the rest, 
+And them we fill in the rest,
 using the [`@each`](https://sass-lang.com/documentation/at-rules/control/each/#with-maps) command twice nestedly over a map of colors.
 
 ```scss
 /*-- scss:defaults --*/
 
 $colors: (
-  "red": #FFADAD, 
-"orange": #FFD6A5, 
-  "yellow": #FDFFB6, 
-  "blue": #aad2e7, 
+  "red": #FFADAD,
+"orange": #FFD6A5,
+  "yellow": #FDFFB6,
+  "blue": #aad2e7,
   "purple":#b4addd
 );
 
@@ -344,12 +344,12 @@ $colors: (
 }
 ```
 
-I know we are creating some non-interesting classes such as `.hl-yellow-yellow` but for what we are doing, 
-the tradeoff between avoiding them and how little it impacts us to have them. 
+I know we are creating some non-interesting classes such as `.hl-yellow-yellow` but for what we are doing,
+the tradeoff between avoiding them and how little it impacts us to have them.
 I think it is a worthwhile tradeoff.
 
 ::: {.callout-important}
-The slides in this post are interactive, 
+The slides in this post are interactive,
 advance them to see the other classes.
 :::
 
@@ -361,23 +361,23 @@ advance them to see the other classes.
 <a href="examples/scss/tip-1.scss" target="_blank" class="listing-video btn-links">{{< fa brands sass >}}scss<a>
 
 ::: {.callout-note}
-You don't need these compound classes for everything. 
-For example, the class `.hl-green-bold` isn't going to be useful as you could just as easily create `.hl-green` and `.bold` separately. 
-This trick works best when two elements are used together in a tightly coupled way, 
-such as in gradients. 
+You don't need these compound classes for everything.
+For example, the class `.hl-green-bold` isn't going to be useful as you could just as easily create `.hl-green` and `.bold` separately.
+This trick works best when two elements are used together in a tightly coupled way,
+such as in gradients.
 :::
 
-For our second example, 
-we are continuing with the gradients, 
-but instead trying to apply them to the background. 
-My goal was to add a gradient line to the right side of the slide. 
+For our second example,
+we are continuing with the gradients,
+but instead trying to apply them to the background.
+My goal was to add a gradient line to the right side of the slide.
 
-I was able to create that effect, 
-by layering 2 gradients on top of each other. 
-The first gradient contained the two colors I was interested in, 
-and the names of the class. 
-The second layer, which I placed on top, goes from white to transparent. 
-I set up the transition between those two colors to be super sharp, 
+I was able to create that effect,
+by layering 2 gradients on top of each other.
+The first gradient contained the two colors I was interested in,
+and the names of the class.
+The second layer, which I placed on top, goes from white to transparent.
+I set up the transition between those two colors to be super sharp,
 resulting in the effect you see below
 
 <iframe class="slide-deck" src="examples/scss/tip-2.html">
@@ -387,5 +387,5 @@ resulting in the effect you see below
 <a href="examples/scss/tip-2.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
 <a href="examples/scss/tip-2.scss" target="_blank" class="listing-video btn-links">{{< fa brands sass >}}scss<a>
 
-since we are doing something interesting, 
+since we are doing something interesting,
 we could also have used a separate `$colors` map just for this effect to not interfere with what else we are doing.

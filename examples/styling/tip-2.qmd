@@ -5,4 +5,4 @@ format:
       [default, tip-2.scss]
 ---
 
-# A place like home 
+# A place like home
