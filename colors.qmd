@@ -214,3 +214,5 @@ $presentation-heading-color: lighten($theme-yellow, 35%);
 <iframe class="slide-deck" src="examples/colors/colors-headers.html">
 
 </iframe>
+
+TODO: add example where we also change code color

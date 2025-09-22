@@ -26,7 +26,7 @@ library(ggplot2)
 mtcars |>
   ggplot(aes(disp, mpg, color = factor(am))) +
   geom_point() +
-  theme_minimal() 
+  theme_minimal()
 ```
 
 ## ggplot2 - after {background-color="#DEE0F3"}

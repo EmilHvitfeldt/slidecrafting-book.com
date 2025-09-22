@@ -48,7 +48,8 @@
     "no-asciicast.html": "e85dd4fc"
   },
   "asciicast/asciicast-default.qmd": {
-    "asciicast-default.html": "fcced57c"
+    "asciicast-default.html": "fcced57c",
+    "asciicast-default.docx": "8cf7c1a3"
   },
   "asciicast/asciicast-same_process.qmd": {
     "asciicast-same_process.html": "d33ee735"

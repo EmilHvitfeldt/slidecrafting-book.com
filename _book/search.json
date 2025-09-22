@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Slidecrafting with Quarto",
+    "title": "Slidecrafting",
     "section": "",
     "text": "Preface\nHello! This book is about what I like to call slidecrafting; The art of putting together slides that are functional and aesthetically pleasing. I will be using quarto presentations throughout the whole book. Some of the advice will transcend Quarto presentations and apply to all kinds of slide technologies, but the book is written with Quarto in mind. There will thus inherently be some overlap with quarto documentation. It is suggested to read all the quarto revealjs documentation alongside this book for optimal learning.\nI think of slidecrafting as an art because of the inexact nature of many of the decisions you will be making; after all, many slide decks can be distilled down into a series of still images, each of which should be carefully crafted.\nThis book will not be able to teach you everything you need, but it will cover the parts of the process that stay constant from deck to deck, so you can focus on the content and develop your brand/style.\nThe book will be split into a number of semi-coherent sections, each with a number of chapters. This is not a perfect subdivision, but it serves its purpose quite well.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#theming",
     "href": "index.html#theming",
-    "title": "Slidecrafting with Quarto",
+    "title": "Slidecrafting",
     "section": "Theming",
     "text": "Theming\nThe first section is the theming section, where we go over how to change the visual appearance of your slides. It starts with a quick chapter showing you how to set up a style in less than 10 minutes. Then we will go into more details on how to use colors, fonts, and sizes to change the look and feel of your slides. The theme chapter goes over the process of developing a slide-by-slide theme. Lastly, we have a chapter going over some SCSS tips and tricks, which I find generally useful but doesn’t fit into any of the other chapters.",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#content",
     "href": "index.html#content",
-    "title": "Slidecrafting with Quarto",
+    "title": "Slidecrafting",
     "section": "Content",
     "text": "Content\nThe contents section includes a chapter on how to change what is on the slides, either for variety or different ways to highlight new things. The elements chapter focuses on things that show up on the slides, such as images and figures. The layout talks about different ways to move elements of the page around “geographically”. Sometimes you want to highlight very specific things in some code, and for that to work, you will likely need to style the code manually. There are other times where you want to showcase code and its output, and that can be done using asciicast.",
     "crumbs": [
@@ -32,7 +32,7 @@
   {
     "objectID": "index.html#interactivity",
     "href": "index.html#interactivity",
-    "title": "Slidecrafting with Quarto",
+    "title": "Slidecrafting",
     "section": "Interactivity",
     "text": "Interactivity\nThis section looks at how we fragments to change things up even more, allowing for elements to change and more.",
     "crumbs": [
@@ -42,7 +42,7 @@
   {
     "objectID": "index.html#extensions",
     "href": "index.html#extensions",
-    "title": "Slidecrafting with Quarto",
+    "title": "Slidecrafting",
     "section": "Extensions",
     "text": "Extensions\nThis section will go over a handful of extensions that you can use to spruce up your slides.",
     "crumbs": [
@@ -52,7 +52,7 @@
   {
     "objectID": "index.html#miscellaneous",
     "href": "index.html#miscellaneous",
-    "title": "Slidecrafting with Quarto",
+    "title": "Slidecrafting",
     "section": "miscellaneous",
     "text": "miscellaneous\nLastly, there is the miscellaneous chapter, which will contain everything that doesn’t fit anywhere else.",
     "crumbs": [
@@ -163,7 +163,7 @@
     "href": "colors.html#applying-colors",
     "title": "2  Colors",
     "section": "2.3 Applying Colors",
-    "text": "2.3 Applying Colors\nLet us try all of that in practice. I found this nice blue and yellow color palette on Pinterest.\n\nusing a color picking tool. I love ColorSlurp I can extract the colors to be\n*Orient*\n02577B\n\n*Fountain Blue*\n5CB4C2\n\n*Morning Glory*\n99D9DD\n\n*Mystic*\nE1E8EB\n\n*Selective Yellow*\nF4BA02\nI’m thinking I want to use dark blue as my background colors, and the lightest color as my text color. Before I do any modification I get the following\n\nAnd by playing the sliders a little bit I have a contrast and some colors I’m happy with\n\nWe now open up our .scss file and fill in a couple of values. Many of the colorings are done by relations, so we can get a lot done by setting $body-bg, $body-color, and $link-color. This needs to be done inside scss:defaults.\n/*-- scss:defaults --*/\n$body-bg: #01364C;\n$body-color: #F7F8F9;\n$link-color: #99D9DD;\n\n/*-- scss:rules --*/\nWhile the above configurations are perfectly fine, I find that using sass variables to be clear, and it helps us tremendously if we start making more changes. So I create variables all with the prefix theme- and descriptive names so I know what is what.\n/*-- scss:defaults --*/\n$theme-darkblue: #01364C;\n$theme-blue: #99D9DD;\n$theme-white: #F7F8F9;\n$theme-yellow: #F4BA02;\n\n$body-bg: $theme-darkblue;\n$body-color: $theme-white;\n$link-color: $theme-blue;\n\n/*-- scss:rules --*/\nThis is more code, but now I can read at a glance what is happening. This gives us the following colors on our slides. All done with minimal effort. Using one of the highlight colors here to color the links, which also affects the hamburger menu and the progress bar at the bottom.\n\n\nThere are several sass variables that are used to control how our slides look. Notice how many of the values are defined as transformations of other values. So by setting $body-bg, $body-color, and $link-color we automatically gets things like $text-muted, $selection-bg, $border-color with values that works pretty well.\nLet us modify our theme just a bit more before moving on to fonts. We can use sass color functions to modify colors based on our theme.\nI want the headers to pop a little bit more, So I’m going to see if I can make them ever so slightly lighter blue. I see that the sass variable that controls the header color is $presentation-heading-color and that it defaults to $body-color. I use the lighten() function with $theme-blue, iterating a couple of times to find the perfect value.\n/*-- scss:defaults --*/\n$theme-darkblue: #01364C;\n$theme-blue: #99D9DD;\n$theme-white: #F7F8F9;\n$theme-yellow: #F4BA02;\n\n$body-bg: $theme-darkblue;\n$body-color: $theme-white;\n$link-color: $theme-blue;\n$presentation-heading-color: lighten($theme-yellow, 35%);\n\n/*-- scss:rules --*/",
+    "text": "2.3 Applying Colors\nLet us try all of that in practice. I found this nice blue and yellow color palette on Pinterest.\n\nusing a color picking tool. I love ColorSlurp I can extract the colors to be\n*Orient*\n02577B\n\n*Fountain Blue*\n5CB4C2\n\n*Morning Glory*\n99D9DD\n\n*Mystic*\nE1E8EB\n\n*Selective Yellow*\nF4BA02\nI’m thinking I want to use dark blue as my background colors, and the lightest color as my text color. Before I do any modification I get the following\n\nAnd by playing the sliders a little bit I have a contrast and some colors I’m happy with\n\nWe now open up our .scss file and fill in a couple of values. Many of the colorings are done by relations, so we can get a lot done by setting $body-bg, $body-color, and $link-color. This needs to be done inside scss:defaults.\n/*-- scss:defaults --*/\n$body-bg: #01364C;\n$body-color: #F7F8F9;\n$link-color: #99D9DD;\n\n/*-- scss:rules --*/\nWhile the above configurations are perfectly fine, I find that using sass variables to be clear, and it helps us tremendously if we start making more changes. So I create variables all with the prefix theme- and descriptive names so I know what is what.\n/*-- scss:defaults --*/\n$theme-darkblue: #01364C;\n$theme-blue: #99D9DD;\n$theme-white: #F7F8F9;\n$theme-yellow: #F4BA02;\n\n$body-bg: $theme-darkblue;\n$body-color: $theme-white;\n$link-color: $theme-blue;\n\n/*-- scss:rules --*/\nThis is more code, but now I can read at a glance what is happening. This gives us the following colors on our slides. All done with minimal effort. Using one of the highlight colors here to color the links, which also affects the hamburger menu and the progress bar at the bottom.\n\n\nThere are several sass variables that are used to control how our slides look. Notice how many of the values are defined as transformations of other values. So by setting $body-bg, $body-color, and $link-color we automatically gets things like $text-muted, $selection-bg, $border-color with values that works pretty well.\nLet us modify our theme just a bit more before moving on to fonts. We can use sass color functions to modify colors based on our theme.\nI want the headers to pop a little bit more, So I’m going to see if I can make them ever so slightly lighter blue. I see that the sass variable that controls the header color is $presentation-heading-color and that it defaults to $body-color. I use the lighten() function with $theme-blue, iterating a couple of times to find the perfect value.\n/*-- scss:defaults --*/\n$theme-darkblue: #01364C;\n$theme-blue: #99D9DD;\n$theme-white: #F7F8F9;\n$theme-yellow: #F4BA02;\n\n$body-bg: $theme-darkblue;\n$body-color: $theme-white;\n$link-color: $theme-blue;\n$presentation-heading-color: lighten($theme-yellow, 35%);\n\n/*-- scss:rules --*/\n\n\nTODO: add example where we also change code color",
     "crumbs": [
       "Theming",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Colors</span>"
@@ -203,135 +203,135 @@
     ]
   },
   {
-    "objectID": "theme.html",
-    "href": "theme.html",
-    "title": "5  Theme",
-    "section": "",
-    "text": "5.1 What is a variant?\nThe built in themes are a great place to look for inspiration.\nThis is also a perfect place to start looking for inspiration. using these themes with one or two modifications might get you all the way where you want to go. It is in general a good idea to look for inspiration in other people’s work.\nThis way you can have black/white variants, white/red/blue, or any number of different styles. If you are familiar with xaringan you have seen an inverse theme variant already.\nWhen we are slidecrafting, and you start having many slides. It can be helpful to bucket them into fewer types of slides. This way you can reuse the same style many times with minimal copy-pasting.\nUsing colors to create multiple variants of the same theme allows us to quickly add similar looking, yet different styles. The inverse theme variant of {xaringan} was a dark grey background slide, that accompanied the white background themed default. I and many other people found this inverse theme helpful for creating a break in slides. Typically using it as a section break or a background on which to show a quote.\nYou can also imagine having a couple of more similar theme variants that are used to denote theory/practice, idea/execution, pros/cons. The opportunities are endless, and we are not limited to only 2. I have in the past used themes that slowly changes colors as the slides progressed through the topics.",
-    "crumbs": [
-      "Theming",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Theme</span>"
-    ]
-  },
-  {
-    "objectID": "theme.html#the-scss-basics",
-    "href": "theme.html#the-scss-basics",
-    "title": "5  Theme",
-    "section": "5.2 The SCSS basics",
-    "text": "5.2 The SCSS basics\nFortunately, adding this behavior in quarto revealjs slides. We need 2 things:\n\nMark slides that have each theme variant\ninclude css/scss to style each theme\n\nIn our .qmd document we can denote each slide as a class with the following syntax\n## Slide\n\n## Slide {.variant-one}\n\n## Slide {.variant-two}\nthis gives the slides the corresponding css class which we can create styles for. Notice how the first slide doesn’t have a variant specified. Depending on your usage, it is easier to have a good base style, and only use {.class} to specify when you want a different class.\ncreate a .scss file and add it to the themes in the yaml section\nformat:\n  revealjs:\n    theme: [default, styles.scss]\nAnd in the .scss file, we add the boilerplate information.\n/*-- scss:defaults --*/\n\n/*-- scss:rules --*/\nUnder the /*-- scss:rules --*/ section we can now specify all the css rules we want. And we do this by prefixing .variant to each style. As an example, if we want to change the color of the text we use .variant-one {color: blue;}, or the link color .variant-one a {color: green;}.\nYou can quite quickly end up making many changes. And this is where I find it helpful to use scss nesting. Nesting allows us to rewrite\n\n.variant-one {\n  color: #d6d6d6;\n}\n\n.variant-one h1, h2, h3 {\n  color: #f3f3f3;\n}\n\n.variant-one a {\n  color: #00e0e0;\n}\n\n.variant-one p code {\n  color: #ffd700;\n}\nas\n.variant-one {\n  color: #d6d6d6;\n  h1, h2, h3 {\n    color: #f3f3f3;\n  }\n\n  a {\n    color: #00e0e0;\n  }\n\n  p code {\n    color: #ffd700;\n  }\n}\nI find it quite readable and I encourage you to follow the link and read more about it! Using this syntax, having multiple different variants is quite effortless, and many IDEs will help highlight and collapse this type of syntax.\n.variant-one {\n  color: #d6d6d6;\n  h1, h2, h3 {\n    color: #f3f3f3;\n  }\n\n  a {\n    color: #00e0e0;\n  }\n\n  p code {\n    color: #ffd700;\n  }\n}\n\n.variant-two {\n  color: #a6a6d6;\n  h1, h2, h3 {\n    color: #222222;\n  }\n\n  a {\n    color: #f22341;\n  }\n\n  p code {\n    color: #ff00ff;\n  }\n}\nAnd that is all that is needed! I have taken the liberty to create two themes to show case how this is done in practice:\nhttps://github.com/EmilHvitfeldt/quarto-revealjs-inverse\n\nhttps://github.com/EmilHvitfeldt/quarto-revealjs-seasons",
-    "crumbs": [
-      "Theming",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Theme</span>"
-    ]
-  },
-  {
-    "objectID": "theme.html#what-is-a-slide-theme",
-    "href": "theme.html#what-is-a-slide-theme",
-    "title": "5  Theme",
-    "section": "5.3 What is a slide theme?",
-    "text": "5.3 What is a slide theme?\nThe inspiration for this style of slidecraft isn’t anything new. If you have used conventional slide-making tools you have seen a dropdown menu before\n\nWith these menus, you can swiftly select the style of slide you intend to write and fill in the content. I find that for some presentations that I all I need.\nBelow is one such theme I created (it is a real revealjs slide deck, touch and advance the slides)\n\n\n\n  Github    Website \n\nInstead of carefully managing the style of all the elements of each slide. They all have an overall slide theme that controls all the content on the slide. This controls colors and sizes but can go further and control backgrounds and even the positioning of elements.\nTake .theme-section1 as an example. Not only are the text and colors modified. The text region is being modified such that the text isn’t going to overlap with the globe on the right. Setting this up beforehand is quite nice. While the backgrounds might seem complicated, they are all SVGs, but you can use any other type of image or none at all.\nOnce you have created the theme, your slides will look like this:\n## Happy slides {.theme-title1 .center}\n\n## Fancy Section {.theme-section3 .center}\n\n### Less Fancy Subtitle\n\n## Funny title {.theme-slide1}\n\nContent\n\n## Exciting title {.theme-slide2}\n\nContent\n\n## Sad title {.theme-slide3}\n\nContent\nEach slide will have minimal CSS, just one or two classes specified on the slide level.",
-    "crumbs": [
-      "Theming",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Theme</span>"
-    ]
-  },
-  {
-    "objectID": "theme.html#how-to-create-your-own",
-    "href": "theme.html#how-to-create-your-own",
-    "title": "5  Theme",
-    "section": "5.4 How to create your own",
-    "text": "5.4 How to create your own\nWe will assume that we start our project the same way as we did in previous blog posts. What we will be doing is creating several CSS classes. I find it easier to prefix all of them with .theme- but that is not a requirement. We will also be using the feature that Sass lets us create nesting rules css.\nWe start with a simple class rule\n.theme-slide1 {\n}\nif we are following my advice on creating css color palettes then we can use those to specify header colors\n.theme-slide1 {\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n  }\n}\nAnd we can specify anything want in here. Note that anything inside h3 applies to all h3 headers in .theme-slide1 slides.\n.theme-slide1 {\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\nWe could specify specific background colors\n.theme-slide1 {\n  background-color: #E1E8EB\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\nOr we could specify background images, for reasons I don’t want to get into, this is the way to include an image nicely. With ../../../../../assets/slide1.svg being a valid path to the slides. You may have to modify the number of ../ for this to work\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    background-size: cover;\n    background-position: center;\n    background-repeat: no-repeat;\n  }\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\ndepending on your slides you might have repeated styles a lot. Sass has a way to help us with @mixin and @include. You can create a @mixin with several styles, and then instead of copying around all the styles, you can @include the mixin for the same effect. Using this we now have the following\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\nLastly, if you are using images the way I’m using them, you will need to change the text regions to avoid text overlapping with the background image, we can use the margin- rules for that\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n  h2, h3, h4, h5, p, pre {\n    margin-left: 100px;\n  }\n}\nI hope you can see that with this style of slidecrafting, the skies the limit. The style sheet for the above example can be found here.",
-    "crumbs": [
-      "Theming",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Theme</span>"
-    ]
-  },
-  {
-    "objectID": "theme.html#more-examples",
-    "href": "theme.html#more-examples",
-    "title": "5  Theme",
-    "section": "5.5 More Examples",
-    "text": "5.5 More Examples\nBelow is another theme, following very closely the construction of the previous\n\n\n\n  Github    Website    Scss file \n\nAnother approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides\n\n\n\n  Github    Website    Lua file",
-    "crumbs": [
-      "Theming",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Theme</span>"
-    ]
-  },
-  {
     "objectID": "scss.html",
     "href": "scss.html",
-    "title": "6  CSS/SCSS",
+    "title": "5  CSS/SCSS",
     "section": "",
-    "text": "6.1 Using CSS Classes\nThe last tip for this blog post is the idea of using CSS classes, which is a quick and powerful way to add styling to your slides.\nRemember how we have 2 highlighting colors? We should have a way to apply these colors in our slides. For starters let us add a way to turn text these colors. Below are two CSS classes, named .blue and .yellow, that change the color and make the text bold with font-weight: bold;. Note that we need to put these classes into the scss:rules section.\nNow that we have our classes defined, you can either apply them using the visual editor in RStudio. Start by highlighting the text you want to apply the class to\nClick “Format” and select “Span…” This will only apply the changes to the highlighted words, instead of the whole paragraph.\nAnd then write in the class name in the “Classes” field. We see the word yellow by using the class “.yellow”.\nWe can also apply these changes in the source editor by using the [text]{.class} syntax. I added (slightly excessive) highlighting to a couple of words. See below\nAnd we get the following slide\nCSS classes were a game changer for my slide-making. It is a little bit more manual, but if you can write the CSS you can apply it to your slides which IMO is a super powerful tool.\nThere are also changes where you just want to modify the CSS directly, these changes should also be applied in the scss:rules section. For example, in our example so far, we have used the blue color both to color the links, and as a highlighting color. This is very confusing, so let us make sure that all links are underlined. We can make this happen by adding.\nNote that CSS rules that target Reveal content generally need to use the .reveal .slide prefix to successfully override the theme’s default styles.\nAnd the changes have been applied.",
+    "text": "5.1 Using CSS Classes\nThe last tip for this blog post is the idea of using CSS classes, which is a quick and powerful way to add styling to your slides.\nRemember how we have 2 highlighting colors? We should have a way to apply these colors in our slides. For starters let us add a way to turn text these colors. Below are two CSS classes, named .blue and .yellow, that change the color and make the text bold with font-weight: bold;. Note that we need to put these classes into the scss:rules section.\nNow that we have our classes defined, you can either apply them using the visual editor in RStudio. Start by highlighting the text you want to apply the class to\nClick “Format” and select “Span…” This will only apply the changes to the highlighted words, instead of the whole paragraph.\nAnd then write in the class name in the “Classes” field. We see the word yellow by using the class “.yellow”.\nWe can also apply these changes in the source editor by using the [text]{.class} syntax. I added (slightly excessive) highlighting to a couple of words. See below\nAnd we get the following slide\nCSS classes were a game changer for my slide-making. It is a little bit more manual, but if you can write the CSS you can apply it to your slides which IMO is a super powerful tool.\nThere are also changes where you just want to modify the CSS directly, these changes should also be applied in the scss:rules section. For example, in our example so far, we have used the blue color both to color the links, and as a highlighting color. This is very confusing, so let us make sure that all links are underlined. We can make this happen by adding.\nNote that CSS rules that target Reveal content generally need to use the .reveal .slide prefix to successfully override the theme’s default styles.\nAnd the changes have been applied.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-css-classes",
     "href": "scss.html#using-css-classes",
-    "title": "6  CSS/SCSS",
+    "title": "5  CSS/SCSS",
     "section": "",
     "text": "/*-- scss:rules --*/\n\n.blue {\n  color: $theme-blue;\n  font-weight: bold;\n}\n\n.yellow {\n  color: $theme-yellow;\n  font-weight: bold;\n}\n\n\n\n\n\n\n\n[Quarto]{.blue} enables you to weave together [content]{.yellow} and [executable code]{.yellow} into a **finished presentation**. To learn more about [Quarto]{.blue} presentations see &lt;https://quarto.org/docs/presentations/&gt;.\n\n\n\n\n\n.reveal .slide a {\n  text-decoration: underline;\n}",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-maps-to-store-theme-colors",
     "href": "scss.html#using-maps-to-store-theme-colors",
-    "title": "6  CSS/SCSS",
-    "section": "6.2 Using Maps to store theme colors",
-    "text": "6.2 Using Maps to store theme colors\nBefore I would have specified a color palette theme as\n$theme-red: #FA5F5C;\n$theme-blue: #394D85;\n$theme-darkblue: #13234B;\n$theme-yellow: #FFF7C7;\n$theme-white: #FEFEFE;\nBut using a map it turns into the following\n$colors: (\n  \"red\": #FA5F5C,\n  \"blue\": #394D85,\n  \"darkblue\": #13234B,\n  \"yellow\": #FFF7C7,\n  \"white\": #FEFEFE\n);\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between (key: value) and (\"key\": value) in SASS. For consistency, I also use quoted strings as the keys in a map.\n\n\nInstead of having multiple values representing our colors we now just have one $colors. By themselves, maps aren’t valid CSS and don’t do anything once the SASS compiles. The next sections will show how we can use these maps more efficiently than my previous approach.",
+    "title": "5  CSS/SCSS",
+    "section": "5.2 Using Maps to store theme colors",
+    "text": "5.2 Using Maps to store theme colors\nBefore I would have specified a color palette theme as\n$theme-red: #FA5F5C;\n$theme-blue: #394D85;\n$theme-darkblue: #13234B;\n$theme-yellow: #FFF7C7;\n$theme-white: #FEFEFE;\nBut using a map it turns into the following\n$colors: (\n  \"red\": #FA5F5C,\n  \"blue\": #394D85,\n  \"darkblue\": #13234B,\n  \"yellow\": #FFF7C7,\n  \"white\": #FEFEFE\n);\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between (key: value) and (\"key\": value) in SASS. For consistency, I also use quoted strings as the keys in a map.\n\n\nInstead of having multiple values representing our colors we now just have one $colors. By themselves, maps aren’t valid CSS and don’t do anything once the SASS compiles. The next sections will show how we can use these maps more efficiently than my previous approach.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-functions-to-pull-out-theme-colors",
     "href": "scss.html#using-functions-to-pull-out-theme-colors",
-    "title": "6  CSS/SCSS",
-    "section": "6.3 Using Functions to pull out theme colors",
-    "text": "6.3 Using Functions to pull out theme colors\nWe where using these colors to change a lot of things, including the major Sass Variables revealjs sass variables. Before we used a map, it would look something like this:\n$body-bg: $theme-yellow;\n$link-color: $theme-blue;\n$code-color: $theme-blue;\n$body-color: $theme-darkblue;\nbut we can’t do that directly with a map. There are built-in functions to extract values from a map, namely the function map-get(). Using that we can rewrite the above as\n$body-bg: map-get($colors, \"yellow\");\n$link-color: map-get($colors, \"blue\");\n$code-color: map-get($colors, \"blue\");\n$body-color: map-get($colors, \"darkblue\");\nAnd while that is all good, I find it a little nicer to have a helper function to do this.\nFunctions in SASS are written as below. You can use as many arguments as you want.\n@function name($arg1, $arg2) {\n  @return $arg1 + $arg2;\n}\nThe helper function I wrote is a light wrapper around map-get() to avoid having to write $colors.\n@function theme-color($color) {\n  @return map-get($colors, $color);\n}\nAnd we now have the final rewrite.\n$body-bg: theme-color(\"yellow\");\n$link-color: theme-color(\"blue\");\n$code-color: theme-color(\"blue\");\n$body-color: theme-color(\"darkblue\");\n\n\n\n\n\n\nNote\n\n\n\nNote that we are using theme-color(\"yellow\") instead of theme-color(yellow) because we used quoted strings in the map. Using unquoted strings all around gave me false positives in my IDE as it interpreted yellow inside theme-color() as #FFFF00 instead of my theme value.",
+    "title": "5  CSS/SCSS",
+    "section": "5.3 Using Functions to pull out theme colors",
+    "text": "5.3 Using Functions to pull out theme colors\nWe where using these colors to change a lot of things, including the major Sass Variables revealjs sass variables. Before we used a map, it would look something like this:\n$body-bg: $theme-yellow;\n$link-color: $theme-blue;\n$code-color: $theme-blue;\n$body-color: $theme-darkblue;\nbut we can’t do that directly with a map. There are built-in functions to extract values from a map, namely the function map-get(). Using that we can rewrite the above as\n$body-bg: map-get($colors, \"yellow\");\n$link-color: map-get($colors, \"blue\");\n$code-color: map-get($colors, \"blue\");\n$body-color: map-get($colors, \"darkblue\");\nAnd while that is all good, I find it a little nicer to have a helper function to do this.\nFunctions in SASS are written as below. You can use as many arguments as you want.\n@function name($arg1, $arg2) {\n  @return $arg1 + $arg2;\n}\nThe helper function I wrote is a light wrapper around map-get() to avoid having to write $colors.\n@function theme-color($color) {\n  @return map-get($colors, $color);\n}\nAnd we now have the final rewrite.\n$body-bg: theme-color(\"yellow\");\n$link-color: theme-color(\"blue\");\n$code-color: theme-color(\"blue\");\n$body-color: theme-color(\"darkblue\");\n\n\n\n\n\n\nNote\n\n\n\nNote that we are using theme-color(\"yellow\") instead of theme-color(yellow) because we used quoted strings in the map. Using unquoted strings all around gave me false positives in my IDE as it interpreted yellow inside theme-color() as #FFFF00 instead of my theme value.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-each-to-automatically-create-classes",
     "href": "scss.html#using-each-to-automatically-create-classes",
-    "title": "6  CSS/SCSS",
-    "section": "6.4 Using @each to automatically create classes",
-    "text": "6.4 Using @each to automatically create classes\nTo add a splash of color, or as used in highlighting, I would create a lot of CSS classes like so:\n.text-red {\n  color: $theme-red;\n}\n.text-yellow {\n  color: $theme-yellow;\n}\n.text-blue {\n  color: $theme-blue;\n}\n\n.bg-red {\n  background-color: $theme-red;\n}\n.bg-yellow {\n  background-color: $theme-yellow;\n}\n.bg-blue {\n  background-color: $theme-blue;\n}\nWhich is all fine and dandy until you also want a class for underlining. It becomes a lot of copy-pasting and changing a couple of names. And that is not to mention the trouble you run into when you decide to add a new color into the mix halfway through your slides.\nThis is when I discovered interpolation and the moment I realized maps were worth it. Interpolation is done by using #{} in some code, meaning that if $favorite-color: \"blue\" then .text-#{$favorite-color} {} turns into .text-blue {}. SASS provides the action @each to loop over all the key and value pairs of our map. So we can rewrite the creation of the above classes as this:\n@each $name, $color in $colors {\n  .text-#{$name} {\n    color: $color;\n  }\n\n  .bg-#{$name} {\n    background-color: $color;\n  }\n}\nAnd this is the beauty of maps. If I want to add a new color to my slides, I just have to add it to the $colors map. If I want to add a new set of classes, I just have to write it once inside the @each statement.",
+    "title": "5  CSS/SCSS",
+    "section": "5.4 Using @each to automatically create classes",
+    "text": "5.4 Using @each to automatically create classes\nTo add a splash of color, or as used in highlighting, I would create a lot of CSS classes like so:\n.text-red {\n  color: $theme-red;\n}\n.text-yellow {\n  color: $theme-yellow;\n}\n.text-blue {\n  color: $theme-blue;\n}\n\n.bg-red {\n  background-color: $theme-red;\n}\n.bg-yellow {\n  background-color: $theme-yellow;\n}\n.bg-blue {\n  background-color: $theme-blue;\n}\nWhich is all fine and dandy until you also want a class for underlining. It becomes a lot of copy-pasting and changing a couple of names. And that is not to mention the trouble you run into when you decide to add a new color into the mix halfway through your slides.\nThis is when I discovered interpolation and the moment I realized maps were worth it. Interpolation is done by using #{} in some code, meaning that if $favorite-color: \"blue\" then .text-#{$favorite-color} {} turns into .text-blue {}. SASS provides the action @each to loop over all the key and value pairs of our map. So we can rewrite the creation of the above classes as this:\n@each $name, $color in $colors {\n  .text-#{$name} {\n    color: $color;\n  }\n\n  .bg-#{$name} {\n    background-color: $color;\n  }\n}\nAnd this is the beauty of maps. If I want to add a new color to my slides, I just have to add it to the $colors map. If I want to add a new set of classes, I just have to write it once inside the @each statement.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-mixin-to-avoid-repeating-code",
     "href": "scss.html#using-mixin-to-avoid-repeating-code",
-    "title": "6  CSS/SCSS",
-    "section": "6.5 Using @mixin to avoid repeating code",
-    "text": "6.5 Using @mixin to avoid repeating code\nWith the following code\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n}\n.theme-slide2 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide2.svg');\n    @include background-full;\n  }\n}\n.theme-slide3 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide3.svg');\n    @include background-full;\n  }\n}\nCopy-pasting this around when you have 10-15 images is such a pain. But as you properly have noticed, interpolation would be a perfect solution to this problem, and you would be correct! We use a @mixin to create to create a way to create many classes:\n@mixin theme-slide($number) {\n  .theme-slide#{$number} {\n    &:is(.slide-background) {\n      background-image: url('../../../../../assets/slide#{$number}.svg');\n      @include background-full;\n    }\n  }\n}\n\n@include theme-slide(1);\n@include theme-slide(2);\n@include theme-slide(3);\nIt becomes quite a bit tighter! But we can do better because SASS also has @for loops.\n@mixin theme-slide($number) {\n  .theme-slide#{$number} {\n    &:is(.slide-background) {\n      background-image: url('../../../../../assets/slide#{$number}.svg');\n      @include background-full;\n    }\n  }\n}\n\n@for $i from 1 through 3 {\n  @include theme-slide($i);\n}\nyou can now add more background images with ease as long as you are careful when naming them.",
+    "title": "5  CSS/SCSS",
+    "section": "5.5 Using @mixin to avoid repeating code",
+    "text": "5.5 Using @mixin to avoid repeating code\nWith the following code\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n}\n.theme-slide2 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide2.svg');\n    @include background-full;\n  }\n}\n.theme-slide3 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide3.svg');\n    @include background-full;\n  }\n}\nCopy-pasting this around when you have 10-15 images is such a pain. But as you properly have noticed, interpolation would be a perfect solution to this problem, and you would be correct! We use a @mixin to create to create a way to create many classes:\n@mixin theme-slide($number) {\n  .theme-slide#{$number} {\n    &:is(.slide-background) {\n      background-image: url('../../../../../assets/slide#{$number}.svg');\n      @include background-full;\n    }\n  }\n}\n\n@include theme-slide(1);\n@include theme-slide(2);\n@include theme-slide(3);\nIt becomes quite a bit tighter! But we can do better because SASS also has @for loops.\n@mixin theme-slide($number) {\n  .theme-slide#{$number} {\n    &:is(.slide-background) {\n      background-image: url('../../../../../assets/slide#{$number}.svg');\n      @include background-full;\n    }\n  }\n}\n\n@for $i from 1 through 3 {\n  @include theme-slide($i);\n}\nyou can now add more background images with ease as long as you are careful when naming them.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
     ]
   },
   {
     "objectID": "scss.html#using-nested-loops-to-create-classes",
     "href": "scss.html#using-nested-loops-to-create-classes",
-    "title": "6  CSS/SCSS",
-    "section": "6.6 Using nested loops to create classes",
-    "text": "6.6 Using nested loops to create classes\nIn our first example, I want a fun gradient shadow/highlight effect for text. We can get that effect using something like following\nbackground-image: linear-gradient(90deg, yellow, blue);\nbackground-size: 100% 42%;\nbackground-repeat: no-repeat;\nbackground-position: 0 85%;\nwidth: fit-content;\nI want it to work on both inline text and as a way to handle the header, the selectors for that would be span.my-class and .my-class &gt; h2 respectively.\nspan.my-class, .my-class &gt; h2 {\n  background-image: linear-gradient(90deg, yellow, blue);\n  background-size: 100% 42%;\n  background-repeat: no-repeat;\n  background-position: 0 85%;\n  width: fit-content;\n}\nAnd them we fill in the rest, using the @each command twice nestedly over a map of colors.\n/*-- scss:defaults --*/\n\n$colors: (\n  \"red\": #FFADAD, \n\"orange\": #FFD6A5, \n  \"yellow\": #FDFFB6, \n  \"blue\": #aad2e7, \n  \"purple\":#b4addd\n);\n\n/*-- scss:rules --*/\n\n@each $name1, $col1 in $colors {\n  @each $name2, $col2 in $colors {\n    span.hl-#{$name1}-#{$name2}, .hl-#{$name1}-#{$name2} &gt; h2 {\n      background-image: linear-gradient(90deg, $col1, $col2);\n      background-size: 100% 42%;\n      background-repeat: no-repeat;\n      background-position: 0 85%;\n      width: fit-content;\n    }\n  }\n}\nI know we are creating some non-interesting classes such as .hl-yellow-yellow but for what we are doing, the tradeoff between avoiding them and how little it impacts us to have them. I think it is a worthwhile tradeoff.\n\n\n\n\n\n\nImportant\n\n\n\nThe slides in this post are interactive, advance them to see the other classes.\n\n\n\n\nqmd scss\n\n\n\n\n\n\nNote\n\n\n\nYou don’t need these compound classes for everything. For example, the class .hl-green-bold isn’t going to be useful as you could just as easily create .hl-green and .bold separately. This trick works best when two elements are used together in a tightly coupled way, such as in gradients.\n\n\nFor our second example, we are continuing with the gradients, but instead trying to apply them to the background. My goal was to add a gradient line to the right side of the slide.\nI was able to create that effect, by layering 2 gradients on top of each other. The first gradient contained the two colors I was interested in, and the names of the class. The second layer, which I placed on top, goes from white to transparent. I set up the transition between those two colors to be super sharp, resulting in the effect you see below\n\n\nqmd scss\nsince we are doing something interesting, we could also have used a separate $colors map just for this effect to not interfere with what else we are doing.",
+    "title": "5  CSS/SCSS",
+    "section": "5.6 Using nested loops to create classes",
+    "text": "5.6 Using nested loops to create classes\nIn our first example, I want a fun gradient shadow/highlight effect for text. We can get that effect using something like following\nbackground-image: linear-gradient(90deg, yellow, blue);\nbackground-size: 100% 42%;\nbackground-repeat: no-repeat;\nbackground-position: 0 85%;\nwidth: fit-content;\nI want it to work on both inline text and as a way to handle the header, the selectors for that would be span.my-class and .my-class &gt; h2 respectively.\nspan.my-class, .my-class &gt; h2 {\n  background-image: linear-gradient(90deg, yellow, blue);\n  background-size: 100% 42%;\n  background-repeat: no-repeat;\n  background-position: 0 85%;\n  width: fit-content;\n}\nAnd them we fill in the rest, using the @each command twice nestedly over a map of colors.\n/*-- scss:defaults --*/\n\n$colors: (\n  \"red\": #FFADAD, \n\"orange\": #FFD6A5, \n  \"yellow\": #FDFFB6, \n  \"blue\": #aad2e7, \n  \"purple\":#b4addd\n);\n\n/*-- scss:rules --*/\n\n@each $name1, $col1 in $colors {\n  @each $name2, $col2 in $colors {\n    span.hl-#{$name1}-#{$name2}, .hl-#{$name1}-#{$name2} &gt; h2 {\n      background-image: linear-gradient(90deg, $col1, $col2);\n      background-size: 100% 42%;\n      background-repeat: no-repeat;\n      background-position: 0 85%;\n      width: fit-content;\n    }\n  }\n}\nI know we are creating some non-interesting classes such as .hl-yellow-yellow but for what we are doing, the tradeoff between avoiding them and how little it impacts us to have them. I think it is a worthwhile tradeoff.\n\n\n\n\n\n\nImportant\n\n\n\nThe slides in this post are interactive, advance them to see the other classes.\n\n\n\n\nqmd scss\n\n\n\n\n\n\nNote\n\n\n\nYou don’t need these compound classes for everything. For example, the class .hl-green-bold isn’t going to be useful as you could just as easily create .hl-green and .bold separately. This trick works best when two elements are used together in a tightly coupled way, such as in gradients.\n\n\nFor our second example, we are continuing with the gradients, but instead trying to apply them to the background. My goal was to add a gradient line to the right side of the slide.\nI was able to create that effect, by layering 2 gradients on top of each other. The first gradient contained the two colors I was interested in, and the names of the class. The second layer, which I placed on top, goes from white to transparent. I set up the transition between those two colors to be super sharp, resulting in the effect you see below\n\n\nqmd scss\nsince we are doing something interesting, we could also have used a separate $colors map just for this effect to not interfere with what else we are doing.",
     "crumbs": [
       "Theming",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>CSS/SCSS</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>CSS/SCSS</span>"
+    ]
+  },
+  {
+    "objectID": "theme.html",
+    "href": "theme.html",
+    "title": "6  Theme",
+    "section": "",
+    "text": "6.1 What is a variant?\nThe built in themes are a great place to look for inspiration.\nTODO: add the all-theme\nThis is also a perfect place to start looking for inspiration. Using these themes with one or two modifications might get you all the way where you want to go. It is in general a good idea to look for inspiration in other people’s work.\nThis chapter covers what I like to call theme variants and slide themee. The\nThis way you can have black/white variants, white/red/blue, or any number of different styles. If you are familiar with xaringan you have seen an inverse theme variant already.\nWhen we are slidecrafting, and you start having many slides. It can be helpful to bucket them into fewer types of slides. This way you can reuse the same style many times with minimal copy-pasting.\nUsing colors to create multiple variants of the same theme allows us to quickly add similar looking, yet different styles. The inverse theme variant of {xaringan} was a dark grey background slide, that accompanied the white background themed default. I and many other people found this inverse theme helpful for creating a break in slides. Typically using it as a section break or a background on which to show a quote.\nYou can also imagine having a couple of more similar theme variants that are used to denote theory/practice, idea/execution, pros/cons. The opportunities are endless, and we are not limited to only 2. I have in the past used themes that slowly changes colors as the slides progressed through the topics.\nVariants are useful in a lot of different ways - section slides - gives a break in the slides - have different sections of the slides (introduction, problem, solution red/yellow/green) purely aesthetic - Fuctional use - (exercise slides, demo slides, results slides)",
+    "crumbs": [
+      "Theming",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Theme</span>"
+    ]
+  },
+  {
+    "objectID": "theme.html#the-scss-basics",
+    "href": "theme.html#the-scss-basics",
+    "title": "6  Theme",
+    "section": "6.2 The SCSS basics",
+    "text": "6.2 The SCSS basics\nFortunately, adding this behavior in quarto revealjs slides. We need 2 things:\n\nMark slides that have each theme variant\ninclude css/scss to style each theme\n\nIn our .qmd document we can denote each slide as a class with the following syntax\n## Slide\n\n## Slide {.variant-one}\n\n## Slide {.variant-two}\nthis gives the slides the corresponding css class which we can create styles for. Notice how the first slide doesn’t have a variant specified. Depending on your usage, it is easier to have a good base style, and only use {.class} to specify when you want a different class.\ncreate a .scss file and add it to the themes in the yaml section\nformat:\n  revealjs:\n    theme: [default, styles.scss]\nAnd in the .scss file, we add the boilerplate information.\n/*-- scss:defaults --*/\n\n/*-- scss:rules --*/\nUnder the /*-- scss:rules --*/ section we can now specify all the css rules we want. And we do this by prefixing .variant to each style. As an example, if we want to change the color of the text we use .variant-one {color: blue;}, or the link color .variant-one a {color: green;}.\nYou can quite quickly end up making many changes. And this is where I find it helpful to use scss nesting. Nesting allows us to rewrite\n\n.variant-one {\n  color: #d6d6d6;\n}\n\n.variant-one h1, h2, h3 {\n  color: #f3f3f3;\n}\n\n.variant-one a {\n  color: #00e0e0;\n}\n\n.variant-one p code {\n  color: #ffd700;\n}\nas\n.variant-one {\n  color: #d6d6d6;\n  h1, h2, h3 {\n    color: #f3f3f3;\n  }\n\n  a {\n    color: #00e0e0;\n  }\n\n  p code {\n    color: #ffd700;\n  }\n}\nI find it quite readable and I encourage you to follow the link and read more about it! Using this syntax, having multiple different variants is quite effortless, and many IDEs will help highlight and collapse this type of syntax.\n.variant-one {\n  color: #d6d6d6;\n  h1, h2, h3 {\n    color: #f3f3f3;\n  }\n\n  a {\n    color: #00e0e0;\n  }\n\n  p code {\n    color: #ffd700;\n  }\n}\n\n.variant-two {\n  color: #a6a6d6;\n  h1, h2, h3 {\n    color: #222222;\n  }\n\n  a {\n    color: #f22341;\n  }\n\n  p code {\n    color: #ff00ff;\n  }\n}\nAnd that is all that is needed! I have taken the liberty to create two themes to show case how this is done in practice:\nhttps://github.com/EmilHvitfeldt/quarto-revealjs-inverse\n\nhttps://github.com/EmilHvitfeldt/quarto-revealjs-seasons",
+    "crumbs": [
+      "Theming",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Theme</span>"
+    ]
+  },
+  {
+    "objectID": "theme.html#what-is-a-slide-theme",
+    "href": "theme.html#what-is-a-slide-theme",
+    "title": "6  Theme",
+    "section": "6.3 What is a slide theme?",
+    "text": "6.3 What is a slide theme?\nThe inspiration for this style of slidecraft isn’t anything new. If you have used conventional slide-making tools you have seen a dropdown menu before\n\nWith these menus, you can swiftly select the style of slide you intend to write and fill in the content. I find that for some presentations that I all I need.\nBelow is one such theme I created (it is a real revealjs slide deck, touch and advance the slides)\n\n\n\n  Github    Website \n\nInstead of carefully managing the style of all the elements of each slide. They all have an overall slide theme that controls all the content on the slide. This controls colors and sizes but can go further and control backgrounds and even the positioning of elements.\nTake .theme-section1 as an example. Not only are the text and colors modified. The text region is being modified such that the text isn’t going to overlap with the globe on the right. Setting this up beforehand is quite nice. While the backgrounds might seem complicated, they are all SVGs, but you can use any other type of image or none at all.\nOnce you have created the theme, your slides will look like this:\n## Happy slides {.theme-title1 .center}\n\n## Fancy Section {.theme-section3 .center}\n\n### Less Fancy Subtitle\n\n## Funny title {.theme-slide1}\n\nContent\n\n## Exciting title {.theme-slide2}\n\nContent\n\n## Sad title {.theme-slide3}\n\nContent\nEach slide will have minimal CSS, just one or two classes specified on the slide level.",
+    "crumbs": [
+      "Theming",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Theme</span>"
+    ]
+  },
+  {
+    "objectID": "theme.html#how-to-create-your-own",
+    "href": "theme.html#how-to-create-your-own",
+    "title": "6  Theme",
+    "section": "6.4 How to create your own",
+    "text": "6.4 How to create your own\nWe will assume that we start our project the same way as we did in previous blog posts. What we will be doing is creating several CSS classes. I find it easier to prefix all of them with .theme- but that is not a requirement. We will also be using the feature that Sass lets us create nesting rules css.\nWe start with a simple class rule\n.theme-slide1 {\n}\nif we are following my advice on creating css color palettes then we can use those to specify header colors\n.theme-slide1 {\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n  }\n}\nAnd we can specify anything want in here. Note that anything inside h3 applies to all h3 headers in .theme-slide1 slides.\n.theme-slide1 {\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\nWe could specify specific background colors\n.theme-slide1 {\n  background-color: #E1E8EB\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\nOr we could specify background images, for reasons I don’t want to get into, this is the way to include an image nicely. With ../../../../../assets/slide1.svg being a valid path to the slides. You may have to modify the number of ../ for this to work\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    background-size: cover;\n    background-position: center;\n    background-repeat: no-repeat;\n  }\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\ndepending on your slides you might have repeated styles a lot. Sass has a way to help us with @mixin and @include. You can create a @mixin with several styles, and then instead of copying around all the styles, you can @include the mixin for the same effect. Using this we now have the following\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n}\nLastly, if you are using images the way I’m using them, you will need to change the text regions to avoid text overlapping with the background image, we can use the margin- rules for that\n@mixin background-full {\n  background-size: cover;\n  background-position: center;\n  background-repeat: no-repeat;\n}\n\n.theme-slide1 {\n  &:is(.slide-background) {\n    background-image: url('../../../../../assets/slide1.svg');\n    @include background-full;\n  }\n  h3 {\n    color: $theme-blue; // or #5CB4C2\n    font-size: 2em;\n  }\n  h2, h3, h4, h5, p, pre {\n    margin-left: 100px;\n  }\n}\nI hope you can see that with this style of slidecrafting, the skies the limit. The style sheet for the above example can be found here.",
+    "crumbs": [
+      "Theming",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Theme</span>"
+    ]
+  },
+  {
+    "objectID": "theme.html#more-examples",
+    "href": "theme.html#more-examples",
+    "title": "6  Theme",
+    "section": "6.5 More Examples",
+    "text": "6.5 More Examples\nBelow is another theme, following very closely the construction of the previous\n\n\n\n  Github    Website    Scss file \n\nAnother approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides\n\n\n\n  Github    Website    Lua file",
+    "crumbs": [
+      "Theming",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Theme</span>"
     ]
   },
   {

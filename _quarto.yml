@@ -4,7 +4,8 @@ project:
     - /examples
 
 book:
-  title: "Slidecrafting with Quarto"
+  title: "Slidecrafting"
+  subtitle: "Making beautiful slides with reveal.js and Quarto"
   author: "Emil Hvitfeldt"
   date: "8/18/2024"
   chapters:
@@ -15,8 +16,8 @@ book:
         - colors.qmd
         - fonts.qmd
         - sizes.qmd
-        - theme.qmd
         - scss.qmd
+        - theme.qmd
     - part: "Content"
       chapters:
         - elements.qmd

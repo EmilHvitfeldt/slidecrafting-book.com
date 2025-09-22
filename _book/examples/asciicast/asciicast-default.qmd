@@ -1,5 +1,5 @@
 ---
-format: revealjs
+format: docx
 ---
 
 ## Default asciicast usage
@@ -10,4 +10,13 @@ asciicast::init_knitr_engine()
 
 ```{asciicast}
 library(tidymodels)
+```
+
+## NEw slide
+
+```{r}
+
+library(plotly)
+
+plot(mpg ~ disp, mtcars)
 ```

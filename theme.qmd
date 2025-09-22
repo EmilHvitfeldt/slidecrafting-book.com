@@ -4,21 +4,36 @@ title: "Theme"
 
 The built in themes are a great place to look for inspiration. 
 
-:::: {.content-visible when-format="html"}
-![](media/themes.gif)
-:::
+TODO: add the all-theme
 
-This is also a perfect place to start looking for inspiration. using these themes with one or two modifications might get you all the way where you want to go. It is in general a good idea to look for inspiration in other people's work.
+This is also a perfect place to start looking for inspiration. 
+Using these themes with one or two modifications might get you all the way where you want to go. 
+It is in general a good idea to look for inspiration in other people's work.
 
-This way you can have black/white variants, white/red/blue, or any number of different styles. If you are familiar with [xaringan](https://slides.yihui.org/xaringan/) you have seen an `inverse` theme variant already.
+This chapter covers what I like to call **theme variants** and **slide themee**.
+The 
+
+This way you can have black/white variants, white/red/blue,
+ or any number of different styles. 
+If you are familiar with [xaringan](https://slides.yihui.org/xaringan/) you have seen an `inverse` theme variant already.
 
 ## What is a variant?
 
-When we are slidecrafting, and you start having many slides. It can be helpful to bucket them into fewer types of slides. This way you can reuse the same style many times with minimal copy-pasting.
+When we are slidecrafting,
+and you start having many slides. 
+It can be helpful to bucket them into fewer types of slides. 
+This way you can reuse the same style many times with minimal copy-pasting.
 
-Using colors to create multiple variants of the same theme allows us to quickly add similar looking, yet different styles. The `inverse` theme variant of {xaringan} was a dark grey background slide, that accompanied the white background themed default. I and many other people found this `inverse` theme helpful for creating a break in slides. Typically using it as a section break or a background on which to show a quote.
+Using colors to create multiple variants of the same theme allows us to quickly add similar looking, 
+yet different styles. 
+The `inverse` theme variant of {xaringan} was a dark grey background slide, that accompanied the white background themed default. I and many other people found this `inverse` theme helpful for creating a break in slides. Typically using it as a section break or a background on which to show a quote.
 
 You can also imagine having a couple of more similar theme variants that are used to denote theory/practice, idea/execution, pros/cons. The opportunities are endless, and we are not limited to only 2. I have in the past used themes that slowly changes colors as the slides progressed through the topics.
+
+Variants are useful in a lot of different ways
+- section slides - gives a break in the slides
+- have different sections of the slides (introduction, problem, solution red/yellow/green) purely aesthetic
+- Fuctional use - (exercise slides, demo slides, results slides)
 
 ## The SCSS basics
 
