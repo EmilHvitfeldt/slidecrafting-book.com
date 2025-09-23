@@ -2,12 +2,39 @@
 title: "CSS/SCSS"
 ---
 
+## General CSS
+
+There are also changes where you just want to modify the CSS directly,
+these changes should be applied in the `scss:rules` section.
+For example, we might want to add a good underline to links in the slides themselves.
+
+Generally this would be done like so:
+
+````scss
+a {
+  text-decoration: underline;
+}
+````
+
+but it won't work because there are other attributes with higher specificity.
+Note that CSS rules that target Reveal content generally need to use the `.reveal .slide` prefix to successfully override the theme’s default styles.
+
+````scss
+.reveal .slide a {
+  text-decoration: underline;
+}
+````
+
+And the changes have been applied.
+
+TODO: redo
+![](media/example-theme-links.png)
+
 ## Using CSS Classes
 
-The last tip for this blog post is the idea of using CSS classes,
- which is a quick and powerful way to add styling to your slides.
+CSS classes are a quick and powerful way to add styling to your slides.
 
-Remember how we have 2 highlighting colors?
+remember how we set up theme colors in [applying colors](colors.qmd#applying-colors)?
 We should have a way to apply these colors in our slides.
 For starters let us add a way to turn text these colors.
 Below are two CSS classes,
@@ -37,40 +64,32 @@ See below
 [Quarto]{.blue} enables you to weave together [content]{.yellow} and [executable code]{.yellow} into a **finished presentation**. To learn more about [Quarto]{.blue} presentations see <https://quarto.org/docs/presentations/>.
 ````
 
-And we get the following slide
+And we get the following slide:
 
+TODO: redo
 ![](media/theme-example-highlight.png)
 
-CSS classes were a game changer for my slide-making.
-It is a little bit more manual,
-but if you can write the CSS you can apply it to your slides which IMO is a super powerful tool.
+The idea behind CSS classes are quite powerful. 
+We are essentially adding CSS attributes to specific elements of our slides,
+without needing to figure out how to target it with CSS selectors.
 
-There are also changes where you just want to modify the CSS directly,
-these changes should also be applied in the `scss:rules` section.
-For example, in our example so far,
-we have used the blue color both to color the links,
-and as a highlighting color.
-This is very confusing,
-so let us make sure that all links are underlined.
-We can make this happen by adding.
+You can also apply CSS classes to whole sections of the slide using fenced divs. 
 
-Note that CSS rules that target Reveal content generally need to use the `.reveal .slide` prefix to successfully override the theme’s default styles.
+````markdown
+::: blue
+Some paragraph.
+:::
 
-````scss
-.reveal .slide a {
-  text-decoration: underline;
-}
+or
+
+::: {.blue}
+Some paragraph.
+:::
 ````
-
-And the changes have been applied.
-
-![](media/example-theme-links.png)
-
-
 
 ## Using `Maps` to store theme colors
 
-Before I would have specified a color palette theme as
+Before [Maps](https://sass-lang.com/documentation/values/maps/) I would have specified a color palette theme as
 
 ```scss
 $theme-red: #FA5F5C;
@@ -160,10 +179,9 @@ Note that we are using `theme-color("yellow")` instead of `theme-color(yellow)` 
 Using unquoted strings all around gave me false positives in my IDE as it interpreted `yellow` inside `theme-color()` as `#FFFF00` instead of my theme value.
 :::
 
-## Using `@each` to automatically create classes
+## Using `@each` to automatically create CSS classes
 
-To add a splash of color,
-or as used in highlighting,
+To add a splash of color or as used in highlighting,
 I would create a lot of CSS classes like so:
 
 ```scss
@@ -192,8 +210,9 @@ Which is all fine and dandy until you also want a class for underlining.
 It becomes a lot of copy-pasting and changing a couple of names.
 And that is not to mention the trouble you run into when you decide to add a new color into the mix halfway through your slides.
 
-This is when I discovered [interpolation](https://sass-lang.com/documentation/interpolation/) and the moment I realized maps were worth it.
-Interpolation is done by using `#{}` in some code, meaning that if `$favorite-color: "blue"` then `.text-#{$favorite-color} {}` turns into `.text-blue {}`.
+This is where SASS [interpolation](https://sass-lang.com/documentation/interpolation/)  comes into place and the moment I realized maps were worth it.
+Interpolation is done by using `#{}` in some code, 
+meaning that if `$favorite-color: "blue"` then `.text-#{$favorite-color} {}` turns into `.text-blue {}`.
 SASS provides the action [`@each`](https://sass-lang.com/documentation/at-rules/control/each/) to loop over all the key and value pairs of our map.
 So we can rewrite the creation of the above classes as this:
 
@@ -217,7 +236,42 @@ I just have to write it once inside the `@each` statement.
 
 ## Using `@mixin` to avoid repeating code
 
-With the following code
+There are times where you end up needing to write almost the same CSS over and over again.
+If this happens to use it is a sign that you should try using [mixins](https://sass-lang.com/documentation/at-rules/mixin/).
+
+Take the following CSS code.
+
+```scss
+.theme-slide1 {
+  &:is(.slide-background) {
+    background-image: url('../../../../../assets/slide1.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+.theme-slide2 {
+  &:is(.slide-background) {
+    background-image: url('../../../../../assets/slide2.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+.theme-slide3 {
+  &:is(.slide-background) {
+    background-image: url('../../../../../assets/slide3.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+```
+
+In each of of the chunks we are having the same values of `background-size`, `background-position`, and `background-repeat`.
+We can use a `@mixin` as a sort of macro.
+When the SCSS compiles each instance of `@include background-full;` will be replaced by what is listed inside `@mixin background-full {}`.
+Giving us the following code.
 
 ```scss
 @mixin background-full {
@@ -246,11 +300,10 @@ With the following code
 }
 ```
 
-Copy-pasting this around when you have 10-15 images is such a pain.
-But as you properly have noticed,
-interpolation would be a perfect solution to this problem,
-and you would be correct!
-We use a [`@mixin`](https://sass-lang.com/documentation/at-rules/mixin/) to create to create a way to create many classes:
+But there is still some amount of repetition,
+with that we use the fact that [`@mixin`](https://sass-lang.com/documentation/at-rules/mixin/) can have arguments.
+Combineing this lets us create 1 `@mixin` and 3 calls to `@include`.
+One for each instance of the CSS class.
 
 ```scss
 @mixin theme-slide($number) {
@@ -323,7 +376,7 @@ using the [`@each`](https://sass-lang.com/documentation/at-rules/control/each/#w
 
 $colors: (
   "red": #FFADAD,
-"orange": #FFD6A5,
+  "orange": #FFD6A5,
   "yellow": #FDFFB6,
   "blue": #aad2e7,
   "purple":#b4addd
