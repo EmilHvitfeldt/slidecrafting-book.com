@@ -324,7 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And the changes have been applied.</p>
-<p>TODO: redo <img src="media/example-theme-links.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/scss/links.html">
+</iframe>
 </section>
 <section id="using-css-classes" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="using-css-classes"><span class="header-section-number">5.2</span> Using CSS Classes</h2>
@@ -332,19 +333,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>remember how we set up theme colors in <a href="./colors.html#applying-colors">applying colors</a>? We should have a way to apply these colors in our slides. For starters let us add a way to turn text these colors. Below are two CSS classes, named <code>.blue</code> and <code>.yellow</code>, that change the <code>color</code> and make the text bold with <code>font-weight: bold;</code>. Note that we need to put these classes into the <code>scss:rules</code> section.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.blue</span> {</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$theme-blue</span><span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">.yellow</span> {</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$theme-yellow</span><span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-blue</span>: <span class="cn">#219ea7ff</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="va">$theme-yellow</span>: <span class="cn">#F4BA02</span><span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.blue</span> {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$theme-blue</span><span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">.yellow</span> {</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="va">$theme-yellow</span><span class="op">;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-weight</span>: <span class="dv">bold</span><span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now that we have our classes defined, we can apply these changes in the source editor by using the <code>[text]{.class}</code> syntax. I added (slightly excessive) highlighting to a couple of words. See below</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto</span><span class="co">]</span>{.blue} enables you to weave together <span class="co">[</span><span class="ot">content</span><span class="co">]</span>{.yellow} and <span class="co">[</span><span class="ot">executable code</span><span class="co">]</span>{.yellow} into a **finished presentation**. To learn more about <span class="co">[</span><span class="ot">Quarto</span><span class="co">]</span>{.blue} presentations see <span class="ot">&lt;https://quarto.org/docs/presentations/&gt;</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And we get the following slide:</p>
-<p>TODO: redo <img src="media/theme-example-highlight.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/scss/css-classes.html">
+</iframe>
 <p>The idea behind CSS classes are quite powerful. We are essentially adding CSS attributes to specific elements of our slides, without needing to figure out how to target it with CSS selectors.</p>
 <p>You can also apply CSS classes to whole sections of the slide using fenced divs.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>::: blue</span>

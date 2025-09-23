@@ -149,5 +149,11 @@
   },
   "colors/colors-headers.qmd": {
     "colors-headers.html": "c2d33cc3"
+  },
+  "scss/css-classes.qmd": {
+    "css-classes.html": "c25791e0"
+  },
+  "scss/links.qmd": {
+    "links.html": "5a1ead9c"
   }
 }

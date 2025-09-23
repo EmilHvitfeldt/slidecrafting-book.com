@@ -27,8 +27,9 @@ Note that CSS rules that target Reveal content generally need to use the `.revea
 
 And the changes have been applied.
 
-TODO: redo
-![](media/example-theme-links.png)
+<iframe class="slide-deck" src="examples/scss/links.html">
+
+</iframe>
 
 ## Using CSS Classes
 
@@ -43,6 +44,9 @@ Note that we need to put these classes into the `scss:rules` section.
 
 ````scss
 /*-- scss:rules --*/
+
+$theme-blue: #219ea7ff;
+$theme-yellow: #F4BA02;
 
 .blue {
   color: $theme-blue;
@@ -64,10 +68,9 @@ See below
 [Quarto]{.blue} enables you to weave together [content]{.yellow} and [executable code]{.yellow} into a **finished presentation**. To learn more about [Quarto]{.blue} presentations see <https://quarto.org/docs/presentations/>.
 ````
 
-And we get the following slide:
+<iframe class="slide-deck" src="examples/scss/css-classes.html">
 
-TODO: redo
-![](media/theme-example-highlight.png)
+</iframe>
 
 The idea behind CSS classes are quite powerful. 
 We are essentially adding CSS attributes to specific elements of our slides,
