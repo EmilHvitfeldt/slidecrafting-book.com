@@ -37,7 +37,9 @@ These colors are simply there to spruce up the visuals.
 
 This is what you get with the default themes that are provided in Quarto, and you can see them here in this gif:
 
-TODO: add the all-themes
+<iframe class="slide-deck" src="examples/all-themes/index.html">
+
+</iframe>
 
 Which colors you choose will depend on what you are doing and who you are doing it for.
 Some of you will have to follow the corporate mandated style guide,

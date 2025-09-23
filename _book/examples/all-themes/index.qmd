@@ -28,7 +28,6 @@ When you click the **Render** button a presentation will be generated that inclu
 1 + 1
 ```
 
-
 ## Quarto {.beige}
 
 Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
@@ -120,4 +119,252 @@ When you click the **Render** button a presentation will be generated that inclu
 
 ::: footer
 dark
+:::
+
+## Quarto {.dracula}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+dracula
+:::
+
+## Bullets {.dracula}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+dracula
+:::
+
+## Code {.dracula}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+dracula
+:::
+
+## Quarto {.league}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+league
+:::
+
+## Bullets {.league}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+league
+:::
+
+## Code {.league}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+league
+:::
+
+## Quarto {.moon}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+moon
+:::
+
+## Bullets {.moon}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+moon
+:::
+
+## Code {.moon}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+moon
+:::
+
+## Quarto {.night}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+night
+:::
+
+## Bullets {.night}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+night
+:::
+
+## Code {.night}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+night
+:::
+
+## Quarto {.serif}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+serif
+:::
+
+## Bullets {.serif}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+serif
+:::
+
+## Code {.serif}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+serif
+:::
+
+## Quarto {.simple}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+simple
+:::
+
+## Bullets {.simple}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+simple
+:::
+
+## Code {.simple}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+simple
+:::
+
+## Quarto {.sky}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+sky
+:::
+
+## Bullets {.sky}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+sky
+:::
+
+## Code {.sky}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+sky
+:::
+
+## Quarto {.solarized}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+::: footer
+solarized
+:::
+
+## Bullets {.solarized}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+::: footer
+solarized
+:::
+
+## Code {.solarized}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+::: footer
+solarized
 :::

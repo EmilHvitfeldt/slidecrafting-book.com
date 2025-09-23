@@ -1,0 +1,3022 @@
+// quarto-scss-analysis-annotation { "quarto-version": "1.6.42" }
+
+// quarto-scss-analysis-annotation { "origin": "'use' section from format" }
+
+
+
+// quarto-scss-analysis-annotation { "origin": "'use' section from Quarto" }
+
+@use "sass:color" as quarto-color;
+@use "sass:map" as quarto-map;
+@use "sass:math" as quarto-math;
+
+
+// this file is currently intentionally empty
+
+
+// quarto-scss-analysis-annotation { "origin": "'use' section from user-defined SCSS" }
+
+
+
+// quarto-scss-analysis-annotation { "origin": "'functions' section from format" }
+
+
+
+// quarto-scss-analysis-annotation { "origin": "'functions' section from Quarto" }
+
+@function colorToRGB($color) {
+  @return "rgb(" + red($color) + ", " + green($color) + ", " + blue($color) +
+    ")";
+}
+
+@function colorToRGBA($color) {
+  @return "rgba(" + red($color) + ", " + green($color) + ", " + blue($color) +
+    ", " + alpha($color) + ")";
+}
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+  @return $string;
+}
+
+
+@function colorToRGB($color) {
+  @return "rgb(" + red($color) + ", " + green($color) + ", " + blue($color) +
+    ")";
+}
+
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}
+
+@function shade-color($color, $weight) {
+  @return mix(black, $color, $weight);
+}
+
+@function shift-color($color, $weight) {
+  @return if(
+    $weight > 0,
+    shade-color($color, $weight),
+    tint-color($color, -$weight)
+  );
+}
+
+
+// quarto-scss-analysis-annotation { "origin": "'functions' section from user-defined SCSS" }
+
+
+
+// quarto-scss-analysis-annotation { "origin": "Defaults from user-defined SCSS" }
+
+
+// Include theme-specific fonts
+
+/// beige
+@import url(https://fonts.googleapis.com/css2?family=League+Gothic&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/// blood
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic,700italic);
+
+/// league
+@import url(./fonts/league-gothic/league-gothic.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/// moon
+@import url(./fonts/league-gothic/league-gothic.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/// night
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+
+/// simple
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+
+// quarto-scss-analysis-annotation { "origin": "Defaults from Quarto's SCSS" }
+
+
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
+
+// fonts
+$font-family-sans-serif: "Source Sans Pro", Helvetica, sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace !default;
+$presentation-font-size-root: 40px !default;
+$presentation-font-smaller: 0.7 !default;
+$presentation-line-height: 1.3 !default;
+
+// Default variables which exist in bootstrap themes
+// and are here to simplify the implementation of _brand.yml and
+// user theming customization in general
+$font-weight-base: 400 !default;
+$code-font-size: 1em !default;
+$font-family-monospace-block: $font-family-monospace !default;
+$font-family-monospace-inline: $font-family-monospace !default;
+$link-weight: $font-weight-base !default;
+$link-color-bg: transparent !default;
+$link-decoration: inherit !default;
+$font-weight-monospace: $font-weight-base !default;
+$font-weight-monospace-block: $font-weight-monospace !default;
+$font-weight-monospace-inline: $font-weight-monospace !default;
+
+// main colors
+$body-bg: #fff !default;
+$body-color: #222 !default;
+$text-muted: lighten($body-color, 30%) !default;
+
+// grey colors (like in bootstrap)
+$gray-200: #e9ecef !default;
+$gray-100: #f8f9fa !default;
+$gray-900: #212529 !default;
+
+// link colors
+$primary: #2a76dd !default;
+$link-color: $primary !default;
+$link-color-hover: lighten($link-color, 10%) !default;
+
+// selection colors
+$selection-bg: lighten($link-color, 25%) !default;
+$selection-color: $body-bg !default;
+
+// border colors
+$border-color: lighten($body-color, 30%) !default;
+$border-width: 1px !default;
+$border-radius: 4px !default;
+
+// headings
+$presentation-heading-font: $font-family-sans-serif !default;
+$presentation-heading-color: $body-color !default;
+$presentation-heading-line-height: 1.2 !default;
+$presentation-heading-letter-spacing: normal !default;
+$presentation-heading-text-transform: none !default;
+$presentation-heading-text-shadow: none !default;
+$presentation-h1-text-shadow: none !default;
+$presentation-heading-font-weight: 600 !default;
+$presentation-h1-font-size: 2.5em !default;
+$presentation-h2-font-size: 1.6em !default;
+$presentation-h3-font-size: 1.3em !default;
+$presentation-h4-font-size: 1em !default;
+
+// margins
+$presentation-block-margin: 12px !default;
+
+// text alignment
+$presentation-slide-text-align: left !default;
+$presentation-title-slide-text-align: center !default;
+$reveal-slide-text-align: $presentation-slide-text-align !default;
+$reveal-title-slide-text-align: $presentation-title-slide-text-align !default;
+
+// Lists
+$presentation-list-bullet-color: $body-color !default;
+
+// code blocks
+$code-block-bg: $body-bg !default;
+$code-block-border-color: lighten($body-color, 60%) !default;
+$code-block-font-size: $code-font-size * 0.55 !default;
+$code-block-height: 500px !default;
+$code-block-theme-dark-threshhold: 40% !default;
+$code-block-line-height: $presentation-line-height !default;
+$code-block-color: $body-color !default;
+
+// inline code
+$code-inline-font-size: $code-font-size * 0.875 !default;
+$code-color: var(--quarto-hl-fu-color) !default;
+$code-bg: transparent !default;
+
+// tabset
+$tabset-border-color: $code-block-border-color !default;
+
+// table
+$table-border-color: $code-block-border-color !default;
+
+// input panel
+$input-panel-border-color: $code-block-border-color !default;
+$input-panel-border-width: $border-width !default;
+$input-panel-border-radius: $border-radius !default;
+$input-panel-bg: rgba(248, 249, 250, 1) !default;
+
+// Callouts
+$callout-border-width: 0.3rem !default;
+$callout-border-scale: 0% !default;
+$callout-icon-scale: 10% !default;
+$callout-margin-top: 1rem !default;
+$callout-margin-bottom: 1rem !default;
+$callout-color-note: #0d6efd !default;
+$callout-color-tip: #198754 !default;
+$callout-color-important: #dc3545 !default;
+$callout-color-caution: #fd7e14 !default;
+$callout-color-warning: #ffc107 !default;
+
+// alternate colors for when the background changes
+$light-bg-text-color: #222 !default;
+$dark-bg-text-color: #fff !default;
+$light-bg-link-color: #2a76dd !default;
+$dark-bg-link-color: #42affa !default;
+$light-bg-code-color: #4758ab !default;
+$dark-bg-code-color: #ffa07a !default;
+
+// KBD variables
+$kbd-padding-y: 0.4rem !default;
+$kbd-padding-x: 0.4rem !default;
+$kbd-font-size: $presentation-font-size-root !default;
+$kbd-color: $body-color !default;
+$kbd-bg: $gray-100 !default; // like in bootstrap style
+
+// --- derive reveal versions of presentation variables for finer-grained override ---
+
+$revealjs-font-size-root: $presentation-font-size-root !default;
+$revealjs-h1-font-size: $presentation-h1-font-size !default;
+$revealjs-h2-font-size: $presentation-h2-font-size !default;
+$revealjs-h3-font-size: $presentation-h3-font-size !default;
+$revealjs-h4-font-size: $presentation-h4-font-size !default;
+$revealjs-heading-font: $presentation-heading-font !default;
+$revealjs-heading-color: $presentation-heading-color !default;
+$revealjs-heading-line-height: $presentation-heading-line-height !default;
+$revealjs-heading-letter-spacing: $presentation-heading-letter-spacing !default;
+$revealjs-heading-text-transform: $presentation-heading-text-transform !default;
+$revealjs-heading-text-shadow: $presentation-heading-text-shadow !default;
+$revealjs-h1-text-shadow: $presentation-h1-text-shadow !default;
+
+$revealjs-heading-font-weight: $presentation-heading-font-weight !default;
+$revealjs-block-margin: $presentation-block-margin !default;
+$revealjs-line-height: $presentation-line-height !default;
+$revealjs-list-bullet-color: $presentation-list-bullet-color !default;
+
+$revealjs-code-inline-font-size: $code-inline-font-size !default;
+$revealjs-code-block-font-size: $code-block-font-size !default;
+
+// ---- map to reveal scss variables ---
+// ---- This is based from the revealjs setting.scss
+// -- START setting.scss --
+// Background of the presentation
+$backgroundColor: $body-bg !default;
+
+// Primary/body text
+$mainFont: $font-family-sans-serif !default;
+$mainFontSize: $revealjs-font-size-root !default;
+$mainColor: $body-color !default;
+
+// Vertical spacing between blocks of text
+$blockMargin: $revealjs-block-margin !default;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0 !default;
+$headingFont: $revealjs-heading-font !default;
+$headingColor: $revealjs-heading-color !default;
+$headingLineHeight: $revealjs-heading-line-height !default;
+$headingLetterSpacing: $revealjs-heading-letter-spacing !default;
+$headingTextTransform: $revealjs-heading-text-transform !default;
+$headingTextShadow: $revealjs-heading-text-shadow !default;
+$heading1TextShadow: $revealjs-h1-text-shadow !default;
+$headingFontWeight: $revealjs-heading-font-weight !default;
+
+$heading1Size: $revealjs-h1-font-size !default;
+$heading2Size: $revealjs-h2-font-size !default;
+$heading3Size: $revealjs-h3-font-size !default;
+$heading4Size: $revealjs-h4-font-size !default;
+
+$codeFont: $font-family-monospace !default;
+
+// Links and actions
+$linkColor: $link-color !default;
+$linkColorHover: $link-color-hover !default;
+
+// Text selection
+$selectionBackgroundColor: $selection-bg !default;
+$selectionColor: $selection-color !default;
+
+// Colors used for UI elements that are overlaid on top of
+// the presentation
+$overlayElementBgColor: 240, 240, 240 !default;
+$overlayElementFgColor: 0, 0, 0 !default;
+
+// -- END setting.scss --
+
+$code-copy-selector: "pre.sourceCode:hover > " !default;
+$code-white-space: pre !default;
+$tbl-cap-location: top !default;
+// main colors
+$body-bg: #fff !default;
+$body-color: #222 !default;
+$text-muted: lighten($body-color, 30%) !default;
+
+// border colors
+$border-color: lighten($body-color, 30%) !default;
+$table-border-color: $border-color !default;
+$border-width: 1px !default;
+$border-radius: 4px !default;
+
+// code block colors
+$btn-code-copy-color: if(
+  variable-exists(text-muted),
+  $text-muted,
+  if(variable-exists(body-color), $body-color, $gray-900)
+) !default;
+
+$btn-code-copy-color-active: if(
+  variable-exists(link-color),
+  $link-color,
+  #0d6efd
+) !default;
+
+
+// quarto-scss-analysis-annotation { "origin": "Defaults from the format SCSS" }
+
+
+
+// quarto-scss-analysis-annotation { "origin": "'mixins' section from format" }
+
+@mixin vertical-gradient( $top, $bottom ) {
+	background: $top;
+	background: -moz-linear-gradient( top, $top 0%, $bottom 100% );
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom) );
+	background: -webkit-linear-gradient( top, $top 0%, $bottom 100% );
+	background: -o-linear-gradient( top, $top 0%, $bottom 100% );
+	background: -ms-linear-gradient( top, $top 0%, $bottom 100% );
+	background: linear-gradient( top, $top 0%, $bottom 100% );
+}
+
+@mixin horizontal-gradient( $top, $bottom ) {
+	background: $top;
+	background: -moz-linear-gradient( left, $top 0%, $bottom 100% );
+	background: -webkit-gradient( linear, left top, right top, color-stop(0%,$top), color-stop(100%,$bottom) );
+	background: -webkit-linear-gradient( left, $top 0%, $bottom 100% );
+	background: -o-linear-gradient( left, $top 0%, $bottom 100% );
+	background: -ms-linear-gradient( left, $top 0%, $bottom 100% );
+	background: linear-gradient( left, $top 0%, $bottom 100% );
+}
+
+@mixin radial-gradient( $outer, $inner, $type: circle ) {
+	background: $outer;
+	background: -moz-radial-gradient( center, $type cover,  $inner 0%, $outer 100% );
+	background: -webkit-gradient( radial, center center, 0px, center center, 100%, color-stop(0%,$inner), color-stop(100%,$outer) );
+	background: -webkit-radial-gradient( center, $type cover,  $inner 0%, $outer 100% );
+	background: -o-radial-gradient( center, $type cover,  $inner 0%, $outer 100% );
+	background: -ms-radial-gradient( center, $type cover,  $inner 0%, $outer 100% );
+	background: radial-gradient( center, $type cover,  $inner 0%, $outer 100% );
+}
+
+@mixin light-bg-text-color( $color ) {
+	section.has-light-background {
+		&, h1, h2, h3, h4, h5, h6 {
+			color: $color;
+		}
+	}
+}
+
+@mixin dark-bg-text-color( $color ) {
+	section.has-dark-background {
+		&, h1, h2, h3, h4, h5, h6 {
+			color: $color;
+		}
+	}
+}
+
+// quarto-scss-analysis-annotation { "origin": "'mixins' section from Quarto" }
+
+
+@mixin shift_to_dark($property, $colorDark, $colorLight) {
+  @if (
+    quarto-color.blackness($backgroundColor) > $code-block-theme-dark-threshhold
+  ) {
+    #{$property}: $colorDark;
+  } @else {
+    #{$property}: $colorLight;
+  }
+}
+
+// Make the font size smaller by a factor of $times
+// Useful for font-size defined in px inside smaller font size controled by em
+// as they would not be impacted by the smaller font size
+@mixin make-smaller-font-size($element, $times: 1) {
+  font-size: calc(
+    #{$element} * #{quarto-math.pow($presentation-font-smaller, $times)}
+  );
+}
+
+// Undo the smaller font size
+// Useful for font-size in em already that should not be impacted by smaller font size controled by em
+@mixin undo-smaller-font-size($element) {
+  font-size: calc(#{$element} / #{$presentation-font-smaller});
+}
+
+// -- START setting.scss --
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+  background: $backgroundColor;
+}
+
+// -- END setting.scss --
+
+
+// quarto-scss-analysis-annotation { "origin": "'mixins' section from user-defined SCSS" }
+
+
+// Background generator
+@mixin bodyBackground() {
+  @include radial-gradient(#add9e4, #f7fbfc);
+}
+}
+
+// quarto-scss-analysis-annotation { "origin": "'rules' section from format" }
+
+// Base theme template for reveal.js
+
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+
+@import "./exposer";
+
+.reveal-viewport {
+	@include bodyBackground();
+	background-color: var(--r-background-color);
+}
+
+.reveal {
+	font-family: var(--r-main-font);
+	font-size: var(--r-main-font-size);
+	font-weight: normal;
+	color: var(--r-main-color);
+}
+
+.reveal ::selection {
+	color: var(--r-selection-color);
+	background: var(--r-selection-background-color);
+	text-shadow: none;
+}
+
+.reveal ::-moz-selection {
+	color: var(--r-selection-color);
+	background: var(--r-selection-background-color);
+	text-shadow: none;
+}
+
+.reveal .slides section,
+.reveal .slides section>section {
+	line-height: 1.3;
+	font-weight: inherit;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+	margin: var(--r-heading-margin);
+	color: var(--r-heading-color);
+
+	font-family: var(--r-heading-font);
+	font-weight: var(--r-heading-font-weight);
+	line-height: var(--r-heading-line-height);
+	letter-spacing: var(--r-heading-letter-spacing);
+
+	text-transform: var(--r-heading-text-transform);
+	text-shadow: var(--r-heading-text-shadow);
+
+	word-wrap: break-word;
+}
+
+.reveal h1 {font-size: var(--r-heading1-size); }
+.reveal h2 {font-size: var(--r-heading2-size); }
+.reveal h3 {font-size: var(--r-heading3-size); }
+.reveal h4 {font-size: var(--r-heading4-size); }
+
+.reveal h1 {
+	text-shadow: var(--r-heading1-text-shadow);
+}
+
+
+/*********************************************
+ * OTHER
+ *********************************************/
+
+.reveal p {
+	margin: var(--r-block-margin) 0;
+	line-height: 1.3;
+}
+
+/* Remove trailing margins after titles */
+.reveal h1:last-child,
+.reveal h2:last-child,
+.reveal h3:last-child,
+.reveal h4:last-child,
+.reveal h5:last-child,
+.reveal h6:last-child {
+	margin-bottom: 0;
+}
+
+/* Ensure certain elements are never larger than the slide itself */
+.reveal img,
+.reveal video,
+.reveal iframe {
+	max-width: 95%;
+	max-height: 95%;
+}
+.reveal strong,
+.reveal b {
+	font-weight: bold;
+}
+
+.reveal em {
+	font-style: italic;
+}
+
+.reveal ol,
+.reveal dl,
+.reveal ul {
+	display: inline-block;
+
+	text-align: left;
+	margin: 0 0 0 1em;
+}
+
+.reveal ol {
+	list-style-type: decimal;
+}
+
+.reveal ul {
+	list-style-type: disc;
+}
+
+.reveal ul ul {
+	list-style-type: square;
+}
+
+.reveal ul ul ul {
+	list-style-type: circle;
+}
+
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+	display: block;
+	margin-left: 40px;
+}
+
+.reveal dt {
+	font-weight: bold;
+}
+
+.reveal dd {
+	margin-left: 40px;
+}
+
+.reveal blockquote {
+	display: block;
+	position: relative;
+	width: 70%;
+	margin: var(--r-block-margin) auto;
+	padding: 5px;
+
+	font-style: italic;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+}
+	.reveal blockquote p:first-child,
+	.reveal blockquote p:last-child {
+		display: inline-block;
+	}
+
+.reveal q {
+	font-style: italic;
+}
+
+.reveal pre {
+	display: block;
+	position: relative;
+	width: 90%;
+	margin: var(--r-block-margin) auto;
+
+	text-align: left;
+	font-size: 0.55em;
+	font-family: var(--r-code-font);
+	line-height: 1.2em;
+
+	word-wrap: break-word;
+
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.reveal code {
+	font-family: var(--r-code-font);
+	text-transform: none;
+	tab-size: 2;
+}
+
+.reveal pre code {
+	display: block;
+	padding: 5px;
+	overflow: auto;
+	max-height: 400px;
+	word-wrap: normal;
+}
+
+.reveal .code-wrapper {
+	white-space: normal;
+}
+
+.reveal .code-wrapper code {
+	white-space: pre;
+}
+
+.reveal table {
+	margin: auto;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.reveal table th {
+	font-weight: bold;
+}
+
+.reveal table th,
+.reveal table td {
+	text-align: left;
+	padding: 0.2em 0.5em 0.2em 0.5em;
+	border-bottom: 1px solid;
+}
+
+.reveal table th[align="center"],
+.reveal table td[align="center"] {
+	text-align: center;
+}
+
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
+	text-align: right;
+}
+
+.reveal table tbody tr:last-child th,
+.reveal table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.reveal sup {
+	vertical-align: super;
+	font-size: smaller;
+}
+.reveal sub {
+	vertical-align: sub;
+	font-size: smaller;
+}
+
+.reveal small {
+	display: inline-block;
+	font-size: 0.6em;
+	line-height: 1.2em;
+	vertical-align: top;
+}
+
+.reveal small * {
+	vertical-align: top;
+}
+
+.reveal img {
+	margin: var(--r-block-margin) 0;
+}
+
+
+/*********************************************
+ * LINKS
+ *********************************************/
+
+.reveal a {
+	color: var(--r-link-color);
+	text-decoration: none;
+	transition: color .15s ease;
+}
+	.reveal a:hover {
+		color: var(--r-link-color-hover);
+		text-shadow: none;
+		border: none;
+	}
+
+.reveal .roll span:after {
+	color: #fff;
+	// background: darken( var(--r-link-color), 15% );
+	 background: var(--r-link-color-dark);
+
+}
+
+
+/*********************************************
+ * Frame helper
+ *********************************************/
+
+.reveal .r-frame {
+	border: 4px solid var(--r-main-color);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.reveal a .r-frame {
+	transition: all .15s linear;
+}
+
+.reveal a:hover .r-frame {
+	border-color: var(--r-link-color);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+
+.reveal .controls {
+	color: var(--r-link-color);
+}
+
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+
+.reveal .progress {
+	background: rgba(0,0,0,0.2);
+	color: var(--r-link-color);
+}
+
+/*********************************************
+ * PRINT BACKGROUND
+ *********************************************/
+ @media print {
+    .backgrounds {
+        background-color: var(--r-background-color);
+    }
+}
+
+
+// quarto-scss-analysis-annotation { "origin": "'rules' section from Quarto" }
+
+// floating
+
+.top-right {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+// hidden
+
+// https://github.com/quarto-dev/quarto-cli/issues/5403#issuecomment-1533791947
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.zindex-bottom {
+  z-index: -1 !important;
+}
+
+// layout and figures
+
+figure.figure {
+  display: block;
+}
+
+.quarto-layout-panel {
+  margin-bottom: 1em;
+}
+
+.quarto-layout-panel > figure {
+  width: 100%;
+}
+.quarto-layout-panel > figure > figcaption,
+.quarto-layout-panel > .panel-caption {
+  margin-top: 10pt;
+}
+
+.quarto-layout-panel > .table-caption {
+  margin-top: 0px;
+}
+
+.table-caption p {
+  margin-bottom: 0.5em;
+}
+
+.quarto-layout-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.quarto-layout-valign-top {
+  align-items: flex-start;
+}
+.quarto-layout-valign-bottom {
+  align-items: flex-end;
+}
+.quarto-layout-valign-center {
+  align-items: center;
+}
+.quarto-layout-cell {
+  position: relative;
+  margin-right: 20px;
+}
+.quarto-layout-cell:last-child {
+  margin-right: 0;
+}
+.quarto-layout-cell figure,
+.quarto-layout-cell > p {
+  margin: 0.2em;
+}
+.quarto-layout-cell img {
+  max-width: 100%;
+}
+.quarto-layout-cell .html-widget {
+  width: 100% !important;
+}
+.quarto-layout-cell div figure p {
+  margin: 0;
+}
+.quarto-layout-cell figure {
+  display: block;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+.quarto-layout-cell table {
+  display: inline-table;
+}
+.quarto-layout-cell-subref figcaption,
+figure .quarto-layout-row figure figcaption {
+  text-align: center;
+  font-style: italic;
+}
+.quarto-figure {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.quarto-figure > figure {
+  width: 100%;
+  margin-bottom: 0;
+}
+.quarto-figure-left > figure > p,
+.quarto-figure-left > figure > div /* for mermaid and dot diagrams */ {
+  text-align: left;
+}
+.quarto-figure-center > figure > p,
+.quarto-figure-center > figure > div /* for mermaid and dot diagrams */ {
+  text-align: center;
+}
+.quarto-figure-right > figure > p,
+.quarto-figure-right > figure > div /* for mermaid and dot diagrams */ {
+  text-align: right;
+}
+
+.quarto-figure > figure > div.cell-annotation,
+.quarto-figure > figure > div code {
+  text-align: left; /* override align center for code blocks */
+}
+
+figure > p:empty {
+  display: none;
+}
+figure > p:first-child {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+figure > figcaption.quarto-float-caption-bottom {
+  margin-bottom: 0.5em;
+}
+figure > figcaption.quarto-float-caption-top {
+  margin-top: 0.5em;
+}
+
+// anchor
+
+// anchor js
+
+div[id^="tbl-"] {
+  position: relative;
+}
+
+.quarto-figure > .anchorjs-link {
+  position: absolute;
+  top: 0.6em;
+  right: 0.5em;
+}
+
+div[id^="tbl-"] > .anchorjs-link {
+  position: absolute;
+  top: 0.7em;
+  right: 0.3em;
+}
+
+/* workaround for anchorjs not hitting on generic :hover selector */
+.quarto-figure:hover > .anchorjs-link,
+div[id^="tbl-"]:hover > .anchorjs-link,
+h2:hover > .anchorjs-link,
+h3:hover > .anchorjs-link,
+h4:hover > .anchorjs-link,
+h5:hover > .anchorjs-link,
+h6:hover > .anchorjs-link,
+.reveal-anchorjs-link > .anchorjs-link {
+  opacity: 1;
+}
+
+#title-block-header {
+  margin-block-end: 1rem;
+  position: relative;
+  margin-top: -1px; // Chrome draws 1px white line between navbar and title block
+}
+
+#title-block-header .abstract {
+  margin-block-start: 1rem;
+}
+
+#title-block-header .abstract .abstract-title {
+  font-weight: 600;
+}
+
+#title-block-header a {
+  text-decoration: none;
+}
+
+#title-block-header .author,
+#title-block-header .date,
+#title-block-header .doi {
+  margin-block-end: 0.2rem;
+}
+
+#title-block-header .quarto-title-block > div {
+  display: flex;
+}
+
+#title-block-header .quarto-title-block > div > h1 {
+  flex-grow: 1;
+}
+
+#title-block-header .quarto-title-block > div > button {
+  flex-shrink: 0;
+  height: 2.25rem;
+  margin-top: 0;
+}
+
+#title-block-header .quarto-title-block > div > button {
+  @if mixin-exists(media-breakpoint-up) {
+    @include media-breakpoint-up(lg) {
+      margin-top: 5px;
+    }
+  }
+}
+
+// (Remove bottom margin from paragraphs in table headers)
+tr.header > th > p:last-of-type {
+  margin-bottom: 0px;
+}
+
+table,
+table.table {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+caption,
+.table-caption {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+figure.quarto-float-tbl figcaption.quarto-float-caption-top {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+figure.quarto-float-tbl figcaption.quarto-float-caption-bottom {
+  padding-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+// utterances
+.utterances {
+  max-width: none;
+  margin-left: -8px;
+}
+
+// iframe
+iframe {
+  margin-bottom: 1em;
+}
+
+// details
+details {
+  margin-bottom: 1em;
+}
+details[show] {
+  margin-bottom: 0;
+}
+
+details > summary {
+  @if variable-exists(text-muted) {
+    color: $text-muted;
+  }
+}
+
+details > summary > p:only-child {
+  display: inline;
+}
+
+// codeCopy
+pre.sourceCode,
+code.sourceCode {
+  position: relative;
+}
+
+// Inline code should wrap
+// See https://github.com/quarto-dev/quarto-cli/issues/2649
+dd code:not(.sourceCode),
+p code:not(.sourceCode) {
+  white-space: pre-wrap;
+}
+
+// default to scrolling <code> output rather than wrapping, since
+// multi-column tabular output (very common for R & Python) is
+// unreadable when wrapped.
+code {
+  white-space: pre;
+}
+@media print {
+  code {
+    white-space: pre-wrap;
+  }
+}
+pre > code {
+  display: block;
+}
+
+pre > code.sourceCode {
+  white-space: $code-white-space;
+}
+
+pre > code.sourceCode > span > a:first-child::before {
+  text-decoration: none;
+}
+
+pre.code-overflow-wrap > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre.code-overflow-scroll > code.sourceCode {
+  white-space: pre;
+}
+
+// code linking (pkgdown style)
+code a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+code a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+// task lists
+ul.task-list {
+  padding-left: 1em;
+}
+
+// tippy
+
+[data-tippy-root] {
+  display: inline-block;
+}
+
+.tippy-content .footnote-back {
+  display: none;
+}
+
+.footnote-back {
+  margin-left: 0.2em;
+}
+
+.tippy-content {
+  overflow-x: auto;
+}
+
+// embedded source code
+.quarto-embedded-source-code {
+  display: none;
+}
+
+// unresolved crossrefs
+.quarto-unresolved-ref {
+  font-weight: 600;
+}
+
+// html cover image injection
+.quarto-cover-image {
+  max-width: 35%;
+  float: right;
+  margin-left: 30px;
+}
+
+// provide margin below jupyter widgets
+.cell-output-display .widget-subarea {
+  margin-bottom: 1em;
+}
+
+// fix for selectize inputs getting their contents clipped
+// this also works for knitr sql cells (see github issue #3497)
+.cell-output-display:not(.no-overflow-x),
+.knitsql-table:not(.no-overflow-x) {
+  overflow-x: auto;
+}
+
+.panel-input {
+  margin-bottom: 1em;
+}
+
+.panel-input > div,
+.panel-input > div > div {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 12px;
+}
+
+.panel-input > p:last-child {
+  margin-bottom: 0;
+}
+
+.layout-sidebar {
+  margin-bottom: 1em;
+}
+
+.layout-sidebar .tab-content {
+  border: none;
+}
+
+.tab-content > .page-columns.active {
+  display: grid;
+}
+
+// default styling for .code-preview=".." iframes
+div.sourceCode > iframe {
+  width: 100%;
+  height: 300px;
+
+  // this negative-margin hack works around the rendering issue with
+  // iframes and parent elements with rounded corners if the border
+  // radius for (eg) div.sourceCode is changed, this is likely going
+  // to need changing as well.
+  @if variable-exists(code-preview-margin-bottom) {
+    margin-bottom: $code-preview-margin-bottom;
+  } @else {
+    margin-bottom: -0.5em;
+  }
+  @if variable-exists(code-preview-border-color) {
+    border: $code-preview-border-color;
+  }
+}
+
+// link styling
+a {
+  text-underline-offset: 3px;
+}
+
+/* Callout styling */
+
+.callout pre.sourceCode {
+  padding-left: 0;
+}
+
+// ansi escaping
+div.ansi-escaped-output {
+  font-family: monospace;
+  display: block;
+}
+
+/*!
+*
+* ansi colors from IPython notebook's
+*
+* we also add `bright-[color]-` synonyms for the `-[color]-intense` classes since
+* that seems to be what ansi_up emits
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3e424d;
+}
+.ansi-black-bg {
+  background-color: #3e424d;
+}
+.ansi-black-intense-black,
+.ansi-bright-black-fg {
+  color: #282c36;
+}
+.ansi-black-intense-black,
+.ansi-bright-black-bg {
+  background-color: #282c36;
+}
+.ansi-red-fg {
+  color: #e75c58;
+}
+.ansi-red-bg {
+  background-color: #e75c58;
+}
+.ansi-red-intense-red,
+.ansi-bright-red-fg {
+  color: #b22b31;
+}
+.ansi-red-intense-red,
+.ansi-bright-red-bg {
+  background-color: #b22b31;
+}
+.ansi-green-fg {
+  color: #00a250;
+}
+.ansi-green-bg {
+  background-color: #00a250;
+}
+.ansi-green-intense-green,
+.ansi-bright-green-fg {
+  color: #007427;
+}
+.ansi-green-intense-green,
+.ansi-bright-green-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #ddb62b;
+}
+.ansi-yellow-bg {
+  background-color: #ddb62b;
+}
+.ansi-yellow-intense-yellow,
+.ansi-bright-yellow-fg {
+  color: #b27d12;
+}
+.ansi-yellow-intense-yellow,
+.ansi-bright-yellow-bg {
+  background-color: #b27d12;
+}
+.ansi-blue-fg {
+  color: #208ffb;
+}
+.ansi-blue-bg {
+  background-color: #208ffb;
+}
+.ansi-blue-intense-blue,
+.ansi-bright-blue-fg {
+  color: #0065ca;
+}
+.ansi-blue-intense-blue,
+.ansi-bright-blue-bg {
+  background-color: #0065ca;
+}
+.ansi-magenta-fg {
+  color: #d160c4;
+}
+.ansi-magenta-bg {
+  background-color: #d160c4;
+}
+.ansi-magenta-intense-magenta,
+.ansi-bright-magenta-fg {
+  color: #a03196;
+}
+.ansi-magenta-intense-magenta,
+.ansi-bright-magenta-bg {
+  background-color: #a03196;
+}
+.ansi-cyan-fg {
+  color: #60c6c8;
+}
+.ansi-cyan-bg {
+  background-color: #60c6c8;
+}
+.ansi-cyan-intense-cyan,
+.ansi-bright-cyan-fg {
+  color: #258f8f;
+}
+.ansi-cyan-intense-cyan,
+.ansi-bright-cyan-bg {
+  background-color: #258f8f;
+}
+.ansi-white-fg {
+  color: #c5c1b4;
+}
+.ansi-white-bg {
+  background-color: #c5c1b4;
+}
+.ansi-white-intense-white,
+.ansi-bright-white-fg {
+  color: #a1a6b2;
+}
+.ansi-white-intense-white,
+.ansi-bright-white-bg {
+  background-color: #a1a6b2;
+}
+.ansi-default-inverse-fg {
+  color: #ffffff;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+
+:root {
+  --quarto-body-bg: #{$body-bg};
+  --quarto-body-color: #{$body-color};
+  --quarto-text-muted: #{$text-muted};
+  --quarto-border-color: #{$table-border-color};
+  --quarto-border-width: #{$border-width};
+  @if not variable-exists(enable-rounded) or $enable-rounded == true {
+    --quarto-border-radius: #{$border-radius};
+  }
+}
+
+/* rules to support GT table styling */
+table.gt_table {
+  color: var(--quarto-body-color);
+  font-size: 1em;
+  width: 100%; // to match other table styling
+  background-color: transparent;
+  border-top-width: inherit;
+  border-bottom-width: inherit;
+  border-color: var(--quarto-border-color);
+}
+
+table.gt_table th.gt_column_spanner_outer {
+  color: var(--quarto-body-color);
+  background-color: transparent;
+  border-top-width: inherit;
+  border-bottom-width: inherit;
+  border-color: var(--quarto-border-color);
+}
+
+table.gt_table th.gt_col_heading {
+  color: var(--quarto-body-color);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+table.gt_table thead.gt_col_headings {
+  border-bottom: 1px solid currentColor;
+  border-top-width: inherit;
+  border-top-color: var(--quarto-border-color);
+}
+
+table.gt_table thead.gt_col_headings:not(:first-child) {
+  border-top-width: 1px;
+  border-top-color: var(--quarto-border-color);
+}
+
+table.gt_table td.gt_row {
+  border-bottom-width: 1px;
+  border-bottom-color: var(--quarto-border-color);
+  border-top-width: 0px;
+}
+
+table.gt_table tbody.gt_table_body {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--quarto-border-color);
+  border-top-color: currentColor;
+}
+
+/* restore previous pandoc columns behavior 
+   (too many reports of slide layout breaking)
+   see https://github.com/jgm/pandoc/pull/8237
+*/
+div.columns {
+  display: initial;
+  gap: initial;
+}
+div.column {
+  display: inline-block;
+  overflow-x: initial;
+  vertical-align: top;
+  width: 50%;
+}
+
+// Code Annotation LayoutBoot
+.code-annotation-tip-content {
+  word-wrap: break-word;
+}
+
+.code-annotation-container-hidden {
+  display: none !important;
+}
+
+dl.code-annotation-container-grid {
+  display: grid;
+  grid-template-columns: min-content auto;
+  dt {
+    grid-column: 1;
+  }
+  dd {
+    grid-column: 2;
+  }
+}
+
+pre.sourceCode.code-annotation-code {
+  padding-right: 0;
+}
+
+code.sourceCode .code-annotation-anchor {
+  z-index: 100;
+  position: relative;
+  float: right;
+  background-color: transparent;
+}
+
+// Add a bit of margin to the right of a checkbox
+// https://github.com/quarto-dev/quarto-cli/issues/6627
+input[type="checkbox"] {
+  margin-right: 0.5ch;
+}
+
+// Mermaid Theming
+// if none come from theme, we need these
+$body-color: #222 !default;
+$body-bg: #fff !default;
+$primary: #468 !default;
+$secondary: #999 !default;
+$font-family-sans-serif: sans-serif !default;
+$font-weight-base: 400 !default;
+
+/* SCSS variables
+
+   These are documented in quarto-cli/quarto-web:docs/authoring/_mermaid-theming.qmd
+
+   Make sure to update the docs if you change these.
+*/
+$mermaid-bg-color: $body-bg !default;
+$mermaid-edge-color: $secondary !default;
+$mermaid-node-fg-color: $body-color !default;
+$mermaid-fg-color: $body-color !default;
+$mermaid-fg-color--lighter: lighten($body-color, 10%) !default;
+$mermaid-fg-color--lightest: lighten($body-color, 20%) !default;
+$mermaid-font-family: $font-family-sans-serif !default;
+$mermaid-font-weight: $font-weight-base !default;
+$mermaid-label-bg-color: $body-bg !default;
+$mermaid-label-fg-color: $primary !default;
+$mermaid-node-bg-color: rgba($primary, 0.1) !default;
+$mermaid-node-fg-color: $primary !default;
+
+/* CSS variables */
+:root {
+  --mermaid-bg-color: #{$mermaid-bg-color};
+  --mermaid-edge-color: #{$mermaid-edge-color};
+  --mermaid-node-fg-color: #{$mermaid-node-fg-color};
+  --mermaid-fg-color: #{$mermaid-fg-color};
+  --mermaid-fg-color--lighter: #{$mermaid-fg-color--lighter};
+  --mermaid-fg-color--lightest: #{$mermaid-fg-color--lightest};
+  --mermaid-font-family: #{$mermaid-font-family};
+  --mermaid-label-bg-color: #{$mermaid-label-bg-color};
+  --mermaid-label-fg-color: #{$mermaid-label-fg-color};
+  --mermaid-node-bg-color: #{$mermaid-node-bg-color};
+  --mermaid-node-fg-color: #{$mermaid-node-fg-color};
+}
+
+@media print {
+  :root {
+    font-size: 11pt;
+  }
+  #quarto-sidebar,
+  #TOC,
+  .nav-page {
+    display: none;
+  }
+  .page-columns .content {
+    grid-column-start: page-start;
+  }
+  .fixed-top {
+    position: relative;
+  }
+  .panel-caption,
+  .figure-caption,
+  figcaption {
+    color: #666;
+  }
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  margin-top: 5px;
+  margin-right: 5px;
+  background-color: transparent;
+  z-index: 3;
+}
+
+.code-copy-button:focus {
+  outline: none;
+}
+
+.code-copy-button-tooltip {
+  font-size: 0.75em;
+}
+
+#{$code-copy-selector} .code-copy-button > .bi::before {
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  content: "";
+  vertical-align: -0.125em;
+  @if variable-exists(btn-code-copy-color) {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($btn-code-copy-color)}" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>');
+  } @else {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>');
+  }
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+}
+
+#{$code-copy-selector} .code-copy-button-checked > .bi::before {
+  @if variable-exists(btn-code-copy-color) {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($btn-code-copy-color)}" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>');
+  } @else {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>');
+  }
+}
+
+@if variable-exists(btn-code-copy-color-active) {
+  #{$code-copy-selector} .code-copy-button:hover > .bi::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($btn-code-copy-color-active)}" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>');
+  }
+  #{$code-copy-selector} .code-copy-button-checked:hover > .bi::before {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($btn-code-copy-color-active)}"  viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>');
+  }
+}
+
+$body-bg: #fff !default;
+$tabset-border-color: rgb(222, 226, 230) !default;
+
+.panel-tabset [role="tablist"] {
+  border-bottom: 1px solid $tabset-border-color;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.panel-tabset [role="tablist"] * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@media (min-width: 30em) {
+  .panel-tabset [role="tablist"] li {
+    display: inline-block;
+  }
+}
+
+.panel-tabset [role="tab"] {
+  border: 1px solid transparent;
+  border-top-color: $tabset-border-color;
+  display: block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+
+@media (min-width: 30em) {
+  .panel-tabset [role="tab"] {
+    border-top-color: transparent;
+    display: inline-block;
+    margin-bottom: -1px;
+  }
+}
+
+.panel-tabset [role="tab"][aria-selected="true"] {
+  background-color: $tabset-border-color;
+}
+
+@media (min-width: 30em) {
+  .panel-tabset [role="tab"][aria-selected="true"] {
+    background-color: transparent;
+    border: 1px solid $tabset-border-color;
+    border-bottom-color: $body-bg;
+  }
+}
+
+@media (min-width: 30em) {
+  .panel-tabset [role="tab"]:hover:not([aria-selected="true"]) {
+    border: 1px solid $tabset-border-color;
+  }
+}
+
+.code-with-filename .code-with-filename-file {
+  margin-bottom: 0;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-left: 0.7em;
+  border: var(--quarto-border-width) solid var(--quarto-border-color);
+  border-radius: var(--quarto-border-radius);
+  border-bottom: 0;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.code-with-filename div.sourceCode,
+.reveal .code-with-filename div.sourceCode {
+  margin-top: 0;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}
+
+.code-with-filename .code-with-filename-file pre {
+  margin-bottom: 0;
+}
+
+.code-with-filename .code-with-filename-file {
+  background-color: rgba(219, 219, 219, 0.8);
+}
+
+.quarto-dark .code-with-filename .code-with-filename-file {
+  background-color: #555;
+}
+
+.code-with-filename .code-with-filename-file strong {
+  font-weight: 400;
+}
+
+
+.reveal.center .slide aside,
+.reveal.center .slide div.aside {
+  position: initial;
+}
+
+section.has-light-background {
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $light-bg-text-color;
+  }
+  a,
+  a:hover {
+    color: $light-bg-link-color;
+  }
+  code {
+    color: $light-bg-code-color;
+  }
+}
+
+section.has-dark-background {
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $dark-bg-text-color;
+  }
+  a,
+  a:hover {
+    color: $dark-bg-link-color;
+  }
+  code {
+    color: $dark-bg-code-color;
+  }
+}
+
+#title-slide,
+/* for when hash-type: number as identifier removed*/
+div.reveal div.slides section.quarto-title-block {
+  text-align: $presentation-title-slide-text-align;
+  .subtitle {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.reveal .slides {
+  text-align: $reveal-slide-text-align;
+}
+
+.reveal .title-slide h1 {
+  font-size: $revealjs-h2-font-size;
+}
+
+.reveal[data-navigation-mode="linear"] .title-slide h1 {
+  font-size: $revealjs-h1-font-size;
+}
+
+.reveal div.sourceCode {
+  border: $border-width solid $code-block-border-color;
+  border-radius: $border-radius;
+}
+
+.reveal pre {
+  width: 100%;
+  box-shadow: none;
+  background-color: $code-block-bg;
+  border: none;
+  margin: 0;
+  font-size: $revealjs-code-block-font-size;
+  line-height: $code-block-line-height;
+  font-family: $font-family-monospace-block;
+
+  code {
+    background-color: $body-bg; // Insure we color output and code cell differently
+    font-size: inherit;
+    color: $code-block-color;
+    font-family: inherit;
+  }
+
+  &.sourceCode code {
+    color: $code-block-color;
+    font-size: inherit;
+    background-color: inherit;
+    white-space: pre;
+    font-family: inherit;
+    padding: 6px 9px;
+    max-height: $code-block-height;
+  }
+}
+
+// Inside code-file-name div, we want to use the same background color as decorated codeblock header
+// https://github.com/quarto-dev/quarto-cli/issues/9560
+.reveal .code-with-filename .code-with-filename-file pre {
+  background-color: unset;
+}
+
+.reveal code {
+  color: $code-color;
+  font-size: $revealjs-code-inline-font-size;
+  background-color: $code-bg;
+  white-space: pre-wrap;
+  font-family: $font-family-monospace-inline;
+}
+
+.reveal .column-output-location {
+  display: flex;
+  align-items: stretch;
+}
+
+.reveal .column-output-location .column:first-of-type div.sourceCode {
+  height: 100%;
+  background-color: $code-block-bg;
+}
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  color: $border-color;
+  width: unset;
+  margin: var(--r-block-margin) auto;
+  padding: 0.625rem 1.75rem;
+  border-left: 0.25rem solid $text-muted;
+  font-style: normal;
+  background: none;
+  box-shadow: none;
+}
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+  display: block;
+}
+
+.reveal .slide aside,
+.reveal .slide div.aside {
+  position: absolute;
+  bottom: 20px;
+  font-size: #{$presentation-font-smaller}em;
+  color: $text-muted;
+}
+
+.reveal .slide sup {
+  font-size: #{$presentation-font-smaller}em;
+}
+
+.reveal .slide.scrollable aside,
+.reveal .slide.scrollable div.aside {
+  position: relative;
+  margin-top: 1em;
+}
+
+.reveal .slide aside .aside-footnotes {
+  margin-bottom: 0;
+}
+
+.reveal .slide aside .aside-footnotes li:first-of-type {
+  margin-top: 0;
+}
+
+$panel-sidebar-width: 270px;
+$panel-sidebar-padding: 0.5em;
+
+.reveal .layout-sidebar {
+  display: flex;
+  width: 100%;
+  margin-top: 0.8em;
+}
+
+.reveal .layout-sidebar .panel-sidebar {
+  width: $panel-sidebar-width;
+}
+
+.reveal .layout-sidebar-left .panel-sidebar {
+  margin-right: calc(#{$panel-sidebar-padding} * 2);
+}
+
+.reveal .layout-sidebar-right .panel-sidebar {
+  margin-left: calc(#{$panel-sidebar-padding} * 2);
+}
+
+.reveal .layout-sidebar .panel-fill,
+.reveal .layout-sidebar .panel-center,
+.reveal .layout-sidebar .panel-tabset {
+  flex: 1;
+}
+
+.reveal .panel-input,
+.reveal .panel-sidebar {
+  font-size: 0.5em;
+  padding: $panel-sidebar-padding;
+  border-style: solid;
+  border-color: $input-panel-border-color;
+  border-width: $input-panel-border-width;
+  border-radius: $input-panel-border-radius;
+  background-color: $input-panel-bg;
+}
+
+.reveal .panel-sidebar :first-child,
+.reveal .panel-fill :first-child {
+  margin-top: 0;
+}
+
+.reveal .panel-sidebar :last-child,
+.reveal .panel-fill :last-child {
+  margin-bottom: 0;
+}
+
+.panel-input > div,
+.panel-input > div > div {
+  vertical-align: middle;
+  padding-right: 1em;
+}
+
+.reveal p,
+.reveal .slides section,
+.reveal .slides section > section {
+  line-height: $revealjs-line-height;
+}
+
+// Smaller font size logic
+.reveal {
+  // When smaller is set globally
+  &.smaller {
+    .slides {
+      // We make the all slide font-size smaller by a factor of $presentation-font-smaller
+      section {
+        font-size: #{$presentation-font-smaller}em;
+
+        // avoid applying twice the reduction when using nested section
+        section {
+          font-size: inherit;
+        }
+      }
+
+      // But we don't want headers to change size and they are in em
+      h1 {
+        @include undo-smaller-font-size($revealjs-h1-font-size);
+      }
+      h2 {
+        @include undo-smaller-font-size($revealjs-h2-font-size);
+      }
+      h3 {
+        @include undo-smaller-font-size($revealjs-h3-font-size);
+      }
+    }
+  }
+
+  .slides section {
+    // when  smaller is set on slide
+    &.smaller {
+      font-size: #{$presentation-font-smaller}em;
+
+      // But we don't want headers to change size and they are in em
+      h1 {
+        @include undo-smaller-font-size($revealjs-h1-font-size);
+      }
+      h2 {
+        @include undo-smaller-font-size($revealjs-h2-font-size);
+      }
+      h3 {
+        @include undo-smaller-font-size($revealjs-h3-font-size);
+      }
+    }
+
+    // On callout we want to make the font-size smaller too
+    div.callout {
+      font-size: #{$presentation-font-smaller}em;
+
+      // But we don't want headers to change size and they are in em
+      h1 {
+        @include undo-smaller-font-size($revealjs-h1-font-size);
+      }
+      h2 {
+        @include undo-smaller-font-size($revealjs-h2-font-size);
+      }
+      h3 {
+        @include undo-smaller-font-size($revealjs-h3-font-size);
+      }
+    }
+  }
+}
+
+.reveal .columns > .column > :not(ul, ol) {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.reveal .columns > .column:first-child > :not(ul, ol) {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+.reveal .columns > .column:last-child > :not(ul, ol) {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.reveal .slide-number {
+  color: $linkColorHover;
+  background-color: $body-bg;
+}
+
+.reveal .footer {
+  color: $text-muted;
+
+  a {
+    color: $linkColor;
+  }
+
+  &.has-dark-background {
+    color: quarto-color.scale($dark-bg-text-color, $whiteness: 30%);
+
+    a {
+      color: quarto-color.scale($dark-bg-link-color, $whiteness: 30%);
+    }
+  }
+
+  &.has-light-background {
+    color: quarto-color.scale($light-bg-text-color, $whiteness: 30%);
+
+    a {
+      color: quarto-color.scale($light-bg-link-color, $whiteness: 30%);
+    }
+  }
+}
+
+.reveal .slide-number {
+  color: $text-muted;
+
+  &.has-dark-background {
+    color: quarto-color.scale($dark-bg-text-color, $whiteness: 30%);
+  }
+
+  &.has-light-background {
+    color: quarto-color.scale($light-bg-text-color, $whiteness: 30%);
+  }
+}
+
+// handle caption for figures
+.reveal .slide {
+  figure > figcaption,
+  img.stretch + p.caption,
+  img.r-stretch + p.caption {
+    font-size: #{$presentation-font-smaller}em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  $arrow-spacing: 0.2em;
+  $control-arrow-spacing: 1.4em;
+
+  .reveal .controls[data-controls-layout="edges"] .navigate-left {
+    left: $arrow-spacing;
+  }
+
+  .reveal .controls[data-controls-layout="edges"] .navigate-right {
+    right: $arrow-spacing;
+  }
+
+  .reveal .controls[data-controls-layout="edges"] .navigate-up {
+    top: $arrow-spacing * 2;
+  }
+
+  .reveal .controls[data-controls-layout="edges"] .navigate-down {
+    bottom: $arrow-spacing - $control-arrow-spacing + 3.5em;
+  }
+}
+
+.tippy-box[data-theme~="light-border"] {
+  background-color: $backgroundColor;
+  color: $mainColor;
+  border-radius: $border-radius;
+  border: solid $border-width $border-color;
+  font-size: 0.6em;
+}
+
+.tippy-box[data-theme~="light-border"] .tippy-arrow {
+  color: $border-color;
+}
+
+.tippy-box[data-placement^="bottom"] > .tippy-content {
+  padding: 7px 10px;
+  z-index: 1;
+}
+
+.reveal .panel-tabset [role="tab"] {
+  padding: 0.25em 0.7em;
+}
+
+.reveal .slide-menu-button .fa-bars::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($linkColor)}" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>');
+}
+
+.reveal .slide-chalkboard-buttons .fa-easel2::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($linkColor)}" class="bi bi-easel2" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0a.5.5 0 0 1 .447.276L8.81 1h4.69A1.5 1.5 0 0 1 15 2.5V11h.5a.5.5 0 0 1 0 1h-2.86l.845 3.379a.5.5 0 0 1-.97.242L12.11 14H3.89l-.405 1.621a.5.5 0 0 1-.97-.242L3.36 12H.5a.5.5 0 0 1 0-1H1V2.5A1.5 1.5 0 0 1 2.5 1h4.691l.362-.724A.5.5 0 0 1 8 0ZM2 11h12V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5V11Zm9.61 1H4.39l-.25 1h7.72l-.25-1Z"/></svg>');
+}
+
+.reveal .slide-chalkboard-buttons .fa-brush::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#{colorToRGB($linkColor)}" class="bi bi-brush" viewBox="0 0 16 16"><path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z"/></svg>');
+}
+
+// This is a sentinel value that renderers can use to determine
+// whether the theme is dark or light
+@if (
+  quarto-color.blackness($backgroundColor) > $code-block-theme-dark-threshhold
+) {
+  /*! dark */
+} @else {
+  /*! light */
+}
+
+/* override theme.scss style for the default styles
+ 
+  Note the need for both the case sensitive flag and the
+  case-oblivious selectors. This is a workaround for what's
+  apparently a Chrome and Safari bug:
+
+  https://github.com/quarto-dev/quarto-cli/issues/1902#issuecomment-1219783059
+ */
+
+.reveal ol[type="a"] {
+  list-style-type: lower-alpha;
+}
+
+.reveal ol[type="a" s] {
+  list-style-type: lower-alpha;
+}
+
+.reveal ol[type="A" s] {
+  list-style-type: upper-alpha;
+}
+
+.reveal ol[type="i"] {
+  list-style-type: lower-roman;
+}
+
+.reveal ol[type="i" s] {
+  list-style-type: lower-roman;
+}
+
+.reveal ol[type="I" s] {
+  list-style-type: upper-roman;
+}
+
+.reveal ol[type="1"] {
+  list-style-type: decimal;
+}
+
+// https://github.com/quarto-dev/quarto-cli/issues/2834
+// temporary workaround while we come up with a pure CSS solution
+
+.reveal ul.task-list {
+  list-style: none;
+}
+.reveal ul.task-list li input[type="checkbox"] {
+  width: 2em;
+  height: 2em;
+  margin: 0 1em 0.5em -1.6em;
+  vertical-align: middle;
+}
+
+// https://github.com/quarto-dev/quarto-cli/issues/3380
+
+div.cell-output-display div.pagedtable-wrapper table.table {
+  font-size: 0.6em;
+}
+
+.reveal .code-annotation-container-hidden {
+  display: none;
+}
+
+.reveal code.sourceCode button.code-annotation-anchor,
+.reveal code.sourceCode .code-annotation-anchor {
+  font-family: $font-family-monospace;
+  color: var(--quarto-hl-co-color);
+  border: solid var(--quarto-hl-co-color) 1px;
+  border-radius: 50%;
+  font-size: 0.7em;
+  line-height: 1.2em;
+  margin-top: 2px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
+
+.reveal code.sourceCode button.code-annotation-anchor {
+  cursor: pointer;
+}
+
+.reveal code.sourceCode a.code-annotation-anchor {
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  cursor: default;
+  height: 1.2em;
+  width: 1.2em;
+}
+
+.reveal code.sourceCode.fragment a.code-annotation-anchor {
+  left: auto;
+}
+
+.reveal #code-annotation-line-highlight-gutter {
+  width: 100%;
+  border-top: solid var(--quarto-hl-co-color) 1px;
+  border-bottom: solid var(--quarto-hl-co-color) 1px;
+  z-index: 2;
+}
+
+.reveal #code-annotation-line-highlight {
+  margin-left: -8em;
+  width: calc(100% + 4em);
+  border-top: solid var(--quarto-hl-co-color) 1px;
+  border-bottom: solid var(--quarto-hl-co-color) 1px;
+  z-index: 2;
+  margin-bottom: -2px;
+}
+
+.reveal code.sourceCode .code-annotation-anchor.code-annotation-active {
+  background-color: var(--quarto-hl-normal-color, #aaaaaa);
+  border: solid var(--quarto-hl-normal-color, #aaaaaa) 1px;
+  color: rgb(red($code-block-bg), green($code-block-bg), blue($code-block-bg));
+  font-weight: bolder;
+}
+
+.reveal pre.code-annotation-code {
+  padding-top: 0;
+  padding-bottom: 0;
+  code {
+    z-index: 3;
+    padding-left: 0px;
+  }
+}
+
+.reveal dl.code-annotation-container-grid {
+  margin-left: 0.1em;
+  dt {
+    margin-top: 0.65rem;
+    font-family: $font-family-monospace;
+    border: solid $body-color 1px;
+    border-radius: 50%;
+    height: 1.3em;
+    width: 1.3em;
+    line-height: 1.3em;
+    font-size: 0.5em;
+    text-align: center;
+    vertical-align: middle;
+
+    text-decoration: none;
+  }
+
+  dd {
+    margin-left: 0.25em;
+  }
+}
+
+/*
+
+  https://github.com/quarto-dev/quarto-cli/issues/4283
+
+  The trick itself is from here:
+
+  https://stackoverflow.com/questions/8720931/can-css-detect-the-number-of-children-an-element-has
+
+*/
+
+.reveal .scrollable ol li:first-child:nth-last-child(n + 10),
+.reveal .scrollable ol li:first-child:nth-last-child(n + 10) ~ li {
+  margin-left: 1em;
+}
+
+/* kbd rules */
+
+kbd {
+  font-family: $font-family-monospace;
+  font-size: $kbd-font-size;
+  color: $kbd-color;
+  @include shift_to_dark(
+    "background-color",
+    shift-color($kbd-bg, 70%),
+    $kbd-bg
+  );
+  border: 1px solid;
+  border-color: $code-block-border-color;
+  border-radius: 5px;
+  padding: $kbd-padding-y $kbd-padding-x;
+}
+
+:root {
+  --r-inline-code-font: #{$font-family-monospace-inline};
+  --r-block-code-font: #{$font-family-monospace-block};
+  --r-inline-code-font-size: #{$revealjs-code-inline-font-size};
+  --r-block-code-font-size: #{$revealjs-code-block-font-size};
+}
+
+// _brand.yml rules
+
+.reveal a {
+  font-weight: $link-weight;
+  background-color: $link-color-bg;
+  text-decoration: $link-decoration;
+}
+
+/* Callout styles */
+
+.reveal div.callout {
+  margin-top: $callout-margin-top;
+  margin-bottom: $callout-margin-bottom;
+  border-radius: $border-radius;
+  overflow-wrap: break-word;
+
+  // Rules for both styles
+  &.callout-style-simple,
+  &.callout-style-default {
+    border-left: $callout-border-width solid #acacac;
+    border-right: solid 1px $table-border-color;
+    border-top: solid 1px $table-border-color;
+    border-bottom: solid 1px $table-border-color;
+
+    div {
+      &.callout-body,
+      &.callout-title {
+        // Font size is inherited from the parent div.callout
+        // which is scaled down like .smaller
+        font-size: inherit;
+        border-bottom: none;
+        font-weight: 600;
+      }
+
+      &.callout-title {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+          color: var(--r-main-color);
+        }
+      }
+    }
+
+    .callout-icon::before {
+      height: 1.25em;
+      width: 1.25em;
+      background-size: 1.25em 1.25em;
+    }
+
+    &.callout-titled {
+      .callout-body {
+        > .callout-content {
+          > :last-child {
+            margin-bottom: var(--r-block-margin);
+          }
+          > :last-child:not(div.sourceCode) {
+            padding-bottom: 0.5rem;
+            margin-bottom: 0;
+          }
+        }
+      }
+      .callout-icon::before {
+        margin-top: 0.25em;
+        padding-right: 0.25em;
+      }
+    }
+
+    &.no-icon::before {
+      display: none !important;
+    }
+  }
+
+  // Apply only to simple callout style which could have
+  // - a title or not
+  // - an icon or not
+  &.callout-style-simple {
+    padding: 0em 0.5em;
+    display: flex;
+
+    &.callout-titled {
+      .callout-body {
+        margin-top: 0.2em;
+      }
+      &:not(.no-icon) {
+        .callout-content {
+          padding-left: 1.6em;
+        }
+      }
+      .callout-content {
+        p {
+          margin-top: 0;
+        }
+      }
+    }
+
+    &:not(.callout-titled) {
+      .callout-body {
+        display: flex;
+      }
+      .callout-icon::before {
+        margin-top: var(--r-block-margin);
+        padding-right: 0.5em;
+      }
+      .callout-body {
+        > .callout-content {
+          // Margin needs to be added when last child is div.sourceCode
+          // Other code cell border is mixed with callout border
+          > div.sourceCode:last-child {
+            margin-bottom: 1rem;
+          }
+          > :first-child {
+            margin-top: var(--r-block-margin);
+          }
+        }
+      }
+    }
+
+    .callout-icon::before {
+      display: inline-block;
+      content: "";
+      background-repeat: no-repeat;
+    }
+
+    div {
+      &.callout-title {
+        opacity: 75%;
+      }
+      &.callout-body {
+        font-weight: 400;
+      }
+    }
+  }
+
+  // Apply only to default callout style which could have
+  // - a title (can't have no title)
+  // - an icon or not
+  &.callout-style-default {
+    &.callout-titled {
+      .callout-content {
+        p {
+          margin-top: 0.7em;
+        }
+      }
+    }
+
+    .callout-icon::before {
+      display: inline-block;
+      content: "";
+      background-repeat: no-repeat;
+    }
+
+    div {
+      &.callout-body {
+        font-weight: 400;
+      }
+      &.callout-title {
+        opacity: 85%;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+      &.callout-content {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+    }
+  }
+
+  // FIXME: There is no body-container in revealjs so remove but before find what it was suppose to do
+  .callout-body-container {
+    flex-grow: 1;
+  }
+}
+
+/* Callout Types */
+
+// Generate per callout type css to customize their appearance
+// Define the callouts for which we should define styles
+$callouts: (
+  // NOTE
+  "note":
+    (
+      "color": $callout-color-note,
+      "icon":
+        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>',
+    ),
+  // TIP
+  "tip":
+    (
+      "color": $callout-color-tip,
+      "icon":
+        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>',
+    ),
+  // WARNING
+  "warning":
+    (
+      "color": $callout-color-warning,
+      "icon":
+        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16"><path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/><path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/></svg>',
+    ),
+  // CAUTION
+  "caution":
+    (
+      "color": $callout-color-caution,
+      "icon":
+        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cone-striped" viewBox="0 0 16 16"><path d="M9.97 4.88l.953 3.811C10.158 8.878 9.14 9 8 9c-1.14 0-2.159-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12zm-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.274 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598z"/></svg>',
+    ),
+  // IMPORTANT
+  "important":
+    (
+      "color": $callout-color-important,
+      "icon":
+        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>',
+    )
+);
+
+@each $name, $info in $callouts {
+  $shifted-color: #{shift-color(
+      quarto-map.get($info, "color"),
+      $callout-icon-scale
+    )};
+  $shifted-color-svg: str-replace($shifted-color, "#", "%23");
+
+  .reveal div.callout {
+    &.callout-#{$name} {
+      border-left-color: shift-color(
+        quarto-map.get($info, "color"),
+        $callout-border-scale
+      );
+      &.callout-style-default {
+        .callout-title {
+          @include shift_to_dark(
+            "background-color",
+            shift-color(quarto-map.get($info, "color"), 70%),
+            shift-color(quarto-map.get($info, "color"), -90%)
+          );
+        }
+      }
+      .callout-icon::before {
+        background-image: #{"url('data:image/svg+xml," +
+          str-replace(
+            quarto-map.get($info, "icon"),
+            'fill="currentColor"',
+            'style="fill: #{$shifted-color-svg}"'
+          ) +
+          "');"};
+      }
+    }
+  }
+}
+
+
+// quarto-scss-analysis-annotation { "origin": "'rules' section from user-defined SCSS" }
+
+$presentation-author-block-padding-left: if(
+  $presentation-title-slide-text-align != left,
+  0.5em,
+  0
+);
+$presentation-author-block-padding-right: if(
+  $presentation-title-slide-text-align != right,
+  0.5em,
+  0
+);
+
+.reveal {
+  .quarto-title-block {
+    .quarto-title-authors {
+      display: flex;
+      justify-content: $presentation-title-slide-text-align;
+
+      .quarto-title-author {
+        padding-left: $presentation-author-block-padding-left;
+        padding-right: $presentation-author-block-padding-right;
+
+        a,
+        a:hover,
+        a:visited,
+        a:active {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .quarto-title-author-name {
+          margin-bottom: 0.1rem;
+        }
+
+        .quarto-title-author-email {
+          margin-top: 0px;
+          margin-bottom: 0.4em;
+          font-size: 0.6em;
+        }
+
+        .quarto-title-author-orcid {
+          img {
+            margin-bottom: 4px;
+          }
+        }
+
+        .quarto-title-affiliation {
+          font-size: 0.7em;
+          margin-top: 0px;
+          margin-bottom: 8px;
+        }
+
+        .quarto-title-affiliation:first {
+          margin-top: 12px;
+        }
+      }
+    }
+  }
+}
+
+
+.beige {
+  // Fonts
+  font-family: Lato, sans-serif;
+
+  // Colors
+  color: #333;
+
+  .slide-background-content {
+    background: radial-gradient(rgba(247, 242, 211, 1), rgba(255, 255, 255, 1));
+  }
+
+  ::selection {
+    background-color: rgba(79, 64, 28, 0.99);
+  }
+
+  a {
+    color: #8b743d;
+  }
+
+  // Headers
+  h1 {
+    font-size: 3.77em;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+      0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+      0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "League Gothic", sans-serif;
+    text-transform: uppercase;
+  }
+
+  // Code blocks
+  pre code,
+  pre {
+    background-color: transparent;
+  }
+}
+
+.blood {
+  // Fonts
+  font-family: Ubuntu, "sans-serif";
+
+  // Colors
+  color: #eee;
+
+  .slide-background-content {
+    background-color: #222;
+  }
+
+  ::selection {
+    color: #fff;
+    background-color: #a23;
+  }
+
+  a {
+    color: #a23;
+  }
+
+  // Headers
+  h1 {
+    font-size: 3.77em;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+      0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+      0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eee;
+    text-shadow: 2px 2px 2px #222;
+    font-weight: 700;
+  }
+
+  // Code blocks
+  pre code,
+  pre {
+    background-color: transparent;
+    color: #eee;
+  }
+
+  p {
+    font-weight: 300;
+    text-shadow: 1px 1px #222;
+  }
+
+  section.has-light-background {
+    p,
+    h1,
+    h2,
+    h3,
+    h4 {
+      text-shadow: none;
+    }
+  }
+
+  p code {
+    background-color: $code-bg;
+    display: inline-block;
+    border-radius: 7px;
+  }
+
+  small code {
+    vertical-align: baseline;
+  }
+}
+
+.dark {
+  // Colors
+  color: #fff;
+
+  .slide-background-content {
+    background-color: #191919;
+  }
+
+  a {
+    color: #42affa;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fff;
+  }
+
+  // Code blocks
+  pre code,
+  pre {
+    color: #fff;
+    background-color: rgba(233, 236, 239, 0.2);
+  }
+}
+
+.dracula {
+  color: #f8f8f2;
+
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
+    sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #bd93f9;
+    text-shadow: none;
+    text-transform: none;
+  }
+
+  ::selection {
+    color: #44475a;
+  }
+
+  .slide-background-content {
+    background-color: #282a36;
+  }
+
+  a {
+    color: #ff79c6;
+
+    &:hover {
+      color: #8be9fd;
+    }
+  }
+
+  code,
+  pre code {
+    color: #50fa7b;
+    font-family: "Fira Code", Menlo, Consolas, Monaco, Liberation Mono,
+      Lucida Console, monospace;
+    background-color: #282a36;
+  }
+
+  strong,
+  b {
+    &:not(.callout-title strong, .callout-tile b) {
+      color: #ffb86c;
+    }
+  }
+  em,
+  i,
+  blockquote {
+    color: #f1fa8c;
+  }
+  // Dracula colored list bullets and numbers
+  ul,
+  ol {
+    li::marker {
+      color: #8be9fd;
+    }
+  }
+}
+
+.league {
+  font-family: Lato, sans-serif;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eee;
+    font-family: "League Gothic", sans-serif;
+    text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+      0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+      0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
+    font-size: 3.77em;
+  }
+
+  .slide-background-content {
+    background-color: #2b2b2b;
+    background: radial-gradient(rgba(28, 30, 32, 1), rgba(85, 90, 95, 1));
+  }
+
+  color: #eee;
+
+  a {
+    color: #13daec;
+  }
+
+  ::selection {
+    color: #ff5e99;
+  }
+
+  pre code,
+  code,
+  pre {
+    background-color: transparent;
+    color: #eee;
+  }
+}
+
+.moon {
+  font-family: Lato, sans-serif;
+
+  color: #586e75;
+
+  .slide-background-content {
+    background-color: #002b36;
+  }
+
+  a {
+    color: #268bd2;
+  }
+
+  ::selection {
+    color: #d33682;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eee8d5;
+    text-shadow: none;
+    text-transform: uppercase;
+    font-family: "League Gothic", sans-serif;
+  }
+
+  pre code,
+  code,
+  pre {
+    background-color: transparent;
+    color: #586e75;
+  }
+}
+
+.night {
+  .slide-background-content {
+    background-color: #111;
+  }
+
+  color: #eee;
+
+  font-family: "Open Sans", sans-serif;
+
+  a {
+    color: #e7ad52;
+  }
+
+  ::selection {
+    color: #e7ad52;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #eee;
+    font: "Montserrat", sans-serif;
+    text-shadow: none;
+    letter-spacing: -0.03em;
+    text-transform: none;
+  }
+
+  pre code,
+  code,
+  pre {
+    background-color: transparent;
+    color: #eee;
+  }
+}
+
+.serif {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
+
+  color: #000;
+
+  .slide-background-content {
+    background-color: #f0f1eb;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #000;
+    font: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
+    color: #383d3d;
+    text-shadow: none;
+    text-transform: none;
+  }
+
+  a {
+    color: #51483d;
+    line-height: 1.3em;
+  }
+
+  ::selection {
+    color: #26351c;
+  }
+}
+
+.simple {
+  font-family: "Lato", sans-serif;
+  color: #000;
+
+  .slide-background-content {
+    background-color: #fff;
+  }
+
+  a {
+    color: #00008b;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #000;
+    font: "News Cycle", sans-serif;
+    color: $body-color;
+    text-shadow: none;
+    text-transform: none;
+  }
+}
+
+.sky {
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+// Override theme settings
+$font-family-sans-serif: "Open Sans", sans-serif !default;
+$body-color: #333 !default;
+$presentation-heading-font: "Quicksand", sans-serif !default;
+$presentation-heading-color: $body-color !default;
+$presentation-heading-letter-spacing: -0.08em !default;
+$presentation-heading-text-shadow: none !default;
+$body-bg: #f7fbfc !default;
+$link-color: #3b759e !default;
+$selection-bg: #134674 !default;
+
+$presentation-heading-text-transform: uppercase !default; // from settings.scss
+$presentation-heading-font-weight: normal !default; // from settings.scss
+
+$overlayElementBgColor: 0, 0, 0 !default;
+$overlayElementFgColor: 240, 240, 240 !default;
+
+// Change text colors against dark slide backgrounds
+$dark-bg-text-color: #fff !default;
+
+// code blocks
+$code-block-border-color: lighten($link-color, 30%) !default;
+$code-block-bg: transparent !default;
+
+
+// Fix links so they are not cut off
+.reveal a {
+  line-height: 1.3em;
+}
+
+
+// quarto-scss-analysis-annotation { "origin": null }

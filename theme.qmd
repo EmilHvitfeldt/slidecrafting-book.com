@@ -4,7 +4,9 @@ title: "Theme"
 
 The built in themes are a great place to look for inspiration.
 
-TODO: add the all-theme
+<iframe class="slide-deck" src="examples/all-themes/index.html">
+
+</iframe>
 
 This is also a perfect place to start looking for inspiration.
 Using these themes with one or two modifications might get you all the way where you want to go.

@@ -6,9 +6,6 @@ format:
       [default, styles.scss]
 ---
 
-https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/revealjs/themes/beige.scss
-https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/formats/revealjs/reveal/dist/theme/fonts
-
 ## Quarto
 
 Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
