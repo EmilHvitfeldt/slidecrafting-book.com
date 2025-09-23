@@ -321,9 +321,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can also imagine having a couple of more similar theme variants that are used to denote theory/practice, idea/execution, pros/cons. The opportunities are endless, and we are not limited to only 2. I have in the past used themes that slowly changes colors as the slides progressed through the topics.</p>
 <p>Variants are useful in a lot of different ways:</p>
 <ul>
-<li>section slides - gives a break in the slides</li>
+<li>section slides: gives a break in the slides</li>
+<li>fuctional use: (exercise slides, demo slides, results slides)</li>
 <li>have different sections of the slides (introduction, problem, solution red/yellow/green) purely aesthetic</li>
-<li>Fuctional use - (exercise slides, demo slides, results slides)</li>
 </ul>
 </section>
 <section id="the-scss-basics" class="level2" data-number="6.2">
@@ -350,22 +350,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Under the <code>/*-- scss:rules --*/</code> section we can now specify all the css rules we want. And we do this by prefixing <code>.variant</code> to each style. As an example, if we want to change the color of the text we use <code>.variant-one {color: blue;}</code>, or the link color <code>.variant-one a {color: green;}</code>.</p>
 <p>You can quite quickly end up making many changes. And this is where I find it helpful to use <a href="https://sass-lang.com/documentation/style-rules#nesting">scss nesting</a>. Nesting allows us to rewrite</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> {</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#d6d6d6</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#f3f3f3</span><span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> a {</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#00e0e0</span><span class="op">;</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> p code {</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffd700</span><span class="op">;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#d6d6d6</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#f3f3f3</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> a {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#00e0e0</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> p code {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffd700</span><span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>as</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.variant-one</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">#d6d6d6</span><span class="op">;</span></span>
@@ -413,8 +412,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And that is all that is needed! I have taken the liberty to create two themes to show case how this is done in practice:</p>
 <p>https://github.com/EmilHvitfeldt/quarto-revealjs-inverse</p>
+<p>TODO: redo as iframe</p>
 <p><img src="media/inverse-example.gif" class="img-fluid"></p>
 <p>https://github.com/EmilHvitfeldt/quarto-revealjs-seasons</p>
+<p>TODO: redo as iframe</p>
 <p><img src="media/seasons-example.gif" class="img-fluid"></p>
 </section>
 <section id="what-is-a-slide-theme" class="level2" data-number="6.3">
@@ -423,6 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="media/google-slides.png" class="img-fluid"></p>
 <p>With these menus, you can swiftly select the style of slide you intend to write and fill in the content. I find that for some presentations that I all I need.</p>
 <p>Below is one such theme I created</p>
+<p>TODO: this has a weird height</p>
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-earth/">
 </iframe>
 <div class="project-buttons">
@@ -452,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="how-to-create-your-own" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="how-to-create-your-own"><span class="header-section-number">6.4</span> How to create your own</h2>
-<p>What we will be doing is creating several <code>CSS</code> classes. I find it easier to prefix all of them with <code>.theme-</code> but that is not a requirement. We will also be using the feature that <a href="https://sass-lang.com/documentation/style-rules/#nesting">Sass lets us create nesting rules css</a>.</p>
+<p>What we will be doing is creating several <a href="./scss.html#using-css-classes">CSS classes</a>. I find it easier to prefix all of them with <code>.theme-</code> but that is not a requirement. We will also be using the feature that <a href="https://sass-lang.com/documentation/style-rules/#nesting">Sass lets us create nesting rules css</a>.</p>
 <p>We start with a simple class rule</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.theme-slide1</span> {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -532,12 +534,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="more-examples" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="more-examples"><span class="header-section-number">6.5</span> More Examples</h2>
 <p>Below is another theme, following very closely the construction of the previous</p>
+<p>TODO: this has a weird height</p>
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-cinco-de-mayo/">
 </iframe>
 <div class="project-buttons">
 <p><a href="https://github.com/EmilHvitfeldt/quarto-revealjs-cinco-de-mayo"> <i class="fa-brands fa-github" aria-label="github"></i> Github </a> <a href="https://emilhvitfeldt.github.io/quarto-revealjs-cinco-de-mayo/"> <i class="fa-solid fa-door-open" aria-label="door-open"></i> Website </a> <a href="https://github.com/EmilHvitfeldt/quarto-revealjs-cinco-de-mayo/blob/main/_extensions/cinco-de-mayo/cinco.scss"> <i class="fa-brands fa-github" aria-label="github"></i> Scss file </a></p>
 </div>
 <p>Another approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides</p>
+<p>TODO: this has a weird height</p>
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://katie.quarto.pub/positconf2023/">
 </iframe>
 <div class="project-buttons">
