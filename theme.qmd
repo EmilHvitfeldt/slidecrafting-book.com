@@ -11,22 +11,16 @@ Using these themes with one or two modifications might get you all the way where
 It is in general a good idea to look for inspiration in other people's work.
 
 This chapter covers what I like to call **theme variants** and **slide themee**.
-The
-
-This way you can have black/white variants, white/red/blue,
-or any number of different styles.
-If you are familiar with [xaringan](https://slides.yihui.org/xaringan/) you have seen an `inverse` theme variant already.
 
 ## What is a variant?
 
-When we are slidecrafting,
-and you start having many slides.
+When we are slidecrafting and you start having many slides.
 It can be helpful to bucket them into fewer types of slides.
 This way you can reuse the same style many times with minimal copy-pasting.
 
 Using colors to create multiple variants of the same theme allows us to quickly add similar looking,
 yet different styles.
-The `inverse` theme variant of {xaringan} was a dark grey background slide,
+The `inverse` theme variant of [xaringan](https://github.com/yihui/xaringan) was a dark grey background slide,
 that accompanied the white background themed default.
 I and many other people found this `inverse` theme helpful for creating a break in slides.
 Typically using it as a section break or a background on which to show a quote.
@@ -37,10 +31,11 @@ The opportunities are endless,
 and we are not limited to only 2.
 I have in the past used themes that slowly changes colors as the slides progressed through the topics.
 
-Variants are useful in a lot of different ways
-- section slides - gives a break in the slides
+Variants are useful in a lot of different ways:
+
+- section slides: gives a break in the slides
+- fuctional use: (exercise slides, demo slides, results slides)
 - have different sections of the slides (introduction, problem, solution red/yellow/green) purely aesthetic
-- Fuctional use - (exercise slides, demo slides, results slides)
 
 ## The SCSS basics
 
@@ -92,7 +87,6 @@ And this is where I find it helpful to use [scss nesting](https://sass-lang.com/
 Nesting allows us to rewrite
 
 ```css
-
 .variant-one {
   color: #d6d6d6;
 }
@@ -171,11 +165,15 @@ I have taken the liberty to create two themes to show case how this is done in p
 
 https://github.com/EmilHvitfeldt/quarto-revealjs-inverse
 
+TODO: redo as iframe
+
 :::: {.content-visible when-format="html"}
 ![](media/inverse-example.gif)
 :::
 
 https://github.com/EmilHvitfeldt/quarto-revealjs-seasons
+
+TODO: redo as iframe
 
 :::: {.content-visible when-format="html"}
 ![](media/seasons-example.gif)
@@ -193,6 +191,8 @@ you can swiftly select the style of slide you intend to write and fill in the co
 I find that for some presentations that I all I need.
 
 Below is one such theme I created
+
+TODO: this has a weird height
 
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-earth/"></iframe>
 
@@ -245,8 +245,7 @@ just one or two classes specified on the slide level.
 
 ## How to create your own
 
-
-What we will be doing is creating several `CSS` classes.
+What we will be doing is creating several [CSS classes](scss.qmd#using-css-classes).
 I find it easier to prefix all of them with `.theme-` but that is not a requirement.
 We will also be using the feature that [Sass lets us create nesting rules css](https://sass-lang.com/documentation/style-rules/#nesting).
 
@@ -372,6 +371,8 @@ The style sheet for the above example can be [found here](https://github.com/Emi
 Below is another theme,
 following very closely the construction of the previous
 
+TODO: this has a weird height
+
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-cinco-de-mayo/"></iframe>
 
 <div class="project-buttons">
@@ -387,6 +388,8 @@ following very closely the construction of the previous
 </div>
 
 Another approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides
+
+TODO: this has a weird height
 
 <iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://katie.quarto.pub/positconf2023/"></iframe>
 
