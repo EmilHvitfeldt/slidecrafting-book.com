@@ -208,19 +208,25 @@ or on a slide-by-slide basis by adding the `.nostretch` class to the slide.
 We see how they affect sizing in the following slides first with the default,
 and second with `.nostretch`.
 
-TODO: redo all these as slides
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/auto-stretch">
 
-![](media/figures/1.png)
+</iframe>
 
-![](media/figures/2.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/no-auto-stretch">
+
+</iframe>
 
 By themselves, they look pretty similar.
 One occasion where you really notice the difference is when there are other elements on the slide.
 `auto-stretch` makes sure the image fits by making the image smaller as seen below.
 
-![](media/figures/3.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/auto-stretch-1">
 
-![](media/figures/4.png)
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/no-auto-stretch-1">
+
+</iframe>
 
 ### Sizing Options
 
@@ -244,9 +250,14 @@ we get an image that doesn't take up the whole screen.
 #| out-height: 3.5in
 ```
 
-![](media/figures/5.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section">
 
-![](media/figures/6.png)
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-1">
+
+</iframe>
+
 
 I don't find myself using these options much as I tend to want images that take up most of the space,
 but they are useful to know.
@@ -261,19 +272,31 @@ Especially for an in-person audience.
 Below is the same chart 4 times with different value pairs for `fig-width` and `fig-height`.
 Notice how the default values appear to be around `fig-width: 9` and `fig-height: 5`.
 
-![](media/figures/7.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-2">
 
-![](media/figures/8.png)
+</iframe>
 
-![](media/figures/9.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-3">
 
-![](media/figures/10.png)
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-4">
+
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-5">
+
+</iframe>
+
 
 All of the above figures have roughly the same aspect ratios,
 but if you want others you just specify different values.
 Like this square chart below.
 
-![](media/figures/11.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-6">
+
+</iframe>
+
 
 ### fig-asp
 
@@ -286,9 +309,13 @@ set that as the `fig-asp` and then you just have to set one of `fig-height` or `
 Is it too small? increase `fig-height` and keep `fig-asp` the same.
 is it too big? decrease `fig-height` and keep `fig-asp` the same.
 
-![](media/figures/12.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-7">
 
-![](media/figures/13.png)
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-8">
+
+</iframe>
 
 ### fig-align
 
@@ -296,11 +323,18 @@ Unless your chart fits fully inside the slide then it tends to be left aligned,
 you can change that with `fig-align`,
 setting it to `left`, `center` or `right`.
 
-![](media/figures/14.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-9">
 
-![](media/figures/15.png)
+</iframe>
 
-![](media/figures/16.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-10">
+
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-11">
+
+</iframe>
+
 
 ### fig-dpi
 
@@ -311,9 +345,13 @@ increase the dpi until it isn't anymore.
 Note that dpi will result in larger file sizes,
 so only change if you have to.
 
-![](media/figures/17.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-12">
 
-![](media/figures/18.png)
+</iframe>
+
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-13">
+
+</iframe>
 
 ### Make work with columns
 
@@ -322,7 +360,9 @@ you will have to make slide-by-slide adjustments,
 such as with charts in `.columns`.
 Below is one example of how we can modify the `fig-asp` to make it look decent in a column layout.
 
-![](media/figures/19.png)
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-14">
+
+</iframe>
 
 ### Source Document
 

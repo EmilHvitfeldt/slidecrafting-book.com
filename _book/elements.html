@@ -337,7 +337,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slide-menu-button</span> <span class="fu">.fa-bars</span><span class="in">::before</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">'https://cdn-icons-png.flaticon.com/512/2163/2163350.png'</span><span class="fu">)</span> <span class="at">!important</span><span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>TODO: links wrong</p>
 <iframe class="slide-deck" src="examples/styling/tip-2.html">
 </iframe>
 <p><a href="examples/styling/tip-2.qmd" target="_blank" class="listing-slides btn-links"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a><a> </a><a href="examples/styling/tip-2.scss" target="_blank" class="listing-video btn-links"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a><a></a></p><a>
@@ -486,12 +485,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>or on a slide-by-slide basis by adding the <code>.nostretch</code> class to the slide.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Title {.nostretch}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We see how they affect sizing in the following slides first with the default, and second with <code>.nostretch</code>.</p>
-<p>TODO: redo all these as slides</p>
-<p><img src="media/figures/1.png" class="img-fluid"></p>
-<p><img src="media/figures/2.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/auto-stretch">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/no-auto-stretch">
+</iframe>
 <p>By themselves, they look pretty similar. One occasion where you really notice the difference is when there are other elements on the slide. <code>auto-stretch</code> makes sure the image fits by making the image smaller as seen below.</p>
-<p><img src="media/figures/3.png" class="img-fluid"></p>
-<p><img src="media/figures/4.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/auto-stretch-1">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/no-auto-stretch-1">
+</iframe>
 </section>
 <section id="sizing-options" class="level3" data-number="7.4.2">
 <h3 data-number="7.4.2" class="anchored" data-anchor-id="sizing-options"><span class="header-section-number">7.4.2</span> Sizing Options</h3>
@@ -504,8 +506,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: 6in</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-height: 3.5in</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="media/figures/5.png" class="img-fluid"></p>
-<p><img src="media/figures/6.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-1">
+</iframe>
 <p>I don’t find myself using these options much as I tend to want images that take up most of the space, but they are useful to know.</p>
 </section>
 </section>
@@ -513,36 +517,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="7.4.3" class="anchored" data-anchor-id="fig-width-fig-height"><span class="header-section-number">7.4.3</span> fig-width, fig-height</h3>
 <p>I end up using <code>fig-width</code> and <code>fig-height</code> the most out of the options shown in this blog post. I find that the default values are too high, making the text on the plot too small for the viewer to see. Especially for an in-person audience.</p>
 <p>Below is the same chart 4 times with different value pairs for <code>fig-width</code> and <code>fig-height</code>. Notice how the default values appear to be around <code>fig-width: 9</code> and <code>fig-height: 5</code>.</p>
-<p><img src="media/figures/7.png" class="img-fluid"></p>
-<p><img src="media/figures/8.png" class="img-fluid"></p>
-<p><img src="media/figures/9.png" class="img-fluid"></p>
-<p><img src="media/figures/10.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-2">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-3">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-4">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-5">
+</iframe>
 <p>All of the above figures have roughly the same aspect ratios, but if you want others you just specify different values. Like this square chart below.</p>
-<p><img src="media/figures/11.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-6">
+</iframe>
 </section>
 <section id="fig-asp" class="level3" data-number="7.4.4">
 <h3 data-number="7.4.4" class="anchored" data-anchor-id="fig-asp"><span class="header-section-number">7.4.4</span> fig-asp</h3>
 <p>You might have noticed that the ratios shown in the last section weren’t identical. Because unless you deal with 1-2 or 1-1 ratios you are going to get decimals very fast. And you have to recalculate small things over and over again. This is why <code>fig-asp</code> is amazing. Simply determine the aspect ratio between the height and width, set that as the <code>fig-asp</code> and then you just have to set one of <code>fig-height</code> or <code>fig-width</code>. Is it too small? increase <code>fig-height</code> and keep <code>fig-asp</code> the same. is it too big? decrease <code>fig-height</code> and keep <code>fig-asp</code> the same.</p>
-<p><img src="media/figures/12.png" class="img-fluid"></p>
-<p><img src="media/figures/13.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-7">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-8">
+</iframe>
 </section>
 <section id="fig-align" class="level3" data-number="7.4.5">
 <h3 data-number="7.4.5" class="anchored" data-anchor-id="fig-align"><span class="header-section-number">7.4.5</span> fig-align</h3>
 <p>Unless your chart fits fully inside the slide then it tends to be left aligned, you can change that with <code>fig-align</code>, setting it to <code>left</code>, <code>center</code> or <code>right</code>.</p>
-<p><img src="media/figures/14.png" class="img-fluid"></p>
-<p><img src="media/figures/15.png" class="img-fluid"></p>
-<p><img src="media/figures/16.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-9">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-10">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-11">
+</iframe>
 </section>
 <section id="fig-dpi" class="level3" data-number="7.4.6">
 <h3 data-number="7.4.6" class="anchored" data-anchor-id="fig-dpi"><span class="header-section-number">7.4.6</span> fig-dpi</h3>
 <p>Lastly, something you might need to worry about is the <strong>D</strong>ots <strong>P</strong>er <strong>I</strong>nch (DPI) specified by <code>fig-dpi</code>. This is a measure of resolution in your chart. If you see your chart becoming a little blurry, increase the dpi until it isn’t anymore. Note that dpi will result in larger file sizes, so only change if you have to.</p>
-<p><img src="media/figures/17.png" class="img-fluid"></p>
-<p><img src="media/figures/18.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-12">
+</iframe>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-13">
+</iframe>
 </section>
 <section id="make-work-with-columns" class="level3" data-number="7.4.7">
 <h3 data-number="7.4.7" class="anchored" data-anchor-id="make-work-with-columns"><span class="header-section-number">7.4.7</span> Make work with columns</h3>
 <p>even if you set the option globally, you will have to make slide-by-slide adjustments, such as with charts in <code>.columns</code>. Below is one example of how we can modify the <code>fig-asp</code> to make it look decent in a column layout.</p>
-<p><img src="media/figures/19.png" class="img-fluid"></p>
+<iframe class="slide-deck" src="examples/elements/plot-sizing-examples.html#/section-14">
+</iframe>
 </section>
 <section id="source-document-1" class="level3" data-number="7.4.8">
 <h3 data-number="7.4.8" class="anchored" data-anchor-id="source-document-1"><span class="header-section-number">7.4.8</span> Source Document</h3>
