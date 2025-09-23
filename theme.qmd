@@ -165,21 +165,17 @@ and many IDEs will help highlight and collapse this type of syntax.
 And that is all that is needed!
 I have taken the liberty to create two themes to show case how this is done in practice:
 
-https://github.com/EmilHvitfeldt/quarto-revealjs-inverse
+<https://github.com/EmilHvitfeldt/quarto-revealjs-inverse>
 
-TODO: redo as iframe
+<iframe class="slide-deck" src="examples/theme/inverse.html">
 
-:::: {.content-visible when-format="html"}
-![](media/inverse-example.gif)
-:::
+</iframe>
 
-https://github.com/EmilHvitfeldt/quarto-revealjs-seasons
+<https://github.com/EmilHvitfeldt/quarto-revealjs-seasons>
 
-TODO: redo as iframe
+<iframe class="slide-deck" src="examples/theme/seasons.html">
 
-:::: {.content-visible when-format="html"}
-![](media/seasons-example.gif)
-:::
+</iframe>
 
 ## What is a slide theme?
 
@@ -194,9 +190,7 @@ I find that for some presentations that I all I need.
 
 Below is one such theme I created
 
-TODO: this has a weird height
-
-<iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-earth/"></iframe>
+<iframe class="slide-deck" src="https://emilhvitfeldt.github.io/quarto-revealjs-earth/"></iframe>
 
 <div class="project-buttons">
 <a href="https://github.com/EmilHvitfeldt/quarto-revealjs-earth">
@@ -373,9 +367,7 @@ The style sheet for the above example can be [found here](https://github.com/Emi
 Below is another theme,
 following very closely the construction of the previous
 
-TODO: this has a weird height
-
-<iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://emilhvitfeldt.github.io/quarto-revealjs-cinco-de-mayo/"></iframe>
+<iframe class="slide-deck" src="https://emilhvitfeldt.github.io/quarto-revealjs-cinco-de-mayo/"></iframe>
 
 <div class="project-buttons">
 <a href="https://github.com/EmilHvitfeldt/quarto-revealjs-cinco-de-mayo">
@@ -391,9 +383,7 @@ TODO: this has a weird height
 
 Another approach to creating these styles of themes is to use Lua to further expand the capabilities of the slides
 
-TODO: this has a weird height
-
-<iframe class="slide-deck" style="height:475px; max-width: 100%; resize:both;" src="https://katie.quarto.pub/positconf2023/"></iframe>
+<iframe class="slide-deck" src="https://katie.quarto.pub/positconf2023/"></iframe>
 
 <div class="project-buttons">
 <a href="https://github.com/kmasiello/positconfslides">

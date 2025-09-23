@@ -155,5 +155,11 @@
   },
   "scss/links.qmd": {
     "links.html": "5a1ead9c"
+  },
+  "theme/inverse.qmd": {
+    "inverse.html": "48e09434"
+  },
+  "theme/seasons.qmd": {
+    "seasons.html": "2fdb80e7"
   }
 }

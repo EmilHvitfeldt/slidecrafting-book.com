@@ -1,0 +1,135 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.callout {
+  background-color: #ffffff;
+}
+
+.callout-caption {
+  color: $body-color;
+}
+
+.title-colors {
+  background: linear-gradient(
+      to right,
+      #f4ebe7 0%,
+      #f4ebe7 50%,
+      #fef1f6 50%,
+      #fef1f6 100%
+    ),
+    linear-gradient(
+      to right,
+      #e5ecf2 0%,
+      #e5ecf2 50%,
+      #e7e0dc 50%,
+      #e7e0dc 100%
+    );
+  background-size: 100% 50%;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat;
+}
+
+.spring {
+  color: #54671b;
+
+  a {
+    color: #e6ae3e;
+  }
+
+  a:hover {
+    color: #ec9e74;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #e54470;
+  }
+
+  .slide-background-content {
+    background-color: #f4ebe7;
+  }
+
+  pre code {
+    background-color: #f4ebe7;
+  }
+}
+
+.summer {
+  color: #017c96;
+
+  a {
+    color: #ffb400;
+  }
+
+  a:hover {
+    color: #d69700;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #c85900;
+  }
+
+  .slide-background-content {
+    background-color: #fef1f6;
+  }
+
+  pre code {
+    background-color: #fef1f6;
+  }
+}
+
+.fall {
+  color: #64291f;
+
+  a {
+    color: #e45932;
+  }
+
+  a:hover {
+    color: #c04b2a;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #981108;
+  }
+
+  .slide-background-content {
+    background-color: #e7e0dc;
+  }
+
+  pre code {
+    background-color: #e7e0dc;
+  }
+}
+
+.winter {
+  color: #1a314e;
+
+  a {
+    color: #3a90c4;
+  }
+
+  a:hover {
+    color: #1e85c4;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #26689e;
+  }
+
+  .slide-background-content {
+    background-color: #e5ecf2;
+  }
+
+  pre code {
+    background-color: #e5ecf2;
+  }
+}

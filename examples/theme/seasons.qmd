@@ -1,0 +1,254 @@
+---
+format:
+  revealjs:
+    theme: [default, seasons.scss]
+echo: true
+---
+
+# {.title-colors}
+
+::: r-fit-text
+SEASONS
+:::
+
+<https://github.com/EmilHvitfeldt/quarto-revealjs-seasons>
+
+# Spring Theme {.spring}
+
+## Quarto {.spring}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets {.spring}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+```{r}
+lm(mpg ~ disp, data = mtcars)
+```
+
+## LaTeX Equations {.spring}
+
+[MathJax](https://www.mathjax.org/) rendering of equations to HTML
+
+```{=tex}
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+```
+```{=tex}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+
+## Tables {.spring}
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+## Callout Blocks {.spring}
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-important}
+Danger, callouts will really improve your writing.
+:::
+
+::: {.callout-tip}
+## Tip With Caption
+
+This is an example of a callout with a caption.
+:::
+
+# Summer Theme {.summer}
+
+## Quarto {.summer}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets {.summer}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+```{r}
+lm(mpg ~ disp, data = mtcars)
+```
+
+## LaTeX Equations {.summer}
+
+[MathJax](https://www.mathjax.org/) rendering of equations to HTML
+
+```{=tex}
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+```
+```{=tex}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+
+## Tables {.summer}
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+## Callout Blocks {.summer}
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-important}
+Danger, callouts will really improve your writing.
+:::
+
+::: {.callout-tip}
+## Tip With Caption
+
+This is an example of a callout with a caption.
+:::
+
+# Fall Theme {.fall}
+
+## Quarto {.fall}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets {.fall}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+```{r}
+lm(mpg ~ disp, data = mtcars)
+```
+
+## LaTeX Equations {.fall}
+
+[MathJax](https://www.mathjax.org/) rendering of equations to HTML
+
+```{=tex}
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+```
+```{=tex}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+
+## Tables {.fall}
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+## Callout Blocks {.fall}
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-important}
+Danger, callouts will really improve your writing.
+:::
+
+::: {.callout-tip}
+## Tip With Caption
+
+This is an example of a callout with a caption.
+:::
+
+# Winter Theme {.winter}
+
+## Quarto {.winter}
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets {.winter}
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+```{r}
+lm(mpg ~ disp, data = mtcars)
+```
+
+## LaTeX Equations {.winter}
+
+[MathJax](https://www.mathjax.org/) rendering of equations to HTML
+
+```{=tex}
+\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}
+```
+```{=tex}
+\begin{align}
+a_{11}& =b_{11}&
+  a_{12}& =b_{12}\\
+a_{21}& =b_{21}&
+  a_{22}& =b_{22}+c_{22}
+\end{align}
+```
+
+## Tables {.winter}
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+## Callout Blocks {.winter}
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-important}
+Danger, callouts will really improve your writing.
+:::
+
+::: {.callout-tip}
+## Tip With Caption
+
+This is an example of a callout with a caption.
+:::

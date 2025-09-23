@@ -1,0 +1,180 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.inverse {
+  color: #d6d6d6;
+  h1,
+  h2,
+  h3 {
+    color: #f3f3f3;
+  }
+
+  a {
+    color: #00e0e0;
+  }
+
+  p code {
+    color: #ffd700;
+  }
+
+  .slide-background-content {
+    background-color: #272822;
+  }
+
+  .callout-caption {
+    color: $body-color;
+  }
+
+  pre {
+    background-color: #272822;
+  }
+
+  pre code {
+    background-color: #272822;
+    color: #d6d6d6;
+  }
+
+  pre.sourceCode code {
+    background-color: #2b2b2b;
+    padding: 6px 9px;
+    max-height: 500px;
+    white-space: pre;
+  }
+
+  pre > code.sourceCode > span {
+    color: #f8f8f2;
+  }
+
+  code span {
+    color: #f8f8f2;
+  }
+
+  code.sourceCode > span {
+    color: #f8f8f2;
+  }
+
+  div.sourceCode,
+  div.sourceCode pre.sourceCode {
+    color: #f8f8f2;
+  }
+
+  code span.ot {
+    color: #ffa07a;
+  }
+
+  code span.at {
+    color: #ffd700;
+  }
+
+  code span.ss {
+    color: #abe338;
+  }
+
+  code span.an {
+    color: #d4d0ab;
+  }
+
+  code span.fu {
+    color: #ffd700;
+  }
+
+  code span.st {
+    color: #abe338;
+  }
+
+  code span.cf {
+    color: #ffa07a;
+  }
+
+  code span.op {
+    color: #00e0e0;
+  }
+
+  code span.er {
+    color: #dcc6e0;
+  }
+
+  code span.bn {
+    color: #dcc6e0;
+  }
+
+  code span.al {
+    color: #dcc6e0;
+  }
+
+  code span.va {
+    color: #f5ab35;
+  }
+
+  code span.bu {
+    color: #f5ab35;
+  }
+
+  code span.ex {
+    color: #ffd700;
+  }
+
+  code span.pp {
+    color: #dcc6e0;
+  }
+
+  code span.in {
+    color: #d4d0ab;
+  }
+
+  code span.vs {
+    color: #abe338;
+  }
+
+  code span.wa {
+    color: #d4d0ab;
+    font-style: italic;
+  }
+
+  code span.do {
+    color: #d4d0ab;
+    font-style: italic;
+  }
+
+  code span.im {
+    color: #f8f8f2;
+  }
+
+  code span.ch {
+    color: #abe338;
+  }
+
+  code span.dt {
+    color: #dcc6e0;
+  }
+
+  code span.fl {
+    color: #f5ab35;
+  }
+
+  code span.co {
+    color: #d4d0ab;
+  }
+
+  code span.cv {
+    color: #d4d0ab;
+    font-style: italic;
+  }
+
+  code span.cn {
+    color: #ffa07a;
+  }
+
+  code span.sc {
+    color: #00e0e0;
+  }
+
+  code span.dv {
+    color: #dcc6e0;
+  }
+
+  code span.kw {
+    color: #ffa07a;
+  }
+}
