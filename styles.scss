@@ -14,9 +14,36 @@
 
 /*-- scss:defaults --*/
 
-@import url('https://fonts.googleapis.com/css2?family=Commissioner&family=Fraunces:wght@100&family=Inconsolata:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Sanchez:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+$font-family-sans-serif: "Dosis", sans-serif;
+$font-family-monospace: "Source Code Pro", monospace;
+$font-size-root: 20px;
+
+$colors: (
+  "red": #920402,
+  "orange": #C03c13,
+  "yellow": #cd5b07,
+  "brown-dark": #D19C8A,
+  "brown-light": #EBC09D,
+  "brown-white": #fdf8f4
+);
+
+@function theme-color($color) {
+  @return map-get($colors, $color);
+}
+
+$link-color: theme-color("red");
+$code-color: theme-color("orange");
+$body-bg: theme-color("brown-white");
 
 /*-- scss:rules --*/
+
+h1, h2, h3, h4, h5, h6 {
+  color: theme-color("yellow");
+  font-family: Sanchez, sans-serif;
+}
 
 div.quarto-about-jolla .about-link,
 .btn-links,
