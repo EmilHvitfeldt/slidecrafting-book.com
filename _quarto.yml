@@ -8,6 +8,10 @@ book:
   subtitle: "Making beautiful slides with reveal.js and Quarto"
   author: "Emil Hvitfeldt"
   date: "9/24/2025"
+  repo-url: https://github.com/EmilHvitfeldt/slidecrafting-book.com
+  site-url: https://slidecrafting-book.com
+  open-graph: true
+  repo-actions: [edit, issue, source]
   chapters:
     - index.qmd
     - part: "Theming"
