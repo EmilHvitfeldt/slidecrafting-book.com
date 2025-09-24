@@ -7,7 +7,7 @@ book:
   title: "Slidecrafting"
   subtitle: "Making beautiful slides with reveal.js and Quarto"
   author: "Emil Hvitfeldt"
-  date: "8/18/2024"
+  date: "9/24/2025"
   chapters:
     - index.qmd
     - part: "Theming"
