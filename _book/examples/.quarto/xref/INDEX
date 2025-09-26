@@ -161,5 +161,11 @@
   },
   "theme/seasons.qmd": {
     "seasons.html": "2fdb80e7"
+  },
+  "colors/syntax-highlighting.qmd": {
+    "syntax-highlighting.html": "ac813af8"
+  },
+  "colors/no-syntax-highlighting.qmd": {
+    "no-syntax-highlighting.html": "05ad3bd9"
   }
 }

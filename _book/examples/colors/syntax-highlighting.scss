@@ -1,0 +1,124 @@
+/*-- scss:defaults --*/
+
+$theme-darkblue: #01364C;
+$theme-blue: #99D9DD;
+$theme-white: #F7F8F9;
+$theme-yellow: #F4BA02;
+
+$body-bg: $theme-darkblue;
+$body-color: $theme-white;
+$link-color: $theme-blue;
+$presentation-heading-color: lighten($theme-yellow, 35%);
+
+/*-- scss:rules --*/
+
+code {
+  // Other
+  span.ot {
+    color: #8CD5CA;
+  }
+  // Attribute
+  span.at {
+    color: #49aed5ff;
+  }
+  // SpecialString
+  span.ss {
+    color: #A6DA95;
+  }
+  // Annotation
+  span.an {
+    color: #5E5E5E;
+  }
+  // Function
+  span.fu {
+    color: #8AADF5;
+  }
+  // String
+  span.st {
+    color: #A6DA95;
+  }
+  // ControlFlow
+  span.cf {
+    color: #003B4F;
+  }
+  // Operator
+  span.op {
+    color: #5E5E5E;
+  }
+  // Error
+  span.er {
+    color: #F5A97F;
+  }
+  // BaseN
+  span.bn {
+    color: #F5A97F;
+  }
+  // Alert
+  span.al {
+    color: #F5A97F;
+  }
+  // Variable
+  span.va {
+    color: #111111;
+  }
+  // Preprocessor
+  span.pp {
+    color: #F5A97F;
+  }
+  // Information
+  span.in {
+    color: #5E5E5E;
+  }
+  // VerbatimString
+  span.vs {
+    color: #A6DA95;
+  }
+  // Warning
+  span.wa {
+    color: #5E5E5E;
+  }
+  // Documentation
+  span.do {
+    color: #5E5E5E;
+  }
+  // Import
+  span.im {
+    color: #00769E;
+  }
+  // Char
+  span.ch {
+    color: #A6DA95;
+  }
+  // DataType
+  span.dt {
+    color: #F5A97F;
+  }
+  // Float
+  span.fl {
+    color: #F5A97F;
+  }
+  // Comment
+  span.co {
+    color: #949AB7;
+  }
+  // CommentVar
+  span.cv {
+    color: #949AB7;
+  }
+  // Constant
+  span.cn {
+    color: #8f5902;
+  }
+  // SpecialChar
+  span.sc {
+    color: #8CD5CA;
+  }
+  // DecVal
+  span.dv {
+    color: #F5A97F;
+  }
+  // Keyword
+  span.kw {
+    color: #003B4F;
+  }
+}

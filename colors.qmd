@@ -216,3 +216,418 @@ $presentation-heading-color: lighten($theme-yellow, 35%);
 <iframe class="slide-deck" src="examples/colors/colors-headers.html">
 
 </iframe>
+
+## Code Syntax Highlighter
+
+The code syntax highlighting is handled through the [HTML Quarto handling](https://quarto.org/docs/output-formats/html-code.html#highlighting).
+One can set the `highlight-style` yaml argument to specify which of the preset color schemes to use.
+See the available options in the link above.
+
+Since we are working with html format we can change the styling using CSS.
+The highlighting is implemented using [skylighting](https://github.com/jgm/skylighting) which uses the following abbriviations for each type of code element.
+
+- ot: Other
+- at: Attribute
+- ss: SpecialString
+- an: Annotation
+- fu: Function
+- st: String
+- cf: ControlFlow
+- op: Operator
+- er: Error
+- bn: BaseN
+- al: Alert
+- va: Variable
+- pp: Preprocessor
+- in: Information
+- vs: VerbatimString
+- wa: Warning
+- do: Documentation
+- im: Import
+- ch: Char
+- dt: DataType
+- fl: Float
+- co: Comment
+- cv: CommentVar
+- cn: Constant
+- sc: SpecialChar
+- dv: DecVal
+- kw: Keyword
+
+the CSS we would use looks something like the code below.
+This is a recreation of what the default highlighting theme is.
+
+```scss
+code {
+  span.ot {
+    color: #003B4F;
+  }
+
+  span.at {
+    color: #657422;
+  }
+
+  span.ss {
+    color: #20794D;
+  }
+
+  span.an {
+    color: #5E5E5E;
+  }
+
+  span.fu {
+    color: #4758AB;
+  }
+
+  span.st {
+    color: #20794D;
+  }
+
+  span.cf {
+    color: #003B4F;
+  }
+
+  span.op {
+    color: #5E5E5E;
+  }
+
+  span.er {
+    color: #AD0000;
+  }
+
+  span.bn {
+    color: #AD0000;
+  }
+
+  span.al {
+    color: #AD0000;
+  }
+
+  span.va {
+    color: #111111;
+  }
+
+  span.pp {
+    color: #AD0000;
+  }
+
+  span.in {
+    color: #5E5E5E;
+  }
+
+  span.vs {
+    color: #20794D;
+  }
+
+  span.wa {
+    color: #5E5E5E;
+  }
+
+  span.do {
+    color: #5E5E5E;
+  }
+
+  span.im {
+    color: #00769E;
+  }
+
+  span.ch {
+    color: #20794D;
+  }
+
+  span.dt {
+    color: #AD0000;
+  }
+
+  span.fl {
+    color: #AD0000;
+  }
+
+  span.co {
+    color: #5E5E5E;
+  }
+
+  span.cv {
+    color: #5E5E5E;
+  }
+
+  span.cn {
+    color: #8f5902;
+  }
+
+  span.sc {
+    color: #5E5E5E;
+  }
+
+  span.dv {
+    color: #AD0000;
+  }
+
+  span.kw {
+    color: #003B4F;
+  }
+}
+```
+
+This lets up change the style of each type of code individually.
+Even so far as making the code italics, underlined, and animated.
+you will have to conform to the same rules regarding color contrasts,
+and changing the font sizes are not adviced as it will mess with the alignment too much.
+
+You might have noticed that the above code contain a lot of duplicates.
+The below code chunk contained a compact version of the above expanded version.
+
+```scss
+code {
+  span.an,
+  span.op,
+  span.sc,
+  span.in,
+  span.wa,
+  span.do,
+  span.cv,
+  span.co {
+    color: #5E5E5E;
+  }
+
+  span.er,
+  span.bn,
+  span.al,
+  span.pp,
+  span.dt,
+  span.fl,
+  span.dv {
+    color: #AD0000;
+  }
+
+  span.ss,
+  span.st,
+  span.vs,
+  span.ch {
+    color: #20794D;
+  }
+
+  span.ot,
+  span.cf,
+  span.kw {
+    color: #003B4F;
+  }
+
+  span.at {
+    color: #657422;
+  }
+
+  span.fu {
+    color: #4758AB;
+  }
+
+  span.va {
+    color: #111111;
+  }
+
+  span.im {
+    color: #00769E;
+  }
+
+  span.cn {
+    color: #8f5902;
+  }
+}
+```
+
+<details>
+<summary>Expanded with comments</summary>
+
+```scss
+code {
+  // Other
+  span.ot {
+    color: #003B4F;
+  }
+  // Attribute
+  span.at {
+    color: #657422;
+  }
+  // SpecialString
+  span.ss {
+    color: #20794D;
+  }
+  // Annotation
+  span.an {
+    color: #5E5E5E;
+  }
+  // Function
+  span.fu {
+    color: #4758AB;
+  }
+  // String
+  span.st {
+    color: #20794D;
+  }
+  // ControlFlow
+  span.cf {
+    color: #003B4F;
+  }
+  // Operator
+  span.op {
+    color: #5E5E5E;
+  }
+  // Error
+  span.er {
+    color: #AD0000;
+  }
+  // BaseN
+  span.bn {
+    color: #AD0000;
+  }
+  // Alert
+  span.al {
+    color: #AD0000;
+  }
+  // Variable
+  span.va {
+    color: #111111;
+  }
+  // Preprocessor
+  span.pp {
+    color: #AD0000;
+  }
+  // Information
+  span.in {
+    color: #5E5E5E;
+  }
+  // VerbatimString
+  span.vs {
+    color: #20794D;
+  }
+  // Warning
+  span.wa {
+    color: #5E5E5E;
+  }
+  // Documentation
+  span.do {
+    color: #5E5E5E;
+  }
+  // Import
+  span.im {
+    color: #00769E;
+  }
+  // Char
+  span.ch {
+    color: #20794D;
+  }
+  // DataType
+  span.dt {
+    color: #AD0000;
+  }
+  // Float
+  span.fl {
+    color: #AD0000;
+  }
+  // Comment
+  span.co {
+    color: #5E5E5E;
+  }
+  // CommentVar
+  span.cv {
+    color: #5E5E5E;
+  }
+  // Constant
+  span.cn {
+    color: #8f5902;
+  }
+  // SpecialChar
+  span.sc {
+    color: #5E5E5E;
+  }
+  // DecVal
+  span.dv {
+    color: #AD0000;
+  }
+  // Keyword
+  span.kw {
+    color: #003B4F;
+  }
+}
+```
+
+</details>
+
+<details>
+<summary>Expanded with comments</summary>
+
+```scss
+code {
+  span.an, // Attribute
+  span.op, // Operator
+  span.sc, // SpecialChar
+  span.in, // Information
+  span.wa, // Warning
+  span.do, // Documentation
+  span.cv, // CommentVar
+  span.co {// Comment
+    color: #5E5E5E;
+  }
+
+  span.er, // Error
+  span.bn, // BaseN
+  span.al, // Alert
+  span.pp, // Preprocessor
+  span.dt, // DataType
+  span.fl, // Float
+  span.dv {// DecVal
+    color: #AD0000;
+  }
+
+  span.ss, // SpecialString
+  span.st, // String
+  span.vs, // VerbatimString
+  span.ch {// Char
+    color: #20794D;
+  }
+
+  span.ot, // Other
+  span.cf, // ControlFlow
+  span.kw {// Keyword
+    color: #003B4F;
+  }
+
+  span.at {// Attribute
+    color: #657422;
+  }
+
+  span.fu {// Function
+    color: #4758AB;
+  }
+
+  span.va {// Variable
+    color: #111111;
+  }
+
+  span.im {// Import
+    color: #00769E;
+  }
+
+  span.cn {// Constant
+    color: #8f5902;
+  }
+}
+```
+
+</details>
+
+Below is some before and after using the theme we have developed in the chapter so far:
+
+<iframe class="slide-deck" src="examples/colors/no-syntax-highlighting.html">
+
+</iframe>
+
+<a href="examples/colors/no-syntax-highlighting.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+<a href="examples/colors/no-syntax-highlighting.scss" target="_blank" class="listing-video btn-links">{{< fa brands sass >}}scss<a>
+
+<iframe class="slide-deck" src="examples/colors/syntax-highlighting.html">
+
+</iframe>
+
+<a href="examples/colors/syntax-highlighting.qmd" target="_blank" class="listing-slides btn-links">{{< fa file >}}qmd<a>
+<a href="examples/colors/syntax-highlighting.scss" target="_blank" class="listing-video btn-links">{{< fa brands sass >}}scss<a>
