@@ -359,6 +359,14 @@ and having it point to a file that looks like this:
 
 then inside we put my javascript code, which for this blog post will be some `Reveal.on()` calls.
 
+> **TIP:**
+>
+> There’s a skill for this repo that gives your coding agent deep knowledge of the custom fragment pattern — CSS states, JS events, reversal logic, and the state-tracking approach for complex animations.
+>
+> ``` bash
+> npx skills add emilhvitfeldt/slidecrafting.com
+> ```
+
 ## 11.7 Color changing
 
 This first example is going to be an illustrative example of what we can do and how to do it. And it will thus not be very useful.
