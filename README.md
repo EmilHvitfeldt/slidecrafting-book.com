@@ -2,6 +2,49 @@
 
 Source for [slidecrafting-book.com](https://slidecrafting-book.com) — a guide to making beautiful slides with Reveal.js and Quarto.
 
+## Claude Skills
+
+Skills extend Claude's knowledge with specialized patterns from this project. Install them into your coding agent so Claude understands the slidecrafting conventions without needing to rediscover them from scratch.
+
+| Skill | Description |
+|---|---|
+| **[quarto-revealjs-fragment](./skills/quarto-revealjs-fragment/)** | CSS states, JS events, reversal logic, and the state-tracking pattern for custom Reveal.js fragment animations |
+
+### Installation
+
+#### Using `npx skills add` (any agent)
+
+Works with Claude Code, Cursor, Codex, Cline, and other supported agents:
+
+```bash
+# Install all skills
+npx skills add emilhvitfeldt/slidecrafting.com
+
+# Install a specific skill
+npx skills add emilhvitfeldt/slidecrafting.com --skill quarto-revealjs-fragment
+```
+
+#### Claude Code
+
+Add this repository as a skill marketplace in Claude Code:
+
+```
+/plugin marketplace add emilhvitfeldt/slidecrafting.com
+```
+
+Then browse and install skills through the Claude Code UI.
+
+#### Manual installation
+
+```bash
+git clone https://github.com/emilhvitfeldt/slidecrafting.com.git
+cp -r slidecrafting.com/skills/quarto-revealjs-fragment ~/.config/claude-code/skills/
+```
+
+### Using skills
+
+Once installed, Claude will automatically activate the relevant skill based on your task — no need to invoke it explicitly.
+
 ## Structure
 
 - `*.qmd` — book chapter source files

@@ -363,9 +363,7 @@ then inside we put my javascript code, which for this blog post will be some `Re
 >
 > There’s a skill for this repo that gives your coding agent deep knowledge of the custom fragment pattern — CSS states, JS events, reversal logic, and the state-tracking approach for complex animations.
 >
-> ``` bash
-> npx skills add emilhvitfeldt/slidecrafting.com --skill quarto-revealjs-fragment
-> ```
+> See the [repository README](https://github.com/emilhvitfeldt/slidecrafting.com#claude-skills) for all installation options.
 
 ## 11.7 Color changing
 
