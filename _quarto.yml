@@ -43,6 +43,7 @@ book:
     - part: "Interactivity"
       chapters:
         - fragments.qmd
+        - auto-animate.qmd
     - part: "Extensions"
       chapters:
         - letterbox.qmd

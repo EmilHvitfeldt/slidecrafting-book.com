@@ -1,0 +1,41 @@
+/*-- scss:defaults --*/
+
+$hero:  #5E7699;
+$ink:   #16273E;
+
+/*-- scss:rules --*/
+
+.reveal .slides section { padding: 0 !important; height: 700px; }
+
+// The one recurring hero shape
+.hero {
+  position: absolute;
+  background: $hero;
+}
+
+.part {
+  position: absolute;
+  font-weight: 700;
+  color: $ink;
+}
+
+.body {
+  position: absolute;
+  left: 120px;
+  top: 240px;
+  width: 900px;
+  font-size: 30px;
+  line-height: 1.5;
+  color: $ink;
+}
+
+.reveal h2 {
+  position: absolute;
+  left: 120px;
+  top: 54px;
+  font-size: 18px;
+  letter-spacing: .18em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $hero;
+}

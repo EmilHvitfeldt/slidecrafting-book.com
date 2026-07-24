@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+
+$panel: #16273E;
+$ink:   #16273E;
+
+/*-- scss:rules --*/
+
+.reveal .slides section { padding: 0 !important; height: 700px; }
+
+.panel {
+  position: absolute;
+  background: $panel;
+  border-radius: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.reveal h2 {
+  position: absolute;
+  left: 96px;
+  top: 54px;
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: .18em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $ink;
+}

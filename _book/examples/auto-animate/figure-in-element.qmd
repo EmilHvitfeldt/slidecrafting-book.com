@@ -1,0 +1,50 @@
+---
+format:
+  revealjs:
+    width: 1280
+    height: 700
+    margin: 0
+    center: false
+    auto-animate-duration: 0.9
+    theme: [default, figure-in-element.scss]
+---
+
+## The headline {auto-animate=true background-color="#F7F4EE"}
+
+::: {.panel data-id="panel" style="left:390px; top:200px; width:500px; height:300px; display:flex; align-items:center; justify-content:center;"}
+[+42%]{style="color:#FF9E8A; font-size:150px; font-weight:800;"}
+:::
+
+## The detail {auto-animate=true background-color="#F7F4EE"}
+
+::: {.panel data-id="panel" style="left:96px; top:160px; width:1088px; height:480px;"}
+```{r}
+#| echo: false
+#| fig-width: 12
+#| fig-height: 4.8
+#| dev: svg
+library(ggplot2)
+
+growth <- data.frame(
+  month = factor(month.abb[1:6], levels = month.abb[1:6]),
+  users = c(1000, 1180, 1290, 1360, 1400, 1420)
+)
+growth$change <- growth$users / growth$users[1] - 1
+
+ink <- "#F2F0EA"
+
+ggplot(growth, aes(month, users, group = 1)) +
+  geom_line(colour = "#FF9E8A", linewidth = 1.6) +
+  geom_point(colour = "#FF9E8A", size = 3) +
+  labs(x = NULL, y = "monthly active users") +
+  theme_minimal(base_size = 17) +
+  theme(
+    plot.background  = element_rect(fill = "#16273E", colour = NA),
+    panel.background = element_rect(fill = "#16273E", colour = NA),
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_line(colour = "#3a516f", linewidth = 0.3),
+    text = element_text(colour = ink),
+    axis.text = element_text(colour = ink)
+  )
+```
+:::

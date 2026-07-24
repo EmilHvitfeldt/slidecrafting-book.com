@@ -1,0 +1,64 @@
+---
+format:
+  revealjs:
+    width: 1280
+    height: 700
+    margin: 0
+    center: false
+    auto-animate-duration: 0.8
+    theme: [default, agenda.scss]
+---
+
+## Today {auto-animate=true background-color="#F7F4EE"}
+
+::: {.item data-id="i1" style="top:200px;"}
+1 · Gather the data
+:::
+::: {.item data-id="i2" style="top:320px;"}
+2 · Fit the model
+:::
+::: {.item data-id="i3" style="top:440px;"}
+3 · Share the result
+:::
+
+## Section 1 {auto-animate=true background-color="#F7F4EE"}
+
+::: {.item .active data-id="i1" style="top:180px;"}
+1 · Gather the data
+:::
+::: {.item data-id="i2" style="top:340px;"}
+2 · Fit the model
+:::
+::: {.item data-id="i3" style="top:440px;"}
+3 · Share the result
+:::
+
+[Where the raw material comes from.]{.section-title}
+
+## Section 2 {auto-animate=true background-color="#F7F4EE"}
+
+::: {.item data-id="i1" style="top:180px;"}
+1 · Gather the data
+:::
+::: {.item .active data-id="i2" style="top:300px;"}
+2 · Fit the model
+:::
+::: {.item data-id="i3" style="top:460px;"}
+3 · Share the result
+:::
+
+[Turning columns into predictions.]{.section-title}
+
+## Section 3 {auto-animate=true background-color="#F7F4EE"}
+
+::: {.item data-id="i1" style="top:180px;"}
+1 · Gather the data
+:::
+::: {.item data-id="i2" style="top:300px;"}
+2 · Fit the model
+:::
+::: {.item .active data-id="i3" style="top:420px;"}
+3 · Share the result
+:::
+
+[Making the answer land.]{.section-title}

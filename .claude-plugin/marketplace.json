@@ -3,6 +3,10 @@
     {
       "name": "quarto-revealjs-fragment",
       "path": "./skills/quarto-revealjs-fragment"
+    },
+    {
+      "name": "auto-animate-elements",
+      "path": "./skills/auto-animate-elements"
     }
   ]
 }

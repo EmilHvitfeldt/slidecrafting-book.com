@@ -1,14 +1,14 @@
-# 13  Codewindow
+# 14  Codewindow
 
 The [quarto-revealjs-codewindow](https://github.com/EmilHvitfeldt/quarto-revealjs-codewindow) extension adds styled codeblock windows to your Quarto reveal.js presentations, giving your code chunks a polished, IDE-like appearance.
 
-## 13.1 What is Codewindow?
+## 14.1 What is Codewindow?
 
 Codewindow wraps your code chunks in a styled window frame with a file tab, similar to how code appears in modern code editors. This visual treatment makes code stand out on slides and provides helpful context through language-specific icons.
 
 Demo of the codewindow extension: code blocks styled as IDE-like windows with a title bar, file tab with language icon, and polished appearance resembling a modern code editor.
 
-## 13.2 Installation
+## 14.2 Installation
 
 To use this extension, run the following command in your terminal:
 
@@ -27,7 +27,7 @@ revealjs-plugins:
 ---
 ```
 
-## 13.3 Basic Usage
+## 14.3 Basic Usage
 
 Wrap any code chunk in a `::: {.codewindow}` fenced div to apply the window styling. Add plain text before the code chunk to create a file tab label:
 
@@ -44,7 +44,7 @@ ggplot(mtcars, aes(mpg, wt)) +
 :::
 ````
 
-## 13.4 Language Icons
+## 14.4 Language Icons
 
 Add a language class to display an icon in the file tab. The following languages are supported:
 
@@ -71,7 +71,7 @@ mtcars |>
 :::
 ````
 
-## 13.5 Customizing Width
+## 14.5 Customizing Width
 
 You can control the width of the codewindow using the `width` argument directly in the fenced div:
 

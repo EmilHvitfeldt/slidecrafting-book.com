@@ -182,5 +182,23 @@
   },
   "layout/paper-card-default.qmd": {
     "paper-card-default.html": "e80069b7"
+  },
+  "auto-animate/hero-shape.qmd": {
+    "hero-shape.html": "54333e29"
+  },
+  "auto-animate/code.qmd": {
+    "code.html": "7a7e2aa1"
+  },
+  "auto-animate/colored-panels.qmd": {
+    "colored-panels.html": "33d49bf8"
+  },
+  "auto-animate/basics.qmd": {
+    "basics.html": "5cd0cab9"
+  },
+  "auto-animate/agenda.qmd": {
+    "agenda.html": "bdc2d6dd"
+  },
+  "auto-animate/figure-in-element.qmd": {
+    "figure-in-element.html": "5ea57b30"
   }
 }

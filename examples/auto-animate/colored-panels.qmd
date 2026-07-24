@@ -1,0 +1,76 @@
+---
+format:
+  revealjs:
+    width: 1280
+    height: 700
+    margin: 0
+    center: false
+    auto-animate-duration: 0.9
+    theme: [default, colored-panels.scss]
+---
+
+## A way of working {.dark auto-animate=true background-color="#12211E"}
+
+::: {.big-title data-id="title" style="left:88px; top:150px; width:720px; font-size:72px;"}
+Ship in three
+steps.
+:::
+
+::: {.panel data-id="draft"   style="left:840px; top:150px; width:150px; height:360px;"}
+:::
+::: {.panel data-id="review"  style="left:1006px; top:150px; width:150px; height:170px;"}
+:::
+::: {.panel data-id="release" style="left:1006px; top:340px; width:150px; height:170px;"}
+:::
+
+## The steps {.light auto-animate=true background-color="#F5F2EA"}
+
+::: {.big-title data-id="title" style="left:92px; top:104px; width:1100px; font-size:44px;"}
+Draft, review, release.
+:::
+
+::: {.panel .card data-id="draft" style="left:96px; top:220px; width:340px; height:360px;"}
+[Draft]{.h}
+
+[Get a rough version in front of yourself fast. Perfect is later.]{.p}
+:::
+::: {.panel .card data-id="review" style="left:470px; top:220px; width:340px; height:360px;"}
+[Review]{.h}
+
+[A second pair of eyes catches what you have stopped seeing.]{.p}
+:::
+::: {.panel .card data-id="release" style="left:844px; top:220px; width:340px; height:360px;"}
+[Release]{.h}
+
+[Ship it, then watch how it behaves in the wild.]{.p}
+:::
+
+## On review {.light auto-animate=true background-color="#F5F2EA"}
+
+::: {.big-title data-id="title" style="left:92px; top:104px; width:1100px; font-size:44px;"}
+Reviewing is where quality happens.
+:::
+
+::: {.panel .card data-id="review" style="left:96px; top:200px; width:800px; height:400px;"}
+[Review]{.h}
+
+[Read it as if you did not write it. Ask what would confuse a newcomer, what is untested, and what you are quietly hoping no one notices.]{.p style="font-size:24px; line-height:1.6;"}
+:::
+
+::: {.panel .marker data-id="draft"   style="left:944px; top:230px;"}
+:::
+::: {.panel .marker data-id="release" style="left:944px; top:290px;"}
+:::
+
+## Off you go {.dark .finale auto-animate=true background-color="#12211E"}
+
+::: {.big-title data-id="title" style="left:240px; top:300px; width:800px; font-size:66px; text-align:center;"}
+Draft. Review. Release.
+:::
+
+::: {.panel data-id="draft"   style="left:470px; top:150px; width:110px; height:110px;"}
+:::
+::: {.panel data-id="review"  style="left:590px; top:150px; width:110px; height:110px;"}
+:::
+::: {.panel data-id="release" style="left:710px; top:150px; width:110px; height:110px;"}
+:::
