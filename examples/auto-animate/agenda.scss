@@ -1,0 +1,57 @@
+/*-- scss:defaults --*/
+
+$accent: #C25A43;
+$ink:    #16273E;
+$muted:  #8FA3BF;
+
+/*-- scss:rules --*/
+
+.reveal .slides section { padding: 0 !important; height: 700px; }
+
+// The recurring agenda items (persistent elements)
+.item {
+  position: absolute;
+  left: 80px;
+  width: 380px;
+  height: 92px;
+  border-radius: 14px;
+  background: #ECE7DE;
+  color: $ink;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  font-size: 30px;
+  font-weight: 600;
+  opacity: .45;
+}
+
+// The active item on a section slide
+.item.active {
+  width: 440px;
+  height: 120px;
+  background: $accent;
+  color: #FFF;
+  opacity: 1;
+  font-size: 38px;
+}
+
+.section-title {
+  position: absolute;
+  left: 580px;
+  top: 260px;
+  width: 620px;
+  font-size: 52px;
+  font-weight: 700;
+  color: $ink;
+}
+
+.reveal h2 {
+  position: absolute;
+  left: 80px;
+  top: 54px;
+  font-size: 18px;
+  letter-spacing: .18em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $muted;
+}

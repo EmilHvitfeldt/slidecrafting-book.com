@@ -1,0 +1,51 @@
+---
+format:
+  revealjs:
+    width: 1280
+    height: 700
+    margin: 0
+    center: false
+    auto-animate-duration: 0.9
+    theme: [default, hero-shape.scss]
+---
+
+## Part one {auto-animate=true background-color="#F7F4EE"}
+
+::: {.hero data-id="hero" style="left:760px; top:180px; width:340px; height:340px; border-radius:50%;"}
+:::
+
+[Beginnings]{.part style="left:120px; top:300px; width:600px; font-size:84px;"}
+
+## {auto-animate=true background-color="#F7F4EE"}
+
+A quiet content slide. The hero shape is still here, parked as a small marker: only the divider slides give it the spotlight.
+
+::: {.hero data-id="hero" style="left:1160px; top:608px; width:36px; height:36px; border-radius:50%;"}
+:::
+
+::: {.body}
+Not every slide needs to animate. Enough of them sharing the recurring shape is what makes the deck feel deliberate.
+:::
+
+## Part two {auto-animate=true background-color="#F7F4EE"}
+
+::: {.hero data-id="hero" style="left:120px; top:420px; width:1040px; height:120px; border-radius:16px;"}
+:::
+
+[The middle]{.part style="left:120px; top:220px; width:600px; font-size:84px;"}
+
+## {auto-animate=true background-color="#F7F4EE"}
+
+::: {.hero data-id="hero" style="left:1160px; top:608px; width:36px; height:36px; border-radius:50%;"}
+:::
+
+::: {.body}
+The same element becomes a rule, a marker, a frame. One shape, many roles.
+:::
+
+## Part three {auto-animate=true background-color="#F7F4EE"}
+
+::: {.hero data-id="hero" style="left:820px; top:120px; width:300px; height:420px; border-radius:20px;"}
+:::
+
+[The end]{.part style="left:120px; top:300px; width:600px; font-size:84px;"}
