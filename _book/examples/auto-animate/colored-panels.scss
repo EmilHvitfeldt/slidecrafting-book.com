@@ -1,0 +1,48 @@
+/*-- scss:defaults --*/
+
+$draft:   #2E7D6B;
+$review:  #E8A33D;
+$release: #4A5899;
+$ink-light: #F1EEE6;
+$ink-dark:  #17251F;
+
+/*-- scss:rules --*/
+
+.reveal .slides section { padding: 0 !important; height: 700px; }
+
+.panel {
+  position: absolute;
+  border-radius: 18px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+[data-id="draft"]   { background: $draft; }
+[data-id="review"]  { background: $review; }
+[data-id="release"] { background: $release; }
+
+.dark  h2, .dark  .big-title { color: $ink-light; }
+.light h2, .light .big-title { color: $ink-dark; }
+
+.reveal h2 {
+  position: absolute;
+  left: 96px;
+  top: 54px;
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: .18em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.big-title {
+  position: absolute;
+  font-weight: 700;
+  line-height: 1.04;
+}
+
+.card { padding: 26px 28px; color: $ink-light; }
+.card .h { font-size: 32px; font-weight: 700; }
+.card .p { font-size: 19px; line-height: 1.45; margin-top: 12px; opacity: .92; }
+
+.marker { width: 40px; height: 40px; border-radius: 10px; }

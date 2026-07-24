@@ -1,14 +1,14 @@
-# 12  Letterbox
+# 13  Letterbox
 
 The [quarto-revealjs-letterbox](https://github.com/EmilHvitfeldt/quarto-revealjs-letterbox) extension brings the beloved letterbox style from [xaringan](https://github.com/yihui/xaringan) to Quarto reveal.js presentations.
 
-## 12.1 What is Letterbox?
+## 13.1 What is Letterbox?
 
 Letterbox is a presentation style that adds colored bars at the top and bottom of your slides, creating a cinematic feel while also providing a consistent visual anchor for your content. This style became popular through the xaringan R package and many presenters found it helpful for branding and visual consistency.
 
 Demo of the letterbox extension: slides with colored bars at the top and bottom creating a cinematic framing effect, similar to the popular xaringan letterbox style.
 
-## 12.2 Installation
+## 13.2 Installation
 
 To use this extension, run the following command in your terminal:
 
@@ -16,7 +16,7 @@ To use this extension, run the following command in your terminal:
 quarto add EmilHvitfeldt/quarto-revealjs-letterbox
 ```
 
-## 12.3 Basic Usage
+## 13.3 Basic Usage
 
 Once installed, you can use the letterbox format in your YAML header:
 
@@ -25,7 +25,7 @@ format:
   letterbox-revealjs: default
 ```
 
-## 12.4 Customization
+## 13.4 Customization
 
 The extension provides several options for customization. You can change the colors of the top and bottom bars to match your branding:
 
@@ -45,7 +45,7 @@ format:
     letterbox-bottom-height: "50px"
 ```
 
-## 12.5 Combining with Other Themes
+## 13.5 Combining with Other Themes
 
 The letterbox extension can be combined with other theme customizations. Simply add your custom SCSS file alongside the letterbox format:
 

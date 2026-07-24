@@ -8,7 +8,7 @@
 
 <meta name="description" content="The quarto-revealjs-letterbox extension adds cinematic colored bars to the top and bottom of Quarto reveal.js slides, inspired by the xaringan letterbox style.">
 
-<title>12&nbsp; Letterbox – Slidecrafting</title>
+<title>13&nbsp; Letterbox – Slidecrafting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./codewindow.html" rel="next">
-<link href="./fragments.html" rel="prev">
+<link href="./auto-animate.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="manifest" href="./site.webmanifest">
 
 
-<meta property="og:title" content="12&nbsp; Letterbox – Slidecrafting">
+<meta property="og:title" content="13&nbsp; Letterbox – Slidecrafting">
 <meta property="og:description" content="The quarto-revealjs-letterbox extension adds cinematic colored bars to the top and bottom of Quarto reveal.js slides, inspired by the xaringan letterbox style.">
 <meta property="og:site_name" content="Slidecrafting">
 </head>
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./letterbox.html">Extensions</a></li><li class="breadcrumb-item"><a href="./letterbox.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Letterbox</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./letterbox.html">Extensions</a></li><li class="breadcrumb-item"><a href="./letterbox.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Letterbox</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -262,6 +262,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fragments</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auto-animate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -276,13 +282,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./letterbox.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Letterbox</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Letterbox</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codewindow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Codewindow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Codewindow</span></span></a>
   </div>
 </li>
       </ul>
@@ -290,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscellaneous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -303,20 +309,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-letterbox" id="toc-what-is-letterbox" class="nav-link active" data-scroll-target="#what-is-letterbox"><span class="header-section-number">12.1</span> What is Letterbox?</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">12.2</span> Installation</a></li>
-  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage"><span class="header-section-number">12.3</span> Basic Usage</a></li>
-  <li><a href="#customization" id="toc-customization" class="nav-link" data-scroll-target="#customization"><span class="header-section-number">12.4</span> Customization</a></li>
-  <li><a href="#combining-with-other-themes" id="toc-combining-with-other-themes" class="nav-link" data-scroll-target="#combining-with-other-themes"><span class="header-section-number">12.5</span> Combining with Other Themes</a></li>
+  <li><a href="#what-is-letterbox" id="toc-what-is-letterbox" class="nav-link active" data-scroll-target="#what-is-letterbox"><span class="header-section-number">13.1</span> What is Letterbox?</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">13.2</span> Installation</a></li>
+  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage"><span class="header-section-number">13.3</span> Basic Usage</a></li>
+  <li><a href="#customization" id="toc-customization" class="nav-link" data-scroll-target="#customization"><span class="header-section-number">13.4</span> Customization</a></li>
+  <li><a href="#combining-with-other-themes" id="toc-combining-with-other-themes" class="nav-link" data-scroll-target="#combining-with-other-themes"><span class="header-section-number">13.5</span> Combining with Other Themes</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/letterbox.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/letterbox.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./letterbox.html">Extensions</a></li><li class="breadcrumb-item"><a href="./letterbox.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Letterbox</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./letterbox.html">Extensions</a></li><li class="breadcrumb-item"><a href="./letterbox.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Letterbox</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Letterbox</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Letterbox</span></h1>
 </div>
 
 
@@ -334,8 +340,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The <a href="https://github.com/EmilHvitfeldt/quarto-revealjs-letterbox">quarto-revealjs-letterbox</a> extension brings the beloved letterbox style from <a href="https://github.com/yihui/xaringan">xaringan</a> to Quarto reveal.js presentations.</p>
-<section id="what-is-letterbox" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="what-is-letterbox"><span class="header-section-number">12.1</span> What is Letterbox?</h2>
+<section id="what-is-letterbox" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="what-is-letterbox"><span class="header-section-number">13.1</span> What is Letterbox?</h2>
 <p>Letterbox is a presentation style that adds colored bars at the top and bottom of your slides, creating a cinematic feel while also providing a consistent visual anchor for your content. This style became popular through the xaringan R package and many presenters found it helpful for branding and visual consistency.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -344,19 +350,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="installation" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="installation"><span class="header-section-number">12.2</span> Installation</h2>
+<section id="installation" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="installation"><span class="header-section-number">13.2</span> Installation</h2>
 <p>To use this extension, run the following command in your terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add EmilHvitfeldt/quarto-revealjs-letterbox</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="basic-usage" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="basic-usage"><span class="header-section-number">12.3</span> Basic Usage</h2>
+<section id="basic-usage" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="basic-usage"><span class="header-section-number">13.3</span> Basic Usage</h2>
 <p>Once installed, you can use the letterbox format in your YAML header:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">letterbox-revealjs</span><span class="kw">:</span><span class="at"> default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="customization" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="customization"><span class="header-section-number">12.4</span> Customization</h2>
+<section id="customization" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="customization"><span class="header-section-number">13.4</span> Customization</h2>
 <p>The extension provides several options for customization. You can change the colors of the top and bottom bars to match your branding:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">letterbox-revealjs</span><span class="kw">:</span></span>
@@ -368,8 +374,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">letterbox-top-height</span><span class="kw">:</span><span class="at"> </span><span class="st">"50px"</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">letterbox-bottom-height</span><span class="kw">:</span><span class="at"> </span><span class="st">"50px"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="combining-with-other-themes" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="combining-with-other-themes"><span class="header-section-number">12.5</span> Combining with Other Themes</h2>
+<section id="combining-with-other-themes" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="combining-with-other-themes"><span class="header-section-number">13.5</span> Combining with Other Themes</h2>
 <p>The letterbox extension can be combined with other theme customizations. Simply add your custom SCSS file alongside the letterbox format:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">letterbox-revealjs</span><span class="kw">:</span></span>
@@ -787,13 +793,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./fragments.html" class="pagination-link" aria-label="Fragments">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fragments</span></span>
+      <a href="./auto-animate.html" class="pagination-link" aria-label="Auto-Animate">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./codewindow.html" class="pagination-link" aria-label="Codewindow">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Codewindow</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Codewindow</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

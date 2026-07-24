@@ -775,175 +775,252 @@
     ]
   },
   {
+    "objectID": "auto-animate.html",
+    "href": "auto-animate.html",
+    "title": "12  Auto-Animate",
+    "section": "",
+    "text": "12.1 A note before we start: this used to be tedious\nReveal.js ships with a feature called auto-animate that smoothly animates matching elements from one slide to the next. On its own it is a nice transition. Used with a little structure, it becomes a way to give an otherwise ordinary deck a sense of motion and intent. In this chapter we are gonna try to see how we can use this with what we call persistent elements. parts of the slides that persists between slides, mostly to improve the easthetics.\nTraditionally this is not used that much as far as I can see, and I think it happens because you end up needing to do a lot of div matching with IDs to have things line up. and that is not even taking into account the time it takes to set up the left, top, width, and height for every element. Then copied across slides. It is simply too much work. I did it for a talk once and it was a lot of work. and that was only two slides.\nTwo things have changed that.\nAI agents simply excel at this super tedius work. the syntax is quite simple, and repetetive, and it is just something that AI works pretty well with.\nThe second is the quarto-revealjs-editable extension, which we return to at the end of the chapter. It lets you drag, resize, and rotate elements directly on the rendered slide and write the coordinates back into your .qmd, so you tune the look by eye instead of guessing numbers.",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
+    "objectID": "auto-animate.html#what-auto-animate-does",
+    "href": "auto-animate.html#what-auto-animate-does",
+    "title": "12  Auto-Animate",
+    "section": "12.2 What auto-animate does",
+    "text": "12.2 What auto-animate does\nMark two adjacent slides with auto-animate=true and reveal.js will match up the elements on them and animate the difference.\nAutomatical matching will happen, but it is much more fragile. so my general advice is to give matching elements the same data-id.\n## A single element {auto-animate=true}\n\n::: {data-id=\"box\" style=\"width:140px; height:140px; background:#5E7699;\"}\n:::\n\n## The same data-id, changed {auto-animate=true}\n\n::: {data-id=\"box\" style=\"width:520px; height:260px; background:#FF9E8A;\"}\n:::\nThe element keeps its identity across the slide break, so its position, size, colour, and corner radius all tween between the two states.\n\n\n\nA single square with a shared data-id grows and changes colour between two auto-animate slides.\n\n\nqmd\nA few settings control the feel, set globally in the YAML header or per slide:\n\nauto-animate-duration (seconds)\nauto-animate-easing (a CSS easing function)\nauto-animate-delay (per element)",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
+    "objectID": "auto-animate.html#the-persistent-elements-pattern",
+    "href": "auto-animate.html#the-persistent-elements-pattern",
+    "title": "12  Auto-Animate",
+    "section": "12.3 The persistent-elements pattern",
+    "text": "12.3 The persistent-elements pattern\nHere is the core idea. Pick a small cast of shapes. anything between 1 and 5 is fine. Give each a data-id. Put the parts that never change, the colours, in your SCSS, keyed on the data-id:\n[data-id=\"draft\"]   { background: #2E7D6B; }\n[data-id=\"review\"]  { background: #E8A33D; }\n[data-id=\"release\"] { background: #4A5899; }\nand put the parts that do change, the geometry, inline on each slide:\n::: {.panel data-id=\"review\" style=\"left:470px; top:220px; width:340px; height:360px;\"}\n:::\nwe do this to reduce code duplication. Only write what is needed for each element.\nthen we simply have to place the elements at different stages on the slides, we can put content in them as well if we so pleases.\n\n\n\nThree colored panels that regroup across slides: a title cluster, a row of cards, one card expanded while the others shrink to markers, and a final reassembly.\n\n\nqmd scss\nThe colored-panel look above is only one of many possibilities.\n\n\n\nA three-item agenda where the current section’s item grows and highlights while the others dim, on each section-divider slide.\n\n\nqmd scss",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
+    "objectID": "auto-animate.html#enough-not-all",
+    "href": "auto-animate.html#enough-not-all",
+    "title": "12  Auto-Animate",
+    "section": "12.4 Enough, not all",
+    "text": "12.4 Enough, not all\nYou do not need a busy cast. A single recurring shape is often plenty. In the deck below one hero shape reshapes between section dividers, a circle, then a bar, then a frame, while the content slides in between stay calm and simply park the shape as a small marker in the corner. That contrast, motion on the dividers and stillness on the content, is what keeps it from feeling like a screensaver.\n\n\n\nOne hero shape that becomes a circle, a bar, and a frame across section dividers, parked as a small marker on the quiet content slides between them.\n\n\nqmd scss",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
+    "objectID": "auto-animate.html#putting-content-inside-an-element",
+    "href": "auto-animate.html#putting-content-inside-an-element",
+    "title": "12  Auto-Animate",
+    "section": "12.5 Putting content inside an element",
+    "text": "12.5 Putting content inside an element\nAn element is just a div, so it can hold text or a figure. Because that inner content has no match on the neighbouring slide, it fades in while the element animates into place. This lets you show a bold headline number while the panel is small, then expand the same panel into a full chart: the number fades out and the ggplot2 figure fades in, without either being animated across the slide. The figure below is a real ggplot2 plot generated by an R chunk placed inside the fenced div.\n\n\n\nA small panel showing a large “+42%” that expands to fill the slide, the number fading out as a ggplot2 line chart fades in.\n\n\nqmd scss\nNote that this deck needs R at render time, and raw SVG (if you hand-write a figure instead) has to go in a ```{=html} block, since Pandoc will not pass raw SVG through an inline span.",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
+    "objectID": "auto-animate.html#a-canvas-worth-setting-up",
+    "href": "auto-animate.html#a-canvas-worth-setting-up",
+    "title": "12  Auto-Animate",
+    "section": "12.6 A canvas worth setting up",
+    "text": "12.6 A canvas worth setting up\nAbsolute positioning is far easier to reason about on a fixed grid, so these decks set an explicit canvas in the header:\nformat:\n  revealjs:\n    width: 1280\n    height: 700\n    margin: 0\n    center: false\n    auto-animate-duration: 0.9\n    theme: [default, my-deck.scss]\nWith center: false and the slide padding zeroed in SCSS, left/top are measured from the slide’s top-left corner, so the coordinates you write match what you see. It is also handy to let the ## heading double as the slide’s small kicker label, styled through .reveal h2, and to set text colour once per slide with a .dark / .light class on the heading rather than on every span.",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
+    "objectID": "auto-animate.html#positioning-without-counting-pixels",
+    "href": "auto-animate.html#positioning-without-counting-pixels",
+    "title": "12  Auto-Animate",
+    "section": "12.7 Positioning without counting pixels",
+    "text": "12.7 Positioning without counting pixels\nEverything above still leaves you writing coordinates. The quarto-revealjs-editable extension removes most of that pain. Install it with:\nquarto add EmilHvitfeldt/quarto-revealjs-editable\nThen click Modify in the deck’s menu (or mark elements with the {.editable} class), drag and resize your elements right on the rendered slide, and save the new positions back into the .qmd. The recommended workflow for a persistent-elements deck is to rough the shapes in, perhaps with an AI agent’s help, then nudge them into place visually.",
+    "crumbs": [
+      "Interactivity",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Auto-Animate</span>"
+    ]
+  },
+  {
     "objectID": "letterbox.html",
     "href": "letterbox.html",
-    "title": "12  Letterbox",
+    "title": "13  Letterbox",
     "section": "",
-    "text": "12.1 What is Letterbox?\nThe quarto-revealjs-letterbox extension brings the beloved letterbox style from xaringan to Quarto reveal.js presentations.\nLetterbox is a presentation style that adds colored bars at the top and bottom of your slides, creating a cinematic feel while also providing a consistent visual anchor for your content. This style became popular through the xaringan R package and many presenters found it helpful for branding and visual consistency.",
+    "text": "13.1 What is Letterbox?\nThe quarto-revealjs-letterbox extension brings the beloved letterbox style from xaringan to Quarto reveal.js presentations.\nLetterbox is a presentation style that adds colored bars at the top and bottom of your slides, creating a cinematic feel while also providing a consistent visual anchor for your content. This style became popular through the xaringan R package and many presenters found it helpful for branding and visual consistency.",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Letterbox</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Letterbox</span>"
     ]
   },
   {
     "objectID": "letterbox.html#what-is-letterbox",
     "href": "letterbox.html#what-is-letterbox",
-    "title": "12  Letterbox",
+    "title": "13  Letterbox",
     "section": "",
     "text": "Demo of the letterbox extension: slides with colored bars at the top and bottom creating a cinematic framing effect, similar to the popular xaringan letterbox style.",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Letterbox</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Letterbox</span>"
     ]
   },
   {
     "objectID": "letterbox.html#installation",
     "href": "letterbox.html#installation",
-    "title": "12  Letterbox",
-    "section": "12.2 Installation",
-    "text": "12.2 Installation\nTo use this extension, run the following command in your terminal:\nquarto add EmilHvitfeldt/quarto-revealjs-letterbox",
+    "title": "13  Letterbox",
+    "section": "13.2 Installation",
+    "text": "13.2 Installation\nTo use this extension, run the following command in your terminal:\nquarto add EmilHvitfeldt/quarto-revealjs-letterbox",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Letterbox</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Letterbox</span>"
     ]
   },
   {
     "objectID": "letterbox.html#basic-usage",
     "href": "letterbox.html#basic-usage",
-    "title": "12  Letterbox",
-    "section": "12.3 Basic Usage",
-    "text": "12.3 Basic Usage\nOnce installed, you can use the letterbox format in your YAML header:\nformat:\n  letterbox-revealjs: default",
+    "title": "13  Letterbox",
+    "section": "13.3 Basic Usage",
+    "text": "13.3 Basic Usage\nOnce installed, you can use the letterbox format in your YAML header:\nformat:\n  letterbox-revealjs: default",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Letterbox</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Letterbox</span>"
     ]
   },
   {
     "objectID": "letterbox.html#customization",
     "href": "letterbox.html#customization",
-    "title": "12  Letterbox",
-    "section": "12.4 Customization",
-    "text": "12.4 Customization\nThe extension provides several options for customization. You can change the colors of the top and bottom bars to match your branding:\nformat:\n  letterbox-revealjs:\n    letterbox-top-color: \"#2c3e50\"\n    letterbox-bottom-color: \"#2c3e50\"\nYou can also adjust the height of the bars:\nformat:\n  letterbox-revealjs:\n    letterbox-top-height: \"50px\"\n    letterbox-bottom-height: \"50px\"",
+    "title": "13  Letterbox",
+    "section": "13.4 Customization",
+    "text": "13.4 Customization\nThe extension provides several options for customization. You can change the colors of the top and bottom bars to match your branding:\nformat:\n  letterbox-revealjs:\n    letterbox-top-color: \"#2c3e50\"\n    letterbox-bottom-color: \"#2c3e50\"\nYou can also adjust the height of the bars:\nformat:\n  letterbox-revealjs:\n    letterbox-top-height: \"50px\"\n    letterbox-bottom-height: \"50px\"",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Letterbox</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Letterbox</span>"
     ]
   },
   {
     "objectID": "letterbox.html#combining-with-other-themes",
     "href": "letterbox.html#combining-with-other-themes",
-    "title": "12  Letterbox",
-    "section": "12.5 Combining with Other Themes",
-    "text": "12.5 Combining with Other Themes\nThe letterbox extension can be combined with other theme customizations. Simply add your custom SCSS file alongside the letterbox format:\nformat:\n  letterbox-revealjs:\n    theme: [default, custom.scss]\n    letterbox-top-color: \"#1a1a2e\"\n    letterbox-bottom-color: \"#1a1a2e\"\nThis allows you to have the letterbox style while still applying all the color, font, and size customizations discussed in earlier chapters.\n\n Github  Demo",
+    "title": "13  Letterbox",
+    "section": "13.5 Combining with Other Themes",
+    "text": "13.5 Combining with Other Themes\nThe letterbox extension can be combined with other theme customizations. Simply add your custom SCSS file alongside the letterbox format:\nformat:\n  letterbox-revealjs:\n    theme: [default, custom.scss]\n    letterbox-top-color: \"#1a1a2e\"\n    letterbox-bottom-color: \"#1a1a2e\"\nThis allows you to have the letterbox style while still applying all the color, font, and size customizations discussed in earlier chapters.\n\n Github  Demo",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Letterbox</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Letterbox</span>"
     ]
   },
   {
     "objectID": "codewindow.html",
     "href": "codewindow.html",
-    "title": "13  Codewindow",
+    "title": "14  Codewindow",
     "section": "",
-    "text": "13.1 What is Codewindow?\nThe quarto-revealjs-codewindow extension adds styled codeblock windows to your Quarto reveal.js presentations, giving your code chunks a polished, IDE-like appearance.\nCodewindow wraps your code chunks in a styled window frame with a file tab, similar to how code appears in modern code editors. This visual treatment makes code stand out on slides and provides helpful context through language-specific icons.",
+    "text": "14.1 What is Codewindow?\nThe quarto-revealjs-codewindow extension adds styled codeblock windows to your Quarto reveal.js presentations, giving your code chunks a polished, IDE-like appearance.\nCodewindow wraps your code chunks in a styled window frame with a file tab, similar to how code appears in modern code editors. This visual treatment makes code stand out on slides and provides helpful context through language-specific icons.",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Codewindow</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Codewindow</span>"
     ]
   },
   {
     "objectID": "codewindow.html#what-is-codewindow",
     "href": "codewindow.html#what-is-codewindow",
-    "title": "13  Codewindow",
+    "title": "14  Codewindow",
     "section": "",
     "text": "Demo of the codewindow extension: code blocks styled as IDE-like windows with a title bar, file tab with language icon, and polished appearance resembling a modern code editor.",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Codewindow</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Codewindow</span>"
     ]
   },
   {
     "objectID": "codewindow.html#installation",
     "href": "codewindow.html#installation",
-    "title": "13  Codewindow",
-    "section": "13.2 Installation",
-    "text": "13.2 Installation\nTo use this extension, run the following command in your terminal:\nquarto add emilhvitfeldt/quarto-revealjs-codewindow\nOnce installed, add the extension to your YAML header:\n---\ntitle: \"My Presentation\"\nformat: revealjs\nrevealjs-plugins:\n  - codewindow\n---",
+    "title": "14  Codewindow",
+    "section": "14.2 Installation",
+    "text": "14.2 Installation\nTo use this extension, run the following command in your terminal:\nquarto add emilhvitfeldt/quarto-revealjs-codewindow\nOnce installed, add the extension to your YAML header:\n---\ntitle: \"My Presentation\"\nformat: revealjs\nrevealjs-plugins:\n  - codewindow\n---",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Codewindow</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Codewindow</span>"
     ]
   },
   {
     "objectID": "codewindow.html#basic-usage",
     "href": "codewindow.html#basic-usage",
-    "title": "13  Codewindow",
-    "section": "13.3 Basic Usage",
-    "text": "13.3 Basic Usage\nWrap any code chunk in a ::: {.codewindow} fenced div to apply the window styling. Add plain text before the code chunk to create a file tab label:\n::: {.codewindow}\nscript.R\n\n```r\nlibrary(ggplot2)\n\nggplot(mtcars, aes(mpg, wt)) +\n  geom_point()\n```\n:::",
+    "title": "14  Codewindow",
+    "section": "14.3 Basic Usage",
+    "text": "14.3 Basic Usage\nWrap any code chunk in a ::: {.codewindow} fenced div to apply the window styling. Add plain text before the code chunk to create a file tab label:\n::: {.codewindow}\nscript.R\n\n```r\nlibrary(ggplot2)\n\nggplot(mtcars, aes(mpg, wt)) +\n  geom_point()\n```\n:::",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Codewindow</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Codewindow</span>"
     ]
   },
   {
     "objectID": "codewindow.html#language-icons",
     "href": "codewindow.html#language-icons",
-    "title": "13  Codewindow",
-    "section": "13.4 Language Icons",
-    "text": "13.4 Language Icons\nAdd a language class to display an icon in the file tab. The following languages are supported:\n\n.r - R\n.py - Python\n.js - JavaScript\n.quarto - Quarto\n.html - HTML\n.css - CSS\n.sass - Sass\n.julia - Julia\n\nExample with an R icon:\n::: {.codewindow .r}\nanalysis.R\n\n```r\nmtcars |&gt;\n  dplyr::group_by(cyl) |&gt;\n  dplyr::summarize(mean_mpg = mean(mpg))\n```\n:::",
+    "title": "14  Codewindow",
+    "section": "14.4 Language Icons",
+    "text": "14.4 Language Icons\nAdd a language class to display an icon in the file tab. The following languages are supported:\n\n.r - R\n.py - Python\n.js - JavaScript\n.quarto - Quarto\n.html - HTML\n.css - CSS\n.sass - Sass\n.julia - Julia\n\nExample with an R icon:\n::: {.codewindow .r}\nanalysis.R\n\n```r\nmtcars |&gt;\n  dplyr::group_by(cyl) |&gt;\n  dplyr::summarize(mean_mpg = mean(mpg))\n```\n:::",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Codewindow</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Codewindow</span>"
     ]
   },
   {
     "objectID": "codewindow.html#customizing-width",
     "href": "codewindow.html#customizing-width",
-    "title": "13  Codewindow",
-    "section": "13.5 Customizing Width",
-    "text": "13.5 Customizing Width\nYou can control the width of the codewindow using the width argument directly in the fenced div:\n::: {.codewindow .r width=\"80%\"}\nscript.R\n\n```r\nprint(\"Hello, world!\")\n```\n:::\n\n Github  Demo",
+    "title": "14  Codewindow",
+    "section": "14.5 Customizing Width",
+    "text": "14.5 Customizing Width\nYou can control the width of the codewindow using the width argument directly in the fenced div:\n::: {.codewindow .r width=\"80%\"}\nscript.R\n\n```r\nprint(\"Hello, world!\")\n```\n:::\n\n Github  Demo",
     "crumbs": [
       "Extensions",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Codewindow</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Codewindow</span>"
     ]
   },
   {
     "objectID": "miscellaneous.html",
     "href": "miscellaneous.html",
-    "title": "14  Miscellaneous",
+    "title": "15  Miscellaneous",
     "section": "",
-    "text": "14.1 Hiding slides\nchanging the slide visibility is as simple as setting visibility=\"hidden\" attribute to the header of a slide\nI find this useful when I have to give the same presentation multiple times, and I have a disclaimer or other seasonally important slides. Instead of removing and reinserting the information each time, I just changed the attribute.\nqmd",
+    "text": "15.1 Hiding slides\nchanging the slide visibility is as simple as setting visibility=\"hidden\" attribute to the header of a slide\nI find this useful when I have to give the same presentation multiple times, and I have a disclaimer or other seasonally important slides. Instead of removing and reinserting the information each time, I just changed the attribute.\nqmd",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "miscellaneous.html#hiding-slides",
     "href": "miscellaneous.html#hiding-slides",
-    "title": "14  Miscellaneous",
+    "title": "15  Miscellaneous",
     "section": "",
     "text": "## Slide Title {visibility=\"hidden\"}\n\n\n\n\nSlide deck demonstrating hidden slides: a slide marked with visibility=\"hidden\" is skipped entirely during the presentation but remains in the source file.",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "miscellaneous.html#avoid-duplication-using-includes",
     "href": "miscellaneous.html#avoid-duplication-using-includes",
-    "title": "14  Miscellaneous",
-    "section": "14.2 Avoid duplication using Includes",
-    "text": "14.2 Avoid duplication using Includes\nThis last tip doesn’t come with an example, as it doesn’t get useful before you start working with multiple files. We are talking about the includes short code.\nUsing the following short code; {{&lt; include _content.qmd &gt;}} includes the content of _content.qmd into the document in a “copy-paste” manner before the rendering of the document.\nThis has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.",
+    "title": "15  Miscellaneous",
+    "section": "15.2 Avoid duplication using Includes",
+    "text": "15.2 Avoid duplication using Includes\nThis last tip doesn’t come with an example, as it doesn’t get useful before you start working with multiple files. We are talking about the includes short code.\nUsing the following short code; {{&lt; include _content.qmd &gt;}} includes the content of _content.qmd into the document in a “copy-paste” manner before the rendering of the document.\nThis has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   },
   {
     "objectID": "miscellaneous.html#vs-code-positron-code-snippets",
     "href": "miscellaneous.html#vs-code-positron-code-snippets",
-    "title": "14  Miscellaneous",
-    "section": "14.3 VS Code & Positron code snippets",
-    "text": "14.3 VS Code & Positron code snippets\nI find it hard to remember all the Sass variables that are available.\nI figured out we can get something working pretty well by using code snippets in VS Code or Positron. The following collapsed code chunk contains snippets for all the revealjs sass variables that are compatible. They should all trigger inside .scss files once you start with $. The snippets also default to contain the default value, which can help you figure out how you want to adjust it.\n\nSince these are specific to presentations, I suggest that they are used as project-specific snippets. Add them in a name.code-snippets file inside .vscode folder at the base of your directory, and it should work right away.\n\n\nAll Sass Variables Code Snippets\n\n{\n  \"colors - background\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$body-bg\",\n    \"body\": [\n      \"\\\\$body-bg: ${1:#fff};\"\n    ]\n  },\n  \"colors - text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$body-color\",\n    \"body\": [\n      \"\\\\$body-color: ${1:#222};\"\n    ]\n  },\n  \"colors - muted text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$text-muted\",\n    \"body\": [\n      \"\\\\$text-muted: ${1:lighten(\\\\$body-color, 50%)};\"\n    ]\n  },\n  \"colors - link\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$link-color\",\n    \"body\": [\n      \"\\\\$link-color: ${1:#2a76dd};\"\n    ]\n  },\n  \"colors - link hover\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$link-color-hover\",\n    \"body\": [\n      \"\\\\$link-color-hover: ${1:lighten(\\\\$link-color, 15%)};\"\n    ]\n  },\n  \"colors - selection background\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$selection-bg\",\n    \"body\": [\n      \"\\\\$selection-bg: ${1:lighten(\\\\$link-color, 25%)};\"\n    ]\n  },\n  \"colors - selection color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$selection-color\",\n    \"body\": [\n      \"\\\\$selection-color: ${1:\\\\$body-bg};\"\n    ]\n  },\n  \"colors - light background text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$light-bg-text-color\",\n    \"body\": [\n      \"\\\\$light-bg-text-color: ${1:#222};\"\n    ]\n  },\n  \"colors - light background link\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$light-bg-link-color\",\n    \"body\": [\n      \"\\\\$light-bg-link-color: ${1:#2a76dd};\"\n    ]\n  },\n  \"colors - light background code\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$light-bg-code-color\",\n    \"body\": [\n      \"\\\\$light-bg-code-color: ${1:#4758ab};\"\n    ]\n  },\n  \"colors - dark background text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$dark-bg-text-color\",\n    \"body\": [\n      \"\\\\$dark-bg-text-color: ${1:#fff};\"\n    ]\n  },\n  \"colors - dark background link\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$dark-bg-link-color\",\n    \"body\": [\n      \"\\\\$dark-bg-link-color: ${1:#42affa};\"\n    ]\n  },\n  \"colors - dark background color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$dark-bg-code-color\",\n    \"body\": [\n      \"\\\\$dark-bg-code-color: ${1:#ffa07a};\"\n    ]\n  },\n  \"fonts - sans serif\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$font-family-sans-serif\",\n    \"body\": [\n      \"\\\\$font-family-sans-serif: ${1:'Source Sans Pro', Helvetica, sans-serif};\"\n    ]\n  },\n  \"fonts - monospace \": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$font-family-monospace\",\n    \"body\": [\n      \"\\\\$font-family-monospace: ${1:monospace};\"\n    ]\n  },\n  \"fonts - font size root\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-font-size-root\",\n    \"body\": [\n      \"\\\\$presentation-font-size-root: ${1:40px};\"\n    ]\n  },\n  \"fonts - font smaller\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-font-smaller\",\n    \"body\": [\n      \"\\\\$presentation-font-smaller: ${1:0.7};\"\n    ]\n  },\n  \"fonts - line height\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-line-height\",\n    \"body\": [\n      \"\\\\$presentation-line-height: ${1:1.3};\"\n    ]\n  },\n  \"headings - h1 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h1-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h1-font-size: ${1:2.5em};\"\n    ]\n  },\n  \"headings - h2 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h2-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h2-font-size: ${1:1.6em};\"\n    ]\n  },\n  \"headings - h3 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h3-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h3-font-size: ${1:1.3em};\"\n    ]\n  },\n  \"headings - h4 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h4-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h4-font-size: ${1:1em};\"\n    ]\n  },\n  \"headings - font family\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-font\",\n    \"body\": [\n      \"\\\\$presentation-heading-font: ${1:\\\\$font-family-sans-serif};\"\n    ]\n  },\n  \"headings - color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-color\",\n    \"body\": [\n      \"\\\\$presentation-heading-color: ${1:\\\\$body-color};\"\n    ]\n  },\n  \"headings - line height\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-line-height\",\n    \"body\": [\n      \"\\\\$presentation-heading-line-height: ${1:1.2};\"\n    ]\n  },\n  \"headings - letter spacing\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-letter-spacing\",\n    \"body\": [\n      \"\\\\$presentation-heading-letter-spacing: ${1:normal};\"\n    ]\n  },\n  \"headings - text transform\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-text-transform\",\n    \"body\": [\n      \"\\\\$presentation-heading-text-transform: ${1:none};\"\n    ]\n  },\n  \"headings - text shadow\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-text-shadow\",\n    \"body\": [\n      \"\\\\$presentation-heading-text-shadow: ${1:none};\"\n    ]\n  },\n  \"headings - font weight\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-font-weight\",\n    \"body\": [\n      \"\\\\$presentation-heading-font-weight: ${1:600};\"\n    ]\n  },\n  \"headings - h1 text shadow\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h1-text-shadow\",\n    \"body\": [\n      \"\\\\$presentation-h1-text-shadow: ${1:none};\"\n    ]\n  },\n  \"code blocks - background color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-block-bg\",\n    \"body\": [\n      \"\\\\$code-block-bg: ${1:\\\\$body-bg};\"\n    ]\n  },\n  \"code blocks - border color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-block-border-color\",\n    \"body\": [\n      \"\\\\$code-block-border-color: ${1:lighten(\\\\$body-color, 60%)};\"\n    ]\n  },\n  \"code blocks - font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-block-font-size\",\n    \"body\": [\n      \"\\\\$code-block-font-size: ${1:0.55em};\"\n    ]\n  },\n  \"inline code - color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-color\",\n    \"body\": [\n      \"\\\\$code-color: ${1:var(--quarto-hl-fu-color)};\"\n    ]\n  },\n  \"inline code - background color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-bg\",\n    \"body\": [\n      \"\\\\$code-bg: ${1:transparent};\"\n    ]\n  },\n  \"tabset - border color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$tabset-border-color\",\n    \"body\": [\n      \"\\\\$tabset-border-color: ${1:\\\\$code-block-border-color};\"\n    ]\n  },\n  \"layout - border color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$border-color\",\n    \"body\": [\n      \"\\\\$border-color: ${1:lighten(\\\\$body-color, 30%)};\"\n    ]\n  },\n  \"layout - border width\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$border-width\",\n    \"body\": [\n      \"\\\\$border-width: ${1:1px};\"\n    ]\n  },\n  \"layout - border radius\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$border-radius\",\n    \"body\": [\n      \"\\\\$border-radius: ${1:3px};\"\n    ]\n  },\n  \"layout - block margin\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-block-margin\",\n    \"body\": [\n      \"\\\\$presentation-block-margin: ${1:12px};\"\n    ]\n  },\n  \"layout - slide text align\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-slide-text-align\",\n    \"body\": [\n      \"\\\\$presentation-slide-text-align: ${1:left};\"\n    ]\n  },\n  \"layout - title slide text align\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-title-slide-text-align\",\n    \"body\": [\n      \"\\\\$presentation-title-slide-text-align: ${1:center};\"\n    ]\n  },\n  \"callouts - border width\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-border-width\",\n    \"body\": [\n      \"\\\\$callout-border-width: ${1:0.3rem};\"\n    ]\n  },\n  \"callouts - border scale\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-border-scale\",\n    \"body\": [\n      \"\\\\$callout-border-scale: ${1:10%};\"\n    ]\n  },\n  \"callouts - margin top\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-margin-top\",\n    \"body\": [\n      \"\\\\$callout-margin-top: ${1:1rem};\"\n    ]\n  },\n  \"callouts - margin bottom\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-margin-bottom\",\n    \"body\": [\n      \"\\\\$callout-margin-bottom: ${1:1rem};\"\n    ]\n  },\n  \"callouts - note color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-note\",\n    \"body\": [\n      \"\\\\$callout-color-note: ${1:#0d6efd};\"\n    ]\n  },\n  \"callouts - tip color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-tip\",\n    \"body\": [\n      \"\\\\$callout-color-tip: ${1:#198754};\"\n    ]\n  },\n  \"callouts - caution color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-caution\",\n    \"body\": [\n      \"\\\\$callout-color-caution: ${1:#fd7e14};\"\n    ]\n  },\n  \"callouts - warning color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-warning\",\n    \"body\": [\n      \"\\\\$callout-color-warning: ${1:#ffc107};\"\n    ]\n  },\n  \"callouts - important color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-important\",\n    \"body\": [\n      \"\\\\$callout-color-important: ${1:#dc3545};\"\n    ]\n  }\n}",
+    "title": "15  Miscellaneous",
+    "section": "15.3 VS Code & Positron code snippets",
+    "text": "15.3 VS Code & Positron code snippets\nI find it hard to remember all the Sass variables that are available.\nI figured out we can get something working pretty well by using code snippets in VS Code or Positron. The following collapsed code chunk contains snippets for all the revealjs sass variables that are compatible. They should all trigger inside .scss files once you start with $. The snippets also default to contain the default value, which can help you figure out how you want to adjust it.\n\nSince these are specific to presentations, I suggest that they are used as project-specific snippets. Add them in a name.code-snippets file inside .vscode folder at the base of your directory, and it should work right away.\n\n\nAll Sass Variables Code Snippets\n\n{\n  \"colors - background\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$body-bg\",\n    \"body\": [\n      \"\\\\$body-bg: ${1:#fff};\"\n    ]\n  },\n  \"colors - text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$body-color\",\n    \"body\": [\n      \"\\\\$body-color: ${1:#222};\"\n    ]\n  },\n  \"colors - muted text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$text-muted\",\n    \"body\": [\n      \"\\\\$text-muted: ${1:lighten(\\\\$body-color, 50%)};\"\n    ]\n  },\n  \"colors - link\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$link-color\",\n    \"body\": [\n      \"\\\\$link-color: ${1:#2a76dd};\"\n    ]\n  },\n  \"colors - link hover\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$link-color-hover\",\n    \"body\": [\n      \"\\\\$link-color-hover: ${1:lighten(\\\\$link-color, 15%)};\"\n    ]\n  },\n  \"colors - selection background\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$selection-bg\",\n    \"body\": [\n      \"\\\\$selection-bg: ${1:lighten(\\\\$link-color, 25%)};\"\n    ]\n  },\n  \"colors - selection color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$selection-color\",\n    \"body\": [\n      \"\\\\$selection-color: ${1:\\\\$body-bg};\"\n    ]\n  },\n  \"colors - light background text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$light-bg-text-color\",\n    \"body\": [\n      \"\\\\$light-bg-text-color: ${1:#222};\"\n    ]\n  },\n  \"colors - light background link\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$light-bg-link-color\",\n    \"body\": [\n      \"\\\\$light-bg-link-color: ${1:#2a76dd};\"\n    ]\n  },\n  \"colors - light background code\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$light-bg-code-color\",\n    \"body\": [\n      \"\\\\$light-bg-code-color: ${1:#4758ab};\"\n    ]\n  },\n  \"colors - dark background text\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$dark-bg-text-color\",\n    \"body\": [\n      \"\\\\$dark-bg-text-color: ${1:#fff};\"\n    ]\n  },\n  \"colors - dark background link\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$dark-bg-link-color\",\n    \"body\": [\n      \"\\\\$dark-bg-link-color: ${1:#42affa};\"\n    ]\n  },\n  \"colors - dark background color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$dark-bg-code-color\",\n    \"body\": [\n      \"\\\\$dark-bg-code-color: ${1:#ffa07a};\"\n    ]\n  },\n  \"fonts - sans serif\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$font-family-sans-serif\",\n    \"body\": [\n      \"\\\\$font-family-sans-serif: ${1:'Source Sans Pro', Helvetica, sans-serif};\"\n    ]\n  },\n  \"fonts - monospace \": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$font-family-monospace\",\n    \"body\": [\n      \"\\\\$font-family-monospace: ${1:monospace};\"\n    ]\n  },\n  \"fonts - font size root\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-font-size-root\",\n    \"body\": [\n      \"\\\\$presentation-font-size-root: ${1:40px};\"\n    ]\n  },\n  \"fonts - font smaller\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-font-smaller\",\n    \"body\": [\n      \"\\\\$presentation-font-smaller: ${1:0.7};\"\n    ]\n  },\n  \"fonts - line height\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-line-height\",\n    \"body\": [\n      \"\\\\$presentation-line-height: ${1:1.3};\"\n    ]\n  },\n  \"headings - h1 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h1-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h1-font-size: ${1:2.5em};\"\n    ]\n  },\n  \"headings - h2 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h2-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h2-font-size: ${1:1.6em};\"\n    ]\n  },\n  \"headings - h3 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h3-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h3-font-size: ${1:1.3em};\"\n    ]\n  },\n  \"headings - h4 font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h4-font-size\",\n    \"body\": [\n      \"\\\\$presentation-h4-font-size: ${1:1em};\"\n    ]\n  },\n  \"headings - font family\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-font\",\n    \"body\": [\n      \"\\\\$presentation-heading-font: ${1:\\\\$font-family-sans-serif};\"\n    ]\n  },\n  \"headings - color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-color\",\n    \"body\": [\n      \"\\\\$presentation-heading-color: ${1:\\\\$body-color};\"\n    ]\n  },\n  \"headings - line height\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-line-height\",\n    \"body\": [\n      \"\\\\$presentation-heading-line-height: ${1:1.2};\"\n    ]\n  },\n  \"headings - letter spacing\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-letter-spacing\",\n    \"body\": [\n      \"\\\\$presentation-heading-letter-spacing: ${1:normal};\"\n    ]\n  },\n  \"headings - text transform\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-text-transform\",\n    \"body\": [\n      \"\\\\$presentation-heading-text-transform: ${1:none};\"\n    ]\n  },\n  \"headings - text shadow\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-text-shadow\",\n    \"body\": [\n      \"\\\\$presentation-heading-text-shadow: ${1:none};\"\n    ]\n  },\n  \"headings - font weight\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-heading-font-weight\",\n    \"body\": [\n      \"\\\\$presentation-heading-font-weight: ${1:600};\"\n    ]\n  },\n  \"headings - h1 text shadow\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-h1-text-shadow\",\n    \"body\": [\n      \"\\\\$presentation-h1-text-shadow: ${1:none};\"\n    ]\n  },\n  \"code blocks - background color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-block-bg\",\n    \"body\": [\n      \"\\\\$code-block-bg: ${1:\\\\$body-bg};\"\n    ]\n  },\n  \"code blocks - border color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-block-border-color\",\n    \"body\": [\n      \"\\\\$code-block-border-color: ${1:lighten(\\\\$body-color, 60%)};\"\n    ]\n  },\n  \"code blocks - font size\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-block-font-size\",\n    \"body\": [\n      \"\\\\$code-block-font-size: ${1:0.55em};\"\n    ]\n  },\n  \"inline code - color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-color\",\n    \"body\": [\n      \"\\\\$code-color: ${1:var(--quarto-hl-fu-color)};\"\n    ]\n  },\n  \"inline code - background color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$code-bg\",\n    \"body\": [\n      \"\\\\$code-bg: ${1:transparent};\"\n    ]\n  },\n  \"tabset - border color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$tabset-border-color\",\n    \"body\": [\n      \"\\\\$tabset-border-color: ${1:\\\\$code-block-border-color};\"\n    ]\n  },\n  \"layout - border color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$border-color\",\n    \"body\": [\n      \"\\\\$border-color: ${1:lighten(\\\\$body-color, 30%)};\"\n    ]\n  },\n  \"layout - border width\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$border-width\",\n    \"body\": [\n      \"\\\\$border-width: ${1:1px};\"\n    ]\n  },\n  \"layout - border radius\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$border-radius\",\n    \"body\": [\n      \"\\\\$border-radius: ${1:3px};\"\n    ]\n  },\n  \"layout - block margin\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-block-margin\",\n    \"body\": [\n      \"\\\\$presentation-block-margin: ${1:12px};\"\n    ]\n  },\n  \"layout - slide text align\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-slide-text-align\",\n    \"body\": [\n      \"\\\\$presentation-slide-text-align: ${1:left};\"\n    ]\n  },\n  \"layout - title slide text align\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$presentation-title-slide-text-align\",\n    \"body\": [\n      \"\\\\$presentation-title-slide-text-align: ${1:center};\"\n    ]\n  },\n  \"callouts - border width\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-border-width\",\n    \"body\": [\n      \"\\\\$callout-border-width: ${1:0.3rem};\"\n    ]\n  },\n  \"callouts - border scale\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-border-scale\",\n    \"body\": [\n      \"\\\\$callout-border-scale: ${1:10%};\"\n    ]\n  },\n  \"callouts - margin top\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-margin-top\",\n    \"body\": [\n      \"\\\\$callout-margin-top: ${1:1rem};\"\n    ]\n  },\n  \"callouts - margin bottom\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-margin-bottom\",\n    \"body\": [\n      \"\\\\$callout-margin-bottom: ${1:1rem};\"\n    ]\n  },\n  \"callouts - note color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-note\",\n    \"body\": [\n      \"\\\\$callout-color-note: ${1:#0d6efd};\"\n    ]\n  },\n  \"callouts - tip color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-tip\",\n    \"body\": [\n      \"\\\\$callout-color-tip: ${1:#198754};\"\n    ]\n  },\n  \"callouts - caution color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-caution\",\n    \"body\": [\n      \"\\\\$callout-color-caution: ${1:#fd7e14};\"\n    ]\n  },\n  \"callouts - warning color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-warning\",\n    \"body\": [\n      \"\\\\$callout-color-warning: ${1:#ffc107};\"\n    ]\n  },\n  \"callouts - important color\": {\n    \"scope\": \"scss\",\n    \"prefix\": \"$callout-color-important\",\n    \"body\": [\n      \"\\\\$callout-color-important: ${1:#dc3545};\"\n    ]\n  }\n}",
     "crumbs": [
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Miscellaneous</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Miscellaneous</span>"
     ]
   }
 ]

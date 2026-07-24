@@ -1,0 +1,19 @@
+---
+format:
+  revealjs:
+    auto-animate-duration: 0.9
+---
+
+## A single element {auto-animate=true}
+
+Give an element a `data-id`, then repeat it on the next slide.
+
+::: {data-id="box" style="width:140px; height:140px; background:#5E7699; border-radius:14px; margin:80px auto 0;"}
+:::
+
+## The same `data-id`, changed {auto-animate=true}
+
+reveal.js tweens position, size, colour, and radius between the two.
+
+::: {data-id="box" style="width:520px; height:260px; background:#FF9E8A; border-radius:48px; margin:80px auto 0;"}
+:::

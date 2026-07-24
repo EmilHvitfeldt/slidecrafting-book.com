@@ -1,6 +1,6 @@
-# 14  Miscellaneous
+# 15  Miscellaneous
 
-## 14.1 Hiding slides
+## 15.1 Hiding slides
 
 changing the [slide visibility](https://quarto.org/docs/presentations/revealjs/advanced.html#slide-visibility) is as simple as setting `visibility="hidden"` attribute to the header of a slide
 
@@ -14,7 +14,7 @@ Slide deck demonstrating hidden slides: a slide marked with `visibility="hidden"
 
 [qmd](examples/miscellaneous/tip-3.qmd)
 
-## 14.2 Avoid duplication using Includes
+## 15.2 Avoid duplication using Includes
 
 This last tip doesn’t come with an example, as it doesn’t get useful before you start working with multiple files. We are talking about the [includes](https://quarto.org/docs/authoring/includes.html) short code.
 
@@ -22,7 +22,7 @@ Using the following short code; `{{< include _content.qmd >}}` includes the cont
 
 This has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.
 
-## 14.3 VS Code & Positron code snippets
+## 15.3 VS Code & Positron code snippets
 
 I find it hard to remember all the [Sass variables](https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables) that are available.
 

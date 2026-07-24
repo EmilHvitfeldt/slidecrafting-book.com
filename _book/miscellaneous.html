@@ -8,7 +8,7 @@
 
 <meta name="description" content="Miscellaneous Quarto reveal.js tips: hiding slides with visibility=hidden, avoiding duplication with includes, and other tricks that don’t fit elsewhere.">
 
-<title>14&nbsp; Miscellaneous – Slidecrafting</title>
+<title>15&nbsp; Miscellaneous – Slidecrafting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="manifest" href="./site.webmanifest">
 
 
-<meta property="og:title" content="14&nbsp; Miscellaneous – Slidecrafting">
+<meta property="og:title" content="15&nbsp; Miscellaneous – Slidecrafting">
 <meta property="og:description" content="Miscellaneous Quarto reveal.js tips: hiding slides with visibility=hidden, avoiding duplication with includes, and other tricks that don’t fit elsewhere.">
 <meta property="og:image" content="https://slidecrafting-book.com/media/code-snippets.webp">
 <meta property="og:site_name" content="Slidecrafting">
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./miscellaneous.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./miscellaneous.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -262,6 +262,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fragments</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./auto-animate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -276,13 +282,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./letterbox.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Letterbox</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Letterbox</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codewindow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Codewindow</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Codewindow</span></span></a>
   </div>
 </li>
       </ul>
@@ -290,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./miscellaneous.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -303,9 +309,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#hiding-slides" id="toc-hiding-slides" class="nav-link active" data-scroll-target="#hiding-slides"><span class="header-section-number">14.1</span> Hiding slides</a></li>
-  <li><a href="#avoid-duplication-using-includes" id="toc-avoid-duplication-using-includes" class="nav-link" data-scroll-target="#avoid-duplication-using-includes"><span class="header-section-number">14.2</span> Avoid duplication using Includes</a></li>
-  <li><a href="#vs-code-positron-code-snippets" id="toc-vs-code-positron-code-snippets" class="nav-link" data-scroll-target="#vs-code-positron-code-snippets"><span class="header-section-number">14.3</span> VS Code &amp; Positron code snippets</a></li>
+  <li><a href="#hiding-slides" id="toc-hiding-slides" class="nav-link active" data-scroll-target="#hiding-slides"><span class="header-section-number">15.1</span> Hiding slides</a></li>
+  <li><a href="#avoid-duplication-using-includes" id="toc-avoid-duplication-using-includes" class="nav-link" data-scroll-target="#avoid-duplication-using-includes"><span class="header-section-number">15.2</span> Avoid duplication using Includes</a></li>
+  <li><a href="#vs-code-positron-code-snippets" id="toc-vs-code-positron-code-snippets" class="nav-link" data-scroll-target="#vs-code-positron-code-snippets"><span class="header-section-number">15.3</span> VS Code &amp; Positron code snippets</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/miscellaneous.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/miscellaneous.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -314,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Miscellaneous</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Miscellaneous</span></h1>
 </div>
 
 
@@ -331,8 +337,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="hiding-slides" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="hiding-slides"><span class="header-section-number">14.1</span> Hiding slides</h2>
+<section id="hiding-slides" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="hiding-slides"><span class="header-section-number">15.1</span> Hiding slides</h2>
 <p>changing the <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#slide-visibility">slide visibility</a> is as simple as setting <code>visibility="hidden"</code> attribute to the header of a slide</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Title {visibility="hidden"}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>I find this useful when I have to give the same presentation multiple times, and I have a disclaimer or other seasonally important slides. Instead of removing and reinserting the information each time, I just changed the attribute.</p>
@@ -344,14 +350,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><a href="examples/miscellaneous/tip-3.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a></p>
 </section>
-<section id="avoid-duplication-using-includes" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="avoid-duplication-using-includes"><span class="header-section-number">14.2</span> Avoid duplication using Includes</h2>
+<section id="avoid-duplication-using-includes" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="avoid-duplication-using-includes"><span class="header-section-number">15.2</span> Avoid duplication using Includes</h2>
 <p>This last tip doesn’t come with an example, as it doesn’t get useful before you start working with multiple files. We are talking about the <a href="https://quarto.org/docs/authoring/includes.html">includes</a> short code.</p>
 <p>Using the following short code; <code>{{&lt; include _content.qmd &gt;}}</code> includes the content of <code>_content.qmd</code> into the document in a “copy-paste” manner before the rendering of the document.</p>
 <p>This has proved useful for me when I want the same slides to appear at the start or end of multiple decks. And you are not limited to .qmd files! you can embed html files or svg too.</p>
 </section>
-<section id="vs-code-positron-code-snippets" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="vs-code-positron-code-snippets"><span class="header-section-number">14.3</span> VS Code &amp; Positron code snippets</h2>
+<section id="vs-code-positron-code-snippets" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="vs-code-positron-code-snippets"><span class="header-section-number">15.3</span> VS Code &amp; Positron code snippets</h2>
 <p>I find it hard to remember all the <a href="https://quarto.org/docs/presentations/revealjs/themes.html#sass-variables">Sass variables</a> that are available.</p>
 <p>I figured out we can get something working pretty well by using <a href="https://code.visualstudio.com/docs/editing/userdefinedsnippets">code snippets</a> in VS Code or Positron. The following collapsed code chunk contains snippets for all the revealjs sass variables that are compatible. They should all trigger inside <code>.scss</code> files once you start with <code>$</code>. The snippets also default to contain the default value, which can help you figure out how you want to adjust it.</p>
 <p><img src="media/code-snippets.webp" class="img-fluid"></p>
@@ -1128,7 +1134,7 @@ All Sass Variables Code Snippets
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./codewindow.html" class="pagination-link" aria-label="Codewindow">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Codewindow</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Codewindow</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

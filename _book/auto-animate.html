@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="How to find, apply, and embed fonts in Quarto reveal.js slides using Google Fonts, Sass variables, and local font files with @font-face.">
+<meta name="description" content="Using reveal.js auto-animate in Quarto to carry a small cast of persistent elements across slides, animating their position, size, and shape for a polished, deliberate feel.">
 
-<title>3&nbsp; Fonts – Slidecrafting</title>
+<title>12&nbsp; Auto-Animate – Slidecrafting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -69,8 +69,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./sizes.html" rel="next">
-<link href="./colors.html" rel="prev">
+<link href="./letterbox.html" rel="next">
+<link href="./fragments.html" rel="prev">
 <link href="./favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -82,6 +82,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-0c637c4387fd00c9d762d829c448c9f6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -115,8 +117,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="manifest" href="./site.webmanifest">
 
 
-<meta property="og:title" content="3&nbsp; Fonts – Slidecrafting">
-<meta property="og:description" content="How to find, apply, and embed fonts in Quarto reveal.js slides using Google Fonts, Sass variables, and local font files with @font-face.">
+<meta property="og:title" content="12&nbsp; Auto-Animate – Slidecrafting">
+<meta property="og:description" content="Using reveal.js auto-animate in Quarto to carry a small cast of persistent elements across slides, animating their position, size, and shape for a polished, deliberate feel.">
 <meta property="og:site_name" content="Slidecrafting">
 </head>
 
@@ -129,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-minute.html">Theming</a></li><li class="breadcrumb-item"><a href="./fonts.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fonts</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fragments.html">Interactivity</a></li><li class="breadcrumb-item"><a href="./auto-animate.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -186,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fonts.html" class="sidebar-item-text sidebar-link active">
+  <a href="./fonts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fonts</span></span></a>
   </div>
 </li>
@@ -262,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./auto-animate.html" class="sidebar-item-text sidebar-link">
+  <a href="./auto-animate.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></span></a>
   </div>
 </li>
@@ -307,18 +309,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#finding-fonts" id="toc-finding-fonts" class="nav-link active" data-scroll-target="#finding-fonts"><span class="header-section-number">3.1</span> Finding Fonts</a></li>
-  <li><a href="#applying-fonts" id="toc-applying-fonts" class="nav-link" data-scroll-target="#applying-fonts"><span class="header-section-number">3.2</span> Applying Fonts</a></li>
-  <li><a href="#embedding-fonts" id="toc-embedding-fonts" class="nav-link" data-scroll-target="#embedding-fonts"><span class="header-section-number">3.3</span> Embedding Fonts</a></li>
+  <li><a href="#a-note-before-we-start-this-used-to-be-tedious" id="toc-a-note-before-we-start-this-used-to-be-tedious" class="nav-link active" data-scroll-target="#a-note-before-we-start-this-used-to-be-tedious"><span class="header-section-number">12.1</span> A note before we start: this used to be tedious</a></li>
+  <li><a href="#what-auto-animate-does" id="toc-what-auto-animate-does" class="nav-link" data-scroll-target="#what-auto-animate-does"><span class="header-section-number">12.2</span> What auto-animate does</a></li>
+  <li><a href="#the-persistent-elements-pattern" id="toc-the-persistent-elements-pattern" class="nav-link" data-scroll-target="#the-persistent-elements-pattern"><span class="header-section-number">12.3</span> The persistent-elements pattern</a></li>
+  <li><a href="#enough-not-all" id="toc-enough-not-all" class="nav-link" data-scroll-target="#enough-not-all"><span class="header-section-number">12.4</span> Enough, not all</a></li>
+  <li><a href="#putting-content-inside-an-element" id="toc-putting-content-inside-an-element" class="nav-link" data-scroll-target="#putting-content-inside-an-element"><span class="header-section-number">12.5</span> Putting content inside an element</a></li>
+  <li><a href="#a-canvas-worth-setting-up" id="toc-a-canvas-worth-setting-up" class="nav-link" data-scroll-target="#a-canvas-worth-setting-up"><span class="header-section-number">12.6</span> A canvas worth setting up</a></li>
+  <li><a href="#positioning-without-counting-pixels" id="toc-positioning-without-counting-pixels" class="nav-link" data-scroll-target="#positioning-without-counting-pixels"><span class="header-section-number">12.7</span> Positioning without counting pixels</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/fonts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/fonts.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/auto-animate.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/auto-animate.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10-minute.html">Theming</a></li><li class="breadcrumb-item"><a href="./fonts.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fonts</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fragments.html">Interactivity</a></li><li class="breadcrumb-item"><a href="./auto-animate.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fonts</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Auto-Animate</span></h1>
 </div>
 
 
@@ -335,70 +341,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="finding-fonts" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="finding-fonts"><span class="header-section-number">3.1</span> Finding Fonts</h2>
-<p>We find fonts the same way we find color, using our favorites from lots of googling. I always gravitate towards <a href="https://fonts.google.com/">fonts.google.com</a>. Generally, it is nice to use these online fonts because they are free, and you don’t have to embed/ship them if you want to share your slides with others.</p>
-<p>Once we are in here, we can search around, looking for a font you like. For these slides, I’m going with <a href="https://fonts.google.com/specimen/Manrope">Manrope</a> for the text, and <a href="https://fonts.google.com/specimen/IBM+Plex+Serif">IBM Plex Serif</a> for the headers. I find it useful to look at <a href="https://www.figma.com/google-fonts/">font pairing</a> websites for inspiration.</p>
-<p>The most important thing is that you find a legible font. Additionally, you want the main font that you use to come in different font weights and have italics if you are going to be using them in your slides.</p>
-<p>Once you have selected the fonts you are happy with, go to the “Selected families” page. From there, you click “Get embed code”, and there should be a button that lets you select <code>@import</code>. And you want to copy the code inside the <code>&lt;style&gt;</code> tags. We are now ready to apply these fonts to our slides!</p>
+<p>Reveal.js ships with a feature called <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate">auto-animate</a> that smoothly animates matching elements from one slide to the next. On its own it is a nice transition. Used with a little structure, it becomes a way to give an otherwise ordinary deck a sense of motion and intent. In this chapter we are gonna try to see how we can use this with what we call <strong>persistent elements</strong>. parts of the slides that persists between slides, mostly to improve the easthetics.</p>
+<section id="a-note-before-we-start-this-used-to-be-tedious" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="a-note-before-we-start-this-used-to-be-tedious"><span class="header-section-number">12.1</span> A note before we start: this used to be tedious</h2>
+<p>Traditionally this is not used that much as far as I can see, and I think it happens because you end up needing to do a lot of div matching with IDs to have things line up. and that is not even taking into account the time it takes to set up the <code>left</code>, <code>top</code>, <code>width</code>, and <code>height</code> for every element. Then copied across slides. It is simply too much work. <a href="https://github.com/EmilHvitfeldt/talk-rstudioconf2022-tidyclust/blob/master/index.qmd#L66-L164">I did it for a talk once</a> and it was a lot of work. and that was only two slides.</p>
+<p>Two things have changed that.</p>
+<p>AI agents simply excel at this super tedius work. the syntax is quite simple, and repetetive, and it is just something that AI works pretty well with.</p>
+<p>The second is the <a href="https://github.com/EmilHvitfeldt/quarto-revealjs-editable"><code>quarto-revealjs-editable</code></a> extension, which we return to at the end of the chapter. It lets you drag, resize, and rotate elements directly on the rendered slide and write the coordinates back into your <code>.qmd</code>, so you tune the look by eye instead of guessing numbers.</p>
 </section>
-<section id="applying-fonts" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="applying-fonts"><span class="header-section-number">3.2</span> Applying Fonts</h2>
-<p>Start by adding the <code>@import</code> calls we found in the previous section. This should again go into the <code>scss:defaults</code> section of the <code>.scss</code> file. To modify the font, we have 2 Sass variables. First, we have <code>$font-family-sans-serif</code> to modify the general text, and <code>$presentation-heading-font</code> to modify the headers. Applying these changes gives us the following <code>.scss</code> file.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:defaults --*/</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">@import</span> <span class="fu">url(</span><span class="st">'https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-sans-serif</span>: <span class="st">'Manrope'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">$presentation-heading-font</span>: <span class="st">'IBM Plex Serif'</span><span class="op">,</span> <span class="dv">serif</span><span class="op">;</span></span>
+<section id="what-auto-animate-does" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="what-auto-animate-does"><span class="header-section-number">12.2</span> What auto-animate does</h2>
+<p>Mark two adjacent slides with <code>auto-animate=true</code> and reveal.js will match up the elements on them and animate the difference.</p>
+<p>Automatical matching will happen, but it is much more fragile. so my general advice is to give matching elements the same <code>data-id</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## A single element {auto-animate=true}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>::: {data-id="box" style="width:140px; height:140px; background:#5E7699;"}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## The same data-id, changed {auto-animate=true}</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">/*-- scss:rules --*/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Which, when rendered, results in the following slides.</p>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>::: {data-id="box" style="width:520px; height:260px; background:#FF9E8A;"}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The element keeps its identity across the slide break, so its position, size, colour, and corner radius all tween between the two states.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="examples/fonts/google-fonts.html" class="slide-deck" loading="lazy" title="Slides with Google Fonts applied (Manrope body, IBM Plex Serif headings)" width="560" height="373"></p>
-<figcaption>Slides with Google Fonts applied: Manrope for body text and IBM Plex Serif for headings, demonstrating bold and italic font weights in use.</figcaption>
+<p><embed src="examples/auto-animate/basics.html" class="slide-deck" loading="lazy" title="A single element animating between two slides" width="560" height="373"></p>
+<figcaption>A single square with a shared <code>data-id</code> grows and changes colour between two auto-animate slides.</figcaption>
 </figure>
 </div>
-<p>Notice how the fonts we used allow us to bold the words “finished presentation” and italicize “content and executable code”. If you don’t see those working, it is because you either didn’t select those high font weights to allow for boldness, or italic versions to allow for italics.</p>
-<p>You can also change the code font; this should ideally be a monospaced font. This is done using the <code>$font-family-monospace</code> sass variable.</p>
-<p>You might have noticed that when we specify fonts there are multiple names listed. These names are comma-separated. This is related to fallback fonts. If any font specified isn’t available for whatever reason, because of a misspecification or slow internet connection, then the next font in line will be selected. In the above example, if <code>Manrope</code> isn’t available, then the system <code>sans-serif</code> font will be selected. You can have as many fonts as you like in a specification.</p>
-</section>
-<section id="embedding-fonts" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="embedding-fonts"><span class="header-section-number">3.3</span> Embedding Fonts</h2>
-<p>There are times when you don’t want to use a web font like how we showed above. And there are many equally valid reasons.</p>
+<p><a href="./examples/auto-animate/basics.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a></p>
+<p>A few settings control the feel, set globally in the YAML header or per slide:</p>
 <ul>
-<li>You are dealing with choppy internet</li>
-<li>You want to be able to use the slides with no internet</li>
-<li>You want to use a font that isn’t available as a web font</li>
+<li><code>auto-animate-duration</code> (seconds)</li>
+<li><code>auto-animate-easing</code> (a CSS easing function)</li>
+<li><code>auto-animate-delay</code> (per element)</li>
 </ul>
-<p>You might even have your own special font you wanna use. While it isn’t that important in slides compared to websites, supplying the fonts instead of downloading them will reduce the load time for your slides.</p>
-<p>I just added some new code to a slide.</p>
+</section>
+<section id="the-persistent-elements-pattern" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="the-persistent-elements-pattern"><span class="header-section-number">12.3</span> The persistent-elements pattern</h2>
+<p>Here is the core idea. Pick a small cast of shapes. anything between 1 and 5 is fine. Give each a <code>data-id</code>. Put the parts that never change, the colours, in your SCSS, keyed on the <code>data-id</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[data-id</span><span class="op">=</span><span class="st">"draft"</span><span class="ex">]</span>   { <span class="kw">background</span>: <span class="cn">#2E7D6B</span><span class="op">;</span> }</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[data-id</span><span class="op">=</span><span class="st">"review"</span><span class="ex">]</span>  { <span class="kw">background</span>: <span class="cn">#E8A33D</span><span class="op">;</span> }</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[data-id</span><span class="op">=</span><span class="st">"release"</span><span class="ex">]</span> { <span class="kw">background</span>: <span class="cn">#4A5899</span><span class="op">;</span> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and put the parts that <em>do</em> change, the geometry, inline on each slide:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>::: {.panel data-id="review" style="left:470px; top:220px; width:340px; height:360px;"}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>we do this to reduce code duplication. Only write what is needed for each element.</p>
+<p>then we simply have to place the elements at different stages on the slides, we can put content in them as well if we so pleases.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="examples/fonts/before-fira.html" class="slide-deck" loading="lazy" title="Code slides before embedding FiraCode (no ligatures)" width="560" height="373"></p>
-<figcaption>Code slides before embedding FiraCode: multi-character operators like <code>!=</code> and <code>|&gt;</code> appear as plain separate characters without ligatures.</figcaption>
+<p><embed src="examples/auto-animate/colored-panels.html" class="slide-deck" loading="lazy" title="Three colored panels animating across slides" width="560" height="373"></p>
+<figcaption>Three colored panels that regroup across slides: a title cluster, a row of cards, one card expanded while the others shrink to markers, and a final reassembly.</figcaption>
 </figure>
 </div>
-<p>And this code uses some multi-character symbols like <code>!=</code> and <code>|&gt;</code>. These and many like them are common to all the different programming languages, so much so that people have created special fonts with ligatures to make them prettier.</p>
-<p>One such font is <a href="https://github.com/tonsky/FiraCode">FiraCode</a>.</p>
-<p>And we can add these types of fonts to our slides as well! Start by downloading the font from the site, and copy over a <code>.woff</code> and <code>.woff2</code> file to your slide directory. I selected <code>FiraCode-Regular.woff</code> and <code>FiraCode-Regular.woff2</code>.</p>
-<p>In the <code>/*-- scss:defaults --*/</code> part of our <code>.scss</code> file, we are going to add the following code. This is done to register the font family from the files we have included and to have it selected for use for monospace fonts.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">@font-face</span> {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    font-family: <span class="st">'FiraCode'</span><span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    src: <span class="fu">url(</span><span class="st">'../../../../../FiraCode-Regular.woff2'</span><span class="fu">)</span> <span class="fu">format(</span><span class="st">'woff2'</span><span class="fu">)</span><span class="op">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">url(</span><span class="st">'../../../../../FiraCode-Regular.woff'</span><span class="fu">)</span> <span class="fu">format(</span><span class="st">'woff'</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">$font-family-monospace</span>: <span class="st">'FiraCode'</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You might have noticed some ugliness with the <code>../../../../../</code>s. To my knowledge, this is the best way of using a local font-face from a file. You might want to add or remove <code>../</code> depending on your folder structure. I found that 5 sets were what was needed when the <code>.qmd</code> file and the <code>woff</code> files were located in the same folder. An <a href="https://github.com/quarto-dev/quarto-cli/issues/5712">issue has been filed</a> regarding this problem.</p>
-<p>With all of that, we now have beautiful ligatures.</p>
+<p><a href="./examples/auto-animate/colored-panels.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/auto-animate/colored-panels.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+<p>The colored-panel look above is only one of many possibilities.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="examples/fonts/after-fira.html" class="slide-deck" loading="lazy" title="Code slides after embedding FiraCode (with ligatures)" width="560" height="373"></p>
-<figcaption>Same code slides after embedding FiraCode via <code>@font-face</code>: operators like <code>!=</code> and <code>|&gt;</code> are rendered as beautiful single-glyph ligatures.</figcaption>
+<p><embed src="examples/auto-animate/agenda.html" class="slide-deck" loading="lazy" title="An agenda progress rail using auto-animate" width="560" height="373"></p>
+<figcaption>A three-item agenda where the current section’s item grows and highlights while the others dim, on each section-divider slide.</figcaption>
 </figure>
 </div>
+<p><a href="./examples/auto-animate/agenda.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/auto-animate/agenda.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+</section>
+<section id="enough-not-all" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="enough-not-all"><span class="header-section-number">12.4</span> Enough, not all</h2>
+<p>You do not need a busy cast. A single recurring shape is often plenty. In the deck below one hero shape reshapes between section dividers, a circle, then a bar, then a frame, while the content slides in between stay calm and simply park the shape as a small marker in the corner. That contrast, motion on the dividers and stillness on the content, is what keeps it from feeling like a screensaver.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/auto-animate/hero-shape.html" class="slide-deck" loading="lazy" title="A single hero shape reshaping across section dividers" width="560" height="373"></p>
+<figcaption>One hero shape that becomes a circle, a bar, and a frame across section dividers, parked as a small marker on the quiet content slides between them.</figcaption>
+</figure>
+</div>
+<p><a href="./examples/auto-animate/hero-shape.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/auto-animate/hero-shape.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+</section>
+<section id="putting-content-inside-an-element" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="putting-content-inside-an-element"><span class="header-section-number">12.5</span> Putting content inside an element</h2>
+<p>An element is just a div, so it can hold text or a figure. Because that inner content has no match on the neighbouring slide, it fades in while the element animates into place. This lets you show a bold headline number while the panel is small, then expand the same panel into a full chart: the number fades out and the ggplot2 figure fades in, without either being animated across the slide. The figure below is a real ggplot2 plot generated by an R chunk placed inside the fenced div.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/auto-animate/figure-in-element.html" class="slide-deck" loading="lazy" title="A panel expanding to hold a ggplot2 figure" width="560" height="373"></p>
+<figcaption>A small panel showing a large “+42%” that expands to fill the slide, the number fading out as a ggplot2 line chart fades in.</figcaption>
+</figure>
+</div>
+<p><a href="./examples/auto-animate/figure-in-element.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/auto-animate/figure-in-element.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+<p>Note that this deck needs R at render time, and raw SVG (if you hand-write a figure instead) has to go in a <code>```{=html}</code> block, since Pandoc will not pass raw SVG through an inline span.</p>
+</section>
+<section id="a-canvas-worth-setting-up" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="a-canvas-worth-setting-up"><span class="header-section-number">12.6</span> A canvas worth setting up</h2>
+<p>Absolute positioning is far easier to reason about on a fixed grid, so these decks set an explicit canvas in the header:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1280</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">700</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">margin</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">center</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">auto-animate-duration</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.9</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">default</span><span class="kw">,</span><span class="at"> my-deck.scss</span><span class="kw">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With <code>center: false</code> and the slide padding zeroed in SCSS, <code>left</code>/<code>top</code> are measured from the slide’s top-left corner, so the coordinates you write match what you see. It is also handy to let the <code>##</code> heading double as the slide’s small kicker label, styled through <code>.reveal h2</code>, and to set text colour once per slide with a <code>.dark</code> / <code>.light</code> class on the heading rather than on every span.</p>
+</section>
+<section id="positioning-without-counting-pixels" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="positioning-without-counting-pixels"><span class="header-section-number">12.7</span> Positioning without counting pixels</h2>
+<p>Everything above still leaves you writing coordinates. The <a href="https://github.com/EmilHvitfeldt/quarto-revealjs-editable"><code>quarto-revealjs-editable</code></a> extension removes most of that pain. Install it with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add EmilHvitfeldt/quarto-revealjs-editable</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then click <strong>Modify</strong> in the deck’s menu (or mark elements with the <code>{.editable}</code> class), drag and resize your elements right on the rendered slide, and save the new positions back into the <code>.qmd</code>. The recommended workflow for a persistent-elements deck is to rough the shapes in, perhaps with an AI agent’s help, then nudge them into place visually.</p>
 
 
 </section>
@@ -806,13 +852,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./colors.html" class="pagination-link" aria-label="Colors">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Colors</span></span>
+      <a href="./fragments.html" class="pagination-link" aria-label="Fragments">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Fragments</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./sizes.html" class="pagination-link" aria-label="Sizes">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sizes</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./letterbox.html" class="pagination-link" aria-label="Letterbox">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Letterbox</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -821,4 +867,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/fonts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/fonts.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/auto-animate.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/auto-animate.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
