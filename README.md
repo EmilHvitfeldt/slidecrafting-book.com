@@ -9,6 +9,7 @@ Skills extend Claude's knowledge with specialized patterns from this project. In
 | Skill | Description |
 |---|---|
 | **[quarto-revealjs-fragment](./skills/quarto-revealjs-fragment/)** | CSS states, JS events, reversal logic, and the state-tracking pattern for custom Reveal.js fragment animations |
+| **[auto-animate-elements](./skills/auto-animate-elements/)** | Carry a small cast of persistent elements across slides with auto-animate: the `data-id` contract, the SCSS-plus-inline split, figures inside elements, and the "enough, not all" pacing rule |
 
 ### Installation
 
