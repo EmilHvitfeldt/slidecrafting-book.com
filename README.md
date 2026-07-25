@@ -8,6 +8,7 @@ Skills extend Claude's knowledge with specialized patterns from this project. In
 
 | Skill | Description |
 |---|---|
+| **[quarto-revealjs](./skills/quarto-revealjs/)** | The full slidecrafting toolkit as one router skill: setup, theming (fonts/colors/sizes/SCSS), layout, code and plots, animation, presenting, and extensions. A thin `SKILL.md` index dispatches to focused files under `references/`. |
 | **[quarto-revealjs-fragment](./skills/quarto-revealjs-fragment/)** | CSS states, JS events, reversal logic, and the state-tracking pattern for custom Reveal.js fragment animations |
 | **[auto-animate-elements](./skills/auto-animate-elements/)** | Carry a small cast of persistent elements across slides with auto-animate: the `data-id` contract, the SCSS-plus-inline split, figures inside elements, and the "enough, not all" pacing rule |
 
