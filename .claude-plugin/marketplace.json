@@ -1,16 +1,18 @@
 {
-  "skills": [
+  "name": "slidecrafting",
+  "owner": {
+    "name": "Emil Hvitfeldt",
+    "url": "https://github.com/EmilHvitfeldt/slidecrafting.com"
+  },
+  "metadata": {
+    "description": "Skills for building beautiful Quarto reveal.js slide decks, from slidecrafting-book.com.",
+    "version": "0.1.0"
+  },
+  "plugins": [
     {
-      "name": "quarto-revealjs",
-      "path": "./skills/quarto-revealjs"
-    },
-    {
-      "name": "quarto-revealjs-fragment",
-      "path": "./skills/quarto-revealjs-fragment"
-    },
-    {
-      "name": "auto-animate-elements",
-      "path": "./skills/auto-animate-elements"
+      "name": "slidecrafting",
+      "source": ".",
+      "description": "Build, theme, animate, and present Quarto reveal.js slide decks. Bundles three skills: quarto-revealjs (router with 43 references), quarto-revealjs-fragment, and auto-animate-elements."
     }
   ]
 }
