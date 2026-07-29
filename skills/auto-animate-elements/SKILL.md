@@ -1,6 +1,6 @@
 ---
-name: auto-animate-elements
-description: How to spruce up Quarto reveal.js slides with auto-animate by carrying a small cast of persistent elements (shapes) across slides that grow, shrink, and rearrange. Use this skill whenever the user wants elements that persist/animate/reshape between reveal.js slides, a set of shapes that move or morph across a deck, an "auto-animate" motif, or a bento-style animated presentation in Quarto. Covers the data-id contract, the SCSS-plus-inline split, content and figures inside elements, and the "enough, not all" pacing rule.
+name: "auto-animate-elements"
+description: 'How to spruce up Quarto reveal.js slides with auto-animate by carrying a small cast of persistent elements (shapes) across slides that grow, shrink, and rearrange. Use this skill whenever the user wants elements that persist/animate/reshape between reveal.js slides, a set of shapes that move or morph across a deck, an "auto-animate" motif, or a bento-style animated presentation in Quarto. Covers the data-id contract, the SCSS-plus-inline split, content and figures inside elements, and the "enough, not all" pacing rule.'
 ---
 
 # Auto-Animate persistent elements

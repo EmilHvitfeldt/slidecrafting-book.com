@@ -1,6 +1,6 @@
 ---
-name: quarto-revealjs
-description: Build, theme, and present reveal.js slide decks authored in Quarto. Use this skill whenever the user is working on Quarto reveal.js slides (a `.qmd` with `format: revealjs`) - starting a new deck, restyling it (fonts, colors, sizes, SCSS themes), positioning content (columns, absolute positioning, background images, overlays, cards), showing code or plots well, adding fragment or auto-animate motion, or presenting and exporting (speaker notes, speaker view, PDF, chalkboard, multiplex). Routes to focused reference files under references/.
+name: "quarto-revealjs"
+description: "Build, theme, and present reveal.js slide decks authored in Quarto. Use this skill whenever the user is working on Quarto reveal.js slides (a `.qmd` with `format: revealjs`) - starting a new deck, restyling it (fonts, colors, sizes, SCSS themes), positioning content (columns, absolute positioning, background images, overlays, cards), showing code or plots well, adding fragment or auto-animate motion, or presenting and exporting (speaker notes, speaker view, PDF, chalkboard, multiplex). Routes to focused reference files under references/."
 ---
 
 # Quarto Reveal.js — beautiful slides
