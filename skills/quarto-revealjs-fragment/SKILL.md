@@ -1,6 +1,6 @@
 ---
-name: quarto-revealjs-fragment
-description: How to create custom Reveal.js fragment animations in Quarto presentations. Use this skill whenever the user wants to add a custom animated fragment effect to a Quarto revealjs slide — things like letters falling, elements fading in unusually, text that animates on a keypress, or any effect tied to Reveal.js fragment navigation. Covers the div syntax, CSS states, JS events, and mid-animation reversal patterns.
+name: "quarto-revealjs-fragment"
+description: "How to create custom Reveal.js fragment animations in Quarto presentations. Use this skill whenever the user wants to add a custom animated fragment effect to a Quarto revealjs slide — things like letters falling, elements fading in unusually, text that animates on a keypress, or any effect tied to Reveal.js fragment navigation. Covers the div syntax, CSS states, JS events, and mid-animation reversal patterns."
 ---
 
 # Custom Quarto Reveal.js Fragments
