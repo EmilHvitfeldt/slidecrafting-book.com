@@ -1,6 +1,6 @@
 ---
 title: Elements
-description: "Tips for styling slide elements in Quarto reveal.js: custom menu icons, transparent plot backgrounds, and controlling figure sizing with fig-width, fig-asp, and fig-dpi."
+description: "Tips for styling slide elements in Quarto reveal.js: custom menu icons, logo placement and sizing, transparent plot backgrounds, and controlling figure sizing with fig-width, fig-asp, and fig-dpi."
 ---
 
 ## Style menu button
@@ -40,6 +40,269 @@ background-image: url('https://cdn-icons-png.flaticon.com/512/2163/2163350.png')
 
 [{{< fa file >}}qmd](examples/styling/tip-2.qmd){.listing-slides .btn-links target="_blank"}
 [{{< fa brands sass >}}scss](examples/styling/tip-2.scss){.listing-video .btn-links target="_blank"}
+
+## Working with the logo
+
+There are many reasons why you would want to have a logo on your slides.
+Quarto has a [`logo` option](https://quarto.org/docs/presentations/revealjs/#footer-logo) for exactly that.
+
+```yaml
+format:
+  revealjs:
+    logo: logo.svg
+```
+
+The logo is placed in the lower right-hand corner,
+and it is repeated on every slide.
+
+![
+  Slide with a logo placed in the lower right-hand corner using the `logo` option.
+](
+  examples/elements/logo-default.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Default logo placement"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-default.qmd){.listing-slides .btn-links target="_blank"}
+
+If you want to modify the logo beyond this,
+we will have to use SCSS to do it.
+
+One thing to know before you start writing rules against it.
+Quarto styles the logo in a stylesheet that is loaded *after* your theme,
+so a rule with the same specificity as Quarto's will lose.
+The fix is `!important`,
+which is why it shows up throughout this section.
+
+### Moving it around
+
+The default position comes from `bottom` and `right`.
+We can specify the position with `top`, `left`, `bottom`, and `right`.
+To move the logo somewhere else,
+set the two properties you want,
+and reset the two you don't want to `auto`.
+
+```scss
+.reveal .slide-logo {
+  top: 12px !important;
+  left: 16px !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+```
+
+![
+  Slide with the logo moved to the upper left-hand corner by setting `top` and `left` and resetting `bottom` and `right` to `auto`.
+](
+  examples/elements/logo-position.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Logo moved to the upper left-hand corner"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-position.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/elements/logo-position.scss){.listing-video .btn-links target="_blank"}
+
+Notice that the logo now sits right on top of the slide title.
+If you wanted to keep the logo there,
+you will need to modify the styling of the headers and body to not take up space there.
+
+### Sizing it
+
+The size is set with `max-height` rather than `height`,
+since `height` is already used to scale the logo against the slide.
+Give the height and let the width follow along.
+
+```scss
+.reveal .slide-logo {
+  max-height: 5rem !important;
+  bottom: 20px !important;
+  right: 20px !important;
+}
+```
+
+Bumping the height means the logo takes up more room in the corner,
+so it is worth revisiting the offsets at the same time.
+
+![
+  Slide with a logo enlarged to 5rem tall using `max-height`, with the corner offsets adjusted to match.
+](
+  examples/elements/logo-size.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Enlarged logo using max-height"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-size.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/elements/logo-size.scss){.listing-video .btn-links target="_blank"}
+
+Quarto shrinks the logo on narrow screens with a media query.
+Because we used `!important` our size wins there as well,
+which is what I want most of the time.
+If you would rather keep a smaller logo on small screens,
+repeat the rule inside `@media screen and (max-width: 800px)` with a smaller `max-height`.
+
+### Hiding it
+
+One of the interesting things about the logo is that it isn't tied to any one of the slides.
+It sits as its own element on top of the slide deck itself.
+This means that it is a little harder to modify it on a slide to slide basis.
+Not impossible,
+just harder.
+
+A very common thing one might want is to be able to turn off the logo for specific slides.
+The following is the SCSS needed to make that happen.
+
+```scss
+.reveal:has(section.present.hide-logo) .slide-logo {
+  display: none;
+}
+```
+
+With that rule in your theme,
+adding `{.hide-logo}` to a slide heading removes the logo from that slide only.
+
+```md
+## No logo here {.hide-logo}
+```
+
+![
+  Three-slide deck where the middle slide uses the `.hide-logo` class to remove the logo, which returns on the following slide.
+](
+  examples/elements/logo-hide.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Hiding the logo on a single slide with a .hide-logo class"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-hide.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/elements/logo-hide.scss){.listing-video .btn-links target="_blank"}
+
+### A bigger logo on the title slide
+
+The above code works for normal slides,
+but the title slide is different.
+If you want to modify it then we need to do something more.
+Instead of just hiding it we will instead show how we can move the whole logo around just for the title slide.
+
+```scss
+.reveal:has(section#title-slide.present) .slide-logo {
+  max-height: 4rem !important;
+  top: 12% !important;
+  left: 50% !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: translateX(-50%);
+}
+```
+
+![
+  Deck where the logo is centered above the title on the title slide at a slightly larger size, then returns to its small corner position on the following slide.
+](
+  examples/elements/logo-title.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Centered logo on the title slide only"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-title.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/elements/logo-title.scss){.listing-video .btn-links target="_blank"}
+
+### Keeping it visible on dark and busy slides
+
+Having the same logo on every single slide can be hard,
+since depending on the background it might blend in too well on some slides.
+We can fix that by creating a CSS class that specifies an alternative.
+
+If you have a light version of the logo as a separate file,
+you can swap the image out with `content`.
+If the slide has `{.dark}` then the light logo will be used.
+
+```scss
+.reveal:has(section.present.dark) .slide-logo {
+  content: url('../../../../../logo-light.svg');
+}
+```
+
+The `../../../../../` is the same ugliness we ran into when [embedding a font](fonts.qmd#embedding-fonts),
+and for the same reason.
+Paths are resolved against the generated stylesheet rather than against your `.qmd` file,
+so you may have to add or remove `../` for your folder structure.
+Getting the count wrong leaves you with a broken image icon instead of a logo.
+
+![
+  Three-slide deck where the middle dark slide swaps in a light version of the logo using `content: url()`.
+](
+  examples/elements/logo-swap.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Swapping in a light version of the logo on a dark slide"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-swap.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/elements/logo-swap.scss){.listing-video .btn-links target="_blank"}
+
+If your logo is monochrome you don't need a second file at all,
+`invert()` will do it.
+
+```scss
+.reveal:has(section.present.inverted) .slide-logo {
+  filter: invert(1);
+}
+```
+
+Neither approach helps on top of a photo,
+since there is no single color to fit in with.
+What works there is giving the logo its own plate to sit on.
+
+```scss
+.reveal:has(section.present.plate) .slide-logo {
+  background-color: #fdf8f4;
+  padding: 4px 10px;
+  border-radius: 8px;
+  box-sizing: content-box;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+```
+
+The `box-sizing: content-box` is there so the padding is added around the logo instead of eating into it,
+and the shadow lifts the plate off the image.
+
+![
+  Deck showing a monochrome logo inverted with `filter: invert(1)` on a dark slide, and placed on a light rounded plate with a drop shadow on a slide with a background photo.
+](
+  examples/elements/logo-contrast.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Inverting the logo and placing it on a plate for contrast"
+}
+
+[{{< fa file >}}qmd](examples/elements/logo-contrast.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/elements/logo-contrast.scss){.listing-video .btn-links target="_blank"}
+
+Photo by [Galen Crout](https://unsplash.com/@galen_crout?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/person-on-top-of-mountain-during-daytime-fItRJ7AHak8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
 
 ## Showing quarto code
 

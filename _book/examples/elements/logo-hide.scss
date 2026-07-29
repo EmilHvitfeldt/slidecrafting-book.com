@@ -1,0 +1,7 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal:has(section.present.hide-logo) .slide-logo {
+  display: none;
+}

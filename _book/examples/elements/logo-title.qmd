@@ -1,0 +1,13 @@
+---
+title: "Slidecrafting"
+subtitle: "logo up top"
+format:
+  revealjs:
+    logo: logo.svg
+    theme:
+      [default, logo-title.scss]
+---
+
+## And small everywhere else
+
+The logo returns to the lower right-hand corner on the remaining slides.

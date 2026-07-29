@@ -1,0 +1,13 @@
+---
+format:
+  revealjs:
+    logo: logo.svg
+    theme:
+      [default, logo-position.scss]
+---
+
+## Logo in the upper left
+
+Setting `top` and `left`,
+and resetting `bottom` and `right` to `auto`,
+moves the logo out of the lower right-hand corner.

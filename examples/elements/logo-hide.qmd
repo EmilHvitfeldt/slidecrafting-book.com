@@ -1,0 +1,17 @@
+---
+format:
+  revealjs:
+    logo: logo.svg
+    theme:
+      [default, logo-hide.scss]
+---
+
+## Logo is here
+
+Move to the next slide to see it disappear.
+
+## No logo here {.hide-logo}
+
+The logo comes back on the slide after this one.
+
+## Logo is back

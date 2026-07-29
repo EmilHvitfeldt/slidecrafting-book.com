@@ -1,0 +1,15 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal:has(section.present.inverted) .slide-logo {
+  filter: invert(1);
+}
+
+.reveal:has(section.present.plate) .slide-logo {
+  background-color: #fdf8f4;
+  padding: 4px 10px;
+  border-radius: 8px;
+  box-sizing: content-box;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}

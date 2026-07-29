@@ -1,0 +1,19 @@
+---
+format:
+  revealjs:
+    logo: logo.svg
+    theme:
+      [default, logo-swap.scss]
+---
+
+## Light background
+
+The full-color logo works here.
+
+## Dark background {.dark background-color="#1e1e1e"}
+
+The light version of the logo is swapped in.
+
+## Light background again
+
+And back to the full-color logo.

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Tips for styling slide elements in Quarto reveal.js: custom menu icons, transparent plot backgrounds, and controlling figure sizing with fig-width, fig-asp, and fig-dpi.">
+<meta name="description" content="Tips for styling slide elements in Quarto reveal.js: custom menu icons, logo placement and sizing, transparent plot backgrounds, and controlling figure sizing with fig-width, fig-asp, and fig-dpi.">
 
 <title>7&nbsp; Elements – Slidecrafting</title>
 <style>
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="7&nbsp; Elements – Slidecrafting">
-<meta property="og:description" content="Tips for styling slide elements in Quarto reveal.js: custom menu icons, transparent plot backgrounds, and controlling figure sizing with fig-width, fig-asp, and fig-dpi.">
+<meta property="og:description" content="Tips for styling slide elements in Quarto reveal.js: custom menu icons, logo placement and sizing, transparent plot backgrounds, and controlling figure sizing with fig-width, fig-asp, and fig-dpi.">
 <meta property="og:image" content="https://slidecrafting-book.com/media/base-before.webp">
 <meta property="og:site_name" content="Slidecrafting">
 </head>
@@ -311,26 +311,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#style-menu-button" id="toc-style-menu-button" class="nav-link active" data-scroll-target="#style-menu-button"><span class="header-section-number">7.1</span> Style menu button</a></li>
-  <li><a href="#showing-quarto-code" id="toc-showing-quarto-code" class="nav-link" data-scroll-target="#showing-quarto-code"><span class="header-section-number">7.2</span> Showing quarto code</a></li>
-  <li><a href="#changing-plot-backgrounds" id="toc-changing-plot-backgrounds" class="nav-link" data-scroll-target="#changing-plot-backgrounds"><span class="header-section-number">7.3</span> Changing plot backgrounds</a>
+  <li><a href="#working-with-the-logo" id="toc-working-with-the-logo" class="nav-link" data-scroll-target="#working-with-the-logo"><span class="header-section-number">7.2</span> Working with the logo</a>
   <ul class="collapse">
-  <li><a href="#why-are-we-doing-this" id="toc-why-are-we-doing-this" class="nav-link" data-scroll-target="#why-are-we-doing-this"><span class="header-section-number">7.3.1</span> Why are we doing this?</a></li>
-  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r"><span class="header-section-number">7.3.2</span> base R</a></li>
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">7.3.3</span> ggplot2</a></li>
-  <li><a href="#matplotlib" id="toc-matplotlib" class="nav-link" data-scroll-target="#matplotlib"><span class="header-section-number">7.3.4</span> matplotlib</a></li>
-  <li><a href="#seaborn" id="toc-seaborn" class="nav-link" data-scroll-target="#seaborn"><span class="header-section-number">7.3.5</span> seaborn</a></li>
-  <li><a href="#source-document" id="toc-source-document" class="nav-link" data-scroll-target="#source-document"><span class="header-section-number">7.3.6</span> Source Document</a></li>
+  <li><a href="#moving-it-around" id="toc-moving-it-around" class="nav-link" data-scroll-target="#moving-it-around"><span class="header-section-number">7.2.1</span> Moving it around</a></li>
+  <li><a href="#sizing-it" id="toc-sizing-it" class="nav-link" data-scroll-target="#sizing-it"><span class="header-section-number">7.2.2</span> Sizing it</a></li>
+  <li><a href="#hiding-it" id="toc-hiding-it" class="nav-link" data-scroll-target="#hiding-it"><span class="header-section-number">7.2.3</span> Hiding it</a></li>
+  <li><a href="#a-bigger-logo-on-the-title-slide" id="toc-a-bigger-logo-on-the-title-slide" class="nav-link" data-scroll-target="#a-bigger-logo-on-the-title-slide"><span class="header-section-number">7.2.4</span> A bigger logo on the title slide</a></li>
+  <li><a href="#keeping-it-visible-on-dark-and-busy-slides" id="toc-keeping-it-visible-on-dark-and-busy-slides" class="nav-link" data-scroll-target="#keeping-it-visible-on-dark-and-busy-slides"><span class="header-section-number">7.2.5</span> Keeping it visible on dark and busy slides</a></li>
   </ul></li>
-  <li><a href="#plot-sizing" id="toc-plot-sizing" class="nav-link" data-scroll-target="#plot-sizing"><span class="header-section-number">7.4</span> Plot sizing</a>
+  <li><a href="#showing-quarto-code" id="toc-showing-quarto-code" class="nav-link" data-scroll-target="#showing-quarto-code"><span class="header-section-number">7.3</span> Showing quarto code</a></li>
+  <li><a href="#changing-plot-backgrounds" id="toc-changing-plot-backgrounds" class="nav-link" data-scroll-target="#changing-plot-backgrounds"><span class="header-section-number">7.4</span> Changing plot backgrounds</a>
   <ul class="collapse">
-  <li><a href="#auto-stretch-option" id="toc-auto-stretch-option" class="nav-link" data-scroll-target="#auto-stretch-option"><span class="header-section-number">7.4.1</span> auto-stretch option</a></li>
-  <li><a href="#sizing-options" id="toc-sizing-options" class="nav-link" data-scroll-target="#sizing-options"><span class="header-section-number">7.4.2</span> Sizing Options</a></li>
-  <li><a href="#fig-width-fig-height" id="toc-fig-width-fig-height" class="nav-link" data-scroll-target="#fig-width-fig-height"><span class="header-section-number">7.4.3</span> fig-width, fig-height</a></li>
-  <li><a href="#fig-asp" id="toc-fig-asp" class="nav-link" data-scroll-target="#fig-asp"><span class="header-section-number">7.4.4</span> fig-asp</a></li>
-  <li><a href="#fig-align" id="toc-fig-align" class="nav-link" data-scroll-target="#fig-align"><span class="header-section-number">7.4.5</span> fig-align</a></li>
-  <li><a href="#fig-dpi" id="toc-fig-dpi" class="nav-link" data-scroll-target="#fig-dpi"><span class="header-section-number">7.4.6</span> fig-dpi</a></li>
-  <li><a href="#make-work-with-columns" id="toc-make-work-with-columns" class="nav-link" data-scroll-target="#make-work-with-columns"><span class="header-section-number">7.4.7</span> Make work with columns</a></li>
-  <li><a href="#source-document-1" id="toc-source-document-1" class="nav-link" data-scroll-target="#source-document-1"><span class="header-section-number">7.4.8</span> Source Document</a></li>
+  <li><a href="#why-are-we-doing-this" id="toc-why-are-we-doing-this" class="nav-link" data-scroll-target="#why-are-we-doing-this"><span class="header-section-number">7.4.1</span> Why are we doing this?</a></li>
+  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r"><span class="header-section-number">7.4.2</span> base R</a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">7.4.3</span> ggplot2</a></li>
+  <li><a href="#matplotlib" id="toc-matplotlib" class="nav-link" data-scroll-target="#matplotlib"><span class="header-section-number">7.4.4</span> matplotlib</a></li>
+  <li><a href="#seaborn" id="toc-seaborn" class="nav-link" data-scroll-target="#seaborn"><span class="header-section-number">7.4.5</span> seaborn</a></li>
+  <li><a href="#source-document" id="toc-source-document" class="nav-link" data-scroll-target="#source-document"><span class="header-section-number">7.4.6</span> Source Document</a></li>
+  </ul></li>
+  <li><a href="#plot-sizing" id="toc-plot-sizing" class="nav-link" data-scroll-target="#plot-sizing"><span class="header-section-number">7.5</span> Plot sizing</a>
+  <ul class="collapse">
+  <li><a href="#auto-stretch-option" id="toc-auto-stretch-option" class="nav-link" data-scroll-target="#auto-stretch-option"><span class="header-section-number">7.5.1</span> auto-stretch option</a></li>
+  <li><a href="#sizing-options" id="toc-sizing-options" class="nav-link" data-scroll-target="#sizing-options"><span class="header-section-number">7.5.2</span> Sizing Options</a></li>
+  <li><a href="#fig-width-fig-height" id="toc-fig-width-fig-height" class="nav-link" data-scroll-target="#fig-width-fig-height"><span class="header-section-number">7.5.3</span> fig-width, fig-height</a></li>
+  <li><a href="#fig-asp" id="toc-fig-asp" class="nav-link" data-scroll-target="#fig-asp"><span class="header-section-number">7.5.4</span> fig-asp</a></li>
+  <li><a href="#fig-align" id="toc-fig-align" class="nav-link" data-scroll-target="#fig-align"><span class="header-section-number">7.5.5</span> fig-align</a></li>
+  <li><a href="#fig-dpi" id="toc-fig-dpi" class="nav-link" data-scroll-target="#fig-dpi"><span class="header-section-number">7.5.6</span> fig-dpi</a></li>
+  <li><a href="#make-work-with-columns" id="toc-make-work-with-columns" class="nav-link" data-scroll-target="#make-work-with-columns"><span class="header-section-number">7.5.7</span> Make work with columns</a></li>
+  <li><a href="#source-document-1" id="toc-source-document-1" class="nav-link" data-scroll-target="#source-document-1"><span class="header-section-number">7.5.8</span> Source Document</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/edit/main/elements.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/EmilHvitfeldt/slidecrafting-book.com/blob/main/elements.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
@@ -375,18 +383,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><a href="examples/styling/tip-2.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/styling/tip-2.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
 </section>
-<section id="showing-quarto-code" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="showing-quarto-code"><span class="header-section-number">7.2</span> Showing quarto code</h2>
+<section id="working-with-the-logo" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="working-with-the-logo"><span class="header-section-number">7.2</span> Working with the logo</h2>
+<p>There are many reasons why you would want to have a logo on your slides. Quarto has a <a href="https://quarto.org/docs/presentations/revealjs/#footer-logo"><code>logo</code> option</a> for exactly that.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> logo.svg</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The logo is placed in the lower right-hand corner, and it is repeated on every slide.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-default.html" class="slide-deck" loading="lazy" title="Default logo placement" width="560" height="373"></p>
+<figcaption>Slide with a logo placed in the lower right-hand corner using the <code>logo</code> option.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-default.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a></p>
+<p>If you want to modify the logo beyond this, we will have to use SCSS to do it.</p>
+<p>One thing to know before you start writing rules against it. Quarto styles the logo in a stylesheet that is loaded <em>after</em> your theme, so a rule with the same specificity as Quarto’s will lose. The fix is <code>!important</code>, which is why it shows up throughout this section.</p>
+<section id="moving-it-around" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="moving-it-around"><span class="header-section-number">7.2.1</span> Moving it around</h3>
+<p>The default position comes from <code>bottom</code> and <code>right</code>. We can specify the position with <code>top</code>, <code>left</code>, <code>bottom</code>, and <code>right</code>. To move the logo somewhere else, set the two properties you want, and reset the two you don’t want to <code>auto</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">top</span>: <span class="dv">12</span><span class="dt">px</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">16</span><span class="dt">px</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">bottom</span>: <span class="bu">auto</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">right</span>: <span class="bu">auto</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-position.html" class="slide-deck" loading="lazy" title="Logo moved to the upper left-hand corner" width="560" height="373"></p>
+<figcaption>Slide with the logo moved to the upper left-hand corner by setting <code>top</code> and <code>left</code> and resetting <code>bottom</code> and <code>right</code> to <code>auto</code>.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-position.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/elements/logo-position.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+<p>Notice that the logo now sits right on top of the slide title. If you wanted to keep the logo there, you will need to modify the styling of the headers and body to not take up space there.</p>
+</section>
+<section id="sizing-it" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="sizing-it"><span class="header-section-number">7.2.2</span> Sizing it</h3>
+<p>The size is set with <code>max-height</code> rather than <code>height</code>, since <code>height</code> is already used to scale the logo against the slide. Give the height and let the width follow along.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-height</span>: <span class="dv">5</span><span class="dt">rem</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">bottom</span>: <span class="dv">20</span><span class="dt">px</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">right</span>: <span class="dv">20</span><span class="dt">px</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Bumping the height means the logo takes up more room in the corner, so it is worth revisiting the offsets at the same time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-size.html" class="slide-deck" loading="lazy" title="Enlarged logo using max-height" width="560" height="373"></p>
+<figcaption>Slide with a logo enlarged to 5rem tall using <code>max-height</code>, with the corner offsets adjusted to match.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-size.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/elements/logo-size.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+<p>Quarto shrinks the logo on narrow screens with a media query. Because we used <code>!important</code> our size wins there as well, which is what I want most of the time. If you would rather keep a smaller logo on small screens, repeat the rule inside <code>@media screen and (max-width: 800px)</code> with a smaller <code>max-height</code>.</p>
+</section>
+<section id="hiding-it" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="hiding-it"><span class="header-section-number">7.2.3</span> Hiding it</h3>
+<p>One of the interesting things about the logo is that it isn’t tied to any one of the slides. It sits as its own element on top of the slide deck itself. This means that it is a little harder to modify it on a slide to slide basis. Not impossible, just harder.</p>
+<p>A very common thing one might want is to be able to turn off the logo for specific slides. The following is the SCSS needed to make that happen.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span><span class="in">:has(section.present.hide-logo)</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">display</span>: <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With that rule in your theme, adding <code>{.hide-logo}</code> to a slide heading removes the logo from that slide only.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## No logo here {.hide-logo}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-hide.html" class="slide-deck" loading="lazy" title="Hiding the logo on a single slide with a .hide-logo class" width="560" height="373"></p>
+<figcaption>Three-slide deck where the middle slide uses the <code>.hide-logo</code> class to remove the logo, which returns on the following slide.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-hide.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/elements/logo-hide.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+</section>
+<section id="a-bigger-logo-on-the-title-slide" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="a-bigger-logo-on-the-title-slide"><span class="header-section-number">7.2.4</span> A bigger logo on the title slide</h3>
+<p>The above code works for normal slides, but the title slide is different. If you want to modify it then we need to do something more. Instead of just hiding it we will instead show how we can move the whole logo around just for the title slide.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span><span class="in">:has(section#title-slide.present)</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">max-height</span>: <span class="dv">4</span><span class="dt">rem</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">top</span>: <span class="dv">12</span><span class="dt">%</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">50</span><span class="dt">%</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">bottom</span>: <span class="bu">auto</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">right</span>: <span class="bu">auto</span> <span class="at">!important</span><span class="op">;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">transform</span>: translateX(<span class="op">-</span><span class="dv">50</span><span class="dt">%</span>)<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-title.html" class="slide-deck" loading="lazy" title="Centered logo on the title slide only" width="560" height="373"></p>
+<figcaption>Deck where the logo is centered above the title on the title slide at a slightly larger size, then returns to its small corner position on the following slide.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-title.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/elements/logo-title.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+</section>
+<section id="keeping-it-visible-on-dark-and-busy-slides" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="keeping-it-visible-on-dark-and-busy-slides"><span class="header-section-number">7.2.5</span> Keeping it visible on dark and busy slides</h3>
+<p>Having the same logo on every single slide can be hard, since depending on the background it might blend in too well on some slides. We can fix that by creating a CSS class that specifies an alternative.</p>
+<p>If you have a light version of the logo as a separate file, you can swap the image out with <code>content</code>. If the slide has <code>{.dark}</code> then the light logo will be used.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span><span class="in">:has(section.present.dark)</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">content</span>: <span class="fu">url(</span><span class="st">'../../../../../logo-light.svg'</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>../../../../../</code> is the same ugliness we ran into when <a href="./fonts.html#embedding-fonts">embedding a font</a>, and for the same reason. Paths are resolved against the generated stylesheet rather than against your <code>.qmd</code> file, so you may have to add or remove <code>../</code> for your folder structure. Getting the count wrong leaves you with a broken image icon instead of a logo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-swap.html" class="slide-deck" loading="lazy" title="Swapping in a light version of the logo on a dark slide" width="560" height="373"></p>
+<figcaption>Three-slide deck where the middle dark slide swaps in a light version of the logo using <code>content: url()</code>.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-swap.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/elements/logo-swap.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+<p>If your logo is monochrome you don’t need a second file at all, <code>invert()</code> will do it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span><span class="in">:has(section.present.inverted)</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">filter</span>: <span class="fu">invert(</span><span class="dv">1</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Neither approach helps on top of a photo, since there is no single color to fit in with. What works there is giving the logo its own plate to sit on.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode scss code-with-copy"><code class="sourceCode scss"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span><span class="in">:has(section.present.plate)</span> <span class="fu">.slide-logo</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#fdf8f4</span><span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">4</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">8</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">box-sizing</span>: <span class="dv">content-box</span><span class="op">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">filter</span>: <span class="fu">drop-shadow(</span><span class="dv">0</span> <span class="dv">2</span><span class="dt">px</span> <span class="dv">6</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0.4</span><span class="fu">))</span><span class="op">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>box-sizing: content-box</code> is there so the padding is added around the logo instead of eating into it, and the shadow lifts the plate off the image.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="examples/elements/logo-contrast.html" class="slide-deck" loading="lazy" title="Inverting the logo and placing it on a plate for contrast" width="560" height="373"></p>
+<figcaption>Deck showing a monochrome logo inverted with <code>filter: invert(1)</code> on a dark slide, and placed on a light rounded plate with a drop shadow on a slide with a background photo.</figcaption>
+</figure>
+</div>
+<p><a href="examples/elements/logo-contrast.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a> <a href="examples/elements/logo-contrast.scss" class="listing-video btn-links" target="_blank"><i class="fa-brands fa-sass" aria-label="sass"></i>scss</a></p>
+<p>Photo by <a href="https://unsplash.com/@galen_crout?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Galen Crout</a> on <a href="https://unsplash.com/photos/person-on-top-of-mountain-during-daytime-fItRJ7AHak8?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></p>
+</section>
+</section>
+<section id="showing-quarto-code" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="showing-quarto-code"><span class="header-section-number">7.3</span> Showing quarto code</h2>
 <p>This one isn’t as much a slidecrafting tip, as it is a quarto tip! If you are showing how to do something in Quarto using Quarto you need this tip. In essence what we are working with are <a href="https://quarto.org/docs/computations/execution-options.html#unexecuted-blocks">unexcuted blocks</a>.</p>
 <p>Adding a <code>markdown</code> cell around what you want to show. Important to use more ticks than any of the inside cells inside.</p>
 <p>Using double curly brackets to indicate that the code block should not be executed. The following code when used in a quarto document will render as shown in the example</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```` markdown</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>This is **Quarto** code</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{{python}}</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```` markdown</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>This is **Quarto** code</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{{python}}</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><embed src="examples/elements/tip-6.html" class="slide-deck" loading="lazy" title="Displaying Quarto code as unexecuted source using double curly brackets" width="560" height="373"></p>
@@ -395,28 +529,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><a href="examples/elements/tip-6.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>qmd</a></p>
 </section>
-<section id="changing-plot-backgrounds" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="changing-plot-backgrounds"><span class="header-section-number">7.3</span> Changing plot backgrounds</h2>
+<section id="changing-plot-backgrounds" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="changing-plot-backgrounds"><span class="header-section-number">7.4</span> Changing plot backgrounds</h2>
 <p>Plots and charts are useful in slides. Changing the background makes them fit in. This post will go over how to change the background of your plots to better match the slide background, in a handful of different libraries.</p>
-<section id="why-are-we-doing-this" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="why-are-we-doing-this"><span class="header-section-number">7.3.1</span> Why are we doing this?</h3>
+<section id="why-are-we-doing-this" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="why-are-we-doing-this"><span class="header-section-number">7.4.1</span> Why are we doing this?</h3>
 <p>If you are styling your slides to change the background color, you will find that most plotting libraries default to using a white background color. If your background is non-white it will stick out like a sore thumb. I find that changing the background color to something transparent <code>#FFFFFF00</code> is the easiest course of action.</p>
 <blockquote class="blockquote">
 <p>Why make the background transparent instead of making it match the background?</p>
 </blockquote>
 <p>It is simply easier that way. There is only one color we need to set and it is <code>#FFFFFF00</code>. This works even if the slide background color is different from slide to slide, or if the background is a non-solid color.</p>
 </section>
-<section id="base-r" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="base-r"><span class="header-section-number">7.3.2</span> base R</h3>
+<section id="base-r" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="base-r"><span class="header-section-number">7.4.2</span> base R</h3>
 <p>we don’t have to make any changes to the R code, we can supply the chunk options <code>dev</code> and <code>dev.args</code> for the chunk to <code>"png"</code> and <code>list(bg="transparent")</code> respectively and you are good. The chunk will look like this.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, dev = "png", dev.args=list(bg="transparent")}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars, <span class="at">col =</span> <span class="fu">factor</span>(am), <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown md code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, dev = "png", dev.args=list(bg="transparent")}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpg <span class="sc">~</span> disp, <span class="at">data =</span> mtcars, <span class="at">col =</span> <span class="fu">factor</span>(am), <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can also change the options globally using the following options in the yaml.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knitr</span><span class="kw">:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">opts_chunk</span><span class="kw">:</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span><span class="at"> png</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev.args</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at"> </span><span class="fu">bg</span><span class="kw">:</span><span class="at"> </span><span class="st">"transparent"</span><span class="at"> </span><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knitr</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">opts_chunk</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span><span class="at"> png</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev.args</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at"> </span><span class="fu">bg</span><span class="kw">:</span><span class="at"> </span><span class="st">"transparent"</span><span class="at"> </span><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -428,21 +562,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="ggplot2" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">7.3.3</span> ggplot2</h3>
+<section id="ggplot2" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">7.4.3</span> ggplot2</h3>
 <p>ggplot2 are handled the same way as base R plotting, so we don’t have to make any changes to the R code, we can supply the chunk options <code>dev</code> and <code>dev.args</code> for the chunk to <code>"png"</code> and <code>list(bg="transparent")</code> respectively and you are good. The chunk will look like this.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown md code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, dev = "png", dev.args=list(bg="transparent")}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(disp, mpg, <span class="at">color =</span> <span class="fu">factor</span>(am))) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode markdown md code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, dev = "png", dev.args=list(bg="transparent")}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(disp, mpg, <span class="at">color =</span> <span class="fu">factor</span>(am))) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can also change the options globally using the following options in the yaml.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knitr</span><span class="kw">:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">opts_chunk</span><span class="kw">:</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span><span class="at"> png</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev.args</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at"> </span><span class="fu">bg</span><span class="kw">:</span><span class="at"> </span><span class="st">"transparent"</span><span class="at"> </span><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knitr</span><span class="kw">:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">opts_chunk</span><span class="kw">:</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span><span class="at"> png</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dev.args</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at"> </span><span class="fu">bg</span><span class="kw">:</span><span class="at"> </span><span class="st">"transparent"</span><span class="at"> </span><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -454,18 +588,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="matplotlib" class="level3" data-number="7.3.4">
-<h3 data-number="7.3.4" class="anchored" data-anchor-id="matplotlib"><span class="header-section-number">7.3.4</span> matplotlib</h3>
+<section id="matplotlib" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="matplotlib"><span class="header-section-number">7.4.4</span> matplotlib</h3>
 <p>With matplotlib, we need to set the background color twice, once for the plotting area, and once for the area outside the plotting area.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># outside plotting area</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.axes().set_facecolor(<span class="st">"#FFFFFF00"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># your plot</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, c<span class="op">=</span>colors)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inside plotting area</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>fig.patch.set_facecolor(<span class="st">"#FFFFFF00"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># outside plotting area</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.axes().set_facecolor(<span class="st">"#FFFFFF00"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># your plot</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, c<span class="op">=</span>colors)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inside plotting area</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>fig.patch.set_facecolor(<span class="st">"#FFFFFF00"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -477,11 +611,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="seaborn" class="level3" data-number="7.3.5">
-<h3 data-number="7.3.5" class="anchored" data-anchor-id="seaborn"><span class="header-section-number">7.3.5</span> seaborn</h3>
+<section id="seaborn" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="seaborn"><span class="header-section-number">7.4.5</span> seaborn</h3>
 <p>For seaborn, we also set it twice, both of them in <code>set_style()</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.set_style(rc<span class="op">=</span>{<span class="st">'axes.facecolor'</span>:<span class="st">'#FFFFFF00'</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'figure.facecolor'</span>:<span class="st">'#FFFFFF00'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.set_style(rc<span class="op">=</span>{<span class="st">'axes.facecolor'</span>:<span class="st">'#FFFFFF00'</span>,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'figure.facecolor'</span>:<span class="st">'#FFFFFF00'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -493,23 +627,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="source-document" class="level3" data-number="7.3.6">
-<h3 data-number="7.3.6" class="anchored" data-anchor-id="source-document"><span class="header-section-number">7.3.6</span> Source Document</h3>
+<section id="source-document" class="level3" data-number="7.4.6">
+<h3 data-number="7.4.6" class="anchored" data-anchor-id="source-document"><span class="header-section-number">7.4.6</span> Source Document</h3>
 <p>The above was generated with this document.</p>
 <p><a href="examples/elements/plot-background-examples.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>source document</a></p>
 </section>
 </section>
-<section id="plot-sizing" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="plot-sizing"><span class="header-section-number">7.4</span> Plot sizing</h2>
+<section id="plot-sizing" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="plot-sizing"><span class="header-section-number">7.5</span> Plot sizing</h2>
 <p>Plots and charts are useful in slides. But we need to make sure they are sized correctly to be as effective as possible.</p>
-<section id="auto-stretch-option" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="auto-stretch-option"><span class="header-section-number">7.4.1</span> auto-stretch option</h3>
+<section id="auto-stretch-option" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="auto-stretch-option"><span class="header-section-number">7.5.1</span> auto-stretch option</h3>
 <p>Revealjs slides default to having the option <a href="https://quarto.org/docs/presentations/revealjs/advanced.html#stretch">auto-stretch: true</a>, this ensures that figures always fit inside the slide. You can turn it off globally like this.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">auto-stretch</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">auto-stretch</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>or on a slide-by-slide basis by adding the <code>.nostretch</code> class to the slide.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Title {.nostretch}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Title {.nostretch}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We see how they affect sizing in the following slides first with the default, and second with <code>.nostretch</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -537,17 +671,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="sizing-options" class="level3" data-number="7.4.2">
-<h3 data-number="7.4.2" class="anchored" data-anchor-id="sizing-options"><span class="header-section-number">7.4.2</span> Sizing Options</h3>
+<section id="sizing-options" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="sizing-options"><span class="header-section-number">7.5.2</span> Sizing Options</h3>
 <p>When sizing plots we need to remember that we have to deal with two kinds of sizes. First is the size of the actual file on disk, this is controlled using <code>out-width</code> and <code>out-height</code>. Next is how big the image is supposed to be in the document, which is controlled using <code>fig-width</code>, <code>fig-height</code>, and/or <code>fig-asp</code>. Lastly, you can control the location using <code>fig-align</code> and the resolution using <code>fig-dpi</code>.</p>
 <p>All of these numbers will change depending on whether you have a title or other elements on your slides, what fonts you use, and the aspect ratio of the slides themselves.</p>
-<section id="out-width-out-height" class="level4" data-number="7.4.2.1">
-<h4 data-number="7.4.2.1" class="anchored" data-anchor-id="out-width-out-height"><span class="header-section-number">7.4.2.1</span> out-width, out-height</h4>
+<section id="out-width-out-height" class="level4" data-number="7.5.2.1">
+<h4 data-number="7.5.2.1" class="anchored" data-anchor-id="out-width-out-height"><span class="header-section-number">7.5.2.1</span> out-width, out-height</h4>
 <p>Setting these options affects the size of the resulting image on disk. If they are set smaller than usual, we get an image that doesn’t take up the whole screen.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: 6in</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: 3.5in</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: 6in</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-height: 3.5in</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><embed src="examples/elements/plot-sizing-examples.html#/section.png" class="slide-deck" loading="lazy" title="Plot with out-width: 6in, out-height: 3.5in" width="560" height="373"></p>
@@ -563,8 +697,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I don’t find myself using these options much as I tend to want images that take up most of the space, but they are useful to know.</p>
 </section>
 </section>
-<section id="fig-width-fig-height" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="fig-width-fig-height"><span class="header-section-number">7.4.3</span> fig-width, fig-height</h3>
+<section id="fig-width-fig-height" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="fig-width-fig-height"><span class="header-section-number">7.5.3</span> fig-width, fig-height</h3>
 <p>I end up using <code>fig-width</code> and <code>fig-height</code> the most out of the options shown in this blog post. I find that the default values are too high, making the text on the plot too small for the viewer to see. Especially for an in-person audience.</p>
 <p>Below is the same chart 4 times with different value pairs for <code>fig-width</code> and <code>fig-height</code>. Notice how the default values appear to be around <code>fig-width: 9</code> and <code>fig-height: 5</code>.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -599,8 +733,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="fig-asp" class="level3" data-number="7.4.4">
-<h3 data-number="7.4.4" class="anchored" data-anchor-id="fig-asp"><span class="header-section-number">7.4.4</span> fig-asp</h3>
+<section id="fig-asp" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="fig-asp"><span class="header-section-number">7.5.4</span> fig-asp</h3>
 <p>You might have noticed that the ratios shown in the last section weren’t identical. Because unless you deal with 1-2 or 1-1 ratios you are going to get decimals very fast. And you have to recalculate small things over and over again. This is why <code>fig-asp</code> is amazing. Simply determine the aspect ratio between the height and width, set that as the <code>fig-asp</code> and then you just have to set one of <code>fig-height</code> or <code>fig-width</code>. Is it too small? increase <code>fig-height</code> and keep <code>fig-asp</code> the same. is it too big? decrease <code>fig-height</code> and keep <code>fig-asp</code> the same.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -615,8 +749,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="fig-align" class="level3" data-number="7.4.5">
-<h3 data-number="7.4.5" class="anchored" data-anchor-id="fig-align"><span class="header-section-number">7.4.5</span> fig-align</h3>
+<section id="fig-align" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="fig-align"><span class="header-section-number">7.5.5</span> fig-align</h3>
 <p>Unless your chart fits fully inside the slide then it tends to be left aligned, you can change that with <code>fig-align</code>, setting it to <code>left</code>, <code>center</code> or <code>right</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -637,8 +771,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="fig-dpi" class="level3" data-number="7.4.6">
-<h3 data-number="7.4.6" class="anchored" data-anchor-id="fig-dpi"><span class="header-section-number">7.4.6</span> fig-dpi</h3>
+<section id="fig-dpi" class="level3" data-number="7.5.6">
+<h3 data-number="7.5.6" class="anchored" data-anchor-id="fig-dpi"><span class="header-section-number">7.5.6</span> fig-dpi</h3>
 <p>Lastly, something you might need to worry about is the <strong>D</strong>ots <strong>P</strong>er <strong>I</strong>nch (DPI) specified by <code>fig-dpi</code>. This is a measure of resolution in your chart. If you see your chart becoming a little blurry, increase the dpi until it isn’t anymore. Note that dpi will result in larger file sizes, so only change if you have to.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -653,8 +787,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="make-work-with-columns" class="level3" data-number="7.4.7">
-<h3 data-number="7.4.7" class="anchored" data-anchor-id="make-work-with-columns"><span class="header-section-number">7.4.7</span> Make work with columns</h3>
+<section id="make-work-with-columns" class="level3" data-number="7.5.7">
+<h3 data-number="7.5.7" class="anchored" data-anchor-id="make-work-with-columns"><span class="header-section-number">7.5.7</span> Make work with columns</h3>
 <p>even if you set the option globally, you will have to make slide-by-slide adjustments, such as with charts in <code>.columns</code>. Below is one example of how we can modify the <code>fig-asp</code> to make it look decent in a column layout.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -663,8 +797,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="source-document-1" class="level3" data-number="7.4.8">
-<h3 data-number="7.4.8" class="anchored" data-anchor-id="source-document-1"><span class="header-section-number">7.4.8</span> Source Document</h3>
+<section id="source-document-1" class="level3" data-number="7.5.8">
+<h3 data-number="7.5.8" class="anchored" data-anchor-id="source-document-1"><span class="header-section-number">7.5.8</span> Source Document</h3>
 <p>The above was generated with this document.</p>
 <p><a href="examples/elements/plot-sizing-examples.qmd" class="listing-slides btn-links" target="_blank"><i class="fa-solid fa-file" aria-label="file"></i>source document</a></p>
 

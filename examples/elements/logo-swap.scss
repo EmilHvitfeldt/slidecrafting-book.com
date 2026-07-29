@@ -1,0 +1,7 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal:has(section.present.dark) .slide-logo {
+  content: url('../../../../elements/logo-light.svg');
+}

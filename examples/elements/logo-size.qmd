@@ -1,0 +1,12 @@
+---
+format:
+  revealjs:
+    logo: logo.svg
+    theme:
+      [default, logo-size.scss]
+---
+
+## A bigger logo
+
+`max-height` controls the size,
+and it needs `!important` to win over Quarto's own rule.

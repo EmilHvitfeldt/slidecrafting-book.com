@@ -1,0 +1,21 @@
+---
+format:
+  revealjs:
+    logo: logo-mono.svg
+    theme:
+      [default, logo-contrast.scss]
+---
+
+## Monochrome logo
+
+Dark logo on a light slide.
+
+## Inverted {.inverted background-color="#1e1e1e"}
+
+`filter: invert(1)` flips the logo to light.
+
+## {.plate background-image="../layout/galen-crout.jpg"}
+
+::: {style="background-color: #fdf8f4cc; padding: 0.5em; width: 50%;"}
+A plate behind the logo keeps it readable on a photo.
+:::

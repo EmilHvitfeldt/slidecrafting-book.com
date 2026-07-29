@@ -1,0 +1,14 @@
+---
+format:
+  revealjs:
+    logo: logo.svg
+---
+
+## Where does the logo go?
+
+The logo sits in the lower right-hand corner.
+
+## Same on every slide
+
+No extra work needed,
+it is repeated on all of them.

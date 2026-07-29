@@ -200,5 +200,29 @@
   },
   "auto-animate/figure-in-element.qmd": {
     "figure-in-element.html": "5ea57b30"
+  },
+  "elements/logo-default.qmd": {
+    "logo-default.html": "a85eba14"
+  },
+  "elements/logo-position.qmd": {
+    "logo-position.html": "e5533230"
+  },
+  "elements/logo-size.qmd": {
+    "logo-size.html": "ba5af9f2"
+  },
+  "elements/logo-hide.qmd": {
+    "logo-hide.html": "4c4d64f1"
+  },
+  "elements/logo-footer.qmd": {
+    "logo-footer.html": "24ab4678"
+  },
+  "elements/logo-title.qmd": {
+    "logo-title.html": "bcc885fe"
+  },
+  "elements/logo-swap.qmd": {
+    "logo-swap.html": "a1de59bf"
+  },
+  "elements/logo-contrast.qmd": {
+    "logo-contrast.html": "e60fa0c9"
   }
 }

@@ -1,0 +1,12 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal:has(section#title-slide.present) .slide-logo {
+  max-height: 4rem !important;
+  top: 12% !important;
+  left: 50% !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: translateX(-50%);
+}
