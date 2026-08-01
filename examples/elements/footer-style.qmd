@@ -1,0 +1,14 @@
+---
+format:
+  revealjs:
+    footer: "Slidecrafting 2026 / [slidecrafting.com](https://slidecrafting.com)"
+    theme:
+      [default, footer-style.scss]
+---
+
+## A footer as a bar
+
+The footer is a block element that spans the full width of the slide,
+so it can be styled as a bar rather than a line of text.
+
+## Still there on every slide

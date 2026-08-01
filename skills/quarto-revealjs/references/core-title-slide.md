@@ -29,7 +29,7 @@ format:
     footer: "My conference 2026"
 ```
 
-The footer and logo appear on every slide; remove them on a specific slide with the `.hide-footer` / `.hide-logo` classes. See `core-footer-logo.md`.
+The footer and logo appear on every slide. Remove the footer on a specific slide with `{footer="false"}`; the logo needs a CSS rule. See `core-footer-logo.md`.
 
 ## Disabling the title slide
 

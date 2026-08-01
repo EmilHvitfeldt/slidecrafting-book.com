@@ -166,7 +166,245 @@ Deck showing a monochrome logo inverted with `filter: invert(1)` on a dark slide
 
 Photo by [Galen Crout](https://unsplash.com/@galen_crout?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/person-on-top-of-mountain-during-daytime-fItRJ7AHak8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
 
-## 7.3 Showing quarto code
+## 7.3 Working with the footer
+
+Another element that you will often use is the footer, it comes from the [`footer` option](https://quarto.org/docs/presentations/revealjs/#footer-logo).
+
+``` yaml
+format:
+  revealjs:
+    footer: "Slidecrafting 2026 / [slidecrafting.com](https://slidecrafting.com)"
+```
+
+You can put most anything markdown inside of it, and it will appear at the botton of the page and centered.
+
+Slide with a centered footer along the bottom edge using the `footer` option.
+
+[qmd](examples/elements/footer-default.qmd)
+
+### 7.3.1 Changing it on a single slide
+
+you can either set it globally for the whole slidedeck as we saw above. Or you can set it on a slide by slide basis with the `footer` div as seen below.
+
+    ## A footer of its own
+
+    ::: footer
+    Photo by [Galen Crout](https://unsplash.com/@galen_crout) on [Unsplash](https://unsplash.com)
+    :::
+
+If you have a global footer set using the yaml, then you can remove it by setting `footer` to `false`
+
+    ## No footer at all {footer="false"}
+
+Four-slide deck where the second slide replaces the footer text with its own, the third turns the footer off with `footer="false"`, and the fourth gets the default footer back.
+
+[qmd](examples/elements/footer-slide.qmd)
+
+### 7.3.2 Styling it
+
+We can also apply some styling to the footer itself. This will give us 2 things. First it will style the text and content such as links for us. but we can also set a new background for the footer, giving it its own little area to live in.
+
+Styling happens on `.reveal .footer`, and the same warning from the logo applies: Quarto’s rules load after your theme, so anything you set that Quarto also sets needs `!important`.
+
+``` scss
+.reveal .footer {
+  // placement, this is what makes it a bar
+  bottom: 0 !important;
+  padding: 0.35em 1.5em !important;
+
+  // looks, change freely
+  background-color: #2a3b4c;
+  color: #fdf8f4 !important;
+  font-size: 16px !important;
+  text-align: left !important;
+
+  a {
+    color: #f0b429 !important;
+  }
+}
+
+.reveal .slide-menu-button {
+  bottom: 2.5em !important;
+}
+```
+
+That last rule is the part that is easy to forget. The menu button lives in the same corner, so growing the footer means moving the button up out of the way.
+
+Slide where the footer is styled as a full-width dark bar along the bottom edge, with the menu button moved up above it.
+
+[qmd](examples/elements/footer-style.qmd) [scss](examples/elements/footer-style.scss)
+
+### 7.3.3 Rolling your own
+
+The footer gives us some ideas that can be expanded a bit further. It is a bar that holds content along the bottom of the slides. We can create a similar banner along the top of the slides, or the side of them.
+
+#### 7.3.3.1 A banner along the top
+
+Set the `content` to the text you want, then position it like the footer. `position: fixed` keeps it out of the slide scaling, and `z-index: 2` matches what Quarto uses for the footer and logo.
+
+``` scss
+.reveal::after {
+  content: "Slidecrafting 2026";
+
+  // placement, this is what puts the banner along the top
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  // looks, change freely
+  padding: 0.3em 1.5em;
+  background-color: #2a3b4c;
+  color: #fdf8f4;
+  font-size: 16px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .slides > section:not(#title-slide) {
+  box-sizing: border-box;
+  padding-top: 1.5em;
+}
+```
+
+While this next part isn’t strictly needed, it makes it so our banner doesn’t appear on the title slide, or with any slides that add the `{.no-banner}` class.
+
+``` scss
+.reveal:has(section#title-slide.present)::after,
+.reveal:has(section.present.no-banner)::after {
+  display: none;
+}
+```
+
+Deck with a custom banner along the top generated in SCSS, absent on the title slide and on a slide marked with the `.no-banner` class.
+
+[qmd](examples/elements/banner-top.qmd) [scss](examples/elements/banner-top.scss)
+
+#### 7.3.3.2 A banner down the side
+
+We can do the same type of tricks to have a banner that appears on the side of the slide. Here we need to do a couple more things to make sure the text is rotated correctly, and that the content of the slides are shifted correctly as well.
+
+``` scss
+.reveal::before {
+  content: "Slidecrafting 2026";
+
+  // placement, this is what makes the strip and turns the text
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 2em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  // looks, change freely
+  padding-bottom: 1.5em;
+  background-color: #2a3b4c;
+  color: #fdf8f4;
+  font-size: 16px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .slides > section {
+  box-sizing: border-box;
+  padding-left: 2em;
+}
+
+.reveal .slide-menu-button {
+  left: 2.5em !important;
+}
+```
+
+Deck with a custom banner running down the left-hand side, with the text rotated using `writing-mode` and the slide content shifted over to make room.
+
+[qmd](examples/elements/banner-side.qmd) [scss](examples/elements/banner-side.scss)
+
+#### 7.3.3.3 Changing the text per slide
+
+What we have shown so far is very nice, but it only let us set new banners globally for the whole slidedeck. But what if we wanted to do something on a per-slide basis like with the footer?
+
+    ::: footer
+    Custom footer for just this slide
+    :::
+
+We can make it happen, but it is a little more involved.
+
+``` scss
+$banner-bleed-x: calc((100vw / var(--slide-scale) - var(--slide-width)) / -2);
+$banner-bleed-y: calc((100vh / var(--slide-scale) - var(--slide-height)) / -2);
+
+%banner-top {
+  // placement, this is what puts the banner along the top and out to the edges
+  display: block;
+  position: absolute;
+  top: $banner-bleed-y;
+  left: $banner-bleed-x;
+  right: $banner-bleed-x;
+  z-index: 2;
+  line-height: 1.3; // matched by the `> *` rule below
+
+  // looks, change freely
+  padding: 0.3em 1.5em;
+  background-color: #2a3b4c;
+  color: #fdf8f4;
+  font-size: 0.45em;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .slides::after {
+  @extend %banner-top;
+  content: "Slidecrafting 2026";
+}
+
+.reveal .banner-top {
+  @extend %banner-top;
+
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: inherit;
+  }
+
+  a {
+    color: #f0b429;
+  }
+}
+
+.reveal .slides:has(section#title-slide.present)::after,
+.reveal .slides:has(section.present .banner-top)::after {
+  display: none;
+}
+
+.reveal .slides > section:not(#title-slide) {
+  box-sizing: border-box;
+  padding-top: 1em;
+}
+```
+
+With that in place the deck reads exactly like the footer does.
+
+    ## A banner of its own
+
+    ::: banner-top
+    Photo by [Galen Crout](https://unsplash.com/@galen_crout) on [Unsplash](https://unsplash.com)
+    :::
+
+Deck where the second slide replaces the default top banner with its own text using a `::: banner-top` div, and the banner returns to the default on the next slide.
+
+[qmd](examples/elements/banner-slide.qmd) [scss](examples/elements/banner-slide.scss)
+
+## 7.4 Showing quarto code
 
 This one isn’t as much a slidecrafting tip, as it is a quarto tip! If you are showing how to do something in Quarto using Quarto you need this tip. In essence what we are working with are [unexcuted blocks](https://quarto.org/docs/computations/execution-options.html#unexecuted-blocks).
 
@@ -188,11 +426,11 @@ Slide demonstrating how to display Quarto/R code as literal unexecuted source us
 
 [qmd](examples/elements/tip-6.qmd)
 
-## 7.4 Changing plot backgrounds
+## 7.5 Changing plot backgrounds
 
 Plots and charts are useful in slides. Changing the background makes them fit in. This post will go over how to change the background of your plots to better match the slide background, in a handful of different libraries.
 
-### 7.4.1 Why are we doing this?
+### 7.5.1 Why are we doing this?
 
 If you are styling your slides to change the background color, you will find that most plotting libraries default to using a white background color. If your background is non-white it will stick out like a sore thumb. I find that changing the background color to something transparent `#FFFFFF00` is the easiest course of action.
 
@@ -200,7 +438,7 @@ If you are styling your slides to change the background color, you will find tha
 
 It is simply easier that way. There is only one color we need to set and it is `#FFFFFF00`. This works even if the slide background color is different from slide to slide, or if the background is a non-solid color.
 
-### 7.4.2 base R
+### 7.5.2 base R
 
 we don’t have to make any changes to the R code, we can supply the chunk options `dev` and `dev.args` for the chunk to `"png"` and `list(bg="transparent")` respectively and you are good. The chunk will look like this.
 
@@ -223,7 +461,7 @@ knitr:
 
 ![](media/base-after.webp)
 
-### 7.4.3 ggplot2
+### 7.5.3 ggplot2
 
 ggplot2 are handled the same way as base R plotting, so we don’t have to make any changes to the R code, we can supply the chunk options `dev` and `dev.args` for the chunk to `"png"` and `list(bg="transparent")` respectively and you are good. The chunk will look like this.
 
@@ -250,7 +488,7 @@ knitr:
 
 ![](media/ggplot2-after.webp)
 
-### 7.4.4 matplotlib
+### 7.5.4 matplotlib
 
 With matplotlib, we need to set the background color twice, once for the plotting area, and once for the area outside the plotting area.
 
@@ -270,7 +508,7 @@ fig.patch.set_facecolor("#FFFFFF00")
 
 ![](media/matplotlib-after.webp)
 
-### 7.4.5 seaborn
+### 7.5.5 seaborn
 
 For seaborn, we also set it twice, both of them in `set_style()`
 
@@ -283,17 +521,17 @@ sns.set_style(rc={'axes.facecolor':'#FFFFFF00',
 
 ![](media/seaborn-after.webp)
 
-### 7.4.6 Source Document
+### 7.5.6 Source Document
 
 The above was generated with this document.
 
 [source document](examples/elements/plot-background-examples.qmd)
 
-## 7.5 Plot sizing
+## 7.6 Plot sizing
 
 Plots and charts are useful in slides. But we need to make sure they are sized correctly to be as effective as possible.
 
-### 7.5.1 auto-stretch option
+### 7.6.1 auto-stretch option
 
 Revealjs slides default to having the option [auto-stretch: true](https://quarto.org/docs/presentations/revealjs/advanced.html#stretch), this ensures that figures always fit inside the slide. You can turn it off globally like this.
 
@@ -319,13 +557,13 @@ Plot and title text on the same slide with `auto-stretch` enabled: image is shru
 
 Same slide with `.nostretch`: image renders at full natural size and may overlap or push other content off the slide.
 
-### 7.5.2 Sizing Options
+### 7.6.2 Sizing Options
 
 When sizing plots we need to remember that we have to deal with two kinds of sizes. First is the size of the actual file on disk, this is controlled using `out-width` and `out-height`. Next is how big the image is supposed to be in the document, which is controlled using `fig-width`, `fig-height`, and/or `fig-asp`. Lastly, you can control the location using `fig-align` and the resolution using `fig-dpi`.
 
 All of these numbers will change depending on whether you have a title or other elements on your slides, what fonts you use, and the aspect ratio of the slides themselves.
 
-#### 7.5.2.1 out-width, out-height
+#### 7.6.2.1 out-width, out-height
 
 Setting these options affects the size of the resulting image on disk. If they are set smaller than usual, we get an image that doesn’t take up the whole screen.
 
@@ -342,7 +580,7 @@ Comparison slide for the small `out-width`/`out-height` example, shown alongside
 
 I don’t find myself using these options much as I tend to want images that take up most of the space, but they are useful to know.
 
-### 7.5.3 fig-width, fig-height
+### 7.6.3 fig-width, fig-height
 
 I end up using `fig-width` and `fig-height` the most out of the options shown in this blog post. I find that the default values are too high, making the text on the plot too small for the viewer to see. Especially for an in-person audience.
 
@@ -360,7 +598,7 @@ All of the above figures have roughly the same aspect ratios, but if you want ot
 
 Square chart using equal `fig-width` and `fig-height` values, demonstrating how aspect ratio is controlled independently of the slide dimensions.
 
-### 7.5.4 fig-asp
+### 7.6.4 fig-asp
 
 You might have noticed that the ratios shown in the last section weren’t identical. Because unless you deal with 1-2 or 1-1 ratios you are going to get decimals very fast. And you have to recalculate small things over and over again. This is why `fig-asp` is amazing. Simply determine the aspect ratio between the height and width, set that as the `fig-asp` and then you just have to set one of `fig-height` or `fig-width`. Is it too small? increase `fig-height` and keep `fig-asp` the same. is it too big? decrease `fig-height` and keep `fig-asp` the same.
 
@@ -368,7 +606,7 @@ Chart using `fig-asp` to fix the aspect ratio: changing `fig-height` scales the 
 
 Same `fig-asp` ratio at a different `fig-height`, showing how the chart scales up or down while maintaining consistent proportions.
 
-### 7.5.5 fig-align
+### 7.6.5 fig-align
 
 Unless your chart fits fully inside the slide then it tends to be left aligned, you can change that with `fig-align`, setting it to `left`, `center` or `right`.
 
@@ -378,7 +616,7 @@ Chart with `fig-align: center`: the figure is centered horizontally on the slide
 
 Chart with `fig-align: right`: the figure is positioned against the right edge of the slide content area.
 
-### 7.5.6 fig-dpi
+### 7.6.6 fig-dpi
 
 Lastly, something you might need to worry about is the **D**ots **P**er **I**nch (DPI) specified by `fig-dpi`. This is a measure of resolution in your chart. If you see your chart becoming a little blurry, increase the dpi until it isn’t anymore. Note that dpi will result in larger file sizes, so only change if you have to.
 
@@ -386,13 +624,13 @@ Chart at standard DPI: text and elements may appear slightly soft at high displa
 
 Same chart at higher `fig-dpi`: text and lines are crisp and sharp, at the cost of a larger file size.
 
-### 7.5.7 Make work with columns
+### 7.6.7 Make work with columns
 
 even if you set the option globally, you will have to make slide-by-slide adjustments, such as with charts in `.columns`. Below is one example of how we can modify the `fig-asp` to make it look decent in a column layout.
 
 Chart inside a two-column layout with `fig-asp` adjusted to fit the narrower column width, preventing the figure from overflowing its column.
 
-### 7.5.8 Source Document
+### 7.6.8 Source Document
 
 The above was generated with this document.
 

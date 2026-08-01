@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal::before {
+  content: "Slidecrafting 2026";
+
+  // placement, this is what makes the strip and turns the text
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 2em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  // looks, change freely
+  padding-bottom: 1.5em;
+  background-color: #2a3b4c;
+  color: #fdf8f4;
+  font-size: 16px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .slides > section {
+  box-sizing: border-box;
+  padding-left: 2em;
+}
+
+.reveal .slide-menu-button {
+  left: 2.5em !important;
+}

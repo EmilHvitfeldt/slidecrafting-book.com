@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal .footer {
+  // placement, this is what makes it a bar
+  bottom: 0 !important;
+  padding: 0.35em 1.5em !important;
+
+  // looks, change freely
+  background-color: #2a3b4c;
+  color: #fdf8f4 !important;
+  font-size: 16px !important;
+  text-align: left !important;
+
+  a {
+    color: #f0b429 !important;
+  }
+}
+
+.reveal .slide-menu-button {
+  bottom: 2.5em !important;
+}

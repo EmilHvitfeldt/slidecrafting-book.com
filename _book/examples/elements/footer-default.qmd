@@ -1,0 +1,13 @@
+---
+format:
+  revealjs:
+    footer: "Slidecrafting 2026 / [slidecrafting.com](https://slidecrafting.com)"
+---
+
+## A footer on every slide
+
+The footer sits centered along the bottom edge.
+
+## And here it is again
+
+It is the same element the whole way through the deck.

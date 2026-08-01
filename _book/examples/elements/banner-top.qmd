@@ -1,0 +1,19 @@
+---
+title: "A banner of our own"
+subtitle: "The title slide is left alone"
+format:
+  revealjs:
+    theme:
+      [default, banner-top.scss]
+---
+
+## A banner along the top
+
+The banner is generated in SCSS,
+so there is no extra markup in the document.
+
+## No footer needed {.no-banner}
+
+Adding `{.no-banner}` to the heading hides it for one slide.
+
+## And it is back

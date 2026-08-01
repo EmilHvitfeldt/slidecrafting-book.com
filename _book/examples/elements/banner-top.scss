@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.reveal::after {
+  content: "Slidecrafting 2026";
+
+  // placement, this is what puts the banner along the top
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  // looks, change freely
+  padding: 0.3em 1.5em;
+  background-color: #2a3b4c;
+  color: #fdf8f4;
+  font-size: 16px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .slides > section:not(#title-slide) {
+  box-sizing: border-box;
+  padding-top: 1.5em;
+}
+
+.reveal:has(section#title-slide.present)::after,
+.reveal:has(section.present.no-banner)::after {
+  display: none;
+}

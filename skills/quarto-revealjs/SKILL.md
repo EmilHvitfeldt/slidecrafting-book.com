@@ -76,7 +76,7 @@ Read these first for most tasks.
 |---|---|
 | Title slide, logo, footer attributes | `references/core-title-slide.md` |
 | Slide backgrounds (color, image, video, iframe) | `references/core-backgrounds.md` |
-| Footer and logo (global + per-slide) | `references/core-footer-logo.md` |
+| Footer and logo (global + per-slide), custom top/side banners | `references/core-footer-logo.md` |
 | Content overflow (`.smaller`, `.scrollable`) | `references/core-overflow.md` |
 
 ## Theming

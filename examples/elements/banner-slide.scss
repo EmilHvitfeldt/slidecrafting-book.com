@@ -1,0 +1,55 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+$banner-bleed-x: calc((100vw / var(--slide-scale) - var(--slide-width)) / -2);
+$banner-bleed-y: calc((100vh / var(--slide-scale) - var(--slide-height)) / -2);
+
+%banner-top {
+  // placement, this is what puts the banner along the top and out to the edges
+  display: block;
+  position: absolute;
+  top: $banner-bleed-y;
+  left: $banner-bleed-x;
+  right: $banner-bleed-x;
+  z-index: 2;
+  line-height: 1.3; // matched by the `> *` rule below
+
+  // looks, change freely
+  padding: 0.3em 1.5em;
+  background-color: #2a3b4c;
+  color: #fdf8f4;
+  font-size: 0.45em;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .slides::after {
+  @extend %banner-top;
+  content: "Slidecrafting 2026";
+}
+
+.reveal .banner-top {
+  @extend %banner-top;
+
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: inherit;
+  }
+
+  a {
+    color: #f0b429;
+  }
+}
+
+.reveal .slides:has(section#title-slide.present)::after,
+.reveal .slides:has(section.present .banner-top)::after {
+  display: none;
+}
+
+.reveal .slides > section:not(#title-slide) {
+  box-sizing: border-box;
+  padding-top: 1em;
+}

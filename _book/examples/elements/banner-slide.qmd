@@ -1,0 +1,22 @@
+---
+title: "A banner you can talk back to"
+subtitle: "Still nothing on the title slide"
+format:
+  revealjs:
+    theme:
+      [default, banner-slide.scss]
+---
+
+## The default banner
+
+Every slide gets the text from the SCSS.
+
+## A banner of its own
+
+::: banner-top
+Photo by [Galen Crout](https://unsplash.com/@galen_crout) on [Unsplash](https://unsplash.com)
+:::
+
+The div replaces the default text for this slide only.
+
+## Back to the default

@@ -1,0 +1,21 @@
+---
+format:
+  revealjs:
+    footer: "Slidecrafting 2026 / [slidecrafting.com](https://slidecrafting.com)"
+---
+
+## The default footer
+
+The next slide replaces this text.
+
+## A footer of its own
+
+::: footer
+Photo by [Galen Crout](https://unsplash.com/@galen_crout) on [Unsplash](https://unsplash.com)
+:::
+
+## No footer at all {footer="false"}
+
+The default footer returns on the next slide.
+
+## The default footer is back

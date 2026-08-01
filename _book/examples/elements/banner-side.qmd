@@ -1,0 +1,15 @@
+---
+format:
+  revealjs:
+    theme:
+      [default, banner-side.scss]
+---
+
+## A banner down the side
+
+The same trick,
+rotated with `writing-mode`.
+
+## The slides make room for it
+
+The content area is nudged over so the strip never sits on top of the text.
