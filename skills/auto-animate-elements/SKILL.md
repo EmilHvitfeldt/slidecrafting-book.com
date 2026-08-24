@@ -1,6 +1,6 @@
 ---
 name: "auto-animate-elements"
-description: 'How to spruce up Quarto reveal.js slides with auto-animate by carrying a small cast of persistent elements (shapes) across slides that grow, shrink, and rearrange. Use this skill whenever the user wants elements that persist/animate/reshape between reveal.js slides, a set of shapes that move or morph across a deck, an "auto-animate" motif, or a bento-style animated presentation in Quarto. Covers the data-id contract, the SCSS-plus-inline split, content and figures inside elements, and the "enough, not all" pacing rule.'
+description: 'How to spruce up Quarto reveal.js slides with auto-animate by carrying a small cast of persistent elements (shapes) across slides that grow, shrink, and rearrange. Use this skill whenever the user wants elements that persist/animate/reshape between reveal.js slides, a set of shapes that move or morph across a deck, an "auto-animate" motif, or a bento-style animated presentation in Quarto. Covers the data-id contract, the SCSS-plus-inline split, content and figures inside elements, rotation/3D/filter tweening via the autoanimate-extra extension, and the "enough, not all" pacing rule.'
 ---
 
 # Auto-Animate persistent elements
@@ -11,6 +11,7 @@ References:
 - https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate
 - https://revealjs.com/auto-animate/
 - Positioning helper: https://github.com/EmilHvitfeldt/quarto-revealjs-editable
+- Rotation/3D/filter tweening: https://github.com/EmilHvitfeldt/quarto-revealjs-autoanimate-extra
 
 The goal: take a deck and give it motion by carrying a small, fixed cast of shapes (**persistent elements**) across slides. Each element has a stable `data-id`; reveal.js tweens its position, size, colour, and radius between adjacent auto-animate slides. An element can be a big content region on one slide and a small marker on the next.
 
@@ -150,6 +151,90 @@ Steer users toward varied uses, not just colored rounded rectangles:
 - **Zoom to detail**: a grid of cards; one expands to fill the slide, the others park at the edges, then collapse back.
 - **Diagram reflow**: boxes/nodes rearranging from a linear flow into a cycle.
 - **Stat → figure**: a big number that expands into a panel holding a chart.
+
+## Rotation, 3D, and extra style tweening
+
+Stock reveal.js interpolates only position (translate) and size (scale). Its FLIP engine overwrites `transform` wholesale, so a rotation you author is silently dropped, and it cannot be added through `auto-animate-styles` either. The `autoanimate-extra` extension makes `transform` behave like every other auto-animated property, which brings the effect close to PowerPoint's Morph:
+
+```bash
+quarto add emilhvitfeldt/quarto-revealjs-autoanimate-extra
+```
+
+```yaml
+format: revealjs
+revealjs-plugins:
+  - autoanimate-extra
+```
+
+There are no special attributes: write an ordinary inline `transform`, exactly as you change `width` to animate size.
+
+```markdown
+## First {auto-animate=true}
+
+::: {.panel data-id="hero" style="left:96px; top:220px; width:200px; height:200px;"}
+:::
+
+## Second {auto-animate=true}
+
+::: {.panel data-id="hero" style="left:540px; top:180px; width:400px; height:400px; transform: rotate(360deg);"}
+:::
+```
+
+| Effect | Transform |
+|---|---|
+| 2D rotation | `rotate(90deg)` |
+| Card flip | `perspective(800px) rotateY(180deg)` |
+| Tumble in 3D | `perspective(1000px) rotateX(55deg) rotateY(35deg)` |
+| Mirror | `scaleX(-1)` |
+| Skew | `skewX(-25deg) skewY(8deg)` |
+| Full turn | `rotate(360deg)` |
+
+Rotations are absolute and may exceed 360° or go negative, which is how you control spin direction and turn count. Transforms compose with the built-in move and resize, so an element can travel, grow, spin, flip, and round its corners in one transition.
+
+The extension also adds `box-shadow`, `text-shadow`, and `filter` to the deck-wide tween list. Anything else is opt-in per element with `data-auto-animate-styles`, a comma-separated property list:
+
+```markdown
+::: {.panel data-id="shape" data-auto-animate-styles="clip-path" style="clip-path: polygon(50% 0%, 100% 100%, 0% 100%);"}
+:::
+```
+
+Rules that matter when using it:
+
+- **Write the transform inline.** A transform in the paired SCSS is only readable as a computed matrix, so it animates as a matrix decomposition: rotation takes the shortest path and multi-turn spins collapse. Inline is what makes `rotate(720deg)` mean two turns. This is the one place the "identity in SCSS, geometry inline" split extends: `transform` counts as geometry.
+- **Use the same transform-function list, in the same order, on both slides.** The extension unions the lists and pads with identity values, but matching them yourself avoids surprises (`perspective()` has no identity and borrows the other side's value).
+- The FLIP math assumes `transform-origin: center`; the extension sets it during the transition.
+- Reveal supports one global `autoAnimateMatcher`, so another extension that sets one will conflict (last one wins).
+- Per-glyph text morph and true SVG path morph are out of scope.
+
+### Code and figure on independent paths
+
+Wrap the chunk in a fenced div carrying its own `data-id` and absolute geometry, and code and plot move separately. `data-auto-animate-delay` on the destination staggers them, so the pair does not read as one block sliding around:
+
+```markdown
+## Code, then chart {auto-animate=true}
+
+::: {data-id="code" style="position: absolute; left:30px; top:220px; width:470px;"}
+...code block...
+:::
+
+::: {data-id="chart" style="position: absolute; left:550px; top:200px; width:470px; transform: rotate(0deg);"}
+...plot chunk...
+:::
+
+## Code, then chart {auto-animate=true}
+
+::: {data-id="code" style="position: absolute; left:175px; top:130px; width:700px;"}
+...code block...
+:::
+
+::: {data-id="chart" data-auto-animate-delay="0.25" style="position: absolute; left:275px; top:340px; width:500px; transform: rotate(360deg);"}
+...plot chunk...
+:::
+```
+
+Absolute positioning is what keeps the two independent; a shared `.columns` wrapper would tie them to one layout flow.
+
+The extension repo has `example.qmd` (one slide-pair per capability) and `examples/pinwheel/`, a rotating photo pinwheel recreating a PowerPoint Morph tutorial where each picture counter-rotates against the wheel so the photographs stay upright.
 
 ## Positioning workflow
 

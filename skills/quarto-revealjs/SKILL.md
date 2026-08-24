@@ -140,6 +140,7 @@ Read these first for most tasks.
 | Extension | Reference |
 |---|---|
 | Drag-to-reposition elements (`editable`) | `references/extension-editable.md` |
+| Rotation / 3D / filters in auto-animate (`autoanimate-extra`) | `references/extension-autoanimate-extra.md` |
 | IDE-window code blocks (`codewindow`) | `references/extension-codewindow.md` |
 
 ## Miscellaneous

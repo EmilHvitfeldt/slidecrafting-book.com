@@ -66,6 +66,22 @@ An element is a div, so it can hold Markdown or a figure. Inner content is unmat
 
 Code diffs, an agenda/progress rail, a single hero shape reshaping between sections, zoom-to-detail card grids, diagram reflow, stat-to-figure. Steer away from "colored rounded rectangles" as the only idea.
 
+## Rotation, 3D, filters
+
+Reveal only tweens position and size; `transform` is overwritten by its FLIP engine, so an authored rotation is dropped. The [autoanimate-extra](https://github.com/EmilHvitfeldt/quarto-revealjs-autoanimate-extra) extension (`extension-autoanimate-extra.md`) makes `transform` tween like any other property, plus `box-shadow`, `text-shadow` and `filter`:
+
+```yaml
+revealjs-plugins:
+  - autoanimate-extra
+```
+
+```markdown
+::: {data-id="box" style="width:200px; height:200px; transform: rotate(360deg);"}
+:::
+```
+
+Write the transform inline (a stylesheet transform reads as a matrix, so multi-turn spins collapse to the shortest path) and use the same transform-function list on both slides.
+
 ## Positioning
 
 Don't hand-tune every coordinate — use [quarto-revealjs-editable](https://github.com/EmilHvitfeldt/quarto-revealjs-editable) (`extension-editable.md`): rough elements in, then drag/resize on the rendered slide and save back.
