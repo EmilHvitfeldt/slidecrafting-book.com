@@ -249,9 +249,95 @@ $theme-orange: #FFB81A;
 
 This fragment works more or less the same way as before but doesn’t change color once it is applied. It will be a more appropriate fragment many times.
 
-This leads us to our final piece of knowledge in this blog post. We don’t have to fully specify a fragment. We just have to declare how we want it to behave differently, and then the default “stay hidden, then appear” fragment.
+This leads us to the last piece of knowledge about CSS fragments. We don’t have to fully specify a fragment. We just have to declare how we want it to behave differently, and then the default “stay hidden, then appear” fragment.
 
-## 11.6 Fragments 201
+## 11.6 Sliding code out and results in
+
+The examples we have seen so far only changes the color of things on the slides. A fragment can animate any property though, one of those properties are positions. this section will show how we can use fragments to shuffle some elements around.
+
+Normally when we want to show two things side by side we reach for `columns`, which comes with the unfortunate downside is that the aspect ratio of the things we want to show being changed so both will fit on the slide. If we want to show two things side by side in a way that shows things fully we need to get creative. I will show how we can use fragments to move things around to solve this problem. For this example we have code on one side, then the produced output on the righthand side.
+
+The setup is a `.stage` div holding two children stacked on top of each other:
+
+``` scss
+.reveal .stage {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+```
+
+Both children fill the stage completely, so the only thing that distinguishes them is their `left` value. That is the property our two fragments animate:
+
+``` scss
+.reveal .slides section .fragment.stage-exit {
+  opacity: unset;
+  visibility: unset;
+  transition: left 0.8s ease;
+  left: 0;
+}
+
+.reveal .slides section .fragment.stage-exit.visible {
+  left: -130%;
+}
+
+.reveal .slides section .fragment.stage-enter {
+  opacity: unset;
+  visibility: unset;
+  transition: left 0.8s ease;
+  left: 130%;
+}
+
+.reveal .slides section .fragment.stage-enter.visible {
+  left: 0;
+}
+```
+
+The `opacity: unset; visibility: unset;` pair does the same job it did in the earlier examples: both panes are on screen the whole time, and only their position responds to the click. `130%` parks a full-width pane outside the viewport with room to spare.
+
+The markup then only has to say which pane leaves and which one arrives:
+
+````` markdown
+## A minimal deck
+
+:::: {.stage}
+
+::: {.fragment .stage-exit data-fragment-index="1"}
+```` markdown
+---
+title: "My first deck"
+format: revealjs
+---
+
+## First slide
+
+Some content.
+````
+:::
+
+::: {.fragment .stage-enter data-fragment-index="1"}
+<iframe src="stage-inner.html#/first-slide"></iframe>
+:::
+
+::::
+`````
+
+Two panes on a stage: a code block slides out to the left while an embedded deck slides in from the right, driven by two custom fragments sharing a fragment index.
+
+[qmd](examples/fragments/fragment-stage.qmd) [scss](examples/fragments/stage.scss)
+
+For this to work we need them fragments to share an index, this way they move at the same time.
+
+## 11.7 Fragments 201
 
 When a fragment is either shown or hidden `reveal.js` (the engine that powers our slides) will dispatch an event. This event can be picked up using JavaScript.
 
@@ -365,7 +451,7 @@ then inside we put my javascript code, which for this blog post will be some `Re
 >
 > See the [repository README](https://github.com/emilhvitfeldt/slidecrafting.com#claude-skills) for all installation options.
 
-## 11.7 Color changing
+## 11.8 Color changing
 
 This first example is going to be an illustrative example of what we can do and how to do it. And it will thus not be very useful.
 
@@ -494,7 +580,7 @@ Fragment that changes the slide heading color on each trigger: an empty `.color`
 
 [qmd](examples/fragments/fragment-color.qmd) [js](examples/fragments/color.llms.md)
 
-## 11.8 Scroll output
+## 11.9 Scroll output
 
 Sometimes you run into a situation where you want to interact with an element on a slide. This can happen when you need to scroll or toggle something. While that would be fine to do by hand, it can be hard to do casually, and impossible to do if you are using a clicker.
 
@@ -566,7 +652,7 @@ Fragment that smoothly scrolls a long code output block: advancing the fragment 
 >
 > We didn’t do it here, but you could use dataset values to help determine which elements should be scrolled and how much to scroll them by instead of hardcoding it all as we do here.
 
-## 11.9 Tabset advance
+## 11.10 Tabset advance
 
 Quarto also has [tabset](https://quarto.org/docs/presentations/revealjs/index.html#tabsets) support for slides, which is again a very nice feature. It runs into the same clicker interaction we noted earlier. It requires a mouse to correctly toggle in the middle of a presentation.
 
@@ -633,7 +719,7 @@ The [quarto-revealjs-tabset](https://github.com/mcanouil/quarto-revealjs-tabset)
 >
 > [qmd](examples/fragments/fragment-tabset-full.qmd) [js](examples/fragments/tabset-full.llms.md)
 
-## 11.10 advance embedded slides
+## 11.11 advance embedded slides
 
 The last example I’ll show for now is one you have seen me use already. I like to put quarto slides inside quarto slides. However, it becomes messy to advance the embedded slides, because they take focus of the mouse. I have used a fragment to advance these.
 
@@ -678,11 +764,11 @@ Demo of embedded slide advancement: an inner Reveal.js presentation is embedded 
 
 [qmd](examples/fragments/fragment-advance.qmd) [js](examples/fragments/advance.llms.md)
 
-## 11.11 Fragment Extensions
+## 11.12 Fragment Extensions
 
 The following extensions provide additional fragment capabilities beyond what we’ve covered so far.
 
-### 11.11.1 Roughnotation
+### 11.12.1 Roughnotation
 
 The [quarto-roughnotation](https://github.com/EmilHvitfeldt/quarto-roughnotation) extension uses the [Rough Notation](https://roughnotation.com/) JavaScript library to add hand-drawn styled annotations to your slides. These annotations can circle, underline, highlight, or strike-through text with an animated sketchy appearance.
 
@@ -719,7 +805,7 @@ You can customize colors and other properties using data attributes:
 
 [ Github](https://github.com/EmilHvitfeldt/quarto-roughnotation) [ Demo](https://emilhvitfeldt.github.io/quarto-roughnotation/)
 
-### 11.11.2 More Fragments
+### 11.12.2 More Fragments
 
 The [quarto-revealjs-more-fragments](https://github.com/EmilHvitfeldt/quarto-revealjs-more-fragments) extension adds over 90 additional fragment animations to your presentations using the [Animate.css](https://animate.style/) and [Magic.css](https://www.minimamente.com/project/magic/) libraries.
 
@@ -759,7 +845,7 @@ Usage:
 
 [ Github](https://github.com/EmilHvitfeldt/quarto-revealjs-more-fragments) [ Demo](https://emilhvitfeldt.github.io/quarto-revealjs-more-fragments/)
 
-### 11.11.3 Tabset
+### 11.12.3 Tabset
 
 The [quarto-revealjs-tabset](https://github.com/mcanouil/quarto-revealjs-tabset) extension turns tabs into fragments, so they can be navigated with arrow keys or a clicker instead of requiring mouse clicks.
 

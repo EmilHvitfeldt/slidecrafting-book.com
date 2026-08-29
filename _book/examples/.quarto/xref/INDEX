@@ -248,5 +248,11 @@
   },
   "elements/banner-side-minimal.qmd": {
     "banner-side-minimal.html": "6365ecb1"
+  },
+  "fragments/stage-inner.qmd": {
+    "stage-inner.html": "3465bb23"
+  },
+  "fragments/fragment-stage.qmd": {
+    "fragment-stage.html": "9e0b15ba"
   }
 }

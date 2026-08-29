@@ -320,10 +320,120 @@ $theme-orange: #FFB81A;
 This fragment works more or less the same way as before but doesn't change color once it is applied.
 It will be a more appropriate fragment many times.
 
-This leads us to our final piece of knowledge in this blog post.
+This leads us to the last piece of knowledge about CSS fragments.
 We don't have to fully specify a fragment.
 We just have to declare how we want it to behave differently,
 and then the default "stay hidden, then appear" fragment.
+
+## Sliding code out and results in
+
+The examples we have seen so far only changes the color of things on the slides.
+A fragment can animate any property though,
+one of those properties are positions.
+this section will show how we can use fragments to shuffle some elements around.
+
+Normally when we want to show two things side by side we reach for `columns`,
+which comes with the unfortunate downside is that the aspect ratio of the things we want to show being changed so both will fit on the slide.
+If we want to show two things side by side in a way that shows things fully we need to get creative.
+I will show how we can use fragments to move things around to solve this problem.
+For this example we have code on one side,
+then the produced output on the righthand side.
+
+The setup is a `.stage` div holding two children stacked on top of each other:
+
+```scss
+.reveal .stage {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+```
+
+Both children fill the stage completely,
+so the only thing that distinguishes them is their `left` value.
+That is the property our two fragments animate:
+
+```scss
+.reveal .slides section .fragment.stage-exit {
+  opacity: unset;
+  visibility: unset;
+  transition: left 0.8s ease;
+  left: 0;
+}
+
+.reveal .slides section .fragment.stage-exit.visible {
+  left: -130%;
+}
+
+.reveal .slides section .fragment.stage-enter {
+  opacity: unset;
+  visibility: unset;
+  transition: left 0.8s ease;
+  left: 130%;
+}
+
+.reveal .slides section .fragment.stage-enter.visible {
+  left: 0;
+}
+```
+
+The `opacity: unset; visibility: unset;` pair does the same job it did in the earlier examples:
+both panes are on screen the whole time, and only their position responds to the click.
+`130%` parks a full-width pane outside the viewport with room to spare.
+
+The markup then only has to say which pane leaves and which one arrives:
+
+`````markdown
+## A minimal deck
+
+:::: {.stage}
+
+::: {.fragment .stage-exit data-fragment-index="1"}
+```` markdown
+---
+title: "My first deck"
+format: revealjs
+---
+
+## First slide
+
+Some content.
+````
+:::
+
+::: {.fragment .stage-enter data-fragment-index="1"}
+<iframe src="stage-inner.html#/first-slide"></iframe>
+:::
+
+::::
+`````
+
+![
+  Two panes on a stage: a code block slides out to the left while an embedded deck slides in from the right, driven by two custom fragments sharing a fragment index.
+](
+  examples/fragments/fragment-stage.html
+){
+  .slide-deck
+  loading="lazy"
+  width="560"
+  height="373"
+  title="Code sliding out and an embedded deck sliding in"
+}
+
+[{{< fa file >}}qmd](examples/fragments/fragment-stage.qmd){.listing-slides .btn-links target="_blank"}
+[{{< fa brands sass >}}scss](examples/fragments/stage.scss){.listing-video .btn-links target="_blank"}
+
+For this to work we need them fragments to share an index,
+this way they move at the same time.
 
 ## Fragments 201
 

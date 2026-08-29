@@ -1,0 +1,29 @@
+---
+format:
+  revealjs:
+    theme:
+      [default, stage.scss]
+---
+
+## A minimal deck
+
+:::: {.stage}
+
+::: {.fragment .stage-exit data-fragment-index="1"}
+```` markdown
+---
+title: "My first deck"
+format: revealjs
+---
+
+## First slide
+
+Some content.
+````
+:::
+
+::: {.fragment .stage-enter data-fragment-index="1"}
+<iframe src="stage-inner.html#/first-slide"></iframe>
+:::
+
+::::
