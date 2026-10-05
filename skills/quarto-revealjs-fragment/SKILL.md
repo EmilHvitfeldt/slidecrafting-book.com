@@ -233,6 +233,8 @@ function reverseAnimation(el) {
 
 The key insight: `is-parked` is a plain CSS class (no animation) that statically places the element at the end position. This prevents a flash to the natural position before the return animation starts.
 
+**If snapping a mid-animation element to idle (rather than truly reversing from its live position) would be visually jarring** — a plot still visibly falling, a shape still morphing — see the `fragment-stop-and-retarget` skill. It covers the harder "stop-and-retarget" pattern: redirecting the live animation from wherever it currently is, instead of snapping it to a nominal state first.
+
 ## 6. Complete working example — falling letters
 
 This is the full pattern that produced the falling letters effect:

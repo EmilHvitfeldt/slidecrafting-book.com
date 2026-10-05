@@ -84,6 +84,8 @@ item._state = 'done';       // finished
 
 The full worked "falling letters" example (keyframes + complete state-tracking JS) is in the book's fragments chapter and the standalone `quarto-revealjs-fragment` skill.
 
+If snapping to idle mid-animation would be visually jarring (a plot still visibly falling, a shape still morphing), see the `fragment-stop-and-retarget` skill for the harder pattern: redirecting the live animation from its current position instead of snapping first.
+
 ## Gotchas
 
 - Transforms need `display: inline-block` on inline spans.

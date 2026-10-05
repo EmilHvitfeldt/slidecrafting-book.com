@@ -122,6 +122,8 @@ Read these first for most tasks.
 | Custom fragment animations (CSS states + JS) | `references/animation-fragments-custom.md` |
 | Auto-animate persistent elements across slides | `references/animation-auto-animate.md` |
 | Slide and fragment transitions | `references/animation-transitions.md` |
+| JS animation library (anime.js) synced to fragments | `animejs-revealjs` skill |
+| Mid-animation reversal that must redirect live, not snap | `fragment-stop-and-retarget` skill |
 
 ## Presenting & exporting
 
